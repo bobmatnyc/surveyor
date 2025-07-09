@@ -1,0 +1,228 @@
+{
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "generatedAt": "2025-07-09T05:27:07.476Z",
+  "totalOrganizations": 8,
+  "overallMetrics": {
+    "averageScore": 3.516346153846154,
+    "medianScore": 3.85,
+    "standardDeviation": 1.2511721575192916,
+    "completionRate": 95.2,
+    "averageResponseTime": 18.5
+  },
+  "maturityDistribution": {
+    "building": 2,
+    "emerging": 1,
+    "thriving": 5
+  },
+  "domainAverages": {
+    "infrastructure": 3.5480769230769234,
+    "business_systems": 3.5,
+    "data": 3.490384615384616,
+    "program_tech": 3.375,
+    "culture": 3.666666666666667
+  },
+  "sectorAnalysis": {
+    "Community Services": {
+      "averageScore": 1.7576923076923079,
+      "count": 1,
+      "topDomains": [
+        "business_systems",
+        "program_tech",
+        "culture"
+      ],
+      "commonChallenges": [
+        "Limited funding",
+        "Volunteer coordination",
+        "Program tracking"
+      ]
+    },
+    "Federation": {
+      "averageScore": 5,
+      "count": 1,
+      "topDomains": [
+        "infrastructure",
+        "data",
+        "culture"
+      ],
+      "commonChallenges": [
+        "Multi-organization coordination",
+        "Large-scale data management",
+        "Diverse stakeholder needs"
+      ]
+    },
+    "Campus Life": {
+      "averageScore": 3.6820512820512823,
+      "count": 1,
+      "topDomains": [
+        "infrastructure",
+        "data",
+        "culture"
+      ],
+      "commonChallenges": [
+        "Student engagement",
+        "Event management",
+        "Mobile-first approach"
+      ]
+    },
+    "Religious Institution": {
+      "averageScore": 2.420512820512821,
+      "count": 2,
+      "topDomains": [
+        "culture",
+        "business_systems",
+        "program_tech"
+      ],
+      "commonChallenges": [
+        "Member management",
+        "Donation tracking",
+        "Event coordination"
+      ]
+    },
+    "Social Services": {
+      "averageScore": 5,
+      "count": 1,
+      "topDomains": [
+        "infrastructure",
+        "data",
+        "culture"
+      ],
+      "commonChallenges": [
+        "Case management",
+        "Privacy compliance",
+        "Outcome measurement"
+      ]
+    },
+    "Arts & Culture": {
+      "averageScore": 3.85,
+      "count": 1,
+      "topDomains": [
+        "infrastructure",
+        "business_systems",
+        "data"
+      ],
+      "commonChallenges": [
+        "Digital collections",
+        "Online exhibitions",
+        "Visitor engagement"
+      ]
+    },
+    "Education": {
+      "averageScore": 4,
+      "count": 1,
+      "topDomains": [
+        "infrastructure",
+        "business_systems",
+        "data"
+      ],
+      "commonChallenges": [
+        "Student information systems",
+        "1:1 device programs",
+        "Parent communication"
+      ]
+    }
+  },
+  "organizationSizeAnalysis": {
+    "small": {
+      "averageScore": 1.5583333333333336,
+      "count": 2,
+      "itBudgetAverage": 3.5,
+      "hasITStaffPercentage": 0
+    },
+    "large": {
+      "averageScore": 5,
+      "count": 2,
+      "itBudgetAverage": 13.5,
+      "hasITStaffPercentage": 100
+    },
+    "medium": {
+      "averageScore": 3.7535256410256412,
+      "count": 4,
+      "itBudgetAverage": 10.25,
+      "hasITStaffPercentage": 75
+    }
+  },
+  "stakeholderInsights": {
+    "ceo": {
+      "averageEngagement": 1,
+      "responsePatterns": {
+        "infra_onboarding_ceo": 3.375,
+        "data_collection_ceo": 3.375,
+        "business_systems_ceo": 3.5,
+        "culture_leadership_ceo": 3.75
+      },
+      "commonChallenges": [
+        "Strategic technology planning",
+        "Budget allocation",
+        "Change management"
+      ]
+    },
+    "tech_lead": {
+      "averageEngagement": 1,
+      "responsePatterns": {
+        "infra_onboarding_tech": 3.75,
+        "data_systems_tech": 3.625
+      },
+      "commonChallenges": [
+        "Infrastructure maintenance",
+        "Security compliance",
+        "Training delivery"
+      ]
+    },
+    "staff": {
+      "averageEngagement": 1,
+      "responsePatterns": {
+        "program_tech_staff": 3.375
+      },
+      "commonChallenges": [
+        "Daily tool usage",
+        "Training needs",
+        "Workflow integration"
+      ]
+    },
+    "board": {
+      "averageEngagement": 1,
+      "responsePatterns": {
+        "culture_board_oversight": 3.375
+      },
+      "commonChallenges": [
+        "Governance oversight",
+        "Strategic direction",
+        "Risk management"
+      ]
+    }
+  },
+  "trendAnalysis": {
+    "yearOverYear": 0.3,
+    "emergingTrends": [
+      "Increased focus on cybersecurity",
+      "Growing adoption of cloud services",
+      "Enhanced data analytics capabilities",
+      "Remote work technology improvements"
+    ],
+    "recommendations": [
+      "Prioritize cybersecurity training and infrastructure",
+      "Invest in cloud migration strategies",
+      "Develop data governance frameworks",
+      "Create technology mentorship programs"
+    ]
+  },
+  "comparativeAnalysis": {
+    "topPerformers": [
+      "org_jewish_federation_metro",
+      "org_jewish_family_services",
+      "org_jewish_day_school"
+    ],
+    "improvementOpportunities": [
+      "Infrastructure standardization",
+      "Staff technology training",
+      "Data integration projects",
+      "Board technology governance"
+    ],
+    "bestPractices": [
+      "Regular technology assessments",
+      "Cross-sector collaboration",
+      "Dedicated IT budgets",
+      "Technology committee governance"
+    ]
+  }
+}

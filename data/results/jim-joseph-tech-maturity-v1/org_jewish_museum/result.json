@@ -1,0 +1,58 @@
+{
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_jewish_museum",
+  "overallScore": 3.85,
+  "domainScores": {
+    "infrastructure": 4,
+    "business_systems": 4,
+    "data": 4,
+    "program_tech": 3,
+    "culture": 4
+  },
+  "stakeholderContributions": {
+    "ceo": {
+      "infrastructure": 4,
+      "business_systems": 4,
+      "data": 4,
+      "culture": 4
+    },
+    "tech_lead": {
+      "infrastructure": 4,
+      "data": 4
+    },
+    "staff": {
+      "program_tech": 3
+    },
+    "board": {
+      "culture": 4
+    }
+  },
+  "maturityLevel": {
+    "id": "thriving",
+    "name": "Thriving",
+    "description": "Advanced technology capabilities driving mission success",
+    "minScore": 3.61,
+    "maxScore": 5,
+    "color": "#059669",
+    "recommendations": [
+      "Lead technology innovation in the sector",
+      "Share best practices with peer organizations",
+      "Explore emerging technologies like AI",
+      "Mentor other organizations in technology adoption"
+    ]
+  },
+  "recommendations": [
+    "Lead technology innovation in the sector",
+    "Share best practices with peer organizations",
+    "Explore emerging technologies like AI",
+    "Mentor other organizations in technology adoption"
+  ],
+  "completionDate": "2025-07-09T05:27:07.470Z",
+  "responseCount": 4,
+  "stakeholderBreakdown": {
+    "ceo": 1,
+    "tech_lead": 1,
+    "staff": 1,
+    "board": 1
+  }
+}

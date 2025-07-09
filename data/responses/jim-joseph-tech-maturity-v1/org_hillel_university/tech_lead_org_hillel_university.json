@@ -1,0 +1,28 @@
+{
+  "id": "resp_org_hillel_university_tech_lead_1752038827470",
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_hillel_university",
+  "respondentId": "tech_lead_org_hillel_university",
+  "stakeholder": "tech_lead",
+  "expertise": [
+    "infrastructure",
+    "data"
+  ],
+  "responses": {
+    "infra_onboarding_tech": 5,
+    "data_systems_tech": 4
+  },
+  "startTime": "2025-07-09T05:27:07.470Z",
+  "completionTime": "2025-07-09T05:40:23.191Z",
+  "progress": 100,
+  "metadata": {
+    "respondentName": "Casey Wilson",
+    "respondentTitle": "Digital Director",
+    "organizationName": "Hillel at State University",
+    "organizationType": "medium",
+    "organizationSector": "Campus Life",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "ipAddress": "192.168.1.1",
+    "sessionId": "session_1752038827470_t8jyjsrqt"
+  }
+}

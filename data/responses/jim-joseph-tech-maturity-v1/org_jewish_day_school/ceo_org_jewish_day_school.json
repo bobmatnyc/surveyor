@@ -1,0 +1,30 @@
+{
+  "id": "resp_org_jewish_day_school_ceo_1752038827470",
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_jewish_day_school",
+  "respondentId": "ceo_org_jewish_day_school",
+  "stakeholder": "ceo",
+  "expertise": [
+    "strategy",
+    "governance"
+  ],
+  "responses": {
+    "infra_onboarding_ceo": 4,
+    "data_collection_ceo": 4,
+    "business_systems_ceo": 4,
+    "culture_leadership_ceo": 4
+  },
+  "startTime": "2025-07-09T05:27:07.470Z",
+  "completionTime": "2025-07-09T06:03:19.257Z",
+  "progress": 100,
+  "metadata": {
+    "respondentName": "Michael Goldstein",
+    "respondentTitle": "President",
+    "organizationName": "Maimonides Jewish Day School",
+    "organizationType": "medium",
+    "organizationSector": "Education",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "ipAddress": "192.168.1.1",
+    "sessionId": "session_1752038827470_f0yitlm3p"
+  }
+}

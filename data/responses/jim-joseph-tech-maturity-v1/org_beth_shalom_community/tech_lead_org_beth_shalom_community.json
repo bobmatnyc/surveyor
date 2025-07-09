@@ -1,0 +1,28 @@
+{
+  "id": "resp_org_beth_shalom_community_tech_lead_1752038827469",
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_beth_shalom_community",
+  "respondentId": "tech_lead_org_beth_shalom_community",
+  "stakeholder": "tech_lead",
+  "expertise": [
+    "infrastructure",
+    "data"
+  ],
+  "responses": {
+    "infra_onboarding_tech": 2,
+    "data_systems_tech": 2
+  },
+  "startTime": "2025-07-09T05:27:07.469Z",
+  "completionTime": "2025-07-09T06:03:26.810Z",
+  "progress": 100,
+  "metadata": {
+    "respondentName": "Taylor Johnson",
+    "respondentTitle": "Digital Director",
+    "organizationName": "Beth Shalom Community Center",
+    "organizationType": "small",
+    "organizationSector": "Community Services",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "ipAddress": "192.168.1.1",
+    "sessionId": "session_1752038827469_u5u1g91bn"
+  }
+}

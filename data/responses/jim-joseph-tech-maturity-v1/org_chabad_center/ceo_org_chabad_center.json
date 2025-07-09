@@ -1,0 +1,30 @@
+{
+  "id": "resp_org_chabad_center_ceo_1752038827470",
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_chabad_center",
+  "respondentId": "ceo_org_chabad_center",
+  "stakeholder": "ceo",
+  "expertise": [
+    "strategy",
+    "governance"
+  ],
+  "responses": {
+    "infra_onboarding_ceo": 1,
+    "data_collection_ceo": 1,
+    "business_systems_ceo": 1,
+    "culture_leadership_ceo": 2
+  },
+  "startTime": "2025-07-09T05:27:07.470Z",
+  "completionTime": "2025-07-09T06:00:39.765Z",
+  "progress": 100,
+  "metadata": {
+    "respondentName": "Sarah Cohen",
+    "respondentTitle": "Executive Director",
+    "organizationName": "Chabad Center of Silicon Valley",
+    "organizationType": "small",
+    "organizationSector": "Religious Institution",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "ipAddress": "192.168.1.1",
+    "sessionId": "session_1752038827470_35d7tmsm1"
+  }
+}

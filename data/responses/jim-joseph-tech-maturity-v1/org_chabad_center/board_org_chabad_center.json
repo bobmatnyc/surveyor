@@ -1,0 +1,26 @@
+{
+  "id": "resp_org_chabad_center_board_1752038827470",
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_chabad_center",
+  "respondentId": "board_org_chabad_center",
+  "stakeholder": "board",
+  "expertise": [
+    "governance"
+  ],
+  "responses": {
+    "culture_board_oversight": 1
+  },
+  "startTime": "2025-07-09T05:27:07.470Z",
+  "completionTime": "2025-07-09T05:42:00.717Z",
+  "progress": 100,
+  "metadata": {
+    "respondentName": "Lisa Stern",
+    "respondentTitle": "Board Member",
+    "organizationName": "Chabad Center of Silicon Valley",
+    "organizationType": "small",
+    "organizationSector": "Religious Institution",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "ipAddress": "192.168.1.1",
+    "sessionId": "session_1752038827470_w9yg8m179"
+  }
+}

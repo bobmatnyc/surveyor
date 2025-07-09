@@ -1,0 +1,608 @@
+[
+  {
+    "organizationId": "org_beth_shalom_community",
+    "organizationName": "Beth Shalom Community Center",
+    "sector": "Community Services",
+    "size": "small",
+    "overallScore": 1.7576923076923079,
+    "maturityLevel": "building",
+    "percentileRank": 12.5,
+    "domainBreakdown": {
+      "infrastructure": {
+        "score": 1.4615384615384617,
+        "percentile": 25,
+        "sectorComparison": 0,
+        "sizeComparison": 0.23076923076923084
+      },
+      "business_systems": {
+        "score": 2,
+        "percentile": 25,
+        "sectorComparison": 0,
+        "sizeComparison": 0.5
+      },
+      "data": {
+        "score": 1.4615384615384617,
+        "percentile": 25,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "program_tech": {
+        "score": 2,
+        "percentile": 25,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "culture": {
+        "score": 2,
+        "percentile": 25,
+        "sectorComparison": 0,
+        "sizeComparison": 0.11111111111111116
+      }
+    },
+    "strengths": [],
+    "weaknesses": [],
+    "priorityRecommendations": [
+      "Establish basic IT infrastructure and policies",
+      "Create technology budget and planning process",
+      "Provide staff technology training",
+      "Upgrade core technology infrastructure",
+      "Evaluate and upgrade business systems"
+    ],
+    "peerComparison": {
+      "similar": [],
+      "betterPerforming": [
+        "org_temple_emanuel",
+        "org_hillel_university",
+        "org_jewish_museum"
+      ],
+      "potentialMentors": [
+        "org_jewish_federation_metro",
+        "org_jewish_family_services",
+        "org_jewish_day_school"
+      ]
+    },
+    "actionPlan": {
+      "shortTerm": [
+        "Conduct comprehensive technology audit",
+        "Establish basic cybersecurity measures"
+      ],
+      "mediumTerm": [
+        "Implement core business systems",
+        "Provide staff technology training"
+      ],
+      "longTerm": [
+        "Develop technology strategic plan"
+      ],
+      "budgetEstimate": 50000,
+      "timeEstimate": "18-24 months"
+    }
+  },
+  {
+    "organizationId": "org_jewish_federation_metro",
+    "organizationName": "Jewish Federation of Metropolitan Detroit",
+    "sector": "Federation",
+    "size": "large",
+    "overallScore": 5,
+    "maturityLevel": "thriving",
+    "percentileRank": 75,
+    "domainBreakdown": {
+      "infrastructure": {
+        "score": 5.000000000000001,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "business_systems": {
+        "score": 5,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "data": {
+        "score": 5.000000000000001,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "program_tech": {
+        "score": 5,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "culture": {
+        "score": 5.000000000000001,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      }
+    },
+    "strengths": [
+      "infrastructure",
+      "business_systems",
+      "data",
+      "program_tech",
+      "culture"
+    ],
+    "weaknesses": [],
+    "priorityRecommendations": [
+      "Explore emerging technologies and innovations",
+      "Share best practices with peer organizations",
+      "Develop technology mentorship capabilities"
+    ],
+    "peerComparison": {
+      "similar": [],
+      "betterPerforming": [],
+      "potentialMentors": []
+    },
+    "actionPlan": {
+      "shortTerm": [
+        "Explore emerging technologies",
+        "Establish mentorship programs"
+      ],
+      "mediumTerm": [
+        "Lead sector technology initiatives"
+      ],
+      "longTerm": [
+        "Develop technology innovation lab"
+      ],
+      "budgetEstimate": 75000,
+      "timeEstimate": "6-12 months"
+    }
+  },
+  {
+    "organizationId": "org_hillel_university",
+    "organizationName": "Hillel at State University",
+    "sector": "Campus Life",
+    "size": "medium",
+    "overallScore": 3.6820512820512823,
+    "maturityLevel": "thriving",
+    "percentileRank": 37.5,
+    "domainBreakdown": {
+      "infrastructure": {
+        "score": 4.461538461538462,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.48076923076923084
+      },
+      "business_systems": {
+        "score": 2.9999999999999996,
+        "percentile": 37.5,
+        "sectorComparison": 0,
+        "sizeComparison": -0.7500000000000004
+      },
+      "data": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.25
+      },
+      "program_tech": {
+        "score": 3,
+        "percentile": 62.5,
+        "sectorComparison": 0,
+        "sizeComparison": -0.25
+      },
+      "culture": {
+        "score": 3.777777777777778,
+        "percentile": 50,
+        "sectorComparison": 0,
+        "sizeComparison": -0.11111111111111116
+      }
+    },
+    "strengths": [],
+    "weaknesses": [],
+    "priorityRecommendations": [
+      "Explore emerging technologies and innovations",
+      "Share best practices with peer organizations",
+      "Develop technology mentorship capabilities",
+      "Evaluate and upgrade business systems"
+    ],
+    "peerComparison": {
+      "similar": [],
+      "betterPerforming": [
+        "org_jewish_museum",
+        "org_jewish_day_school",
+        "org_jewish_federation_metro"
+      ],
+      "potentialMentors": [
+        "org_jewish_federation_metro",
+        "org_jewish_family_services"
+      ]
+    },
+    "actionPlan": {
+      "shortTerm": [
+        "Explore emerging technologies",
+        "Establish mentorship programs"
+      ],
+      "mediumTerm": [
+        "Lead sector technology initiatives"
+      ],
+      "longTerm": [
+        "Develop technology innovation lab"
+      ],
+      "budgetEstimate": 50000,
+      "timeEstimate": "6-12 months"
+    }
+  },
+  {
+    "organizationId": "org_temple_emanuel",
+    "organizationName": "Temple Emanuel",
+    "sector": "Religious Institution",
+    "size": "medium",
+    "overallScore": 3.482051282051282,
+    "maturityLevel": "emerging",
+    "percentileRank": 25,
+    "domainBreakdown": {
+      "infrastructure": {
+        "score": 3.461538461538462,
+        "percentile": 37.5,
+        "sectorComparison": 1.2307692307692313,
+        "sizeComparison": -0.5192307692307687
+      },
+      "business_systems": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 1.5,
+        "sizeComparison": 0.25
+      },
+      "data": {
+        "score": 3,
+        "percentile": 37.5,
+        "sectorComparison": 0.7692307692307692,
+        "sizeComparison": -0.75
+      },
+      "program_tech": {
+        "score": 3,
+        "percentile": 62.5,
+        "sectorComparison": 0.5,
+        "sizeComparison": -0.25
+      },
+      "culture": {
+        "score": 3.777777777777778,
+        "percentile": 50,
+        "sectorComparison": 1,
+        "sizeComparison": -0.11111111111111116
+      }
+    },
+    "strengths": [],
+    "weaknesses": [],
+    "priorityRecommendations": [
+      "Integrate systems for better data flow",
+      "Develop comprehensive technology strategy",
+      "Enhance cybersecurity measures",
+      "Upgrade core technology infrastructure",
+      "Implement data governance framework"
+    ],
+    "peerComparison": {
+      "similar": [],
+      "betterPerforming": [
+        "org_hillel_university",
+        "org_jewish_museum",
+        "org_jewish_day_school"
+      ],
+      "potentialMentors": [
+        "org_jewish_federation_metro",
+        "org_jewish_family_services",
+        "org_jewish_day_school"
+      ]
+    },
+    "actionPlan": {
+      "shortTerm": [
+        "Integrate existing systems",
+        "Enhance data backup procedures"
+      ],
+      "mediumTerm": [
+        "Upgrade core infrastructure",
+        "Implement data analytics tools"
+      ],
+      "longTerm": [
+        "Develop innovation initiatives"
+      ],
+      "budgetEstimate": 75000,
+      "timeEstimate": "12-18 months"
+    }
+  },
+  {
+    "organizationId": "org_jewish_family_services",
+    "organizationName": "Jewish Family Services of Greater Boston",
+    "sector": "Social Services",
+    "size": "large",
+    "overallScore": 5,
+    "maturityLevel": "thriving",
+    "percentileRank": 75,
+    "domainBreakdown": {
+      "infrastructure": {
+        "score": 5.000000000000001,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "business_systems": {
+        "score": 5,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "data": {
+        "score": 5.000000000000001,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "program_tech": {
+        "score": 5,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      },
+      "culture": {
+        "score": 5.000000000000001,
+        "percentile": 100,
+        "sectorComparison": 0,
+        "sizeComparison": 0
+      }
+    },
+    "strengths": [
+      "infrastructure",
+      "business_systems",
+      "data",
+      "program_tech",
+      "culture"
+    ],
+    "weaknesses": [],
+    "priorityRecommendations": [
+      "Explore emerging technologies and innovations",
+      "Share best practices with peer organizations",
+      "Develop technology mentorship capabilities"
+    ],
+    "peerComparison": {
+      "similar": [],
+      "betterPerforming": [],
+      "potentialMentors": []
+    },
+    "actionPlan": {
+      "shortTerm": [
+        "Explore emerging technologies",
+        "Establish mentorship programs"
+      ],
+      "mediumTerm": [
+        "Lead sector technology initiatives"
+      ],
+      "longTerm": [
+        "Develop technology innovation lab"
+      ],
+      "budgetEstimate": 75000,
+      "timeEstimate": "6-12 months"
+    }
+  },
+  {
+    "organizationId": "org_chabad_center",
+    "organizationName": "Chabad Center of Silicon Valley",
+    "sector": "Religious Institution",
+    "size": "small",
+    "overallScore": 1.358974358974359,
+    "maturityLevel": "building",
+    "percentileRank": 0,
+    "domainBreakdown": {
+      "infrastructure": {
+        "score": 1,
+        "percentile": 12.5,
+        "sectorComparison": -1.2307692307692308,
+        "sizeComparison": -0.23076923076923084
+      },
+      "business_systems": {
+        "score": 1,
+        "percentile": 12.5,
+        "sectorComparison": -1.5,
+        "sizeComparison": -0.5
+      },
+      "data": {
+        "score": 1.4615384615384617,
+        "percentile": 25,
+        "sectorComparison": -0.7692307692307692,
+        "sizeComparison": 0
+      },
+      "program_tech": {
+        "score": 2,
+        "percentile": 25,
+        "sectorComparison": -0.5,
+        "sizeComparison": 0
+      },
+      "culture": {
+        "score": 1.777777777777778,
+        "percentile": 12.5,
+        "sectorComparison": -1.0000000000000002,
+        "sizeComparison": -0.11111111111111094
+      }
+    },
+    "strengths": [],
+    "weaknesses": [
+      "infrastructure",
+      "business_systems",
+      "culture"
+    ],
+    "priorityRecommendations": [
+      "Establish basic IT infrastructure and policies",
+      "Create technology budget and planning process",
+      "Provide staff technology training",
+      "Upgrade core technology infrastructure",
+      "Evaluate and upgrade business systems"
+    ],
+    "peerComparison": {
+      "similar": [],
+      "betterPerforming": [
+        "org_beth_shalom_community",
+        "org_temple_emanuel",
+        "org_hillel_university"
+      ],
+      "potentialMentors": [
+        "org_jewish_federation_metro",
+        "org_jewish_family_services",
+        "org_jewish_day_school"
+      ]
+    },
+    "actionPlan": {
+      "shortTerm": [
+        "Conduct comprehensive technology audit",
+        "Establish basic cybersecurity measures"
+      ],
+      "mediumTerm": [
+        "Implement core business systems",
+        "Provide staff technology training"
+      ],
+      "longTerm": [
+        "Develop technology strategic plan"
+      ],
+      "budgetEstimate": 50000,
+      "timeEstimate": "18-24 months"
+    }
+  },
+  {
+    "organizationId": "org_jewish_museum",
+    "organizationName": "Jewish Museum of Heritage",
+    "sector": "Arts & Culture",
+    "size": "medium",
+    "overallScore": 3.85,
+    "maturityLevel": "thriving",
+    "percentileRank": 50,
+    "domainBreakdown": {
+      "infrastructure": {
+        "score": 4,
+        "percentile": 62.5,
+        "sectorComparison": 0,
+        "sizeComparison": 0.019230769230769162
+      },
+      "business_systems": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.25
+      },
+      "data": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.25
+      },
+      "program_tech": {
+        "score": 3,
+        "percentile": 62.5,
+        "sectorComparison": 0,
+        "sizeComparison": -0.25
+      },
+      "culture": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.11111111111111072
+      }
+    },
+    "strengths": [],
+    "weaknesses": [],
+    "priorityRecommendations": [
+      "Explore emerging technologies and innovations",
+      "Share best practices with peer organizations",
+      "Develop technology mentorship capabilities"
+    ],
+    "peerComparison": {
+      "similar": [],
+      "betterPerforming": [
+        "org_jewish_day_school",
+        "org_jewish_federation_metro",
+        "org_jewish_family_services"
+      ],
+      "potentialMentors": [
+        "org_jewish_federation_metro",
+        "org_jewish_family_services"
+      ]
+    },
+    "actionPlan": {
+      "shortTerm": [
+        "Explore emerging technologies",
+        "Establish mentorship programs"
+      ],
+      "mediumTerm": [
+        "Lead sector technology initiatives"
+      ],
+      "longTerm": [
+        "Develop technology innovation lab"
+      ],
+      "budgetEstimate": 50000,
+      "timeEstimate": "6-12 months"
+    }
+  },
+  {
+    "organizationId": "org_jewish_day_school",
+    "organizationName": "Maimonides Jewish Day School",
+    "sector": "Education",
+    "size": "medium",
+    "overallScore": 4,
+    "maturityLevel": "thriving",
+    "percentileRank": 62.5,
+    "domainBreakdown": {
+      "infrastructure": {
+        "score": 4,
+        "percentile": 62.5,
+        "sectorComparison": 0,
+        "sizeComparison": 0.019230769230769162
+      },
+      "business_systems": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.25
+      },
+      "data": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.25
+      },
+      "program_tech": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.75
+      },
+      "culture": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.11111111111111072
+      }
+    },
+    "strengths": [],
+    "weaknesses": [],
+    "priorityRecommendations": [
+      "Explore emerging technologies and innovations",
+      "Share best practices with peer organizations",
+      "Develop technology mentorship capabilities"
+    ],
+    "peerComparison": {
+      "similar": [],
+      "betterPerforming": [
+        "org_jewish_federation_metro",
+        "org_jewish_family_services"
+      ],
+      "potentialMentors": [
+        "org_jewish_federation_metro",
+        "org_jewish_family_services"
+      ]
+    },
+    "actionPlan": {
+      "shortTerm": [
+        "Explore emerging technologies",
+        "Establish mentorship programs"
+      ],
+      "mediumTerm": [
+        "Lead sector technology initiatives"
+      ],
+      "longTerm": [
+        "Develop technology innovation lab"
+      ],
+      "budgetEstimate": 50000,
+      "timeEstimate": "6-12 months"
+    }
+  }
+]

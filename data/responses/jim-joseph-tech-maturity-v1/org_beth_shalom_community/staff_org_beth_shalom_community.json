@@ -1,0 +1,24 @@
+{
+  "id": "resp_org_beth_shalom_community_staff_1752038827469",
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_beth_shalom_community",
+  "respondentId": "staff_org_beth_shalom_community",
+  "stakeholder": "staff",
+  "expertise": [],
+  "responses": {
+    "program_tech_staff": 2
+  },
+  "startTime": "2025-07-09T05:27:07.469Z",
+  "completionTime": "2025-07-09T05:39:15.387Z",
+  "progress": 100,
+  "metadata": {
+    "respondentName": "Sofia Martinez",
+    "respondentTitle": "Education Director",
+    "organizationName": "Beth Shalom Community Center",
+    "organizationType": "small",
+    "organizationSector": "Community Services",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "ipAddress": "192.168.1.1",
+    "sessionId": "session_1752038827469_x1pmd7gl7"
+  }
+}

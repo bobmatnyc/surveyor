@@ -1,0 +1,30 @@
+{
+  "id": "resp_org_temple_emanuel_ceo_1752038827470",
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_temple_emanuel",
+  "respondentId": "ceo_org_temple_emanuel",
+  "stakeholder": "ceo",
+  "expertise": [
+    "strategy",
+    "governance"
+  ],
+  "responses": {
+    "infra_onboarding_ceo": 3,
+    "data_collection_ceo": 3,
+    "business_systems_ceo": 4,
+    "culture_leadership_ceo": 4
+  },
+  "startTime": "2025-07-09T05:27:07.470Z",
+  "completionTime": "2025-07-09T05:38:33.895Z",
+  "progress": 100,
+  "metadata": {
+    "respondentName": "Rebecca Rosen",
+    "respondentTitle": "Executive Director",
+    "organizationName": "Temple Emanuel",
+    "organizationType": "medium",
+    "organizationSector": "Religious Institution",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "ipAddress": "192.168.1.1",
+    "sessionId": "session_1752038827470_riwgjr74c"
+  }
+}

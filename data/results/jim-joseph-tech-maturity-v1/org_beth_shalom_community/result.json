@@ -1,0 +1,58 @@
+{
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_beth_shalom_community",
+  "overallScore": 1.7576923076923079,
+  "domainScores": {
+    "infrastructure": 1.4615384615384617,
+    "business_systems": 2,
+    "data": 1.4615384615384617,
+    "program_tech": 2,
+    "culture": 2
+  },
+  "stakeholderContributions": {
+    "ceo": {
+      "infrastructure": 1,
+      "business_systems": 2,
+      "data": 1,
+      "culture": 2
+    },
+    "tech_lead": {
+      "infrastructure": 2,
+      "data": 2
+    },
+    "staff": {
+      "program_tech": 2
+    },
+    "board": {
+      "culture": 2
+    }
+  },
+  "maturityLevel": {
+    "id": "building",
+    "name": "Building",
+    "description": "Foundational technology needs, requires significant capacity building",
+    "minScore": 1,
+    "maxScore": 2.3,
+    "color": "#dc2626",
+    "recommendations": [
+      "Focus on establishing basic technology infrastructure",
+      "Develop technology policies and procedures",
+      "Invest in staff technology training",
+      "Consider hiring technology consultant or part-time IT support"
+    ]
+  },
+  "recommendations": [
+    "Focus on establishing basic technology infrastructure",
+    "Develop technology policies and procedures",
+    "Invest in staff technology training",
+    "Consider hiring technology consultant or part-time IT support"
+  ],
+  "completionDate": "2025-07-09T05:27:07.470Z",
+  "responseCount": 4,
+  "stakeholderBreakdown": {
+    "ceo": 1,
+    "tech_lead": 1,
+    "staff": 1,
+    "board": 1
+  }
+}

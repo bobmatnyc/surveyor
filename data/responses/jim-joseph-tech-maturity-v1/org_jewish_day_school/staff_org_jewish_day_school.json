@@ -1,0 +1,24 @@
+{
+  "id": "resp_org_jewish_day_school_staff_1752038827470",
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "org_jewish_day_school",
+  "respondentId": "staff_org_jewish_day_school",
+  "stakeholder": "staff",
+  "expertise": [],
+  "responses": {
+    "program_tech_staff": 4
+  },
+  "startTime": "2025-07-09T05:27:07.470Z",
+  "completionTime": "2025-07-09T05:52:35.710Z",
+  "progress": 100,
+  "metadata": {
+    "respondentName": "Jacob Miller",
+    "respondentTitle": "Program Manager",
+    "organizationName": "Maimonides Jewish Day School",
+    "organizationType": "medium",
+    "organizationSector": "Education",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+    "ipAddress": "192.168.1.1",
+    "sessionId": "session_1752038827470_du1pm5yvg"
+  }
+}
