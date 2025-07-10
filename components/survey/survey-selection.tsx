@@ -23,28 +23,46 @@ export function SurveySelection() {
   const loadSurveys = useCallback(async () => {
     setLoading(true);
     setError(null);
+    console.log('Starting to load surveys...');
     try {
       const response = await fetch('/api/surveys');
+      console.log('Fetch response:', response.status, response.statusText);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
       const data = await response.json();
+      console.log('Survey data received:', data);
+      
+      // Ensure data is an array
+      if (!Array.isArray(data)) {
+        throw new Error('Invalid response format: expected array');
+      }
+      
       setSurveys(data);
       if (data.length > 0) {
         setSelectedSurvey(data[0].id);
+        console.log('Selected survey:', data[0].id);
+      } else {
+        console.log('No surveys found');
       }
     } catch (error) {
       console.error('Failed to load surveys:', error);
       setError(error instanceof Error ? error.message : 'Failed to load surveys');
     } finally {
       setLoading(false);
+      console.log('Loading complete');
     }
   }, []);
 
   useEffect(() => {
-    loadSurveys();
+    // Add a small delay to ensure hydration is complete
+    const timer = setTimeout(() => {
+      loadSurveys();
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, [loadSurveys]);
 
   const handleStartSurvey = () => {
@@ -78,9 +96,27 @@ export function SurveySelection() {
           <div className="text-red-600 mb-4">
             <h2 className="text-xl font-semibold">Error Loading Surveys</h2>
             <p className="mt-2">{error}</p>
+            <details className="mt-4 text-left text-sm">
+              <summary className="cursor-pointer">Debug Information</summary>
+              <pre className="mt-2 p-2 bg-gray-100 rounded text-xs overflow-auto">
+                {JSON.stringify({
+                  error,
+                  location: window.location.href,
+                  userAgent: navigator.userAgent,
+                  timestamp: new Date().toISOString()
+                }, null, 2)}
+              </pre>
+            </details>
           </div>
           <Button onClick={() => loadSurveys()} className="mt-4">
             Try Again
+          </Button>
+          <Button 
+            variant="outline" 
+            onClick={() => window.location.reload()} 
+            className="mt-4 ml-2"
+          >
+            Refresh Page
           </Button>
         </div>
       </div>
