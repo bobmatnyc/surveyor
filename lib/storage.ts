@@ -53,23 +53,11 @@ export class SurveyDataManager {
 
   async getSchema(schemaId: string): Promise<SurveySchema | null> {
     try {
-      if (this.isProduction) {
-        // In production, fetch from the deployed static files
-        const baseUrl = process.env.VERCEL_URL 
-          ? `https://${process.env.VERCEL_URL}` 
-          : 'https://surveyor-1-m.vercel.app';
-        const response = await fetch(`${baseUrl}/surveys/${schemaId}.json`);
-        if (!response.ok) {
-          console.error(`Failed to fetch schema ${schemaId}:`, response.status);
-          return null;
-        }
-        return await response.json() as SurveySchema;
-      } else {
-        // Development: read from filesystem
-        const filePath = path.join(this.publicDir, 'surveys', `${schemaId}.json`);
-        const data = await fs.readFile(filePath, 'utf8');
-        return JSON.parse(data) as SurveySchema;
-      }
+      // Use filesystem approach for both development and production
+      // In production (Vercel), the public files are still accessible via filesystem
+      const filePath = path.join(this.publicDir, 'surveys', `${schemaId}.json`);
+      const data = await fs.readFile(filePath, 'utf8');
+      return JSON.parse(data) as SurveySchema;
     } catch (error) {
       console.error('Error fetching schema:', error);
       return null;
@@ -78,55 +66,25 @@ export class SurveyDataManager {
 
   async listSchemas(): Promise<SurveySchema[]> {
     try {
-      if (this.isProduction) {
-        // In production, we can't read the filesystem directly on Vercel
-        // Instead, we'll get the survey index and fetch individual schemas
-        const surveyIndex = await this.getSurveyIndex();
-        if (!surveyIndex.surveys || !Array.isArray(surveyIndex.surveys)) {
-          return [];
-        }
+      // Use filesystem approach for both development and production
+      // In production (Vercel), the public files are still accessible via filesystem
+      const schemasDir = path.join(this.publicDir, 'surveys');
+      try {
+        const files = await fs.readdir(schemasDir);
+        const jsonFiles = files.filter(file => file.endsWith('.json') && file !== 'index.json');
 
         const schemas = await Promise.all(
-          surveyIndex.surveys.map(async (surveyMeta: any) => {
-            try {
-              // In production, fetch from the deployed static files
-              const baseUrl = process.env.VERCEL_URL 
-                ? `https://${process.env.VERCEL_URL}` 
-                : 'https://surveyor-1-m.vercel.app';
-              const response = await fetch(`${baseUrl}/surveys/${surveyMeta.id}.json`);
-              if (!response.ok) {
-                console.error(`Failed to fetch survey ${surveyMeta.id}:`, response.status);
-                return null;
-              }
-              return await response.json() as SurveySchema;
-            } catch (error) {
-              console.error(`Error fetching survey ${surveyMeta.id}:`, error);
-              return null;
-            }
+          jsonFiles.map(async (file) => {
+            const filePath = path.join(schemasDir, file);
+            const data = await fs.readFile(filePath, 'utf8');
+            return JSON.parse(data) as SurveySchema;
           })
         );
 
-        return schemas.filter(schema => schema && schema.isActive);
-      } else {
-        // Development: read from filesystem
-        const schemasDir = path.join(this.publicDir, 'surveys');
-        try {
-          const files = await fs.readdir(schemasDir);
-          const jsonFiles = files.filter(file => file.endsWith('.json') && file !== 'index.json');
-
-          const schemas = await Promise.all(
-            jsonFiles.map(async (file) => {
-              const filePath = path.join(schemasDir, file);
-              const data = await fs.readFile(filePath, 'utf8');
-              return JSON.parse(data) as SurveySchema;
-            })
-          );
-
-          return schemas.filter(schema => schema.isActive);
-        } catch (error) {
-          console.error('Error reading surveys directory:', error);
-          return [];
-        }
+        return schemas.filter(schema => schema.isActive);
+      } catch (error) {
+        console.error('Error reading surveys directory:', error);
+        return [];
       }
     } catch (error) {
       console.error('Error listing schemas:', error);
@@ -136,23 +94,11 @@ export class SurveyDataManager {
 
   async getSurveyIndex(): Promise<any> {
     try {
-      if (this.isProduction) {
-        // In production, fetch from the deployed static files
-        const baseUrl = process.env.VERCEL_URL 
-          ? `https://${process.env.VERCEL_URL}` 
-          : 'https://surveyor-1-m.vercel.app';
-        const response = await fetch(`${baseUrl}/surveys/index.json`);
-        if (!response.ok) {
-          console.error('Failed to fetch survey index:', response.status);
-          return { surveys: [], categories: [], lastUpdated: new Date().toISOString() };
-        }
-        return await response.json();
-      } else {
-        // Development: read from filesystem
-        const indexPath = path.join(this.publicDir, 'surveys', 'index.json');
-        const data = await fs.readFile(indexPath, 'utf8');
-        return JSON.parse(data);
-      }
+      // Use filesystem approach for both development and production
+      // In production (Vercel), the public files are still accessible via filesystem
+      const indexPath = path.join(this.publicDir, 'surveys', 'index.json');
+      const data = await fs.readFile(indexPath, 'utf8');
+      return JSON.parse(data);
     } catch (error) {
       console.error('Error fetching survey index:', error);
       return { surveys: [], categories: [], lastUpdated: new Date().toISOString() };
