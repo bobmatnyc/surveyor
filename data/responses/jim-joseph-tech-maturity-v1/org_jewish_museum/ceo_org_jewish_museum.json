@@ -1,5 +1,5 @@
 {
-  "id": "resp_org_jewish_museum_ceo_1752038827470",
+  "id": "resp_org_jewish_museum_ceo_1752039187189",
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_jewish_museum",
   "respondentId": "ceo_org_jewish_museum",
@@ -9,22 +9,22 @@
     "governance"
   ],
   "responses": {
-    "infra_onboarding_ceo": 4,
+    "infra_onboarding_ceo": 3,
     "data_collection_ceo": 4,
-    "business_systems_ceo": 4,
+    "business_systems_ceo": 3,
     "culture_leadership_ceo": 4
   },
-  "startTime": "2025-07-09T05:27:07.470Z",
-  "completionTime": "2025-07-09T05:45:54.085Z",
+  "startTime": "2025-07-09T05:33:07.189Z",
+  "completionTime": "2025-07-09T05:53:16.988Z",
   "progress": 100,
   "metadata": {
-    "respondentName": "Michael Goldstein",
-    "respondentTitle": "Executive Director",
+    "respondentName": "Rebecca Rosen",
+    "respondentTitle": "Director",
     "organizationName": "Jewish Museum of Heritage",
     "organizationType": "medium",
     "organizationSector": "Arts & Culture",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
     "ipAddress": "192.168.1.1",
-    "sessionId": "session_1752038827470_72g6rupoi"
+    "sessionId": "session_1752039187189_p8p6xppxj"
   }
 }

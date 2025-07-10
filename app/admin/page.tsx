@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { AdminDashboard } from '@/components/admin/admin-dashboard';
+import { DashboardLayout } from '@/components/admin/dashboard-layout';
+import { DashboardOverview } from '@/components/admin/dashboard-overview';
 import { BarChart3, Users, ClipboardList, Download } from 'lucide-react';
 
 export default function AdminPage() {
@@ -33,17 +34,25 @@ export default function AdminPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
+              <label htmlFor="admin-password" className="block text-sm font-medium text-gray-700 mb-1">
+                Admin Password
+              </label>
               <input
+                id="admin-password"
                 type="password"
                 placeholder="Admin password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
+                aria-describedby={error ? "password-error" : undefined}
+                required
               />
             </div>
             {error && (
-              <p className="text-red-600 text-sm">{error}</p>
+              <p id="password-error" className="text-red-600 text-sm" role="alert" aria-live="polite">
+                {error}
+              </p>
             )}
             <Button onClick={handleLogin} className="w-full">
               Login
@@ -58,8 +67,11 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <AdminDashboard />
-    </div>
+    <DashboardLayout 
+      title="Dashboard" 
+      subtitle="Welcome to your survey management dashboard"
+    >
+      <DashboardOverview />
+    </DashboardLayout>
   );
 }

@@ -122,7 +122,7 @@ export function ResultsVisualization({ results, survey }: ResultsVisualizationPr
                 <h4 className="font-medium text-gray-900 mb-3">{domainData.domain}</h4>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {survey.stakeholders.map((stakeholder) => {
-                    const score = domainData[stakeholder.name] as number;
+                    const score = Number(domainData[stakeholder.name as keyof typeof domainData]) || 0;
                     return (
                       <div key={stakeholder.id} className="text-center">
                         <div className="text-sm font-medium text-gray-600">{stakeholder.name}</div>

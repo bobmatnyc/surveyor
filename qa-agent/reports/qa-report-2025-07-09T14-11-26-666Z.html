@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend QA Report - http://localhost:3002</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        .summary {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .summary-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .summary-item h3 {
+            margin: 0 0 10px 0;
+            color: #495057;
+        }
+        .summary-item .score {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .recommendation {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .badge-success { background-color: #28a745; color: white; }
+        .badge-danger { background-color: #dc3545; color: white; }
+        .badge-warning { background-color: #ffc107; color: #212529; }
+        .phase-section {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .phase-header {
+            background: #495057;
+            color: white;
+            padding: 20px;
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .test-results {
+            padding: 20px;
+        }
+        .test-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #dee2e6;
+        }
+        .test-item.pass { border-left-color: #28a745; }
+        .test-item.fail { border-left-color: #dc3545; }
+        .test-item.warning { border-left-color: #ffc107; }
+        .test-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+        .test-content {
+            flex: 1;
+        }
+        .test-type {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        .test-message {
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        .test-details {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .details-toggle {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8em;
+            margin-top: 5px;
+        }
+        .details-toggle:hover {
+            background: #0056b3;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .metric-card h3 {
+            margin: 0 0 15px 0;
+            color: #495057;
+        }
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .metric-label {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 Frontend QA Report</h1>
+        <p>Comprehensive testing analysis for http://localhost:3002</p>
+        <p>Generated: 7/9/2025, 10:11:26 AM</p>
+    </div>
+
+    <div class="summary">
+        <div class="recommendation">
+            <h2>Overall Recommendation</h2>
+            <span class="badge badge-success">✅ APPROVE</span>
+        </div>
+        
+        <div class="summary-grid">
+            <div class="summary-item">
+                <h3>Overall Score</h3>
+                <div class="score">91%</div>
+            </div>
+            <div class="summary-item">
+                <h3>Total Tests</h3>
+                <div class="score">55</div>
+            </div>
+            <div class="summary-item">
+                <h3>Passed</h3>
+                <div class="score" style="color: #28a745;">41</div>
+            </div>
+            <div class="summary-item">
+                <h3>Failed</h3>
+                <div class="score" style="color: #dc3545;">3</div>
+            </div>
+            <div class="summary-item">
+                <h3>Warnings</h3>
+                <div class="score" style="color: #ffc107;">11</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <h3>🚀 Performance</h3>
+            <div class="metric-value">85%</div>
+            <div class="metric-label">Lighthouse Score</div>
+        </div>
+        <div class="metric-card">
+            <h3>♿ Accessibility</h3>
+            <div class="metric-value">92%</div>
+            <div class="metric-label">Lighthouse Score</div>
+        </div>
+        <div class="metric-card">
+            <h3>🔒 Security</h3>
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Security Headers</div>
+        </div>
+        <div class="metric-card">
+            <h3>📝 HTML Validation</h3>
+            <div class="metric-value">❌</div>
+            <div class="metric-label">1 errors</div>
+        </div>
+    </div>
+
+    
+        <div class="phase-section">
+            <h2 class="phase-header">Phase A: HTTP Testing & Content Validation</h2>
+            <div class="test-results">
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">HTTP Status</div>
+                            <div class="test-message">HTTP 200 - Success</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('HTTP-Status-2025-07-09T14:11:23.059Z')">
+                                    Show Details
+                                </button>
+                                <div id="HTTP-Status-2025-07-09T14:11:23.059Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "status": 200,
+  "url": "http://localhost:3002"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Response Time</div>
+                            <div class="test-message">Response time: 1572ms</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Response-Time-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Response-Time-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "responseTime": 1572
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Content Type</div>
+                            <div class="test-message">Valid HTML content type: text/html; charset=utf-8</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Content-Type-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Content-Type-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "contentType": "text/html; charset=utf-8"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">Content Length</div>
+                            <div class="test-message">Empty or unknown content length</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Content-Length-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Content-Length-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "contentLength": 0
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item fail">
+                        <div class="test-icon">❌</div>
+                        <div class="test-content">
+                            <div class="test-type">HTML Validation</div>
+                            <div class="test-message">HTML validation failed: 1 errors found</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('HTML-Validation-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="HTML-Validation-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "isValid": false,
+  "errors": [
+    {
+      "line": 1,
+      "column": 1,
+      "message": "Missing <body> tag",
+      "type": "error"
+    }
+  ],
+  "warnings": [
+    {
+      "line": 1,
+      "column": 1,
+      "message": "Potential unclosed tags detected",
+      "type": "warning"
+    }
+  ]
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">HTML DOCTYPE</div>
+                            <div class="test-message">HTML5 DOCTYPE declaration found</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">HTML Lang Attribute</div>
+                            <div class="test-message">HTML lang attribute found</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">Meta Charset</div>
+                            <div class="test-message">Meta charset declaration missing</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">HTML Title</div>
+                            <div class="test-message">Valid page title found: "Surveyor - Multi-Stakeholder Survey Platform"</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('HTML-Title-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="HTML-Title-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "title": "Surveyor - Multi-Stakeholder Survey Platform"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Semantic HTML</div>
+                            <div class="test-message">Good use of semantic elements: header, main, section</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Semantic-HTML-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Semantic-HTML-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "semanticElements": [
+    "header",
+    "main",
+    "section"
+  ]
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Heading Hierarchy</div>
+                            <div class="test-message">Proper heading hierarchy found</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Heading-Hierarchy-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Heading-Hierarchy-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "headingLevels": [
+    1,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3,
+    2
+  ]
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Image Alt Attributes</div>
+                            <div class="test-message">No images found</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Form Input Labels</div>
+                            <div class="test-message">No form inputs found</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Security Headers</div>
+                            <div class="test-message">Excellent security score: 100%</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Security-Headers-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Security-Headers-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "headers": {
+    "content-security-policy": true,
+    "x-frame-options": true,
+    "x-content-type-options": true,
+    "referrer-policy": true,
+    "permissions-policy": true
+  },
+  "score": 100,
+  "recommendations": []
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Content Security Policy</div>
+                            <div class="test-message">Content Security Policy header present and configured</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Content-Security-Policy-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Content-Security-Policy-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "csp": "default-src 'self'; script-src 'self' 'nonce-ZTQxZGJiYmUtMGE2Zi00ZDdkLWJhZDYtMzJkM2YzMWYyMjBh' 'strict-dynamic'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; media-src 'self'; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">X-Frame-Options</div>
+                            <div class="test-message">X-Frame-Options header properly set: SAMEORIGIN</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('X-Frame-Options-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="X-Frame-Options-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "xFrameOptions": "SAMEORIGIN"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">X-Content-Type-Options</div>
+                            <div class="test-message">X-Content-Type-Options header properly set to nosniff</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('X-Content-Type-Options-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="X-Content-Type-Options-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "xContentTypeOptions": "nosniff"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Referrer Policy</div>
+                            <div class="test-message">Referrer Policy header properly configured: strict-origin-when-cross-origin</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Referrer-Policy-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Referrer-Policy-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "referrerPolicy": "strict-origin-when-cross-origin"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Permissions Policy</div>
+                            <div class="test-message">Permissions Policy header present</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Permissions-Policy-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Permissions-Policy-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), autoplay=(), fullscreen=(self)"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">HTTPS</div>
+                            <div class="test-message">Unable to verify HTTPS usage</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('HTTPS-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="HTTPS-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "protocol": "unknown"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">HSTS</div>
+                            <div class="test-message">HTTP Strict Transport Security header present</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('HSTS-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="HSTS-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "hsts": "max-age=31536000; includeSubDomains; preload"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Server Header</div>
+                            <div class="test-message">Server header properly hidden</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Server-Header-2025-07-09T14:11:23.060Z')">
+                                    Show Details
+                                </button>
+                                <div id="Server-Header-2025-07-09T14:11:23.060Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "server": "Hidden"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    
+        <div class="phase-section">
+            <h2 class="phase-header">Phase B: Browser Automation & Performance Testing</h2>
+            <div class="test-results">
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Page Navigation</div>
+                            <div class="test-message">Successfully navigated to http://localhost:3002</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Page-Navigation-2025-07-09T14:11:24.055Z')">
+                                    Show Details
+                                </button>
+                                <div id="Page-Navigation-2025-07-09T14:11:24.055Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "url": "http://localhost:3002",
+  "status": 200
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Page Load</div>
+                            <div class="test-message">Page loaded successfully</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Page-Load-2025-07-09T14:11:24.056Z')">
+                                    Show Details
+                                </button>
+                                <div id="Page-Load-2025-07-09T14:11:24.056Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "url": "http://localhost:3002"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">HTML Structure</div>
+                            <div class="test-message">Valid HTML DOCTYPE found</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Page Title</div>
+                            <div class="test-message">Page title: "Surveyor - Multi-Stakeholder Survey Platform"</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Page-Title-2025-07-09T14:11:24.069Z')">
+                                    Show Details
+                                </button>
+                                <div id="Page-Title-2025-07-09T14:11:24.069Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "title": "Surveyor - Multi-Stakeholder Survey Platform"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Meta Viewport</div>
+                            <div class="test-message">Meta viewport tag found</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Main Content</div>
+                            <div class="test-message">Main content area found</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">JavaScript Errors</div>
+                            <div class="test-message">No JavaScript errors detected</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Interactive Elements</div>
+                            <div class="test-message">Found 4 interactive elements</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Interactive-Elements-2025-07-09T14:11:26.109Z')">
+                                    Show Details
+                                </button>
+                                <div id="Interactive-Elements-2025-07-09T14:11:26.109Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "count": 4
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">Navigation</div>
+                            <div class="test-message">No navigation elements found</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">Accessibility Compliance</div>
+                            <div class="test-message">1 accessibility violations found: 0 critical, 0 serious, 0 moderate, 1 minor</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Accessibility-Compliance-2025-07-09T14:11:26.404Z')">
+                                    Show Details
+                                </button>
+                                <div id="Accessibility-Compliance-2025-07-09T14:11:26.404Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "violations": [
+    {
+      "id": "empty-heading",
+      "impact": "minor",
+      "description": "Ensure headings have discernible text",
+      "nodes": [
+        {
+          "target": [
+            ".bg-card.text-card-foreground.shadow-sm:nth-child(1) > .space-y-1\\.5.flex-col.flex > .leading-none.tracking-tight.text-2xl"
+          ],
+          "html": "<h3 class=\"text-2xl font-semibold leading-none tracking-tight\"></h3>",
+          "failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+        },
+        {
+          "target": [
+            ".bg-card.text-card-foreground.shadow-sm:nth-child(2) > .space-y-1\\.5.flex-col.flex > .leading-none.tracking-tight.text-2xl"
+          ],
+          "html": "<h3 class=\"text-2xl font-semibold leading-none tracking-tight\"></h3>",
+          "failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+        },
+        {
+          "target": [
+            ".bg-card.text-card-foreground.shadow-sm:nth-child(3) > .space-y-1\\.5.flex-col.flex > .leading-none.tracking-tight.text-2xl"
+          ],
+          "html": "<h3 class=\"text-2xl font-semibold leading-none tracking-tight\"></h3>",
+          "failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+        },
+        {
+          "target": [
+            ".bg-card.text-card-foreground.shadow-sm:nth-child(4) > .space-y-1\\.5.flex-col.flex > .leading-none.tracking-tight.text-2xl"
+          ],
+          "html": "<h3 class=\"text-2xl font-semibold leading-none tracking-tight\"></h3>",
+          "failureSummary": "Fix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+        }
+      ]
+    }
+  ],
+  "passes": 30,
+  "incomplete": 1,
+  "inapplicable": 59
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Keyboard Navigation</div>
+                            <div class="test-message">Found 4 focusable elements</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Keyboard-Navigation-2025-07-09T14:11:26.405Z')">
+                                    Show Details
+                                </button>
+                                <div id="Keyboard-Navigation-2025-07-09T14:11:26.405Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "focusableElements": 4
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Focus Visibility</div>
+                            <div class="test-message">Focus styles detected</div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">ARIA Labels</div>
+                            <div class="test-message">Moderate ARIA usage: 75% of interactive elements have ARIA attributes</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('ARIA-Labels-2025-07-09T14:11:26.406Z')">
+                                    Show Details
+                                </button>
+                                <div id="ARIA-Labels-2025-07-09T14:11:26.406Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "totalAriaElements": 10,
+  "totalInteractive": 4,
+  "interactiveWithAria": 3
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Heading Structure - H1</div>
+                            <div class="test-message">Proper H1 usage (exactly one H1 found)</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Heading-Structure---H1-2025-07-09T14:11:26.407Z')">
+                                    Show Details
+                                </button>
+                                <div id="Heading-Structure---H1-2025-07-09T14:11:26.407Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "h1Count": 1
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Heading Structure - Hierarchy</div>
+                            <div class="test-message">Proper heading hierarchy maintained</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Heading-Structure---Hierarchy-2025-07-09T14:11:26.407Z')">
+                                    Show Details
+                                </button>
+                                <div id="Heading-Structure---Hierarchy-2025-07-09T14:11:26.407Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "headings": [
+    {
+      "level": 1,
+      "text": "Surveyor - Multi-Stakeholder Survey Platform",
+      "hasContent": true
+    },
+    {
+      "level": 2,
+      "text": "Surveyor",
+      "hasContent": true
+    },
+    {
+      "level": 2,
+      "text": "Platform Features",
+      "hasContent": true
+    },
+    {
+      "level": 3,
+      "text": "",
+      "hasContent": false
+    },
+    {
+      "level": 3,
+      "text": "Dynamic Surveys",
+      "hasContent": true
+    },
+    {
+      "level": 3,
+      "text": "",
+      "hasContent": false
+    },
+    {
+      "level": 3,
+      "text": "Multi-Stakeholder",
+      "hasContent": true
+    },
+    {
+      "level": 3,
+      "text": "",
+      "hasContent": false
+    },
+    {
+      "level": 3,
+      "text": "Advanced Analytics",
+      "hasContent": true
+    },
+    {
+      "level": 3,
+      "text": "",
+      "hasContent": false
+    },
+    {
+      "level": 3,
+      "text": "Easy Management",
+      "hasContent": true
+    },
+    {
+      "level": 2,
+      "text": "How It Works",
+      "hasContent": true
+    },
+    {
+      "level": 3,
+      "text": "Select Your Role",
+      "hasContent": true
+    },
+    {
+      "level": 3,
+      "text": "Complete Survey",
+      "hasContent": true
+    },
+    {
+      "level": 3,
+      "text": "View Results",
+      "hasContent": true
+    },
+    {
+      "level": 2,
+      "text": "Ready to Get Started?",
+      "hasContent": true
+    }
+  ],
+  "h1Count": 1,
+  "hasProperOrder": true,
+  "totalHeadings": 16
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Color Contrast</div>
+                            <div class="test-message">Color contrast analysis completed (0 elements checked)</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Color-Contrast-2025-07-09T14:11:26.408Z')">
+                                    Show Details
+                                </button>
+                                <div id="Color-Contrast-2025-07-09T14:11:26.408Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "testedElements": 0
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Image Alternatives</div>
+                            <div class="test-message">No images found</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Image-Alternatives-2025-07-09T14:11:26.408Z')">
+                                    Show Details
+                                </button>
+                                <div id="Image-Alternatives-2025-07-09T14:11:26.408Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "totalImages": 0,
+  "imagesWithAlt": 0,
+  "imagesWithEmptyAlt": 0,
+  "imagesWithMeaningfulAlt": 0
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Form Labels</div>
+                            <div class="test-message">No form inputs found</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Form-Labels-2025-07-09T14:11:26.409Z')">
+                                    Show Details
+                                </button>
+                                <div id="Form-Labels-2025-07-09T14:11:26.409Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "totalInputs": 0,
+  "inputsWithLabels": 0
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">Performance Score</div>
+                            <div class="test-message">Good performance score: 85%</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Performance-Score-2025-07-09T14:11:26.409Z')">
+                                    Show Details
+                                </button>
+                                <div id="Performance-Score-2025-07-09T14:11:26.409Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "score": 0.85
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">First Contentful Paint</div>
+                            <div class="test-message">Good FCP: 1.5s</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('First-Contentful-Paint-2025-07-09T14:11:26.409Z')">
+                                    Show Details
+                                </button>
+                                <div id="First-Contentful-Paint-2025-07-09T14:11:26.409Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "value": 1.5,
+  "displayValue": "1.5s"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">Largest Contentful Paint</div>
+                            <div class="test-message">Moderate LCP: 2.8s</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Largest-Contentful-Paint-2025-07-09T14:11:26.409Z')">
+                                    Show Details
+                                </button>
+                                <div id="Largest-Contentful-Paint-2025-07-09T14:11:26.409Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "value": 2.8,
+  "displayValue": "2.8s"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Cumulative Layout Shift</div>
+                            <div class="test-message">Good CLS: 0.05</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Cumulative-Layout-Shift-2025-07-09T14:11:26.409Z')">
+                                    Show Details
+                                </button>
+                                <div id="Cumulative-Layout-Shift-2025-07-09T14:11:26.409Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "value": 0.05,
+  "displayValue": "0.05"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Total Blocking Time</div>
+                            <div class="test-message">Good TBT: 180ms</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Total-Blocking-Time-2025-07-09T14:11:26.409Z')">
+                                    Show Details
+                                </button>
+                                <div id="Total-Blocking-Time-2025-07-09T14:11:26.409Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "value": 180,
+  "displayValue": "180ms"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">Lighthouse Accessibility</div>
+                            <div class="test-message">Good accessibility score: 92%</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Lighthouse-Accessibility-2025-07-09T14:11:26.409Z')">
+                                    Show Details
+                                </button>
+                                <div id="Lighthouse-Accessibility-2025-07-09T14:11:26.409Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "score": 0.92
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">Best Practices</div>
+                            <div class="test-message">Good best practices score: 88%</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Best-Practices-2025-07-09T14:11:26.409Z')">
+                                    Show Details
+                                </button>
+                                <div id="Best-Practices-2025-07-09T14:11:26.409Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "score": 0.88
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">SEO Score</div>
+                            <div class="test-message">Excellent SEO score: 90%</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('SEO-Score-2025-07-09T14:11:26.409Z')">
+                                    Show Details
+                                </button>
+                                <div id="SEO-Score-2025-07-09T14:11:26.409Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "score": 0.9
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">DOM Complexity</div>
+                            <div class="test-message">Good DOM complexity: 125 elements</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('DOM-Complexity-2025-07-09T14:11:26.410Z')">
+                                    Show Details
+                                </button>
+                                <div id="DOM-Complexity-2025-07-09T14:11:26.410Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "domElements": 125,
+  "domDepth": 10,
+  "scripts": 18,
+  "stylesheets": 1,
+  "images": 0,
+  "performance": {
+    "domContentLoaded": 90,
+    "loadComplete": 209
+  }
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Resource Count</div>
+                            <div class="test-message">Good resource count: 19 resources</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Resource-Count-2025-07-09T14:11:26.410Z')">
+                                    Show Details
+                                </button>
+                                <div id="Resource-Count-2025-07-09T14:11:26.410Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "scripts": 18,
+  "stylesheets": 1,
+  "images": 0,
+  "total": 19
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    
+        <div class="phase-section">
+            <h2 class="phase-header">Phase C: Visual Testing & Screenshot Analysis</h2>
+            <div class="test-results">
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Screenshot Format</div>
+                            <div class="test-message">Valid PNG screenshot (1920x1316)</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Screenshot-Format-2025-07-09T14:11:26.513Z')">
+                                    Show Details
+                                </button>
+                                <div id="Screenshot-Format-2025-07-09T14:11:26.513Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "path": "qa-agent/screenshots/qa-test-1752070286410.png",
+  "width": 1920,
+  "height": 1316,
+  "size": 142232
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item pass">
+                        <div class="test-icon">✅</div>
+                        <div class="test-content">
+                            <div class="test-type">Screenshot Dimensions</div>
+                            <div class="test-message">Good screenshot dimensions: 1920x1316</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Screenshot-Dimensions-2025-07-09T14:11:26.513Z')">
+                                    Show Details
+                                </button>
+                                <div id="Screenshot-Dimensions-2025-07-09T14:11:26.513Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "width": 1920,
+  "height": 1316
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item fail">
+                        <div class="test-icon">❌</div>
+                        <div class="test-content">
+                            <div class="test-type">Visual Regression</div>
+                            <div class="test-message">Visual regression test failed: Visual comparison failed: Image dimensions don't match: baseline(1920x1136) vs current(1920x1316)</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Visual-Regression-2025-07-09T14:11:26.582Z')">
+                                    Show Details
+                                </button>
+                                <div id="Visual-Regression-2025-07-09T14:11:26.582Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "error": "Visual comparison failed: Image dimensions don't match: baseline(1920x1136) vs current(1920x1316)"
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item fail">
+                        <div class="test-icon">❌</div>
+                        <div class="test-content">
+                            <div class="test-type">Visual Content Analysis</div>
+                            <div class="test-message">Screenshot appears to be blank or mostly white</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Visual-Content-Analysis-2025-07-09T14:11:26.643Z')">
+                                    Show Details
+                                </button>
+                                <div id="Visual-Content-Analysis-2025-07-09T14:11:26.643Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "isBlank": true,
+  "whitePercentage": 97.27603375126647,
+  "blackPercentage": 1.0712702634245186,
+  "coloredPercentage": 1.6526959853090173,
+  "hasGoodContrast": false,
+  "contrastRatio": 2.723966248733536
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+                    <div class="test-item warning">
+                        <div class="test-icon">⚠️</div>
+                        <div class="test-content">
+                            <div class="test-type">Visual Contrast</div>
+                            <div class="test-message">Low visual contrast detected</div>
+                            
+                                <button class="details-toggle" onclick="toggleDetails('Visual-Contrast-2025-07-09T14:11:26.643Z')">
+                                    Show Details
+                                </button>
+                                <div id="Visual-Contrast-2025-07-09T14:11:26.643Z" class="test-details" style="display: none;">
+                                    <pre>{
+  "contrast": 2.723966248733536
+}</pre>
+                                </div>
+                            
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    
+
+    <div class="footer">
+        <p>Report generated by Frontend QA Agent v1.0.0</p>
+        <p>Testing completed at 7/9/2025, 10:11:26 AM</p>
+    </div>
+
+    <script>
+        function toggleDetails(id) {
+            const element = document.getElementById(id);
+            const button = element.previousElementSibling;
+            if (element.style.display === 'none') {
+                element.style.display = 'block';
+                button.textContent = 'Hide Details';
+            } else {
+                element.style.display = 'none';
+                button.textContent = 'Show Details';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "surveys": [
+    {
+      "id": "jim-joseph-tech-maturity-v1",
+      "name": "Technology Maturity Assessment",
+      "description": "Comprehensive technology capacity assessment for Jewish nonprofit organizations",
+      "version": "1.0.0",
+      "isActive": true,
+      "createdAt": "2025-01-15T00:00:00.000Z",
+      "updatedAt": "2025-01-15T00:00:00.000Z",
+      "category": "nonprofit",
+      "estimatedTime": 15,
+      "questionCount": 8,
+      "stakeholderCount": 4,
+      "featured": true
+    },
+    {
+      "id": "demo-survey-showcase",
+      "name": "Technology Assessment Demo Survey",
+      "description": "A comprehensive demonstration survey showcasing all available question types and survey capabilities",
+      "version": "1.0.0",
+      "isActive": true,
+      "createdAt": "2025-07-10T00:00:00.000Z",
+      "updatedAt": "2025-07-10T00:00:00.000Z",
+      "category": "demo",
+      "estimatedTime": 10,
+      "questionCount": 10,
+      "stakeholderCount": 3,
+      "featured": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "nonprofit",
+      "name": "Nonprofit Organizations",
+      "description": "Surveys designed specifically for nonprofit organizations"
+    },
+    {
+      "id": "demo",
+      "name": "Demo & Examples",
+      "description": "Demonstration surveys showcasing platform capabilities"
+    }
+  ],
+  "lastUpdated": "2025-07-10T00:00:00.000Z"
+}

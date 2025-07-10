@@ -1,5 +1,5 @@
 {
-  "id": "resp_org_jewish_federation_metro_ceo_1752038827470",
+  "id": "resp_org_jewish_federation_metro_ceo_1752039187189",
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_jewish_federation_metro",
   "respondentId": "ceo_org_jewish_federation_metro",
@@ -14,17 +14,17 @@
     "business_systems_ceo": 5,
     "culture_leadership_ceo": 5
   },
-  "startTime": "2025-07-09T05:27:07.470Z",
-  "completionTime": "2025-07-09T05:37:50.022Z",
+  "startTime": "2025-07-09T05:33:07.189Z",
+  "completionTime": "2025-07-09T06:09:24.956Z",
   "progress": 100,
   "metadata": {
-    "respondentName": "Michael Goldstein",
-    "respondentTitle": "Director",
+    "respondentName": "Rebecca Rosen",
+    "respondentTitle": "CEO",
     "organizationName": "Jewish Federation of Metropolitan Detroit",
     "organizationType": "large",
     "organizationSector": "Federation",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
     "ipAddress": "192.168.1.1",
-    "sessionId": "session_1752038827470_3bgktai1r"
+    "sessionId": "session_1752039187189_m9j2ehc1d"
   }
 }

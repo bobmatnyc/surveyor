@@ -1,5 +1,5 @@
 {
-  "id": "resp_org_jewish_family_services_board_1752038827470",
+  "id": "resp_org_jewish_family_services_board_1752039187189",
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_jewish_family_services",
   "respondentId": "board_org_jewish_family_services",
@@ -10,17 +10,17 @@
   "responses": {
     "culture_board_oversight": 5
   },
-  "startTime": "2025-07-09T05:27:07.470Z",
-  "completionTime": "2025-07-09T05:44:49.182Z",
+  "startTime": "2025-07-09T05:33:07.189Z",
+  "completionTime": "2025-07-09T05:51:43.063Z",
   "progress": 100,
   "metadata": {
-    "respondentName": "Robert Kahn",
-    "respondentTitle": "Board Member",
+    "respondentName": "Dr. Ruth Shapiro",
+    "respondentTitle": "Board Vice Chair",
     "organizationName": "Jewish Family Services of Greater Boston",
     "organizationType": "large",
     "organizationSector": "Social Services",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
     "ipAddress": "192.168.1.1",
-    "sessionId": "session_1752038827470_m1s3ysh2w"
+    "sessionId": "session_1752039187189_zlekizxst"
   }
 }

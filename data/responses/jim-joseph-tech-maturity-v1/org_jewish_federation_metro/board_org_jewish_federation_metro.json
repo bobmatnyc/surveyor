@@ -1,5 +1,5 @@
 {
-  "id": "resp_org_jewish_federation_metro_board_1752038827470",
+  "id": "resp_org_jewish_federation_metro_board_1752039187189",
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_jewish_federation_metro",
   "respondentId": "board_org_jewish_federation_metro",
@@ -10,17 +10,17 @@
   "responses": {
     "culture_board_oversight": 5
   },
-  "startTime": "2025-07-09T05:27:07.470Z",
-  "completionTime": "2025-07-09T05:52:50.017Z",
+  "startTime": "2025-07-09T05:33:07.189Z",
+  "completionTime": "2025-07-09T05:53:20.966Z",
   "progress": 100,
   "metadata": {
-    "respondentName": "Steven Friedman",
-    "respondentTitle": "Secretary",
+    "respondentName": "Lisa Stern",
+    "respondentTitle": "Board Member",
     "organizationName": "Jewish Federation of Metropolitan Detroit",
     "organizationType": "large",
     "organizationSector": "Federation",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
     "ipAddress": "192.168.1.1",
-    "sessionId": "session_1752038827470_9exsarhnd"
+    "sessionId": "session_1752039187189_whu1x66jj"
   }
 }

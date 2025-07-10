@@ -4,27 +4,27 @@
     "organizationName": "Beth Shalom Community Center",
     "sector": "Community Services",
     "size": "small",
-    "overallScore": 1.7576923076923079,
+    "overallScore": 1.75,
     "maturityLevel": "building",
-    "percentileRank": 12.5,
+    "percentileRank": 0,
     "domainBreakdown": {
       "infrastructure": {
-        "score": 1.4615384615384617,
-        "percentile": 25,
+        "score": 1,
+        "percentile": 12.5,
         "sectorComparison": 0,
-        "sizeComparison": 0.23076923076923084
+        "sizeComparison": -0.23076923076923084
       },
       "business_systems": {
         "score": 2,
         "percentile": 25,
         "sectorComparison": 0,
-        "sizeComparison": 0.5
+        "sizeComparison": 0
       },
       "data": {
-        "score": 1.4615384615384617,
+        "score": 2,
         "percentile": 25,
         "sectorComparison": 0,
-        "sizeComparison": 0
+        "sizeComparison": 0.26923076923076916
       },
       "program_tech": {
         "score": 2,
@@ -34,13 +34,16 @@
       },
       "culture": {
         "score": 2,
-        "percentile": 25,
+        "percentile": 12.5,
         "sectorComparison": 0,
-        "sizeComparison": 0.11111111111111116
+        "sizeComparison": -0.38888888888888884
       }
     },
     "strengths": [],
-    "weaknesses": [],
+    "weaknesses": [
+      "infrastructure",
+      "culture"
+    ],
     "priorityRecommendations": [
       "Establish basic IT infrastructure and policies",
       "Create technology budget and planning process",
@@ -51,9 +54,9 @@
     "peerComparison": {
       "similar": [],
       "betterPerforming": [
+        "org_chabad_center",
         "org_temple_emanuel",
-        "org_hillel_university",
-        "org_jewish_museum"
+        "org_hillel_university"
       ],
       "potentialMentors": [
         "org_jewish_federation_metro",
@@ -155,48 +158,47 @@
     "organizationName": "Hillel at State University",
     "sector": "Campus Life",
     "size": "medium",
-    "overallScore": 3.6820512820512823,
-    "maturityLevel": "thriving",
+    "overallScore": 3.6076923076923078,
+    "maturityLevel": "building",
     "percentileRank": 37.5,
     "domainBreakdown": {
       "infrastructure": {
         "score": 4.461538461538462,
         "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.48076923076923084
+        "sizeComparison": 0.5
       },
       "business_systems": {
         "score": 2.9999999999999996,
-        "percentile": 37.5,
+        "percentile": 62.5,
         "sectorComparison": 0,
-        "sizeComparison": -0.7500000000000004
+        "sizeComparison": -0.25000000000000044
       },
       "data": {
-        "score": 4,
-        "percentile": 75,
+        "score": 3.461538461538462,
+        "percentile": 50,
         "sectorComparison": 0,
-        "sizeComparison": 0.25
+        "sizeComparison": -0.2692307692307687
       },
       "program_tech": {
         "score": 3,
-        "percentile": 62.5,
-        "sectorComparison": 0,
-        "sizeComparison": -0.25
-      },
-      "culture": {
-        "score": 3.777777777777778,
         "percentile": 50,
         "sectorComparison": 0,
-        "sizeComparison": -0.11111111111111116
+        "sizeComparison": -0.5
+      },
+      "culture": {
+        "score": 4,
+        "percentile": 75,
+        "sectorComparison": 0,
+        "sizeComparison": 0.16666666666666607
       }
     },
     "strengths": [],
     "weaknesses": [],
     "priorityRecommendations": [
-      "Explore emerging technologies and innovations",
-      "Share best practices with peer organizations",
-      "Develop technology mentorship capabilities",
-      "Evaluate and upgrade business systems"
+      "Establish basic IT infrastructure and policies",
+      "Create technology budget and planning process",
+      "Provide staff technology training"
     ],
     "peerComparison": {
       "similar": [],
@@ -212,17 +214,18 @@
     },
     "actionPlan": {
       "shortTerm": [
-        "Explore emerging technologies",
-        "Establish mentorship programs"
+        "Conduct comprehensive technology audit",
+        "Establish basic cybersecurity measures"
       ],
       "mediumTerm": [
-        "Lead sector technology initiatives"
+        "Implement core business systems",
+        "Provide staff technology training"
       ],
       "longTerm": [
-        "Develop technology innovation lab"
+        "Develop technology strategic plan"
       ],
-      "budgetEstimate": 50000,
-      "timeEstimate": "6-12 months"
+      "budgetEstimate": 100000,
+      "timeEstimate": "18-24 months"
     }
   },
   {
@@ -230,39 +233,39 @@
     "organizationName": "Temple Emanuel",
     "sector": "Religious Institution",
     "size": "medium",
-    "overallScore": 3.482051282051282,
+    "overallScore": 3.208974358974359,
     "maturityLevel": "emerging",
     "percentileRank": 25,
     "domainBreakdown": {
       "infrastructure": {
-        "score": 3.461538461538462,
-        "percentile": 37.5,
-        "sectorComparison": 1.2307692307692313,
-        "sizeComparison": -0.5192307692307687
-      },
-      "business_systems": {
-        "score": 4,
-        "percentile": 75,
-        "sectorComparison": 1.5,
-        "sizeComparison": 0.25
-      },
-      "data": {
         "score": 3,
         "percentile": 37.5,
         "sectorComparison": 0.7692307692307692,
-        "sizeComparison": -0.75
+        "sizeComparison": -0.9615384615384617
+      },
+      "business_systems": {
+        "score": 2.9999999999999996,
+        "percentile": 62.5,
+        "sectorComparison": 0.49999999999999956,
+        "sizeComparison": -0.25000000000000044
+      },
+      "data": {
+        "score": 3.461538461538462,
+        "percentile": 50,
+        "sectorComparison": 1.0000000000000004,
+        "sizeComparison": -0.2692307692307687
       },
       "program_tech": {
         "score": 3,
-        "percentile": 62.5,
+        "percentile": 50,
         "sectorComparison": 0.5,
-        "sizeComparison": -0.25
+        "sizeComparison": -0.5
       },
       "culture": {
         "score": 3.777777777777778,
-        "percentile": 50,
-        "sectorComparison": 1,
-        "sizeComparison": -0.11111111111111116
+        "percentile": 62.5,
+        "sectorComparison": 0.5000000000000004,
+        "sizeComparison": -0.0555555555555558
       }
     },
     "strengths": [],
@@ -272,7 +275,7 @@
       "Develop comprehensive technology strategy",
       "Enhance cybersecurity measures",
       "Upgrade core technology infrastructure",
-      "Implement data governance framework"
+      "Consider hiring dedicated IT staff"
     ],
     "peerComparison": {
       "similar": [],
@@ -381,27 +384,27 @@
     "organizationName": "Chabad Center of Silicon Valley",
     "sector": "Religious Institution",
     "size": "small",
-    "overallScore": 1.358974358974359,
+    "overallScore": 1.8743589743589744,
     "maturityLevel": "building",
-    "percentileRank": 0,
+    "percentileRank": 12.5,
     "domainBreakdown": {
       "infrastructure": {
-        "score": 1,
-        "percentile": 12.5,
-        "sectorComparison": -1.2307692307692308,
-        "sizeComparison": -0.23076923076923084
-      },
-      "business_systems": {
-        "score": 1,
-        "percentile": 12.5,
-        "sectorComparison": -1.5,
-        "sizeComparison": -0.5
-      },
-      "data": {
         "score": 1.4615384615384617,
         "percentile": 25,
         "sectorComparison": -0.7692307692307692,
+        "sizeComparison": 0.23076923076923084
+      },
+      "business_systems": {
+        "score": 2,
+        "percentile": 25,
+        "sectorComparison": -0.5,
         "sizeComparison": 0
+      },
+      "data": {
+        "score": 1.4615384615384617,
+        "percentile": 12.5,
+        "sectorComparison": -1,
+        "sizeComparison": -0.26923076923076916
       },
       "program_tech": {
         "score": 2,
@@ -410,17 +413,15 @@
         "sizeComparison": 0
       },
       "culture": {
-        "score": 1.777777777777778,
-        "percentile": 12.5,
-        "sectorComparison": -1.0000000000000002,
-        "sizeComparison": -0.11111111111111094
+        "score": 2.7777777777777777,
+        "percentile": 25,
+        "sectorComparison": -0.5,
+        "sizeComparison": 0.38888888888888884
       }
     },
     "strengths": [],
     "weaknesses": [
-      "infrastructure",
-      "business_systems",
-      "culture"
+      "data"
     ],
     "priorityRecommendations": [
       "Establish basic IT infrastructure and policies",
@@ -432,9 +433,9 @@
     "peerComparison": {
       "similar": [],
       "betterPerforming": [
-        "org_beth_shalom_community",
         "org_temple_emanuel",
-        "org_hillel_university"
+        "org_hillel_university",
+        "org_jewish_museum"
       ],
       "potentialMentors": [
         "org_jewish_federation_metro",
@@ -463,39 +464,39 @@
     "organizationName": "Jewish Museum of Heritage",
     "sector": "Arts & Culture",
     "size": "medium",
-    "overallScore": 3.85,
+    "overallScore": 3.6974358974358976,
     "maturityLevel": "thriving",
     "percentileRank": 50,
     "domainBreakdown": {
       "infrastructure": {
-        "score": 4,
-        "percentile": 62.5,
+        "score": 3.9230769230769234,
+        "percentile": 50,
         "sectorComparison": 0,
-        "sizeComparison": 0.019230769230769162
+        "sizeComparison": -0.038461538461538325
       },
       "business_systems": {
-        "score": 4,
-        "percentile": 75,
+        "score": 2.9999999999999996,
+        "percentile": 62.5,
         "sectorComparison": 0,
-        "sizeComparison": 0.25
+        "sizeComparison": -0.25000000000000044
       },
       "data": {
         "score": 4,
         "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.25
+        "sizeComparison": 0.26923076923076916
       },
       "program_tech": {
-        "score": 3,
-        "percentile": 62.5,
-        "sectorComparison": 0,
-        "sizeComparison": -0.25
-      },
-      "culture": {
         "score": 4,
         "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.11111111111111072
+        "sizeComparison": 0.5
+      },
+      "culture": {
+        "score": 3.777777777777778,
+        "percentile": 62.5,
+        "sectorComparison": 0,
+        "sizeComparison": -0.0555555555555558
       }
     },
     "strengths": [],
@@ -537,39 +538,39 @@
     "organizationName": "Maimonides Jewish Day School",
     "sector": "Education",
     "size": "medium",
-    "overallScore": 4,
+    "overallScore": 4.082051282051283,
     "maturityLevel": "thriving",
     "percentileRank": 62.5,
     "domainBreakdown": {
       "infrastructure": {
-        "score": 4,
-        "percentile": 62.5,
+        "score": 4.461538461538462,
+        "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.019230769230769162
+        "sizeComparison": 0.5
       },
       "business_systems": {
         "score": 4,
         "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.25
+        "sizeComparison": 0.75
       },
       "data": {
         "score": 4,
         "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.25
+        "sizeComparison": 0.26923076923076916
       },
       "program_tech": {
         "score": 4,
         "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.75
+        "sizeComparison": 0.5
       },
       "culture": {
-        "score": 4,
-        "percentile": 75,
+        "score": 3.777777777777778,
+        "percentile": 62.5,
         "sectorComparison": 0,
-        "sizeComparison": 0.11111111111111072
+        "sizeComparison": -0.0555555555555558
       }
     },
     "strengths": [],

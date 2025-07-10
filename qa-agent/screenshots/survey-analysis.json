@@ -1,0 +1,19 @@
+{
+  "title": "Surveyor - Multi-Stakeholder Survey Platform",
+  "url": "http://localhost:3002/survey/jim-joseph-tech-maturity-v1/test-org-123",
+  "questionCount": 1,
+  "likertCount": 0,
+  "bodyClasses": "__className_e8ce0c",
+  "surveyElements": [
+    {
+      "tagName": "DIV",
+      "className": "surveyjs-container",
+      "id": ""
+    },
+    {
+      "tagName": "DIV",
+      "className": "sd-root-modern sd-progress--questions sd-root-modern--full-container",
+      "id": ""
+    }
+  ]
+}

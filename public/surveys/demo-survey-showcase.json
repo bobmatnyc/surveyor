@@ -1,0 +1,432 @@
+{
+  "id": "demo-survey-showcase",
+  "name": "Technology Assessment Demo Survey",
+  "description": "A comprehensive demonstration survey showcasing all available question types and survey capabilities",
+  "version": "1.0.0",
+  "createdAt": "2025-07-10T00:00:00.000Z",
+  "updatedAt": "2025-07-10T00:00:00.000Z",
+  "isActive": true,
+  "settings": {
+    "allowMultipleResponses": true,
+    "requireAllStakeholders": false,
+    "showProgressBar": true,
+    "allowNavigation": true,
+    "customStyling": {
+      "primaryColor": "#059669",
+      "secondaryColor": "#047857",
+      "logoUrl": "/logos/demo-logo.png"
+    }
+  },
+  "stakeholders": [
+    {
+      "id": "manager",
+      "name": "Manager/Executive",
+      "description": "Team lead or executive responsible for technology decisions",
+      "weight": 0.4,
+      "color": "#dc2626",
+      "requiredExpertise": ["strategy", "operations"]
+    },
+    {
+      "id": "developer",
+      "name": "Developer/Technical Lead",
+      "description": "Software developer or technical team member",
+      "weight": 0.35,
+      "color": "#2563eb",
+      "requiredExpertise": ["technical", "development"]
+    },
+    {
+      "id": "user",
+      "name": "End User",
+      "description": "Person who regularly uses the technology solutions",
+      "weight": 0.25,
+      "color": "#059669",
+      "requiredExpertise": ["user_experience"]
+    }
+  ],
+  "domains": [
+    {
+      "id": "usability",
+      "name": "Usability & User Experience",
+      "description": "How user-friendly and intuitive the technology is",
+      "weight": 0.3,
+      "color": "#059669",
+      "icon": "user"
+    },
+    {
+      "id": "performance",
+      "name": "Performance & Reliability",
+      "description": "Speed, stability, and dependability of systems",
+      "weight": 0.25,
+      "color": "#2563eb",
+      "icon": "zap"
+    },
+    {
+      "id": "security",
+      "name": "Security & Privacy",
+      "description": "Data protection and system security measures",
+      "weight": 0.25,
+      "color": "#dc2626",
+      "icon": "shield"
+    },
+    {
+      "id": "integration",
+      "name": "Integration & Compatibility",
+      "description": "How well systems work together and with external tools",
+      "weight": 0.2,
+      "color": "#7c3aed",
+      "icon": "link"
+    }
+  ],
+  "questions": [
+    {
+      "id": "likert_5_example",
+      "text": "How satisfied are you with the current technology performance?",
+      "description": "This demonstrates a 5-point Likert scale for measuring satisfaction levels",
+      "type": "likert_5",
+      "domain": "performance",
+      "targetStakeholders": ["manager", "developer", "user"],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "Very Dissatisfied",
+          "description": "Technology significantly hampers productivity"
+        },
+        {
+          "value": 2,
+          "label": "Dissatisfied",
+          "description": "Technology causes frequent frustration"
+        },
+        {
+          "value": 3,
+          "label": "Neutral",
+          "description": "Technology meets basic expectations"
+        },
+        {
+          "value": 4,
+          "label": "Satisfied",
+          "description": "Technology enhances productivity"
+        },
+        {
+          "value": 5,
+          "label": "Very Satisfied",
+          "description": "Technology significantly improves work quality"
+        }
+      ]
+    },
+    {
+      "id": "likert_3_example",
+      "text": "How often do you encounter technical issues?",
+      "description": "This demonstrates a 3-point Likert scale for frequency assessment",
+      "type": "likert_3",
+      "domain": "performance",
+      "targetStakeholders": ["user", "developer"],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "Frequently",
+          "description": "Multiple times per day"
+        },
+        {
+          "value": 2,
+          "label": "Occasionally",
+          "description": "A few times per week"
+        },
+        {
+          "value": 3,
+          "label": "Rarely",
+          "description": "Less than once per week"
+        }
+      ]
+    },
+    {
+      "id": "multiple_choice_example",
+      "text": "Which of the following features do you use most frequently? (Select all that apply)",
+      "description": "This demonstrates multiple choice selection allowing multiple answers",
+      "type": "multiple_choice",
+      "domain": "usability",
+      "targetStakeholders": ["user", "manager"],
+      "required": true,
+      "options": [
+        {
+          "value": "email",
+          "label": "Email Management",
+          "description": "Email clients and communication tools"
+        },
+        {
+          "value": "calendar",
+          "label": "Calendar & Scheduling",
+          "description": "Meeting scheduling and time management"
+        },
+        {
+          "value": "file_sharing",
+          "label": "File Sharing",
+          "description": "Cloud storage and document sharing"
+        },
+        {
+          "value": "video_conferencing",
+          "label": "Video Conferencing",
+          "description": "Online meetings and collaboration"
+        },
+        {
+          "value": "project_management",
+          "label": "Project Management",
+          "description": "Task tracking and project coordination"
+        },
+        {
+          "value": "crm",
+          "label": "Customer Relationship Management",
+          "description": "Customer data and interaction tracking"
+        }
+      ]
+    },
+    {
+      "id": "single_select_example",
+      "text": "What is your primary operating system?",
+      "description": "This demonstrates single selection from multiple options",
+      "type": "single_select",
+      "domain": "integration",
+      "targetStakeholders": ["developer", "user"],
+      "required": true,
+      "options": [
+        {
+          "value": "windows",
+          "label": "Windows",
+          "description": "Microsoft Windows operating system"
+        },
+        {
+          "value": "macos",
+          "label": "macOS",
+          "description": "Apple macOS operating system"
+        },
+        {
+          "value": "linux",
+          "label": "Linux",
+          "description": "Linux-based operating system"
+        },
+        {
+          "value": "chromeos",
+          "label": "Chrome OS",
+          "description": "Google Chrome OS"
+        },
+        {
+          "value": "other",
+          "label": "Other",
+          "description": "Another operating system not listed"
+        }
+      ]
+    },
+    {
+      "id": "text_input_example",
+      "text": "What is the most significant technology challenge your organization faces?",
+      "description": "This demonstrates free-text input for detailed responses",
+      "type": "text",
+      "domain": "usability",
+      "targetStakeholders": ["manager", "developer"],
+      "required": true,
+      "validation": {
+        "minLength": 10,
+        "maxLength": 500,
+        "required": true
+      }
+    },
+    {
+      "id": "number_input_example",
+      "text": "How many hours per week do you spend on technology-related tasks?",
+      "description": "This demonstrates numeric input with validation",
+      "type": "number",
+      "domain": "usability",
+      "targetStakeholders": ["user", "developer", "manager"],
+      "required": true,
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "id": "boolean_example",
+      "text": "Do you have access to adequate technical support?",
+      "description": "This demonstrates yes/no boolean input",
+      "type": "boolean",
+      "domain": "performance",
+      "targetStakeholders": ["user", "manager"],
+      "required": true
+    },
+    {
+      "id": "security_assessment_likert",
+      "text": "How confident are you in your organization's data security measures?",
+      "description": "Security-focused Likert scale assessment",
+      "type": "likert_5",
+      "domain": "security",
+      "targetStakeholders": ["manager", "developer"],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "Not Confident",
+          "description": "Significant security concerns exist"
+        },
+        {
+          "value": 2,
+          "label": "Somewhat Confident",
+          "description": "Basic security measures in place"
+        },
+        {
+          "value": 3,
+          "label": "Moderately Confident",
+          "description": "Standard security practices followed"
+        },
+        {
+          "value": 4,
+          "label": "Very Confident",
+          "description": "Strong security framework implemented"
+        },
+        {
+          "value": 5,
+          "label": "Extremely Confident",
+          "description": "Industry-leading security measures"
+        }
+      ]
+    },
+    {
+      "id": "integration_challenges",
+      "text": "Which integration challenges does your organization face? (Select all that apply)",
+      "description": "Multiple choice for identifying integration pain points",
+      "type": "multiple_choice",
+      "domain": "integration",
+      "targetStakeholders": ["developer", "manager"],
+      "required": false,
+      "options": [
+        {
+          "value": "data_silos",
+          "label": "Data Silos",
+          "description": "Information trapped in separate systems"
+        },
+        {
+          "value": "api_limitations",
+          "label": "API Limitations",
+          "description": "Insufficient or poorly designed APIs"
+        },
+        {
+          "value": "legacy_systems",
+          "label": "Legacy System Compatibility",
+          "description": "Older systems that don't integrate well"
+        },
+        {
+          "value": "vendor_lock_in",
+          "label": "Vendor Lock-in",
+          "description": "Difficulty switching between providers"
+        },
+        {
+          "value": "cost_constraints",
+          "label": "Cost Constraints",
+          "description": "Budget limitations for integration projects"
+        },
+        {
+          "value": "skill_gaps",
+          "label": "Technical Skill Gaps",
+          "description": "Lack of integration expertise"
+        }
+      ]
+    },
+    {
+      "id": "future_priorities",
+      "text": "What should be your organization's top technology priority for the next year?",
+      "description": "Single select for strategic planning",
+      "type": "single_select",
+      "domain": "usability",
+      "targetStakeholders": ["manager"],
+      "required": true,
+      "options": [
+        {
+          "value": "security_upgrade",
+          "label": "Security Infrastructure Upgrade",
+          "description": "Enhance cybersecurity measures"
+        },
+        {
+          "value": "user_experience",
+          "label": "User Experience Improvement",
+          "description": "Make systems more user-friendly"
+        },
+        {
+          "value": "system_integration",
+          "label": "System Integration",
+          "description": "Better connectivity between tools"
+        },
+        {
+          "value": "performance_optimization",
+          "label": "Performance Optimization",
+          "description": "Speed up existing systems"
+        },
+        {
+          "value": "automation",
+          "label": "Process Automation",
+          "description": "Automate repetitive tasks"
+        },
+        {
+          "value": "training",
+          "label": "Staff Training",
+          "description": "Improve technology skills"
+        }
+      ]
+    }
+  ],
+  "scoring": {
+    "method": "weighted_average",
+    "stakeholderWeights": {
+      "manager": 0.4,
+      "developer": 0.35,
+      "user": 0.25
+    },
+    "domainWeights": {
+      "usability": 0.3,
+      "performance": 0.25,
+      "security": 0.25,
+      "integration": 0.2
+    },
+    "maturityLevels": [
+      {
+        "id": "basic",
+        "name": "Basic",
+        "description": "Fundamental technology needs with room for improvement",
+        "minScore": 1,
+        "maxScore": 2.5,
+        "color": "#dc2626",
+        "recommendations": [
+          "Focus on addressing critical technology gaps",
+          "Invest in user training and support",
+          "Establish basic security protocols",
+          "Create technology improvement roadmap"
+        ]
+      },
+      {
+        "id": "developing",
+        "name": "Developing",
+        "description": "Growing technology capabilities with strategic opportunities",
+        "minScore": 2.51,
+        "maxScore": 3.5,
+        "color": "#ea580c",
+        "recommendations": [
+          "Enhance system integration capabilities",
+          "Implement advanced security measures",
+          "Develop staff technology skills",
+          "Optimize system performance"
+        ]
+      },
+      {
+        "id": "advanced",
+        "name": "Advanced",
+        "description": "Sophisticated technology environment driving organizational success",
+        "minScore": 3.51,
+        "maxScore": 5,
+        "color": "#059669",
+        "recommendations": [
+          "Lead technology innovation initiatives",
+          "Share best practices with industry peers",
+          "Explore emerging technologies",
+          "Mentor other organizations"
+        ]
+      }
+    ]
+  }
+}

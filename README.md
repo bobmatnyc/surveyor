@@ -226,7 +226,53 @@ The platform includes a comprehensive sample data system for development and tes
 
 ## Deployment
 
-### Vercel (Recommended)
+### PM2 Local Deployment (Recommended for Local Development)
+
+PM2 provides stable, persistent local deployment that survives terminal sessions and provides robust process management.
+
+#### Quick Start with PM2
+
+```bash
+# Install PM2 globally (if not already installed)
+npm install -g pm2
+
+# Start development server
+./pm2-scripts/start-dev.sh
+
+# Start production server
+./pm2-scripts/start-prod.sh
+
+# Access application at http://localhost:3002
+```
+
+#### PM2 Management Commands
+
+```bash
+# Monitor application status
+./pm2-scripts/monitor.sh
+
+# View application logs
+./pm2-scripts/logs.sh --follow
+
+# Restart application
+./pm2-scripts/restart.sh
+
+# Stop application
+./pm2-scripts/stop.sh
+```
+
+#### PM2 Features
+
+- **Persistent Deployment**: Survives terminal sessions and system restarts
+- **Auto-restart**: Automatic restart on crashes or memory limits
+- **Process Monitoring**: Real-time monitoring with PM2 dashboard
+- **Log Management**: Centralized logging with rotation
+- **Zero Downtime**: Graceful restarts without service interruption
+- **Health Checks**: Automatic health monitoring and recovery
+
+For detailed PM2 configuration and troubleshooting, see [PM2_DEPLOYMENT_GUIDE.md](PM2_DEPLOYMENT_GUIDE.md).
+
+### Vercel (Recommended for Production)
 
 1. Connect your GitHub repository to Vercel
 2. Configure environment variables in Vercel dashboard

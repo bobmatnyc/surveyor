@@ -54,6 +54,11 @@ Thumbs.db
 # Logs
 *.log
 logs
+logs/
+
+# PM2
+.pm2/
+pm2-logs/
 
 # Runtime data
 pids

@@ -1,11 +1,11 @@
 {
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_beth_shalom_community",
-  "overallScore": 1.7576923076923079,
+  "overallScore": 1.75,
   "domainScores": {
-    "infrastructure": 1.4615384615384617,
+    "infrastructure": 1,
     "business_systems": 2,
-    "data": 1.4615384615384617,
+    "data": 2,
     "program_tech": 2,
     "culture": 2
   },
@@ -13,11 +13,11 @@
     "ceo": {
       "infrastructure": 1,
       "business_systems": 2,
-      "data": 1,
+      "data": 2,
       "culture": 2
     },
     "tech_lead": {
-      "infrastructure": 2,
+      "infrastructure": 1,
       "data": 2
     },
     "staff": {
@@ -47,7 +47,7 @@
     "Invest in staff technology training",
     "Consider hiring technology consultant or part-time IT support"
   ],
-  "completionDate": "2025-07-09T05:27:07.470Z",
+  "completionDate": "2025-07-09T05:33:07.189Z",
   "responseCount": 4,
   "stakeholderBreakdown": {
     "ceo": 1,

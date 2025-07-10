@@ -1,1 +1,378 @@
-import { SurveySchema, SurveyResponse, SurveyResult, ValidationResult } from './types';\nimport { OrganizationProfile } from './sample-data-generator';\n\nexport class DataValidator {\n  private static instance: DataValidator;\n  \n  static getInstance(): DataValidator {\n    if (!DataValidator.instance) {\n      DataValidator.instance = new DataValidator();\n    }\n    return DataValidator.instance;\n  }\n\n  validateSurveySchema(schema: SurveySchema): ValidationResult {\n    const errors: string[] = [];\n    const warnings: string[] = [];\n\n    // Basic schema validation\n    if (!schema.id || schema.id.trim() === '') {\n      errors.push('Survey schema must have a valid ID');\n    }\n\n    if (!schema.name || schema.name.trim() === '') {\n      errors.push('Survey schema must have a valid name');\n    }\n\n    if (!schema.version || schema.version.trim() === '') {\n      errors.push('Survey schema must have a valid version');\n    }\n\n    // Validate stakeholders\n    if (!schema.stakeholders || schema.stakeholders.length === 0) {\n      errors.push('Survey schema must have at least one stakeholder');\n    } else {\n      const stakeholderIds = new Set<string>();\n      let totalWeight = 0;\n\n      for (const stakeholder of schema.stakeholders) {\n        if (!stakeholder.id || stakeholder.id.trim() === '') {\n          errors.push('All stakeholders must have valid IDs');\n        } else if (stakeholderIds.has(stakeholder.id)) {\n          errors.push(`Duplicate stakeholder ID: ${stakeholder.id}`);\n        } else {\n          stakeholderIds.add(stakeholder.id);\n        }\n\n        if (!stakeholder.name || stakeholder.name.trim() === '') {\n          errors.push(`Stakeholder ${stakeholder.id} must have a valid name`);\n        }\n\n        if (stakeholder.weight < 0 || stakeholder.weight > 1) {\n          errors.push(`Stakeholder ${stakeholder.id} weight must be between 0 and 1`);\n        }\n\n        totalWeight += stakeholder.weight;\n      }\n\n      if (Math.abs(totalWeight - 1) > 0.01) {\n        warnings.push(`Stakeholder weights sum to ${totalWeight.toFixed(2)}, should sum to 1.0`);\n      }\n    }\n\n    // Validate domains\n    if (!schema.domains || schema.domains.length === 0) {\n      errors.push('Survey schema must have at least one domain');\n    } else {\n      const domainIds = new Set<string>();\n      let totalWeight = 0;\n\n      for (const domain of schema.domains) {\n        if (!domain.id || domain.id.trim() === '') {\n          errors.push('All domains must have valid IDs');\n        } else if (domainIds.has(domain.id)) {\n          errors.push(`Duplicate domain ID: ${domain.id}`);\n        } else {\n          domainIds.add(domain.id);\n        }\n\n        if (!domain.name || domain.name.trim() === '') {\n          errors.push(`Domain ${domain.id} must have a valid name`);\n        }\n\n        if (domain.weight < 0 || domain.weight > 1) {\n          errors.push(`Domain ${domain.id} weight must be between 0 and 1`);\n        }\n\n        totalWeight += domain.weight;\n      }\n\n      if (Math.abs(totalWeight - 1) > 0.01) {\n        warnings.push(`Domain weights sum to ${totalWeight.toFixed(2)}, should sum to 1.0`);\n      }\n    }\n\n    // Validate questions\n    if (!schema.questions || schema.questions.length === 0) {\n      errors.push('Survey schema must have at least one question');\n    } else {\n      const questionIds = new Set<string>();\n      const stakeholderIds = new Set(schema.stakeholders.map(s => s.id));\n      const domainIds = new Set(schema.domains.map(d => d.id));\n\n      for (const question of schema.questions) {\n        if (!question.id || question.id.trim() === '') {\n          errors.push('All questions must have valid IDs');\n        } else if (questionIds.has(question.id)) {\n          errors.push(`Duplicate question ID: ${question.id}`);\n        } else {\n          questionIds.add(question.id);\n        }\n\n        if (!question.text || question.text.trim() === '') {\n          errors.push(`Question ${question.id} must have valid text`);\n        }\n\n        if (!question.type) {\n          errors.push(`Question ${question.id} must have a valid type`);\n        }\n\n        if (!domainIds.has(question.domain)) {\n          errors.push(`Question ${question.id} references unknown domain: ${question.domain}`);\n        }\n\n        if (!question.targetStakeholders || question.targetStakeholders.length === 0) {\n          errors.push(`Question ${question.id} must target at least one stakeholder`);\n        } else {\n          for (const stakeholder of question.targetStakeholders) {\n            if (!stakeholderIds.has(stakeholder)) {\n              errors.push(`Question ${question.id} targets unknown stakeholder: ${stakeholder}`);\n            }\n          }\n        }\n\n        // Validate question options for choice questions\n        if (['likert_5', 'likert_3', 'multiple_choice', 'single_select'].includes(question.type)) {\n          if (!question.options || question.options.length === 0) {\n            errors.push(`Question ${question.id} of type ${question.type} must have options`);\n          } else {\n            const optionValues = new Set();\n            for (const option of question.options) {\n              if (option.value === undefined || option.value === null) {\n                errors.push(`Question ${question.id} has option with undefined value`);\n              } else if (optionValues.has(option.value)) {\n                errors.push(`Question ${question.id} has duplicate option value: ${option.value}`);\n              } else {\n                optionValues.add(option.value);\n              }\n\n              if (!option.label || option.label.trim() === '') {\n                errors.push(`Question ${question.id} has option with empty label`);\n              }\n            }\n          }\n        }\n      }\n    }\n\n    // Validate scoring configuration\n    if (!schema.scoring) {\n      errors.push('Survey schema must have scoring configuration');\n    } else {\n      if (!schema.scoring.method) {\n        errors.push('Scoring configuration must have a method');\n      }\n\n      if (!schema.scoring.stakeholderWeights) {\n        errors.push('Scoring configuration must have stakeholder weights');\n      } else {\n        for (const stakeholder of schema.stakeholders) {\n          if (!(stakeholder.id in schema.scoring.stakeholderWeights)) {\n            errors.push(`Missing stakeholder weight for: ${stakeholder.id}`);\n          }\n        }\n      }\n\n      if (!schema.scoring.domainWeights) {\n        errors.push('Scoring configuration must have domain weights');\n      } else {\n        for (const domain of schema.domains) {\n          if (!(domain.id in schema.scoring.domainWeights)) {\n            errors.push(`Missing domain weight for: ${domain.id}`);\n          }\n        }\n      }\n\n      if (!schema.scoring.maturityLevels || schema.scoring.maturityLevels.length === 0) {\n        errors.push('Scoring configuration must have maturity levels');\n      } else {\n        const levelIds = new Set<string>();\n        let previousMaxScore = 0;\n\n        for (const level of schema.scoring.maturityLevels) {\n          if (!level.id || level.id.trim() === '') {\n            errors.push('All maturity levels must have valid IDs');\n          } else if (levelIds.has(level.id)) {\n            errors.push(`Duplicate maturity level ID: ${level.id}`);\n          } else {\n            levelIds.add(level.id);\n          }\n\n          if (!level.name || level.name.trim() === '') {\n            errors.push(`Maturity level ${level.id} must have a valid name`);\n          }\n\n          if (level.minScore < previousMaxScore) {\n            warnings.push(`Maturity level ${level.id} has overlapping score range`);\n          }\n\n          if (level.minScore >= level.maxScore) {\n            errors.push(`Maturity level ${level.id} min score must be less than max score`);\n          }\n\n          previousMaxScore = level.maxScore;\n        }\n      }\n    }\n\n    return {\n      isValid: errors.length === 0,\n      errors,\n      warnings\n    };\n  }\n\n  validateSurveyResponse(response: SurveyResponse, schema: SurveySchema): ValidationResult {\n    const errors: string[] = [];\n    const warnings: string[] = [];\n\n    // Basic response validation\n    if (!response.id || response.id.trim() === '') {\n      errors.push('Survey response must have a valid ID');\n    }\n\n    if (!response.surveyId || response.surveyId !== schema.id) {\n      errors.push('Survey response must reference the correct survey ID');\n    }\n\n    if (!response.organizationId || response.organizationId.trim() === '') {\n      errors.push('Survey response must have a valid organization ID');\n    }\n\n    if (!response.respondentId || response.respondentId.trim() === '') {\n      errors.push('Survey response must have a valid respondent ID');\n    }\n\n    // Validate stakeholder\n    const stakeholderIds = schema.stakeholders.map(s => s.id);\n    if (!stakeholderIds.includes(response.stakeholder)) {\n      errors.push(`Invalid stakeholder type: ${response.stakeholder}`);\n    }\n\n    // Validate responses\n    if (!response.responses || typeof response.responses !== 'object') {\n      errors.push('Survey response must have a valid responses object');\n    } else {\n      const relevantQuestions = schema.questions.filter(q => \n        q.targetStakeholders.includes(response.stakeholder)\n      );\n\n      // Check for missing required responses\n      for (const question of relevantQuestions) {\n        if (question.required && !(question.id in response.responses)) {\n          errors.push(`Missing required response for question: ${question.id}`);\n        }\n      }\n\n      // Validate each response\n      for (const [questionId, answer] of Object.entries(response.responses)) {\n        const question = schema.questions.find(q => q.id === questionId);\n        if (!question) {\n          warnings.push(`Response for unknown question: ${questionId}`);\n          continue;\n        }\n\n        if (!question.targetStakeholders.includes(response.stakeholder)) {\n          errors.push(`Response for question ${questionId} not allowed for stakeholder ${response.stakeholder}`);\n        }\n\n        // Validate answer based on question type\n        const validationResult = this.validateAnswer(answer, question);\n        if (!validationResult.isValid) {\n          errors.push(...validationResult.errors.map(e => `Question ${questionId}: ${e}`));\n        }\n      }\n    }\n\n    // Validate progress\n    if (response.progress < 0 || response.progress > 100) {\n      errors.push('Response progress must be between 0 and 100');\n    }\n\n    // Validate timestamps\n    if (!response.startTime || !(response.startTime instanceof Date)) {\n      errors.push('Survey response must have a valid start time');\n    }\n\n    if (response.completionTime && !(response.completionTime instanceof Date)) {\n      errors.push('Survey response completion time must be a valid date');\n    }\n\n    if (response.completionTime && response.startTime && response.completionTime < response.startTime) {\n      errors.push('Survey response completion time cannot be before start time');\n    }\n\n    return {\n      isValid: errors.length === 0,\n      errors,\n      warnings\n    };\n  }\n\n  validateSurveyResult(result: SurveyResult, schema: SurveySchema): ValidationResult {\n    const errors: string[] = [];\n    const warnings: string[] = [];\n\n    // Basic result validation\n    if (!result.surveyId || result.surveyId !== schema.id) {\n      errors.push('Survey result must reference the correct survey ID');\n    }\n\n    if (!result.organizationId || result.organizationId.trim() === '') {\n      errors.push('Survey result must have a valid organization ID');\n    }\n\n    // Validate overall score\n    if (result.overallScore < 1 || result.overallScore > 5) {\n      errors.push('Overall score must be between 1 and 5');\n    }\n\n    // Validate domain scores\n    if (!result.domainScores || typeof result.domainScores !== 'object') {\n      errors.push('Survey result must have valid domain scores');\n    } else {\n      const domainIds = schema.domains.map(d => d.id);\n      for (const domainId of domainIds) {\n        if (!(domainId in result.domainScores)) {\n          errors.push(`Missing domain score for: ${domainId}`);\n        } else {\n          const score = result.domainScores[domainId];\n          if (score < 1 || score > 5) {\n            errors.push(`Domain score for ${domainId} must be between 1 and 5`);\n          }\n        }\n      }\n    }\n\n    // Validate maturity level\n    if (!result.maturityLevel) {\n      errors.push('Survey result must have a maturity level');\n    } else {\n      const maturityLevelIds = schema.scoring.maturityLevels.map(l => l.id);\n      if (!maturityLevelIds.includes(result.maturityLevel.id)) {\n        errors.push(`Invalid maturity level: ${result.maturityLevel.id}`);\n      }\n\n      // Check if overall score falls within maturity level range\n      const level = schema.scoring.maturityLevels.find(l => l.id === result.maturityLevel.id);\n      if (level && (result.overallScore < level.minScore || result.overallScore > level.maxScore)) {\n        errors.push(`Overall score ${result.overallScore} does not fall within maturity level ${level.id} range (${level.minScore}-${level.maxScore})`);\n      }\n    }\n\n    // Validate stakeholder contributions\n    if (!result.stakeholderContributions || typeof result.stakeholderContributions !== 'object') {\n      errors.push('Survey result must have valid stakeholder contributions');\n    } else {\n      const stakeholderIds = schema.stakeholders.map(s => s.id);\n      for (const stakeholderId of stakeholderIds) {\n        if (!(stakeholderId in result.stakeholderContributions)) {\n          warnings.push(`Missing stakeholder contribution for: ${stakeholderId}`);\n        }\n      }\n    }\n\n    // Validate completion date\n    if (!result.completionDate || !(result.completionDate instanceof Date)) {\n      errors.push('Survey result must have a valid completion date');\n    }\n\n    // Validate response count\n    if (!result.responseCount || result.responseCount < 1) {\n      errors.push('Survey result must have a valid response count');\n    }\n\n    // Validate stakeholder breakdown\n    if (!result.stakeholderBreakdown || typeof result.stakeholderBreakdown !== 'object') {\n      errors.push('Survey result must have valid stakeholder breakdown');\n    }\n\n    return {\n      isValid: errors.length === 0,\n      errors,\n      warnings\n    };\n  }\n\n  validateOrganizationProfile(profile: OrganizationProfile): ValidationResult {\n    const errors: string[] = [];\n    const warnings: string[] = [];\n\n    if (!profile.id || profile.id.trim() === '') {\n      errors.push('Organization profile must have a valid ID');\n    }\n\n    if (!profile.name || profile.name.trim() === '') {\n      errors.push('Organization profile must have a valid name');\n    }\n\n    if (!['small', 'medium', 'large'].includes(profile.type)) {\n      errors.push('Organization type must be small, medium, or large');\n    }\n\n    if (!profile.sector || profile.sector.trim() === '') {\n      errors.push('Organization profile must have a valid sector');\n    }\n\n    if (!['building', 'emerging', 'thriving'].includes(profile.maturityTarget)) {\n      errors.push('Organization maturity target must be building, emerging, or thriving');\n    }\n\n    if (profile.yearEstablished < 1900 || profile.yearEstablished > new Date().getFullYear()) {\n      errors.push('Organization year established must be reasonable');\n    }\n\n    if (profile.staffSize < 1) {\n      errors.push('Organization staff size must be at least 1');\n    }\n\n    if (profile.annualBudget < 0) {\n      errors.push('Organization annual budget must be non-negative');\n    }\n\n    if (profile.itBudgetPercentage < 0 || profile.itBudgetPercentage > 100) {\n      errors.push('IT budget percentage must be between 0 and 100');\n    }\n\n    if (!profile.location || profile.location.trim() === '') {\n      errors.push('Organization profile must have a valid location');\n    }\n\n    // Warnings for potential issues\n    if (profile.staffSize > 50 && !profile.hasITStaff) {\n      warnings.push('Large organization without dedicated IT staff');\n    }\n\n    if (profile.itBudgetPercentage < 3) {\n      warnings.push('Very low IT budget percentage (< 3%)');\n    }\n\n    if (profile.type === 'large' && profile.staffSize < 50) {\n      warnings.push('Large organization with small staff size');\n    }\n\n    return {\n      isValid: errors.length === 0,\n      errors,\n      warnings\n    };\n  }\n\n  private validateAnswer(answer: any, question: any): ValidationResult {\n    const errors: string[] = [];\n\n    switch (question.type) {\n      case 'likert_5':\n      case 'likert_3':\n        if (!Number.isInteger(answer) || answer < 1 || answer > 5) {\n          errors.push('Likert scale answer must be integer between 1 and 5');\n        }\n        break;\n\n      case 'multiple_choice':\n        if (!Array.isArray(answer)) {\n          errors.push('Multiple choice answer must be an array');\n        } else {\n          const validValues = question.options.map((opt: any) => opt.value);\n          for (const value of answer) {\n            if (!validValues.includes(value)) {\n              errors.push(`Invalid multiple choice value: ${value}`);\n            }\n          }\n        }\n        break;\n\n      case 'single_select':\n        const validValues = question.options.map((opt: any) => opt.value);\n        if (!validValues.includes(answer)) {\n          errors.push(`Invalid single select value: ${answer}`);\n        }\n        break;\n\n      case 'text':\n        if (typeof answer !== 'string') {\n          errors.push('Text answer must be a string');\n        } else if (question.validation) {\n          if (question.validation.minLength && answer.length < question.validation.minLength) {\n            errors.push(`Text answer must be at least ${question.validation.minLength} characters`);\n          }\n          if (question.validation.maxLength && answer.length > question.validation.maxLength) {\n            errors.push(`Text answer must be no more than ${question.validation.maxLength} characters`);\n          }\n          if (question.validation.pattern && !new RegExp(question.validation.pattern).test(answer)) {\n            errors.push('Text answer does not match required pattern');\n          }\n        }\n        break;\n\n      case 'number':\n        if (typeof answer !== 'number' || isNaN(answer)) {\n          errors.push('Number answer must be a valid number');\n        }\n        break;\n\n      case 'boolean':\n        if (typeof answer !== 'boolean') {\n          errors.push('Boolean answer must be true or false');\n        }\n        break;\n\n      default:\n        errors.push(`Unknown question type: ${question.type}`);\n    }\n\n    return {\n      isValid: errors.length === 0,\n      errors,\n      warnings: []\n    };\n  }\n\n  validateDataConsistency(\n    schema: SurveySchema,\n    organizations: OrganizationProfile[],\n    responses: SurveyResponse[],\n    results: SurveyResult[]\n  ): ValidationResult {\n    const errors: string[] = [];\n    const warnings: string[] = [];\n\n    // Check if all results have corresponding organizations\n    for (const result of results) {\n      const org = organizations.find(o => o.id === result.organizationId);\n      if (!org) {\n        errors.push(`Result for unknown organization: ${result.organizationId}`);\n      }\n    }\n\n    // Check if all responses have corresponding organizations\n    for (const response of responses) {\n      const org = organizations.find(o => o.id === response.organizationId);\n      if (!org) {\n        errors.push(`Response for unknown organization: ${response.organizationId}`);\n      }\n    }\n\n    // Check if all organizations have results\n    for (const org of organizations) {\n      const result = results.find(r => r.organizationId === org.id);\n      if (!result) {\n        warnings.push(`No result found for organization: ${org.id}`);\n      }\n    }\n\n    // Check if all organizations have responses from all stakeholders\n    for (const org of organizations) {\n      const orgResponses = responses.filter(r => r.organizationId === org.id);\n      const responseStakeholders = [...new Set(orgResponses.map(r => r.stakeholder))];\n      const requiredStakeholders = schema.stakeholders.map(s => s.id);\n      \n      const missingStakeholders = requiredStakeholders.filter(s => !responseStakeholders.includes(s));\n      if (missingStakeholders.length > 0) {\n        warnings.push(`Organization ${org.id} missing responses from: ${missingStakeholders.join(', ')}`);\n      }\n    }\n\n    return {\n      isValid: errors.length === 0,\n      errors,\n      warnings\n    };\n  }\n}\n
+import { SurveySchema, SurveyResponse, SurveyResult, ValidationResult } from './types';
+import { OrganizationProfile } from './sample-data-generator';
+
+export class DataValidator {
+  private static instance: DataValidator;
+  
+  static getInstance(): DataValidator {
+    if (!DataValidator.instance) {
+      DataValidator.instance = new DataValidator();
+    }
+    return DataValidator.instance;
+  }
+
+  validateSurveySchema(schema: SurveySchema): ValidationResult {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+
+    // Basic schema validation
+    if (!schema.id || schema.id.trim() === '') {
+      errors.push('Survey schema must have a valid ID');
+    }
+
+    if (!schema.name || schema.name.trim() === '') {
+      errors.push('Survey schema must have a valid name');
+    }
+
+    if (!schema.version || schema.version.trim() === '') {
+      errors.push('Survey schema must have a valid version');
+    }
+
+    // Validate stakeholders
+    if (!schema.stakeholders || schema.stakeholders.length === 0) {
+      errors.push('Survey schema must have at least one stakeholder');
+    } else {
+      const stakeholderIds = new Set<string>();
+      let totalWeight = 0;
+
+      for (const stakeholder of schema.stakeholders) {
+        if (!stakeholder.id || stakeholder.id.trim() === '') {
+          errors.push('All stakeholders must have valid IDs');
+        } else if (stakeholderIds.has(stakeholder.id)) {
+          errors.push(`Duplicate stakeholder ID: ${stakeholder.id}`);
+        } else {
+          stakeholderIds.add(stakeholder.id);
+        }
+
+        if (!stakeholder.name || stakeholder.name.trim() === '') {
+          errors.push(`Stakeholder ${stakeholder.id} must have a valid name`);
+        }
+
+        if (stakeholder.weight < 0 || stakeholder.weight > 1) {
+          errors.push(`Stakeholder ${stakeholder.id} weight must be between 0 and 1`);
+        }
+
+        totalWeight += stakeholder.weight;
+      }
+
+      if (Math.abs(totalWeight - 1) > 0.01) {
+        warnings.push(`Stakeholder weights sum to ${totalWeight.toFixed(2)}, should sum to 1.0`);
+      }
+    }
+
+    // Validate domains
+    if (!schema.domains || schema.domains.length === 0) {
+      errors.push('Survey schema must have at least one domain');
+    } else {
+      const domainIds = new Set<string>();
+      let totalWeight = 0;
+
+      for (const domain of schema.domains) {
+        if (!domain.id || domain.id.trim() === '') {
+          errors.push('All domains must have valid IDs');
+        } else if (domainIds.has(domain.id)) {
+          errors.push(`Duplicate domain ID: ${domain.id}`);
+        } else {
+          domainIds.add(domain.id);
+        }
+
+        if (!domain.name || domain.name.trim() === '') {
+          errors.push(`Domain ${domain.id} must have a valid name`);
+        }
+
+        if (domain.weight < 0 || domain.weight > 1) {
+          errors.push(`Domain ${domain.id} weight must be between 0 and 1`);
+        }
+
+        totalWeight += domain.weight;
+      }
+
+      if (Math.abs(totalWeight - 1) > 0.01) {
+        warnings.push(`Domain weights sum to ${totalWeight.toFixed(2)}, should sum to 1.0`);
+      }
+    }
+
+    // Validate questions
+    if (!schema.questions || schema.questions.length === 0) {
+      errors.push('Survey schema must have at least one question');
+    } else {
+      const questionIds = new Set<string>();
+      const stakeholderIds = new Set(schema.stakeholders.map(s => s.id));
+      const domainIds = new Set(schema.domains.map(d => d.id));
+
+      for (const question of schema.questions) {
+        if (!question.id || question.id.trim() === '') {
+          errors.push('All questions must have valid IDs');
+        } else if (questionIds.has(question.id)) {
+          errors.push(`Duplicate question ID: ${question.id}`);
+        } else {
+          questionIds.add(question.id);
+        }
+
+        if (!question.text || question.text.trim() === '') {
+          errors.push(`Question ${question.id} must have valid text`);
+        }
+
+        if (!question.type) {
+          errors.push(`Question ${question.id} must have a valid type`);
+        }
+
+        if (!domainIds.has(question.domain)) {
+          errors.push(`Question ${question.id} references unknown domain: ${question.domain}`);
+        }
+
+        if (!question.targetStakeholders || question.targetStakeholders.length === 0) {
+          errors.push(`Question ${question.id} must target at least one stakeholder`);
+        } else {
+          for (const stakeholder of question.targetStakeholders) {
+            if (!stakeholderIds.has(stakeholder)) {
+              errors.push(`Question ${question.id} targets unknown stakeholder: ${stakeholder}`);
+            }
+          }
+        }
+
+        // Validate question options for choice questions
+        if (['likert_5', 'likert_3', 'multiple_choice', 'single_select'].includes(question.type)) {
+          if (!question.options || question.options.length === 0) {
+            errors.push(`Question ${question.id} of type ${question.type} must have options`);
+          } else {
+            const optionValues = new Set();
+            for (const option of question.options) {
+              if (option.value === undefined || option.value === null) {
+                errors.push(`Question ${question.id} has option with undefined value`);
+              } else if (optionValues.has(option.value)) {
+                errors.push(`Question ${question.id} has duplicate option value: ${option.value}`);
+              } else {
+                optionValues.add(option.value);
+              }
+
+              if (!option.label || option.label.trim() === '') {
+                errors.push(`Question ${question.id} has option with empty label`);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return {
+      isValid: errors.length === 0,
+      errors,
+      warnings
+    };
+  }
+
+  validateSurveyResponse(response: SurveyResponse, schema: SurveySchema): ValidationResult {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+
+    // Basic response validation
+    if (!response.id || response.id.trim() === '') {
+      errors.push('Survey response must have a valid ID');
+    }
+
+    if (!response.surveyId || response.surveyId !== schema.id) {
+      errors.push('Survey response must reference the correct survey ID');
+    }
+
+    if (!response.organizationId || response.organizationId.trim() === '') {
+      errors.push('Survey response must have a valid organization ID');
+    }
+
+    if (!response.respondentId || response.respondentId.trim() === '') {
+      errors.push('Survey response must have a valid respondent ID');
+    }
+
+    // Validate stakeholder
+    const stakeholderIds = schema.stakeholders.map(s => s.id);
+    if (!stakeholderIds.includes(response.stakeholder)) {
+      errors.push(`Invalid stakeholder type: ${response.stakeholder}`);
+    }
+
+    // Validate responses
+    if (!response.responses || typeof response.responses !== 'object') {
+      errors.push('Survey response must have a valid responses object');
+    } else {
+      const relevantQuestions = schema.questions.filter(q => 
+        q.targetStakeholders.includes(response.stakeholder)
+      );
+
+      // Check for missing required responses
+      for (const question of relevantQuestions) {
+        if (question.required && !(question.id in response.responses)) {
+          errors.push(`Missing required response for question: ${question.id}`);
+        }
+      }
+
+      // Validate each response
+      for (const [questionId, answer] of Object.entries(response.responses)) {
+        const question = schema.questions.find(q => q.id === questionId);
+        if (!question) {
+          warnings.push(`Response for unknown question: ${questionId}`);
+          continue;
+        }
+
+        if (!question.targetStakeholders.includes(response.stakeholder)) {
+          errors.push(`Response for question ${questionId} not allowed for stakeholder ${response.stakeholder}`);
+        }
+
+        // Validate answer based on question type
+        const validationResult = this.validateAnswer(answer, question);
+        if (!validationResult.isValid) {
+          errors.push(...validationResult.errors.map(e => `Question ${questionId}: ${e}`));
+        }
+      }
+    }
+
+    return {
+      isValid: errors.length === 0,
+      errors,
+      warnings
+    };
+  }
+
+  validateSurveyResult(result: SurveyResult, schema: SurveySchema): ValidationResult {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+
+    // Basic result validation
+    if (!result.surveyId || result.surveyId !== schema.id) {
+      errors.push('Survey result must reference the correct survey ID');
+    }
+
+    if (!result.organizationId || result.organizationId.trim() === '') {
+      errors.push('Survey result must have a valid organization ID');
+    }
+
+    // Validate overall score
+    if (result.overallScore < 1 || result.overallScore > 5) {
+      errors.push('Overall score must be between 1 and 5');
+    }
+
+    // Validate domain scores
+    if (!result.domainScores || typeof result.domainScores !== 'object') {
+      errors.push('Survey result must have valid domain scores');
+    } else {
+      const domainIds = schema.domains.map(d => d.id);
+      for (const domainId of domainIds) {
+        if (!(domainId in result.domainScores)) {
+          errors.push(`Missing domain score for: ${domainId}`);
+        } else {
+          const score = result.domainScores[domainId];
+          if (score < 1 || score > 5) {
+            errors.push(`Domain score for ${domainId} must be between 1 and 5`);
+          }
+        }
+      }
+    }
+
+    return {
+      isValid: errors.length === 0,
+      errors,
+      warnings
+    };
+  }
+
+  validateOrganizationProfile(profile: OrganizationProfile): ValidationResult {
+    const errors: string[] = [];
+    const warnings: string[] = [];
+
+    if (!profile.id || profile.id.trim() === '') {
+      errors.push('Organization profile must have a valid ID');
+    }
+
+    if (!profile.name || profile.name.trim() === '') {
+      errors.push('Organization profile must have a valid name');
+    }
+
+    if (!['small', 'medium', 'large'].includes(profile.type)) {
+      errors.push('Organization type must be small, medium, or large');
+    }
+
+    if (!profile.sector || profile.sector.trim() === '') {
+      errors.push('Organization profile must have a valid sector');
+    }
+
+    if (!['building', 'emerging', 'thriving'].includes(profile.maturityTarget)) {
+      errors.push('Organization maturity target must be building, emerging, or thriving');
+    }
+
+    if (profile.staffSize < 1) {
+      errors.push('Organization staff size must be at least 1');
+    }
+
+    if (profile.annualBudget < 0) {
+      errors.push('Organization annual budget must be non-negative');
+    }
+
+    if (!profile.location || profile.location.trim() === '') {
+      errors.push('Organization profile must have a valid location');
+    }
+
+    return {
+      isValid: errors.length === 0,
+      errors,
+      warnings
+    };
+  }
+
+  private validateAnswer(answer: any, question: any): ValidationResult {
+    const errors: string[] = [];
+
+    switch (question.type) {
+      case 'likert_5':
+      case 'likert_3':
+        if (!Number.isInteger(answer) || answer < 1 || answer > 5) {
+          errors.push('Likert scale answer must be integer between 1 and 5');
+        }
+        break;
+
+      case 'multiple_choice':
+        if (!Array.isArray(answer)) {
+          errors.push('Multiple choice answer must be an array');
+        } else {
+          const validValues = question.options.map((opt: any) => opt.value);
+          for (const value of answer) {
+            if (!validValues.includes(value)) {
+              errors.push(`Invalid multiple choice value: ${value}`);
+            }
+          }
+        }
+        break;
+
+      case 'single_select':
+        const validValues = question.options.map((opt: any) => opt.value);
+        if (!validValues.includes(answer)) {
+          errors.push(`Invalid single select value: ${answer}`);
+        }
+        break;
+
+      case 'text':
+        if (typeof answer !== 'string') {
+          errors.push('Text answer must be a string');
+        }
+        break;
+
+      case 'number':
+        if (typeof answer !== 'number' || isNaN(answer)) {
+          errors.push('Number answer must be a valid number');
+        }
+        break;
+
+      case 'boolean':
+        if (typeof answer !== 'boolean') {
+          errors.push('Boolean answer must be true or false');
+        }
+        break;
+
+      default:
+        errors.push(`Unknown question type: ${question.type}`);
+    }
+
+    return {
+      isValid: errors.length === 0,
+      errors,
+      warnings: []
+    };
+  }
+}

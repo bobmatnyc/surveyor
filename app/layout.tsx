@@ -9,7 +9,20 @@ export const metadata: Metadata = {
   description: 'Comprehensive survey platform supporting multiple stakeholders with configurable schemas',
   keywords: ['survey', 'multi-stakeholder', 'assessment', 'evaluation'],
   authors: [{ name: 'Claude PM Framework' }],
-  viewport: 'width=device-width, initial-scale=1',
+  robots: 'index, follow',
+  other: {
+    'X-UA-Compatible': 'IE=edge',
+    'theme-color': '#ffffff',
+    'msapplication-TileColor': '#ffffff',
+    'msapplication-config': '/browserconfig.xml',
+    'format-detection': 'telephone=no',
+    'msapplication-tap-highlight': 'no',
+  },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -19,9 +32,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+      </head>
       <body className={inter.className}>
         <div className="min-h-screen bg-background">
-          <main className="relative">
+          {/* Skip Links */}
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50">
+            Skip to main content
+          </a>
+          <header className="sr-only">
+            <h1>Surveyor - Multi-Stakeholder Survey Platform</h1>
+          </header>
+          <main id="main-content" className="relative" role="main">
             {children}
           </main>
         </div>

@@ -8,7 +8,8 @@ import { useSurveyStore } from '@/lib/store';
 
 export default function SurveyPage() {
   const params = useParams();
-  const { surveyId, organizationId } = params;
+  const surveyId = params?.surveyId as string;
+  const organizationId = params?.organizationId as string;
   const [survey, setSurvey] = useState<SurveySchema | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

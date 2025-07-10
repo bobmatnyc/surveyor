@@ -101,24 +101,38 @@ export function SurveySelection() {
             </div>
 
             {/* Survey Selection */}
-            <div className="space-y-2">
-              <Label htmlFor="survey">Available Surveys</Label>
-              <div className="space-y-3">
+            <fieldset className="space-y-2">
+              <legend className="text-sm font-medium text-gray-700">Available Surveys</legend>
+              <div className="space-y-3" role="radiogroup" aria-label="Survey selection">
                 {surveys.map((survey) => (
-                  <div
+                  <label
                     key={survey.id}
-                    className={`p-4 border rounded-lg cursor-pointer transition-colors ${
+                    className={`p-4 border rounded-lg cursor-pointer transition-colors block ${
                       selectedSurvey === survey.id
                         ? 'border-blue-500 bg-blue-50'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
-                    onClick={() => setSelectedSurvey(survey.id)}
+                    htmlFor={`survey-${survey.id}`}
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900">{survey.name}</h3>
-                        <p className="text-sm text-gray-600 mt-1">{survey.description}</p>
-                        <div className="flex items-center gap-4 mt-2 text-xs text-gray-500">
+                        <div className="flex items-center gap-3">
+                          <input
+                            type="radio"
+                            id={`survey-${survey.id}`}
+                            name="survey-selection"
+                            value={survey.id}
+                            checked={selectedSurvey === survey.id}
+                            onChange={(e) => setSelectedSurvey(e.target.value)}
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+                            aria-describedby={`survey-${survey.id}-description`}
+                          />
+                          <h3 className="font-semibold text-gray-900">{survey.name}</h3>
+                        </div>
+                        <p id={`survey-${survey.id}-description`} className="text-sm text-gray-600 mt-1 ml-7">
+                          {survey.description}
+                        </p>
+                        <div className="flex items-center gap-4 mt-2 text-xs text-gray-500 ml-7">
                           <span className="flex items-center gap-1">
                             <User className="h-3 w-3" />
                             {survey.stakeholders.length} stakeholder types
@@ -126,22 +140,11 @@ export function SurveySelection() {
                           <span>{survey.questions.length} questions</span>
                         </div>
                       </div>
-                      <div className="flex items-center">
-                        <div className={`w-4 h-4 rounded-full border-2 ${
-                          selectedSurvey === survey.id
-                            ? 'bg-blue-500 border-blue-500'
-                            : 'border-gray-300'
-                        }`}>
-                          {selectedSurvey === survey.id && (
-                            <div className="w-2 h-2 bg-white rounded-full mx-auto mt-0.5"></div>
-                          )}
-                        </div>
-                      </div>
                     </div>
-                  </div>
+                  </label>
                 ))}
               </div>
-            </div>
+            </fieldset>
 
             {/* Start Button */}
             <div className="pt-4">

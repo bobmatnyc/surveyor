@@ -1,5 +1,5 @@
 {
-  "id": "resp_org_beth_shalom_community_ceo_1752038827469",
+  "id": "resp_org_beth_shalom_community_ceo_1752039187189",
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_beth_shalom_community",
   "respondentId": "ceo_org_beth_shalom_community",
@@ -10,21 +10,21 @@
   ],
   "responses": {
     "infra_onboarding_ceo": 1,
-    "data_collection_ceo": 1,
+    "data_collection_ceo": 2,
     "business_systems_ceo": 2,
     "culture_leadership_ceo": 2
   },
-  "startTime": "2025-07-09T05:27:07.469Z",
-  "completionTime": "2025-07-09T06:05:58.209Z",
+  "startTime": "2025-07-09T05:33:07.189Z",
+  "completionTime": "2025-07-09T06:06:25.222Z",
   "progress": 100,
   "metadata": {
-    "respondentName": "Sarah Cohen",
-    "respondentTitle": "Director",
+    "respondentName": "David Levy",
+    "respondentTitle": "President",
     "organizationName": "Beth Shalom Community Center",
     "organizationType": "small",
     "organizationSector": "Community Services",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
     "ipAddress": "192.168.1.1",
-    "sessionId": "session_1752038827469_s6lk5gw09"
+    "sessionId": "session_1752039187189_qp10r353l"
   }
 }

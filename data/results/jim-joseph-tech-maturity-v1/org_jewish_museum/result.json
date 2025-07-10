@@ -1,30 +1,30 @@
 {
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_jewish_museum",
-  "overallScore": 3.85,
+  "overallScore": 3.6974358974358976,
   "domainScores": {
-    "infrastructure": 4,
-    "business_systems": 4,
+    "infrastructure": 3.9230769230769234,
+    "business_systems": 2.9999999999999996,
     "data": 4,
-    "program_tech": 3,
-    "culture": 4
+    "program_tech": 4,
+    "culture": 3.777777777777778
   },
   "stakeholderContributions": {
     "ceo": {
-      "infrastructure": 4,
-      "business_systems": 4,
+      "infrastructure": 3,
+      "business_systems": 3,
       "data": 4,
       "culture": 4
     },
     "tech_lead": {
-      "infrastructure": 4,
+      "infrastructure": 5,
       "data": 4
     },
     "staff": {
-      "program_tech": 3
+      "program_tech": 4
     },
     "board": {
-      "culture": 4
+      "culture": 3
     }
   },
   "maturityLevel": {
@@ -47,7 +47,7 @@
     "Explore emerging technologies like AI",
     "Mentor other organizations in technology adoption"
   ],
-  "completionDate": "2025-07-09T05:27:07.470Z",
+  "completionDate": "2025-07-09T05:33:07.189Z",
   "responseCount": 4,
   "stakeholderBreakdown": {
     "ceo": 1,

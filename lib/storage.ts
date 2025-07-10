@@ -7,6 +7,7 @@ export class SurveyDataManager {
   private static instance: SurveyDataManager;
   private isProduction = process.env.NODE_ENV === 'production';
   private dataDir = path.join(process.cwd(), 'data');
+  private publicDir = path.join(process.cwd(), 'public');
   
   static getInstance(): SurveyDataManager {
     if (!SurveyDataManager.instance) {
@@ -38,40 +39,24 @@ export class SurveyDataManager {
     }
   }
 
-  // Schema Management
+  // Schema Management - Now reads from public directory
   async saveSchema(schema: SurveySchema): Promise<string> {
-    const filename = `schemas/${schema.id}.json`;
+    // Schemas are now static files in public directory
+    // This method is kept for compatibility but schemas should be managed manually
+    const filename = `surveys/${schema.id}.json`;
     const data = JSON.stringify(schema, null, 2);
-
-    if (this.isProduction) {
-      const blob = await put(filename, data, {
-        access: 'public',
-        contentType: 'application/json',
-      });
-      return blob.url;
-    } else {
-      const filePath = path.join(this.dataDir, filename);
-      await fs.writeFile(filePath, data, 'utf8');
-      return `file://${filePath}`;
-    }
+    
+    const filePath = path.join(this.publicDir, filename);
+    await fs.writeFile(filePath, data, 'utf8');
+    return `file://${filePath}`;
   }
 
   async getSchema(schemaId: string): Promise<SurveySchema | null> {
     try {
-      if (this.isProduction) {
-        const { blobs } = await list({
-          prefix: `schemas/${schemaId}.json`,
-        });
-
-        if (blobs.length === 0) return null;
-
-        const response = await fetch(blobs[0].url);
-        return await response.json() as SurveySchema;
-      } else {
-        const filePath = path.join(this.dataDir, 'schemas', `${schemaId}.json`);
-        const data = await fs.readFile(filePath, 'utf8');
-        return JSON.parse(data) as SurveySchema;
-      }
+      // Always read from public directory (static files)
+      const filePath = path.join(this.publicDir, 'surveys', `${schemaId}.json`);
+      const data = await fs.readFile(filePath, 'utf8');
+      return JSON.parse(data) as SurveySchema;
     } catch (error) {
       console.error('Error fetching schema:', error);
       return null;
@@ -80,42 +65,39 @@ export class SurveyDataManager {
 
   async listSchemas(): Promise<SurveySchema[]> {
     try {
-      if (this.isProduction) {
-        const { blobs } = await list({
-          prefix: 'schemas/',
-        });
+      // Always read from public directory (static files)
+      const schemasDir = path.join(this.publicDir, 'surveys');
+      try {
+        const files = await fs.readdir(schemasDir);
+        const jsonFiles = files.filter(file => file.endsWith('.json') && file !== 'index.json');
 
         const schemas = await Promise.all(
-          blobs.map(async (blob) => {
-            const response = await fetch(blob.url);
-            return await response.json() as SurveySchema;
+          jsonFiles.map(async (file) => {
+            const filePath = path.join(schemasDir, file);
+            const data = await fs.readFile(filePath, 'utf8');
+            return JSON.parse(data) as SurveySchema;
           })
         );
 
         return schemas.filter(schema => schema.isActive);
-      } else {
-        const schemasDir = path.join(this.dataDir, 'schemas');
-        try {
-          const files = await fs.readdir(schemasDir);
-          const jsonFiles = files.filter(file => file.endsWith('.json'));
-
-          const schemas = await Promise.all(
-            jsonFiles.map(async (file) => {
-              const filePath = path.join(schemasDir, file);
-              const data = await fs.readFile(filePath, 'utf8');
-              return JSON.parse(data) as SurveySchema;
-            })
-          );
-
-          return schemas.filter(schema => schema.isActive);
-        } catch (error) {
-          // Directory doesn't exist yet
-          return [];
-        }
+      } catch (error) {
+        console.error('Error reading surveys directory:', error);
+        return [];
       }
     } catch (error) {
       console.error('Error listing schemas:', error);
       return [];
+    }
+  }
+
+  async getSurveyIndex(): Promise<any> {
+    try {
+      const indexPath = path.join(this.publicDir, 'surveys', 'index.json');
+      const data = await fs.readFile(indexPath, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      console.error('Error fetching survey index:', error);
+      return { surveys: [], categories: [], lastUpdated: new Date().toISOString() };
     }
   }
 
@@ -339,12 +321,10 @@ export class SurveyDataManager {
 
   // Utility methods
   async deleteSchema(schemaId: string): Promise<void> {
-    if (this.isProduction) {
-      await del(`schemas/${schemaId}.json`);
-    } else {
-      const filePath = path.join(this.dataDir, 'schemas', `${schemaId}.json`);
-      await fs.unlink(filePath);
-    }
+    // Schemas are now static files in public directory
+    // This method is kept for compatibility but schemas should be managed manually
+    const filePath = path.join(this.publicDir, 'surveys', `${schemaId}.json`);
+    await fs.unlink(filePath);
   }
 
   async deleteResponse(schemaId: string, organizationId: string, respondentId: string): Promise<void> {

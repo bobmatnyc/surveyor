@@ -1,30 +1,30 @@
 {
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_chabad_center",
-  "overallScore": 1.358974358974359,
+  "overallScore": 1.8743589743589744,
   "domainScores": {
-    "infrastructure": 1,
-    "business_systems": 1,
+    "infrastructure": 1.4615384615384617,
+    "business_systems": 2,
     "data": 1.4615384615384617,
     "program_tech": 2,
-    "culture": 1.777777777777778
+    "culture": 2.7777777777777777
   },
   "stakeholderContributions": {
     "ceo": {
       "infrastructure": 1,
-      "business_systems": 1,
+      "business_systems": 2,
       "data": 1,
-      "culture": 2
+      "culture": 3
     },
     "tech_lead": {
-      "infrastructure": 1,
+      "infrastructure": 2,
       "data": 2
     },
     "staff": {
       "program_tech": 2
     },
     "board": {
-      "culture": 1
+      "culture": 2
     }
   },
   "maturityLevel": {
@@ -47,7 +47,7 @@
     "Invest in staff technology training",
     "Consider hiring technology consultant or part-time IT support"
   ],
-  "completionDate": "2025-07-09T05:27:07.470Z",
+  "completionDate": "2025-07-09T05:33:07.189Z",
   "responseCount": 4,
   "stakeholderBreakdown": {
     "ceo": 1,

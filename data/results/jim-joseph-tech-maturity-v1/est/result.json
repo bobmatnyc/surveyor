@@ -1,0 +1,53 @@
+{
+  "surveyId": "jim-joseph-tech-maturity-v1",
+  "organizationId": "est",
+  "overallScore": 3.35,
+  "domainScores": {
+    "infrastructure": 4,
+    "business_systems": 4,
+    "data": 2.9999999999999996,
+    "program_tech": 0,
+    "culture": 5
+  },
+  "stakeholderContributions": {
+    "infrastructure": {
+      "ceo": 1.4
+    },
+    "business_systems": {
+      "ceo": 1.4
+    },
+    "data": {
+      "ceo": 1.0499999999999998
+    },
+    "program_tech": {},
+    "culture": {
+      "ceo": 1.75
+    }
+  },
+  "maturityLevel": {
+    "id": "emerging",
+    "name": "Emerging",
+    "description": "Functional technology with growth opportunities",
+    "minScore": 2.31,
+    "maxScore": 3.6,
+    "color": "#ea580c",
+    "recommendations": [
+      "Integrate systems for better data flow",
+      "Develop technology strategy and roadmap",
+      "Enhance staff technology skills",
+      "Improve security and backup procedures"
+    ]
+  },
+  "recommendations": [
+    "Integrate systems for better data flow",
+    "Develop technology strategy and roadmap",
+    "Enhance staff technology skills",
+    "Improve security and backup procedures",
+    "Focus on improving Program Technology capabilities"
+  ],
+  "completionDate": "2025-07-09T11:18:05.255Z",
+  "responseCount": 1,
+  "stakeholderBreakdown": {
+    "ceo": 1
+  }
+}

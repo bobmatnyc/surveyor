@@ -1,5 +1,5 @@
 {
-  "id": "resp_org_beth_shalom_community_board_1752038827469",
+  "id": "resp_org_beth_shalom_community_board_1752039187189",
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_beth_shalom_community",
   "respondentId": "board_org_beth_shalom_community",
@@ -10,17 +10,17 @@
   "responses": {
     "culture_board_oversight": 2
   },
-  "startTime": "2025-07-09T05:27:07.469Z",
-  "completionTime": "2025-07-09T05:41:49.516Z",
+  "startTime": "2025-07-09T05:33:07.189Z",
+  "completionTime": "2025-07-09T05:58:46.292Z",
   "progress": 100,
   "metadata": {
-    "respondentName": "Jennifer Weinstein",
-    "respondentTitle": "Board Vice Chair",
+    "respondentName": "Dr. Ruth Shapiro",
+    "respondentTitle": "Secretary",
     "organizationName": "Beth Shalom Community Center",
     "organizationType": "small",
     "organizationSector": "Community Services",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
     "ipAddress": "192.168.1.1",
-    "sessionId": "session_1752038827469_3ec3lzbkt"
+    "sessionId": "session_1752039187189_3xksrefns"
   }
 }

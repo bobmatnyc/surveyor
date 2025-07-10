@@ -3,9 +3,12 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { SurveySchema, SurveyResponse, SurveyResult } from '@/lib/types';
 import { useAdminStore } from '@/lib/store';
-import { BarChart3, Users, ClipboardList, Download, Eye, RefreshCw } from 'lucide-react';
+import { BarChart3, Users, ClipboardList, Download, Eye, RefreshCw, Activity, AlertCircle } from 'lucide-react';
 
 export function AdminDashboard() {
   const {
@@ -101,7 +104,7 @@ export function AdminDashboard() {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
+        <header className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
             <p className="text-gray-600">Survey management and analytics</p>
@@ -111,58 +114,59 @@ export function AdminDashboard() {
             disabled={loading}
             variant="outline"
             className="flex items-center gap-2"
+            aria-label="Refresh dashboard data"
           >
-            <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} aria-hidden="true" />
             Refresh
           </Button>
-        </div>
+        </header>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card>
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8" aria-label="Dashboard Statistics">
+          <Card className="bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Surveys</CardTitle>
-              <ClipboardList className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-blue-900">Total Surveys</CardTitle>
+              <ClipboardList className="h-4 w-4 text-blue-600" aria-hidden="true" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.totalSurveys}</div>
-              <p className="text-xs text-muted-foreground">Active surveys</p>
+              <div className="text-2xl font-bold text-blue-900">{stats.totalSurveys}</div>
+              <p className="text-xs text-blue-700">Active surveys</p>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="bg-gradient-to-br from-green-50 to-green-100 border-green-200">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Responses</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-green-900">Total Responses</CardTitle>
+              <Users className="h-4 w-4 text-green-600" aria-hidden="true" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.totalResponses}</div>
-              <p className="text-xs text-muted-foreground">All survey responses</p>
+              <div className="text-2xl font-bold text-green-900">{stats.totalResponses}</div>
+              <p className="text-xs text-green-700">All survey responses</p>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Organizations</CardTitle>
-              <BarChart3 className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-purple-900">Organizations</CardTitle>
+              <BarChart3 className="h-4 w-4 text-purple-600" aria-hidden="true" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.totalOrganizations}</div>
-              <p className="text-xs text-muted-foreground">Unique organizations</p>
+              <div className="text-2xl font-bold text-purple-900">{stats.totalOrganizations}</div>
+              <p className="text-xs text-purple-700">Unique organizations</p>
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="bg-gradient-to-br from-orange-50 to-orange-100 border-orange-200">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Completion Rate</CardTitle>
-              <BarChart3 className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-orange-900">Completion Rate</CardTitle>
+              <Activity className="h-4 w-4 text-orange-600" aria-hidden="true" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{stats.completionRate.toFixed(1)}%</div>
-              <p className="text-xs text-muted-foreground">Response completion</p>
+              <div className="text-2xl font-bold text-orange-900">{stats.completionRate.toFixed(1)}%</div>
+              <p className="text-xs text-orange-700">Response completion</p>
             </CardContent>
           </Card>
-        </div>
+        </section>
 
         {/* Survey Selection */}
         <Card className="mb-8">
@@ -181,6 +185,16 @@ export function AdminDashboard() {
                       : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                   }`}
                   onClick={() => handleSurveySelect(survey.id)}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={selectedSurvey === survey.id}
+                  aria-label={`Select survey: ${survey.name}`}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleSurveySelect(survey.id);
+                    }
+                  }}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
@@ -193,11 +207,9 @@ export function AdminDashboard() {
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <div className={`px-2 py-1 rounded-full text-xs ${
-                        survey.isActive ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
-                      }`}>
+                      <Badge variant={survey.isActive ? 'default' : 'secondary'}>
                         {survey.isActive ? 'Active' : 'Inactive'}
-                      </div>
+                      </Badge>
                     </div>
                   </div>
                 </div>
@@ -229,7 +241,9 @@ export function AdminDashboard() {
                       </div>
                       <div className="text-right">
                         <div className="text-sm font-medium">
-                          {response.completionTime ? 'Completed' : 'In Progress'}
+                          <Badge variant={response.completionTime ? 'default' : 'secondary'}>
+                            {response.completionTime ? 'Completed' : 'In Progress'}
+                          </Badge>
                         </div>
                         <div className="text-xs text-gray-500">
                           {response.completionTime 
@@ -241,9 +255,12 @@ export function AdminDashboard() {
                     </div>
                   ))}
                   {responses.length === 0 && (
-                    <div className="text-center py-4 text-gray-500">
-                      No responses yet
-                    </div>
+                    <Alert>
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        No responses yet for this survey.
+                      </AlertDescription>
+                    </Alert>
                   )}
                 </div>
               </CardContent>
@@ -271,19 +288,22 @@ export function AdminDashboard() {
                         <div className="text-lg font-semibold text-blue-600">
                           {result.overallScore.toFixed(2)}
                         </div>
-                        <div 
-                          className="text-xs px-2 py-1 rounded-full text-white"
+                        <Badge 
+                          className="text-xs text-white"
                           style={{ backgroundColor: result.maturityLevel.color }}
                         >
                           {result.maturityLevel.name}
-                        </div>
+                        </Badge>
                       </div>
                     </div>
                   ))}
                   {results.length === 0 && (
-                    <div className="text-center py-4 text-gray-500">
-                      No results calculated yet
-                    </div>
+                    <Alert>
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        No results calculated yet. Results will appear after surveys are completed.
+                      </AlertDescription>
+                    </Alert>
                   )}
                 </div>
               </CardContent>
@@ -305,16 +325,18 @@ export function AdminDashboard() {
                 <Button
                   onClick={() => handleExport('json')}
                   className="flex items-center gap-2"
+                  aria-label="Export survey data as JSON file"
                 >
-                  <Download className="h-4 w-4" />
+                  <Download className="h-4 w-4" aria-hidden="true" />
                   Export JSON
                 </Button>
                 <Button
                   onClick={() => handleExport('csv')}
                   variant="outline"
                   className="flex items-center gap-2"
+                  aria-label="Export survey data as CSV file"
                 >
-                  <Download className="h-4 w-4" />
+                  <Download className="h-4 w-4" aria-hidden="true" />
                   Export CSV
                 </Button>
               </div>

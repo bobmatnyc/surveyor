@@ -1,19 +1,19 @@
 {
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_hillel_university",
-  "overallScore": 3.6820512820512823,
+  "overallScore": 3.6076923076923078,
   "domainScores": {
     "infrastructure": 4.461538461538462,
     "business_systems": 2.9999999999999996,
-    "data": 4,
+    "data": 3.461538461538462,
     "program_tech": 3,
-    "culture": 3.777777777777778
+    "culture": 4
   },
   "stakeholderContributions": {
     "ceo": {
       "infrastructure": 4,
       "business_systems": 3,
-      "data": 4,
+      "data": 3,
       "culture": 4
     },
     "tech_lead": {
@@ -24,30 +24,30 @@
       "program_tech": 3
     },
     "board": {
-      "culture": 3
+      "culture": 4
     }
   },
   "maturityLevel": {
-    "id": "thriving",
-    "name": "Thriving",
-    "description": "Advanced technology capabilities driving mission success",
-    "minScore": 3.61,
-    "maxScore": 5,
-    "color": "#059669",
+    "id": "building",
+    "name": "Building",
+    "description": "Foundational technology needs, requires significant capacity building",
+    "minScore": 1,
+    "maxScore": 2.3,
+    "color": "#dc2626",
     "recommendations": [
-      "Lead technology innovation in the sector",
-      "Share best practices with peer organizations",
-      "Explore emerging technologies like AI",
-      "Mentor other organizations in technology adoption"
+      "Focus on establishing basic technology infrastructure",
+      "Develop technology policies and procedures",
+      "Invest in staff technology training",
+      "Consider hiring technology consultant or part-time IT support"
     ]
   },
   "recommendations": [
-    "Lead technology innovation in the sector",
-    "Share best practices with peer organizations",
-    "Explore emerging technologies like AI",
-    "Mentor other organizations in technology adoption"
+    "Focus on establishing basic technology infrastructure",
+    "Develop technology policies and procedures",
+    "Invest in staff technology training",
+    "Consider hiring technology consultant or part-time IT support"
   ],
-  "completionDate": "2025-07-09T05:27:07.470Z",
+  "completionDate": "2025-07-09T05:33:07.189Z",
   "responseCount": 4,
   "stakeholderBreakdown": {
     "ceo": 1,

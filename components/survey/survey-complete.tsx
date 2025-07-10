@@ -3,8 +3,11 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Separator } from '@/components/ui/separator';
 import { SurveySchema, SurveyResult } from '@/lib/types';
-import { CheckCircle, RotateCcw, Download, BarChart3 } from 'lucide-react';
+import { CheckCircle, RotateCcw, Download, BarChart3, Award, AlertCircle } from 'lucide-react';
 import { ResultsVisualization } from './results-visualization';
 
 interface SurveyCompleteProps {
@@ -77,10 +80,10 @@ export function SurveyComplete({ survey, organizationId, onStartOver }: SurveyCo
         ) : results ? (
           <div className="space-y-6">
             {/* Results Summary */}
-            <Card>
+            <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <BarChart3 className="h-5 w-5" />
+                <CardTitle className="flex items-center gap-2 text-blue-900">
+                  <Award className="h-5 w-5" />
                   Your Assessment Results
                 </CardTitle>
                 <CardDescription>
@@ -89,22 +92,24 @@ export function SurveyComplete({ survey, organizationId, onStartOver }: SurveyCo
               </CardHeader>
               <CardContent>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="font-semibold text-gray-900 mb-2">Overall Score</h3>
-                    <div className="text-3xl font-bold text-blue-600">
+                    <div className="text-4xl font-bold text-blue-600 mb-2">
                       {results.overallScore.toFixed(2)}
                     </div>
                     <div className="text-sm text-gray-600">out of 5.0</div>
                   </div>
-                  <div>
+                  <div className="text-center md:text-left">
                     <h3 className="font-semibold text-gray-900 mb-2">Maturity Level</h3>
-                    <div
-                      className="inline-block px-3 py-1 rounded-full text-white font-medium"
-                      style={{ backgroundColor: results.maturityLevel.color }}
-                    >
-                      {results.maturityLevel.name}
+                    <div className="mb-2">
+                      <Badge 
+                        className="text-white text-sm px-4 py-2"
+                        style={{ backgroundColor: results.maturityLevel.color }}
+                      >
+                        {results.maturityLevel.name}
+                      </Badge>
                     </div>
-                    <div className="text-sm text-gray-600 mt-1">
+                    <div className="text-sm text-gray-600">
                       {results.maturityLevel.description}
                     </div>
                   </div>
@@ -113,9 +118,9 @@ export function SurveyComplete({ survey, organizationId, onStartOver }: SurveyCo
             </Card>
 
             {/* Domain Scores */}
-            <Card>
+            <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
               <CardHeader>
-                <CardTitle>Domain Scores</CardTitle>
+                <CardTitle className="text-green-900">Domain Scores</CardTitle>
                 <CardDescription>
                   Your performance across different technology domains.
                 </CardDescription>
@@ -127,17 +132,17 @@ export function SurveyComplete({ survey, organizationId, onStartOver }: SurveyCo
                     if (!domain) return null;
                     
                     return (
-                      <div key={domainId} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div key={domainId} className="flex items-center justify-between p-4 bg-white rounded-lg border border-green-200 shadow-sm">
                         <div className="flex items-center gap-3">
                           <div
-                            className="w-4 h-4 rounded-full"
+                            className="w-4 h-4 rounded-full ring-2 ring-white shadow-sm"
                             style={{ backgroundColor: domain.color }}
                           />
-                          <span className="font-medium">{domain.name}</span>
+                          <span className="font-medium text-gray-900">{domain.name}</span>
                         </div>
-                        <span className="text-lg font-semibold text-gray-900">
+                        <Badge variant="secondary" className="text-lg font-semibold">
                           {score.toFixed(2)}
-                        </span>
+                        </Badge>
                       </div>
                     );
                   })}
@@ -146,22 +151,22 @@ export function SurveyComplete({ survey, organizationId, onStartOver }: SurveyCo
             </Card>
 
             {/* Recommendations */}
-            <Card>
+            <Card className="bg-gradient-to-br from-purple-50 to-violet-50 border-purple-200">
               <CardHeader>
-                <CardTitle>Recommendations</CardTitle>
+                <CardTitle className="text-purple-900">Recommendations</CardTitle>
                 <CardDescription>
                   Based on your assessment, here are some suggested next steps.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2">
+                <div className="space-y-3">
                   {results.recommendations.map((recommendation, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <div key={index} className="flex items-start gap-3 p-3 bg-white rounded-lg border border-purple-200 shadow-sm">
+                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700">{recommendation}</span>
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </CardContent>
             </Card>
 
@@ -169,15 +174,12 @@ export function SurveyComplete({ survey, organizationId, onStartOver }: SurveyCo
             <ResultsVisualization results={results} survey={survey} />
           </div>
         ) : (
-          <Card>
-            <CardContent className="pt-6">
-              <div className="text-center py-8">
-                <p className="text-gray-600 mb-4">
-                  Results are being processed. Please check back later or contact your administrator.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+          <Alert>
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>
+              Results are being processed. Please check back later or contact your administrator.
+            </AlertDescription>
+          </Alert>
         )}
 
         {/* Actions */}

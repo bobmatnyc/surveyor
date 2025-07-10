@@ -1,0 +1,771 @@
+{
+  "timestamp": "2025-07-09T14:25:59.246Z",
+  "url": "http://localhost:3000",
+  "testResults": [
+    {
+      "phase": "A",
+      "testType": "HTTP Status",
+      "status": "PASS",
+      "message": "HTTP 200 - Success",
+      "details": {
+        "status": 200,
+        "url": "http://localhost:3000"
+      },
+      "timestamp": "2025-07-09T14:25:48.922Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Response Time",
+      "status": "PASS",
+      "message": "Response time: 18ms",
+      "details": {
+        "responseTime": 18
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Content Type",
+      "status": "PASS",
+      "message": "Valid HTML content type: text/html",
+      "details": {
+        "contentType": "text/html"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Content Length",
+      "status": "PASS",
+      "message": "Content length: 753 bytes",
+      "details": {
+        "contentLength": 753
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML Validation",
+      "status": "PASS",
+      "message": "HTML is valid (1 warnings)",
+      "details": {
+        "isValid": true,
+        "errors": [],
+        "warnings": [
+          {
+            "line": 1,
+            "column": 1,
+            "message": "Potential unclosed tags detected",
+            "type": "warning"
+          }
+        ]
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML DOCTYPE",
+      "status": "PASS",
+      "message": "HTML5 DOCTYPE declaration found",
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML Lang Attribute",
+      "status": "PASS",
+      "message": "HTML lang attribute found",
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Meta Charset",
+      "status": "PASS",
+      "message": "Meta charset declaration found",
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML Title",
+      "status": "PASS",
+      "message": "Valid page title found: \"Claude PM Portfolio Manager\"",
+      "details": {
+        "title": "Claude PM Portfolio Manager"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Semantic HTML",
+      "status": "FAIL",
+      "message": "No semantic HTML5 elements found",
+      "details": {
+        "semanticElements": []
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Heading Hierarchy",
+      "status": "WARNING",
+      "message": "No heading elements found",
+      "details": {
+        "headingLevels": []
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Image Alt Attributes",
+      "status": "PASS",
+      "message": "No images found",
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Form Input Labels",
+      "status": "PASS",
+      "message": "No form inputs found",
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Security Headers",
+      "status": "FAIL",
+      "message": "Poor security score: 0%",
+      "details": {
+        "headers": {
+          "content-security-policy": false,
+          "x-frame-options": false,
+          "x-content-type-options": false,
+          "referrer-policy": false,
+          "permissions-policy": false
+        },
+        "score": 0,
+        "recommendations": [
+          "Implement Content Security Policy (CSP) to prevent XSS attacks",
+          "Add X-Frame-Options header to prevent clickjacking attacks",
+          "Add X-Content-Type-Options: nosniff to prevent MIME-type sniffing",
+          "Implement Referrer Policy to control referrer information",
+          "Consider implementing Permissions Policy for better feature control",
+          "Add HTTP Strict Transport Security (HSTS) header for HTTPS enforcement"
+        ]
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Content Security Policy",
+      "status": "FAIL",
+      "message": "Content Security Policy header missing or improperly configured",
+      "details": {
+        "csp": "Not present"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "X-Frame-Options",
+      "status": "FAIL",
+      "message": "X-Frame-Options header missing or improperly configured",
+      "details": {
+        "xFrameOptions": "Not present"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "X-Content-Type-Options",
+      "status": "FAIL",
+      "message": "X-Content-Type-Options header missing or not set to nosniff",
+      "details": {
+        "xContentTypeOptions": "Not present"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Referrer Policy",
+      "status": "WARNING",
+      "message": "Referrer Policy header missing or not optimally configured",
+      "details": {
+        "referrerPolicy": "Not present"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Permissions Policy",
+      "status": "WARNING",
+      "message": "Permissions Policy header missing",
+      "details": {
+        "permissionsPolicy": "Not present"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTTPS",
+      "status": "WARNING",
+      "message": "Unable to verify HTTPS usage",
+      "details": {
+        "protocol": "unknown"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HSTS",
+      "status": "WARNING",
+      "message": "HTTP Strict Transport Security header missing",
+      "details": {
+        "hsts": "Not present"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Server Header",
+      "status": "PASS",
+      "message": "Server header properly hidden",
+      "details": {
+        "server": "Hidden"
+      },
+      "timestamp": "2025-07-09T14:25:48.923Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Page Navigation",
+      "status": "PASS",
+      "message": "Successfully navigated to http://localhost:3000",
+      "details": {
+        "url": "http://localhost:3000",
+        "status": 200
+      },
+      "timestamp": "2025-07-09T14:25:56.485Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Page Load",
+      "status": "PASS",
+      "message": "Page loaded successfully",
+      "details": {
+        "url": "http://localhost:3000"
+      },
+      "timestamp": "2025-07-09T14:25:56.486Z"
+    },
+    {
+      "phase": "B",
+      "testType": "HTML Structure",
+      "status": "PASS",
+      "message": "Valid HTML DOCTYPE found",
+      "timestamp": "2025-07-09T14:25:56.490Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Page Title",
+      "status": "PASS",
+      "message": "Page title: \"Claude PM Portfolio Manager\"",
+      "details": {
+        "title": "Claude PM Portfolio Manager"
+      },
+      "timestamp": "2025-07-09T14:25:56.491Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Meta Viewport",
+      "status": "PASS",
+      "message": "Meta viewport tag found",
+      "timestamp": "2025-07-09T14:25:56.492Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Main Content",
+      "status": "PASS",
+      "message": "Main content area found",
+      "timestamp": "2025-07-09T14:25:56.492Z"
+    },
+    {
+      "phase": "B",
+      "testType": "JavaScript Errors",
+      "status": "PASS",
+      "message": "No JavaScript errors detected",
+      "timestamp": "2025-07-09T14:25:58.495Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Interactive Elements",
+      "status": "PASS",
+      "message": "Found 6 interactive elements",
+      "details": {
+        "count": 6
+      },
+      "timestamp": "2025-07-09T14:25:58.527Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Navigation",
+      "status": "PASS",
+      "message": "Found 1 navigation elements",
+      "details": {
+        "count": 1
+      },
+      "timestamp": "2025-07-09T14:25:58.537Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Accessibility Compliance",
+      "status": "WARNING",
+      "message": "1 accessibility violations found: 0 critical, 0 serious, 1 moderate, 0 minor",
+      "details": {
+        "violations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "description": "Ensure the order of headings is semantically correct",
+            "nodes": [
+              {
+                "target": [
+                  ".mb-4.justify-between.flex > h3"
+                ],
+                "html": "<h3 class=\"text-lg leading-6 font-medium text-gray-900\">API Key Management</h3>",
+                "failureSummary": "Fix any of the following:\n  Heading order invalid"
+              }
+            ]
+          }
+        ],
+        "passes": 21,
+        "incomplete": 1,
+        "inapplicable": 68
+      },
+      "timestamp": "2025-07-09T14:25:58.878Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Keyboard Navigation",
+      "status": "PASS",
+      "message": "Found 6 focusable elements",
+      "details": {
+        "focusableElements": 6
+      },
+      "timestamp": "2025-07-09T14:25:58.879Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Focus Visibility",
+      "status": "PASS",
+      "message": "Focus styles detected",
+      "timestamp": "2025-07-09T14:25:58.879Z"
+    },
+    {
+      "phase": "B",
+      "testType": "ARIA Labels",
+      "status": "FAIL",
+      "message": "Poor ARIA usage: 0% of interactive elements have ARIA attributes",
+      "details": {
+        "totalAriaElements": 0,
+        "totalInteractive": 6,
+        "interactiveWithAria": 0
+      },
+      "timestamp": "2025-07-09T14:25:58.880Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Heading Structure - H1",
+      "status": "WARNING",
+      "message": "Improper H1 usage: 2 H1 elements found",
+      "details": {
+        "h1Count": 2
+      },
+      "timestamp": "2025-07-09T14:25:58.881Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Heading Structure - Hierarchy",
+      "status": "FAIL",
+      "message": "Improper heading hierarchy detected",
+      "details": {
+        "headings": [
+          {
+            "level": 1,
+            "text": "Claude PM Portfolio",
+            "hasContent": true
+          },
+          {
+            "level": 1,
+            "text": "Claude PM Dashboard",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "API Key Management",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Welcome to Claude PM Portfolio Manager",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Recent AI Trackdown Tickets",
+            "hasContent": true
+          }
+        ],
+        "h1Count": 2,
+        "hasProperOrder": false,
+        "totalHeadings": 5
+      },
+      "timestamp": "2025-07-09T14:25:58.881Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Color Contrast",
+      "status": "PASS",
+      "message": "Color contrast analysis completed (26 elements checked)",
+      "details": {
+        "testedElements": 26
+      },
+      "timestamp": "2025-07-09T14:25:58.881Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Image Alternatives",
+      "status": "PASS",
+      "message": "No images found",
+      "details": {
+        "totalImages": 0,
+        "imagesWithAlt": 0,
+        "imagesWithEmptyAlt": 0,
+        "imagesWithMeaningfulAlt": 0
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Form Labels",
+      "status": "PASS",
+      "message": "No form inputs found",
+      "details": {
+        "totalInputs": 0,
+        "inputsWithLabels": 0
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Performance Score",
+      "status": "WARNING",
+      "message": "Good performance score: 85%",
+      "details": {
+        "score": 0.85
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "First Contentful Paint",
+      "status": "PASS",
+      "message": "Good FCP: 1.5s",
+      "details": {
+        "value": 1.5,
+        "displayValue": "1.5s"
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Largest Contentful Paint",
+      "status": "WARNING",
+      "message": "Moderate LCP: 2.8s",
+      "details": {
+        "value": 2.8,
+        "displayValue": "2.8s"
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Cumulative Layout Shift",
+      "status": "PASS",
+      "message": "Good CLS: 0.05",
+      "details": {
+        "value": 0.05,
+        "displayValue": "0.05"
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Total Blocking Time",
+      "status": "PASS",
+      "message": "Good TBT: 180ms",
+      "details": {
+        "value": 180,
+        "displayValue": "180ms"
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Lighthouse Accessibility",
+      "status": "WARNING",
+      "message": "Good accessibility score: 92%",
+      "details": {
+        "score": 0.92
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Best Practices",
+      "status": "WARNING",
+      "message": "Good best practices score: 88%",
+      "details": {
+        "score": 0.88
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "SEO Score",
+      "status": "PASS",
+      "message": "Excellent SEO score: 90%",
+      "details": {
+        "score": 0.9
+      },
+      "timestamp": "2025-07-09T14:25:58.882Z"
+    },
+    {
+      "phase": "B",
+      "testType": "DOM Complexity",
+      "status": "PASS",
+      "message": "Good DOM complexity: 197 elements",
+      "details": {
+        "domElements": 197,
+        "domDepth": 14,
+        "scripts": 5,
+        "stylesheets": 0,
+        "images": 0,
+        "performance": {
+          "domContentLoaded": 87,
+          "loadComplete": 88
+        }
+      },
+      "timestamp": "2025-07-09T14:25:58.883Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Resource Count",
+      "status": "PASS",
+      "message": "Good resource count: 5 resources",
+      "details": {
+        "scripts": 5,
+        "stylesheets": 0,
+        "images": 0,
+        "total": 5
+      },
+      "timestamp": "2025-07-09T14:25:58.883Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Screenshot Format",
+      "status": "PASS",
+      "message": "Valid PNG screenshot (1920x1515)",
+      "details": {
+        "path": "qa-agent/screenshots/qa-test-1752071158883.png",
+        "width": 1920,
+        "height": 1515,
+        "size": 183296
+      },
+      "timestamp": "2025-07-09T14:25:59.057Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Screenshot Dimensions",
+      "status": "PASS",
+      "message": "Good screenshot dimensions: 1920x1515",
+      "details": {
+        "width": 1920,
+        "height": 1515
+      },
+      "timestamp": "2025-07-09T14:25:59.057Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Visual Regression",
+      "status": "FAIL",
+      "message": "Visual regression test failed: Visual comparison failed: Image dimensions don't match: baseline(1920x1136) vs current(1920x1515)",
+      "details": {
+        "error": "Visual comparison failed: Image dimensions don't match: baseline(1920x1136) vs current(1920x1515)"
+      },
+      "timestamp": "2025-07-09T14:25:59.154Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Visual Content Analysis",
+      "status": "FAIL",
+      "message": "Screenshot appears to be blank or mostly white",
+      "details": {
+        "isBlank": true,
+        "whitePercentage": 96.8271795929593,
+        "blackPercentage": 0,
+        "coloredPercentage": 3.1728204070407036,
+        "hasGoodContrast": false,
+        "contrastRatio": 3.1728204070407036
+      },
+      "timestamp": "2025-07-09T14:25:59.219Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Visual Contrast",
+      "status": "WARNING",
+      "message": "Low visual contrast detected",
+      "details": {
+        "contrast": 3.1728204070407036
+      },
+      "timestamp": "2025-07-09T14:25:59.219Z"
+    }
+  ],
+  "httpTest": {
+    "url": "http://localhost:3000",
+    "status": 200,
+    "responseTime": 18,
+    "contentType": "text/html",
+    "contentLength": 753,
+    "headers": {
+      "cache-control": "no-cache",
+      "connection": "keep-alive",
+      "content-length": "753",
+      "content-type": "text/html",
+      "date": "Wed, 09 Jul 2025 14:25:48 GMT",
+      "etag": "W/\"2f1-A0Chx2vbpDWvpjSPWhZq7qVvXB0\"",
+      "keep-alive": "timeout=5",
+      "vary": "Origin"
+    },
+    "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <script type=\"module\">import { injectIntoGlobalHook } from \"/@react-refresh\";\ninjectIntoGlobalHook(window);\nwindow.$RefreshReg$ = () => {};\nwindow.$RefreshSig$ = () => (type) => type;</script>\n\n    <script type=\"module\" src=\"/@vite/client\"></script>\n\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>Claude PM Portfolio Manager</title>\n    <meta name=\"description\" content=\"Claude PM Portfolio Management Dashboard - Monitor and manage Claude PM projects\" />\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"/src/main.tsx\"></script>\n  </body>\n</html>",
+    "errors": []
+  },
+  "accessibilityTest": {
+    "violations": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "description": "Ensure the order of headings is semantically correct",
+        "nodes": [
+          {
+            "target": [
+              ".mb-4.justify-between.flex > h3"
+            ],
+            "html": "<h3 class=\"text-lg leading-6 font-medium text-gray-900\">API Key Management</h3>",
+            "failureSummary": "Fix any of the following:\n  Heading order invalid"
+          }
+        ]
+      }
+    ],
+    "passes": 21,
+    "incomplete": 1,
+    "inapplicable": 68
+  },
+  "performanceTest": {
+    "categories": {
+      "performance": {
+        "score": 0.85,
+        "title": "Performance"
+      },
+      "accessibility": {
+        "score": 0.92,
+        "title": "Accessibility"
+      },
+      "best-practices": {
+        "score": 0.88,
+        "title": "Best Practices"
+      },
+      "seo": {
+        "score": 0.9,
+        "title": "SEO"
+      }
+    },
+    "audits": {
+      "first-contentful-paint": {
+        "score": 0.8,
+        "displayValue": "1.5s",
+        "title": "First Contentful Paint",
+        "description": "Time to first content"
+      },
+      "largest-contentful-paint": {
+        "score": 0.7,
+        "displayValue": "2.8s",
+        "title": "Largest Contentful Paint",
+        "description": "Time to largest content"
+      },
+      "speed-index": {
+        "score": 0.85,
+        "displayValue": "2.1s",
+        "title": "Speed Index",
+        "description": "Speed of content loading"
+      },
+      "cumulative-layout-shift": {
+        "score": 0.95,
+        "displayValue": "0.05",
+        "title": "Cumulative Layout Shift",
+        "description": "Layout stability"
+      },
+      "total-blocking-time": {
+        "score": 0.75,
+        "displayValue": "180ms",
+        "title": "Total Blocking Time",
+        "description": "Main thread blocking time"
+      },
+      "interactive": {
+        "score": 0.8,
+        "displayValue": "3.2s",
+        "title": "Time to Interactive",
+        "description": "Time to full interactivity"
+      }
+    },
+    "timing": {
+      "total": 5000
+    }
+  },
+  "visualTest": {
+    "baseline": "qa-agent/screenshots/baseline/main-page.png",
+    "current": "qa-agent/screenshots/qa-test-1752071158883.png",
+    "diff": "qa-agent/screenshots/main-page-diff.png",
+    "pixelDifference": 0,
+    "threshold": 0.1,
+    "passed": false
+  },
+  "securityTest": {
+    "headers": {
+      "content-security-policy": false,
+      "x-frame-options": false,
+      "x-content-type-options": false,
+      "referrer-policy": false,
+      "permissions-policy": false
+    },
+    "score": 0,
+    "recommendations": [
+      "Implement Content Security Policy (CSP) to prevent XSS attacks",
+      "Add X-Frame-Options header to prevent clickjacking attacks",
+      "Add X-Content-Type-Options: nosniff to prevent MIME-type sniffing",
+      "Implement Referrer Policy to control referrer information",
+      "Consider implementing Permissions Policy for better feature control",
+      "Add HTTP Strict Transport Security (HSTS) header for HTTPS enforcement"
+    ]
+  },
+  "htmlValidation": {
+    "isValid": true,
+    "errors": [],
+    "warnings": [
+      {
+        "line": 1,
+        "column": 1,
+        "message": "Potential unclosed tags detected",
+        "type": "warning"
+      }
+    ]
+  },
+  "overallScore": 71,
+  "recommendation": "REJECT",
+  "summary": "Frontend QA analysis completed for http://localhost:3000 with an overall score of 71% (61.8% pass rate). The application has critical issues that prevent approval. Key issues identified: Semantic HTML, Security Headers, Content Security Policy. Performance score: 85%. 1 accessibility violations detected. "
+}

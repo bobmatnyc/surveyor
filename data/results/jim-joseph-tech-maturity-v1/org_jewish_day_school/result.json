@@ -1,13 +1,13 @@
 {
   "surveyId": "jim-joseph-tech-maturity-v1",
   "organizationId": "org_jewish_day_school",
-  "overallScore": 4,
+  "overallScore": 4.082051282051283,
   "domainScores": {
-    "infrastructure": 4,
+    "infrastructure": 4.461538461538462,
     "business_systems": 4,
     "data": 4,
     "program_tech": 4,
-    "culture": 4
+    "culture": 3.777777777777778
   },
   "stakeholderContributions": {
     "ceo": {
@@ -17,14 +17,14 @@
       "culture": 4
     },
     "tech_lead": {
-      "infrastructure": 4,
+      "infrastructure": 5,
       "data": 4
     },
     "staff": {
       "program_tech": 4
     },
     "board": {
-      "culture": 4
+      "culture": 3
     }
   },
   "maturityLevel": {
@@ -47,7 +47,7 @@
     "Explore emerging technologies like AI",
     "Mentor other organizations in technology adoption"
   ],
-  "completionDate": "2025-07-09T05:27:07.470Z",
+  "completionDate": "2025-07-09T05:33:07.189Z",
   "responseCount": 4,
   "stakeholderBreakdown": {
     "ceo": 1,

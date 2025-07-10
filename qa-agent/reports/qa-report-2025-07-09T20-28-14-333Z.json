@@ -1,0 +1,893 @@
+{
+  "timestamp": "2025-07-09T20:28:14.332Z",
+  "url": "http://localhost:3002/survey",
+  "testResults": [
+    {
+      "phase": "A",
+      "testType": "HTTP Status",
+      "status": "PASS",
+      "message": "HTTP 200 - Success",
+      "details": {
+        "status": 200,
+        "url": "http://localhost:3002"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Response Time",
+      "status": "PASS",
+      "message": "Response time: 29ms",
+      "details": {
+        "responseTime": 29
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Content Type",
+      "status": "PASS",
+      "message": "Valid HTML content type: text/html; charset=utf-8",
+      "details": {
+        "contentType": "text/html; charset=utf-8"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Content Length",
+      "status": "WARNING",
+      "message": "Empty or unknown content length",
+      "details": {
+        "contentLength": 0
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML Validation",
+      "status": "FAIL",
+      "message": "HTML validation failed: 1 errors found",
+      "details": {
+        "isValid": false,
+        "errors": [
+          {
+            "line": 1,
+            "column": 1,
+            "message": "Missing <body> tag",
+            "type": "error"
+          }
+        ],
+        "warnings": [
+          {
+            "line": 1,
+            "column": 1,
+            "message": "Potential unclosed tags detected",
+            "type": "warning"
+          }
+        ]
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML DOCTYPE",
+      "status": "PASS",
+      "message": "HTML5 DOCTYPE declaration found",
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML Lang Attribute",
+      "status": "PASS",
+      "message": "HTML lang attribute found",
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Meta Charset",
+      "status": "WARNING",
+      "message": "Meta charset declaration missing",
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML Title",
+      "status": "PASS",
+      "message": "Valid page title found: \"Surveyor - Multi-Stakeholder Survey Platform\"",
+      "details": {
+        "title": "Surveyor - Multi-Stakeholder Survey Platform"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Semantic HTML",
+      "status": "PASS",
+      "message": "Good use of semantic elements: header, main, section",
+      "details": {
+        "semanticElements": [
+          "header",
+          "main",
+          "section"
+        ]
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Heading Hierarchy",
+      "status": "PASS",
+      "message": "Proper heading hierarchy found",
+      "details": {
+        "headingLevels": [
+          1,
+          2,
+          2,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          2
+        ]
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Image Alt Attributes",
+      "status": "PASS",
+      "message": "No images found",
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Form Input Labels",
+      "status": "PASS",
+      "message": "No form inputs found",
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Security Headers",
+      "status": "PASS",
+      "message": "Excellent security score: 100%",
+      "details": {
+        "headers": {
+          "content-security-policy": true,
+          "x-frame-options": true,
+          "x-content-type-options": true,
+          "referrer-policy": true,
+          "permissions-policy": true
+        },
+        "score": 100,
+        "recommendations": []
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Content Security Policy",
+      "status": "PASS",
+      "message": "Content Security Policy header present and configured",
+      "details": {
+        "csp": "default-src 'self'; script-src 'self' 'nonce-MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm' 'unsafe-eval' 'strict-dynamic'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' ws: wss:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; media-src 'self'; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "X-Frame-Options",
+      "status": "PASS",
+      "message": "X-Frame-Options header properly set: SAMEORIGIN",
+      "details": {
+        "xFrameOptions": "SAMEORIGIN"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "X-Content-Type-Options",
+      "status": "PASS",
+      "message": "X-Content-Type-Options header properly set to nosniff",
+      "details": {
+        "xContentTypeOptions": "nosniff"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Referrer Policy",
+      "status": "PASS",
+      "message": "Referrer Policy header properly configured: strict-origin-when-cross-origin",
+      "details": {
+        "referrerPolicy": "strict-origin-when-cross-origin"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Permissions Policy",
+      "status": "PASS",
+      "message": "Permissions Policy header present",
+      "details": {
+        "permissionsPolicy": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), autoplay=(), fullscreen=(self)"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTTPS",
+      "status": "WARNING",
+      "message": "Unable to verify HTTPS usage",
+      "details": {
+        "protocol": "unknown"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HSTS",
+      "status": "PASS",
+      "message": "HTTP Strict Transport Security header present",
+      "details": {
+        "hsts": "max-age=31536000; includeSubDomains; preload"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Server Header",
+      "status": "PASS",
+      "message": "Server header properly hidden",
+      "details": {
+        "server": "Hidden"
+      },
+      "timestamp": "2025-07-09T20:28:00.857Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Browser Launch",
+      "status": "PASS",
+      "message": "msedge browser launched successfully in visual mode",
+      "details": {
+        "browser": "msedge",
+        "visualMode": true,
+        "viewport": {
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "timestamp": "2025-07-09T20:28:01.869Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Page Navigation",
+      "status": "PASS",
+      "message": "Successfully navigated to http://localhost:3002/survey",
+      "details": {
+        "url": "http://localhost:3002/survey",
+        "status": 200,
+        "browser": "msedge"
+      },
+      "timestamp": "2025-07-09T20:28:03.185Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Visual Verification",
+      "status": "PASS",
+      "message": "Page displayed visually for 3000ms verification",
+      "details": {
+        "url": "http://localhost:3002/survey",
+        "verificationTime": 3000,
+        "visualMode": true
+      },
+      "timestamp": "2025-07-09T20:28:06.188Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Page Load",
+      "status": "PASS",
+      "message": "Page loaded successfully",
+      "details": {
+        "url": "http://localhost:3002/survey",
+        "browser": "msedge"
+      },
+      "timestamp": "2025-07-09T20:28:06.188Z"
+    },
+    {
+      "phase": "B",
+      "testType": "HTML Structure",
+      "status": "PASS",
+      "message": "Valid HTML DOCTYPE found",
+      "timestamp": "2025-07-09T20:28:06.190Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Page Title",
+      "status": "PASS",
+      "message": "Page title: \"Surveyor - Multi-Stakeholder Survey Platform\"",
+      "details": {
+        "title": "Surveyor - Multi-Stakeholder Survey Platform"
+      },
+      "timestamp": "2025-07-09T20:28:06.191Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Meta Viewport",
+      "status": "PASS",
+      "message": "Meta viewport tag found",
+      "timestamp": "2025-07-09T20:28:06.191Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Main Content",
+      "status": "PASS",
+      "message": "Main content area found",
+      "timestamp": "2025-07-09T20:28:06.191Z"
+    },
+    {
+      "phase": "B",
+      "testType": "JavaScript Errors",
+      "status": "PASS",
+      "message": "No JavaScript errors detected",
+      "timestamp": "2025-07-09T20:28:08.192Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Interactive Elements",
+      "status": "PASS",
+      "message": "Found 2 interactive elements",
+      "details": {
+        "count": 2,
+        "browser": "msedge"
+      },
+      "timestamp": "2025-07-09T20:28:08.203Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Visual Interactive Elements",
+      "status": "PASS",
+      "message": "Visually highlighted 2 interactive elements for verification",
+      "details": {
+        "count": 2,
+        "highlightDuration": 3000,
+        "visualMode": true
+      },
+      "timestamp": "2025-07-09T20:28:11.209Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Navigation",
+      "status": "WARNING",
+      "message": "No navigation elements found",
+      "details": {
+        "browser": "msedge"
+      },
+      "timestamp": "2025-07-09T20:28:11.219Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Accessibility Compliance",
+      "status": "FAIL",
+      "message": "2 accessibility violations found: 0 critical, 1 serious, 1 moderate, 0 minor",
+      "details": {
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "nodes": [
+              {
+                "target": [
+                  ".gap-1"
+                ],
+                "html": "<span class=\"flex items-center gap-1\">",
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #6b7280, background color: #eff6ff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+              },
+              {
+                "target": [
+                  "span:nth-child(2)"
+                ],
+                "html": "<span>8 questions</span>",
+                "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #6b7280, background color: #eff6ff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+              }
+            ]
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "description": "Ensure the order of headings is semantically correct",
+            "nodes": [
+              {
+                "target": [
+                  ".text-2xl"
+                ],
+                "html": "<h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">",
+                "failureSummary": "Fix any of the following:\n  Heading order invalid"
+              }
+            ]
+          }
+        ],
+        "passes": 37,
+        "incomplete": 1,
+        "inapplicable": 52
+      },
+      "timestamp": "2025-07-09T20:28:11.702Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Keyboard Navigation",
+      "status": "PASS",
+      "message": "Found 3 focusable elements",
+      "details": {
+        "focusableElements": 3
+      },
+      "timestamp": "2025-07-09T20:28:11.703Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Focus Visibility",
+      "status": "PASS",
+      "message": "Focus styles detected",
+      "timestamp": "2025-07-09T20:28:11.705Z"
+    },
+    {
+      "phase": "B",
+      "testType": "ARIA Labels",
+      "status": "FAIL",
+      "message": "Poor ARIA usage: 25% of interactive elements have ARIA attributes",
+      "details": {
+        "totalAriaElements": 3,
+        "totalInteractive": 4,
+        "interactiveWithAria": 1
+      },
+      "timestamp": "2025-07-09T20:28:11.706Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Heading Structure - H1",
+      "status": "WARNING",
+      "message": "Improper H1 usage: 2 H1 elements found",
+      "details": {
+        "h1Count": 2
+      },
+      "timestamp": "2025-07-09T20:28:11.707Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Heading Structure - Hierarchy",
+      "status": "FAIL",
+      "message": "Improper heading hierarchy detected",
+      "details": {
+        "headings": [
+          {
+            "level": 1,
+            "text": "Surveyor - Multi-Stakeholder Survey Platform",
+            "hasContent": true
+          },
+          {
+            "level": 1,
+            "text": "Begin Your Survey",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Survey Selection",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Technology Maturity Assessment",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Survey Preview",
+            "hasContent": true
+          },
+          {
+            "level": 4,
+            "text": "Stakeholder Types",
+            "hasContent": true
+          },
+          {
+            "level": 4,
+            "text": "Assessment Domains",
+            "hasContent": true
+          }
+        ],
+        "h1Count": 2,
+        "hasProperOrder": false,
+        "totalHeadings": 7
+      },
+      "timestamp": "2025-07-09T20:28:11.707Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Color Contrast",
+      "status": "PASS",
+      "message": "Color contrast analysis completed (14 elements checked)",
+      "details": {
+        "testedElements": 14
+      },
+      "timestamp": "2025-07-09T20:28:11.707Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Image Alternatives",
+      "status": "PASS",
+      "message": "No images found",
+      "details": {
+        "totalImages": 0,
+        "imagesWithAlt": 0,
+        "imagesWithEmptyAlt": 0,
+        "imagesWithMeaningfulAlt": 0
+      },
+      "timestamp": "2025-07-09T20:28:11.707Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Form Labels",
+      "status": "PASS",
+      "message": "All 2 form inputs have labels",
+      "details": {
+        "totalInputs": 2,
+        "inputsWithLabels": 2
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Performance Score",
+      "status": "WARNING",
+      "message": "Good performance score: 85%",
+      "details": {
+        "score": 0.85
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "First Contentful Paint",
+      "status": "PASS",
+      "message": "Good FCP: 1.5s",
+      "details": {
+        "value": 1.5,
+        "displayValue": "1.5s"
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Largest Contentful Paint",
+      "status": "WARNING",
+      "message": "Moderate LCP: 2.8s",
+      "details": {
+        "value": 2.8,
+        "displayValue": "2.8s"
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Cumulative Layout Shift",
+      "status": "PASS",
+      "message": "Good CLS: 0.05",
+      "details": {
+        "value": 0.05,
+        "displayValue": "0.05"
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Total Blocking Time",
+      "status": "PASS",
+      "message": "Good TBT: 180ms",
+      "details": {
+        "value": 180,
+        "displayValue": "180ms"
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Lighthouse Accessibility",
+      "status": "WARNING",
+      "message": "Good accessibility score: 92%",
+      "details": {
+        "score": 0.92
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Best Practices",
+      "status": "WARNING",
+      "message": "Good best practices score: 88%",
+      "details": {
+        "score": 0.88
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "SEO Score",
+      "status": "PASS",
+      "message": "Excellent SEO score: 90%",
+      "details": {
+        "score": 0.9
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "DOM Complexity",
+      "status": "PASS",
+      "message": "Good DOM complexity: 120 elements",
+      "details": {
+        "domElements": 120,
+        "domDepth": 16,
+        "scripts": 13,
+        "stylesheets": 1,
+        "images": 0,
+        "performance": {
+          "domContentLoaded": 46,
+          "loadComplete": 244
+        }
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Resource Count",
+      "status": "PASS",
+      "message": "Good resource count: 14 resources",
+      "details": {
+        "scripts": 13,
+        "stylesheets": 1,
+        "images": 0,
+        "total": 14
+      },
+      "timestamp": "2025-07-09T20:28:11.708Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Screenshot Format",
+      "status": "PASS",
+      "message": "Valid PNG screenshot (1920x1080)",
+      "details": {
+        "path": "qa-agent/screenshots/qa-test-1752092891709.png",
+        "width": 1920,
+        "height": 1080,
+        "size": 141148
+      },
+      "timestamp": "2025-07-09T20:28:11.807Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Screenshot Dimensions",
+      "status": "PASS",
+      "message": "Good screenshot dimensions: 1920x1080",
+      "details": {
+        "width": 1920,
+        "height": 1080
+      },
+      "timestamp": "2025-07-09T20:28:11.807Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Visual Regression",
+      "status": "FAIL",
+      "message": "Visual regression test failed: Visual comparison failed: Image dimensions don't match: baseline(1920x1136) vs current(1920x1080)",
+      "details": {
+        "error": "Visual comparison failed: Image dimensions don't match: baseline(1920x1136) vs current(1920x1080)"
+      },
+      "timestamp": "2025-07-09T20:28:11.866Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Visual Content Analysis",
+      "status": "PASS",
+      "message": "Screenshot contains visual content",
+      "details": {
+        "isBlank": false,
+        "whitePercentage": 18.330150462962962,
+        "blackPercentage": 0,
+        "coloredPercentage": 81.66984953703704,
+        "hasGoodContrast": false,
+        "contrastRatio": 81.66984953703704
+      },
+      "timestamp": "2025-07-09T20:28:11.901Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Visual Contrast",
+      "status": "WARNING",
+      "message": "Low visual contrast detected",
+      "details": {
+        "contrast": 81.66984953703704
+      },
+      "timestamp": "2025-07-09T20:28:11.901Z"
+    }
+  ],
+  "httpTest": {
+    "url": "http://localhost:3002",
+    "status": 200,
+    "responseTime": 29,
+    "contentType": "text/html; charset=utf-8",
+    "contentLength": 0,
+    "headers": {
+      "cache-control": "no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-security-policy": "default-src 'self'; script-src 'self' 'nonce-MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm' 'unsafe-eval' 'strict-dynamic'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' ws: wss:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; media-src 'self'; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Wed, 09 Jul 2025 20:28:00 GMT",
+      "keep-alive": "timeout=5",
+      "link": "</_next/static/media/e4af272ccee01ff0-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\"",
+      "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), autoplay=(), fullscreen=(self)",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+      "transfer-encoding": "chunked",
+      "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "on",
+      "x-frame-options": "SAMEORIGIN",
+      "x-nonce": "MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm",
+      "x-powered-by": "Next.js",
+      "x-xss-protection": "1; mode=block"
+    },
+    "body": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/css/app/layout.css?v=1752092880837\" data-precedence=\"next_static/css/app/layout.css\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\" href=\"/_next/static/chunks/webpack.js?v=1752092880837\"/><script src=\"/_next/static/chunks/main-app.js?v=1752092880837\" async=\"\" nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\"></script><script src=\"/_next/static/chunks/app-pages-internals.js\" async=\"\" nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\"></script><script src=\"/_next/static/chunks/app/page.js\" async=\"\" nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\"></script><link rel=\"dns-prefetch\" href=\"//fonts.googleapis.com\"/><link rel=\"dns-prefetch\" href=\"//fonts.gstatic.com\"/><title>Surveyor - Multi-Stakeholder Survey Platform</title><meta name=\"description\" content=\"Comprehensive survey platform supporting multiple stakeholders with configurable schemas\"/><meta name=\"author\" content=\"Claude PM Framework\"/><meta name=\"keywords\" content=\"survey,multi-stakeholder,assessment,evaluation\"/><meta name=\"robots\" content=\"index, follow\"/><meta name=\"X-UA-Compatible\" content=\"IE=edge\"/><meta name=\"theme-color\" content=\"#ffffff\"/><meta name=\"msapplication-TileColor\" content=\"#ffffff\"/><meta name=\"msapplication-config\" content=\"/browserconfig.xml\"/><meta name=\"format-detection\" content=\"telephone=no\"/><meta name=\"msapplication-tap-highlight\" content=\"no\"/><meta name=\"next-size-adjust\"/><script src=\"/_next/static/chunks/polyfills.js\" noModule=\"\" nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\"></script></head><body class=\"__className_e8ce0c\"><div class=\"min-h-screen bg-background\"><a href=\"#main-content\" class=\"sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50\">Skip to main content</a><header class=\"sr-only\"><h1>Surveyor - Multi-Stakeholder Survey Platform</h1></header><main id=\"main-content\" class=\"relative\" role=\"main\"><div class=\"min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100\"><div class=\"container mx-auto px-4 py-16\"><div class=\"text-center mb-16\"><h2 class=\"text-4xl md:text-6xl font-bold text-gray-900 mb-6\">Surveyor</h2><p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-8\">A comprehensive multi-stakeholder survey platform that enables organizations to gather insights from different perspectives and generate actionable results.</p><div class=\"flex flex-col sm:flex-row gap-4 justify-center\"><a aria-label=\"Take Survey - Begin your assessment\" class=\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8\" href=\"/survey\">Take Survey<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right ml-2 h-4 w-4\" aria-hidden=\"true\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg></a><a aria-label=\"Admin Dashboard - Access administrative controls\" class=\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8\" href=\"/admin\">Admin Dashboard</a></div></div><section aria-label=\"Platform Features\"><h2 class=\"sr-only\">Platform Features</h2><div class=\"grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16\"><div class=\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\"><div class=\"flex flex-col space-y-1.5 p-6\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-clipboard-list h-12 w-12 mx-auto text-blue-600 mb-4\" aria-hidden=\"true\"><rect width=\"8\" height=\"4\" x=\"8\" y=\"2\" rx=\"1\" ry=\"1\"></rect><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"></path><path d=\"M12 11h4\"></path><path d=\"M12 16h4\"></path><path d=\"M8 11h.01\"></path><path d=\"M8 16h.01\"></path></svg><h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Dynamic Surveys</h3></div><div class=\"p-6 pt-0\"><p class=\"text-sm text-muted-foreground\">Create and manage surveys with configurable JSON schemas that adapt to different stakeholder roles.</p></div></div><div class=\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\"><div class=\"flex flex-col space-y-1.5 p-6\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-users h-12 w-12 mx-auto text-green-600 mb-4\" aria-hidden=\"true\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path></svg><h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Multi-Stakeholder</h3></div><div class=\"p-6 pt-0\"><p class=\"text-sm text-muted-foreground\">Support multiple stakeholder types with role-based question filtering and weighted responses.</p></div></div><div class=\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\"><div class=\"flex flex-col space-y-1.5 p-6\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-bar-chart3 h-12 w-12 mx-auto text-purple-600 mb-4\" aria-hidden=\"true\"><path d=\"M3 3v18h18\"></path><path d=\"M18 17V9\"></path><path d=\"M13 17V5\"></path><path d=\"M8 17v-3\"></path></svg><h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Advanced Analytics</h3></div><div class=\"p-6 pt-0\"><p class=\"text-sm text-muted-foreground\">Sophisticated scoring engine with domain-based analysis and maturity level assessment.</p></div></div><div class=\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\"><div class=\"flex flex-col space-y-1.5 p-6\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-settings h-12 w-12 mx-auto text-orange-600 mb-4\" aria-hidden=\"true\"><path d=\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg><h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Easy Management</h3></div><div class=\"p-6 pt-0\"><p class=\"text-sm text-muted-foreground\">Comprehensive admin dashboard for survey management, response tracking, and data export.</p></div></div></div></section><section class=\"text-center mb-16\" aria-label=\"How It Works\"><h2 class=\"text-3xl font-bold text-gray-900 mb-8\">How It Works</h2><div class=\"grid md:grid-cols-3 gap-8\"><div class=\"space-y-4\"><div class=\"bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\" aria-label=\"Step 1\">1</div><h3 class=\"text-xl font-semibold\">Select Your Role</h3><p class=\"text-gray-600\">Choose your stakeholder role and expertise areas to receive personalized questions.</p></div><div class=\"space-y-4\"><div class=\"bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\" aria-label=\"Step 2\">2</div><h3 class=\"text-xl font-semibold\">Complete Survey</h3><p class=\"text-gray-600\">Answer questions tailored to your role using our intuitive interface with progress tracking.</p></div><div class=\"space-y-4\"><div class=\"bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\" aria-label=\"Step 3\">3</div><h3 class=\"text-xl font-semibold\">View Results</h3><p class=\"text-gray-600\">Get comprehensive results with domain scores, maturity levels, and actionable recommendations.</p></div></div></section><section class=\"text-center bg-white rounded-lg p-12 shadow-lg\" aria-label=\"Get Started\"><h2 class=\"text-2xl font-bold text-gray-900 mb-4\">Ready to Get Started?</h2><p class=\"text-gray-600 mb-8\">Begin your assessment journey and unlock insights for your organization.</p><a aria-label=\"Start Your Survey - Begin assessment process\" class=\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8\" href=\"/survey\">Start Your Survey<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right ml-2 h-4 w-4\" aria-hidden=\"true\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg></a></section></div></div></main></div><script src=\"/_next/static/chunks/webpack.js?v=1752092880837\" nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\" async=\"\"></script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\"1:HL[\\\"/_next/static/media/e4af272ccee01ff0-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n2:HL[\\\"/_next/static/css/app/layout.css?v=1752092880837\\\",\\\"style\\\"]\\n0:D{\\\"name\\\":\\\"r2\\\",\\\"env\\\":\\\"Server\\\"}\\n\"])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\"3:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js\\\",[\\\"app-pages-internals\\\",\\\"static/chunks/app-pages-internals.js\\\"],\\\"\\\"]\\n7:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/link.js\\\",[\\\"app/page\\\",\\\"static/chunks/app/page.js\\\"],\\\"\\\"]\\n25:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js\\\",[\\\"app-pages-internals\\\",\\\"static/chunks/app-pages-internals.js\\\"],\\\"\\\"]\\n26:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js\\\",[\\\"app-pages-internals\\\",\\\"static/chunks/app-pages-internals.js\\\"],\\\"\\\"]\\n2a:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js\\\",[\\\"app-pages-internals\\\",\\\"static/chunks/app-pages-internals.js\\\"],\\\"\\\"]\\n4:D{\\\"name\\\":\\\"\\\",\\\"env\\\":\\\"Server\\\"}\\n5:D{\\\"name\\\":\\\"HomePage\\\",\\\"env\\\":\\\"Server\\\"}\\n6:D{\\\"name\\\":\\\"Button\\\",\\\"env\\\":\\\"Server\\\"}\\n6:D{\\\"name\\\":\\\"Slot.Slot\\\",\\\"env\\\":\\\"Server\\\"}\\n6:D{\\\"name\\\":\\\"Slot.SlotClone\\\",\\\"env\\\":\\\"Server\\\"}\\n8:D{\\\"name\\\":\\\"ArrowRight\\\",\\\"env\\\":\\\"Server\\\"}\\n8:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-arrow-right ml-2 h-4 w-4\\\",\\\"aria-hidden\\\":\\\"true\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1ays0h\\\",{\\\"d\\\":\\\"M5 12h14\\\"}],[\\\"$\\\",\\\"path\\\",\\\"xquz4c\\\",{\\\"d\\\":\\\"m12 5 7 7-7 7\\\"}],\\\"$undefined\\\"]}]\\n6:[\\\"$\\\",\\\"$L7\\\",null,{\\\"href\\\":\\\"/survey\\\",\\\"aria-label\\\":\\\"Take Survey - Begin your assessment\\\",\\\"children\\\":[\\\"Take Survey\\\",\\\"$8\\\"],\\\"className\\\":\\\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8\\\"}]\\n9:D{\\\"name\\\":\\\"Button\\\",\\\"env\\\":\\\"Server\\\"}\\n9:D{\\\"name\\\":\\\"Slot.Slot\\\",\\\"env\\\":\\\"Server\\\"}\\n9:D{\\\"name\\\":\\\"Slot.SlotClone\\\",\\\"env\\\":\\\"Server\\\"}\\n9:[\\\"$\\\",\\\"$L7\\\",null,{\\\"href\\\":\\\"/admin\\\",\\\"aria-label\\\":\\\"Admin Dashboard - Access administrative contro\"])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\"ls\\\",\\\"children\\\":\\\"Admin Dashboard\\\",\\\"className\\\":\\\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8\\\"}]\\na:D{\\\"name\\\":\\\"Card\\\",\\\"env\\\":\\\"Server\\\"}\\nb:D{\\\"name\\\":\\\"CardHeader\\\",\\\"env\\\":\\\"Server\\\"}\\nc:D{\\\"name\\\":\\\"ClipboardList\\\",\\\"env\\\":\\\"Server\\\"}\\nc:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-clipboard-list h-12 w-12 mx-auto text-blue-600 mb-4\\\",\\\"aria-hidden\\\":\\\"true\\\",\\\"children\\\":[[\\\"$\\\",\\\"rect\\\",\\\"tgr4d6\\\",{\\\"width\\\":\\\"8\\\",\\\"height\\\":\\\"4\\\",\\\"x\\\":\\\"8\\\",\\\"y\\\":\\\"2\\\",\\\"rx\\\":\\\"1\\\",\\\"ry\\\":\\\"1\\\"}],[\\\"$\\\",\\\"path\\\",\\\"116196\\\",{\\\"d\\\":\\\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\\\"}],[\\\"$\\\",\\\"path\\\",\\\"1jrz19\\\",{\\\"d\\\":\\\"M12 11h4\\\"}],[\\\"$\\\",\\\"path\\\",\\\"n85exb\\\",{\\\"d\\\":\\\"M12 16h4\\\"}],[\\\"$\\\",\\\"path\\\",\\\"1dfujw\\\",{\\\"d\\\":\\\"M8 11h.01\\\"}],[\\\"$\\\",\\\"path\\\",\\\"18s6g9\\\",{\\\"d\\\":\\\"M8 16h.01\\\"}],\\\"$undefined\\\"]}]\\nd:D{\\\"name\\\":\\\"CardTitle\\\",\\\"env\\\":\\\"Server\\\"}\\nd:[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-2xl font-semibold leading-none tracking-tight\\\",\\\"children\\\":\\\"Dynamic Surveys\\\"}]\\nb:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col space-y-1.5 p-6\\\",\\\"children\\\":[\\\"$c\\\",\\\"$d\\\"]}]\\ne:D{\\\"name\\\":\\\"CardContent\\\",\\\"env\\\":\\\"Server\\\"}\\nf:D{\\\"name\\\":\\\"CardDescription\\\",\\\"env\\\":\\\"Server\\\"}\\nf:[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-sm text-muted-foreground\\\",\\\"children\\\":\\\"Create and manage surveys with configurable JSON schemas that adapt to different stakeholder roles.\\\"}]\\ne:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"p-6 pt-0\\\",\\\"children\\\":\\\"$f\\\"}]\\na:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\\\",\\\"children\\\":[\\\"$b\\\",\\\"$e\\\"]}]\\n10:D{\\\"name\\\":\\\"Card\\\",\\\"env\\\":\\\"Server\\\"}\\n11:D{\\\"name\\\":\\\"CardHeader\\\",\\\"env\\\":\\\"Server\\\"}\\n12:D{\\\"name\\\":\\\"Users\\\",\\\"env\\\":\\\"Server\\\"}\\n12:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http:/\"])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\"/www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-users h-12 w-12 mx-auto text-green-600 mb-4\\\",\\\"aria-hidden\\\":\\\"true\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1yyitq\\\",{\\\"d\\\":\\\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\\\"}],[\\\"$\\\",\\\"circle\\\",\\\"nufk8\\\",{\\\"cx\\\":\\\"9\\\",\\\"cy\\\":\\\"7\\\",\\\"r\\\":\\\"4\\\"}],[\\\"$\\\",\\\"path\\\",\\\"kshegd\\\",{\\\"d\\\":\\\"M22 21v-2a4 4 0 0 0-3-3.87\\\"}],[\\\"$\\\",\\\"path\\\",\\\"1da9ce\\\",{\\\"d\\\":\\\"M16 3.13a4 4 0 0 1 0 7.75\\\"}],\\\"$undefined\\\"]}]\\n13:D{\\\"name\\\":\\\"CardTitle\\\",\\\"env\\\":\\\"Server\\\"}\\n13:[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-2xl font-semibold leading-none tracking-tight\\\",\\\"children\\\":\\\"Multi-Stakeholder\\\"}]\\n11:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col space-y-1.5 p-6\\\",\\\"children\\\":[\\\"$12\\\",\\\"$13\\\"]}]\\n14:D{\\\"name\\\":\\\"CardContent\\\",\\\"env\\\":\\\"Server\\\"}\\n15:D{\\\"name\\\":\\\"CardDescription\\\",\\\"env\\\":\\\"Server\\\"}\\n15:[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-sm text-muted-foreground\\\",\\\"children\\\":\\\"Support multiple stakeholder types with role-based question filtering and weighted responses.\\\"}]\\n14:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"p-6 pt-0\\\",\\\"children\\\":\\\"$15\\\"}]\\n10:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\\\",\\\"children\\\":[\\\"$11\\\",\\\"$14\\\"]}]\\n16:D{\\\"name\\\":\\\"Card\\\",\\\"env\\\":\\\"Server\\\"}\\n17:D{\\\"name\\\":\\\"CardHeader\\\",\\\"env\\\":\\\"Server\\\"}\\n18:D{\\\"name\\\":\\\"BarChart3\\\",\\\"env\\\":\\\"Server\\\"}\\n18:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-bar-chart3 h-12 w-12 mx-auto text-purple-600 mb-4\\\",\\\"aria-hidden\\\":\\\"true\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1s2lah\\\",{\\\"d\\\":\\\"M3 3v18h18\\\"}],[\\\"$\\\",\\\"path\\\",\\\"2bz60n\\\",{\\\"d\\\":\\\"M18 17V9\\\"}],[\\\"$\\\",\\\"path\\\",\\\"1frdt8\\\",{\\\"d\\\":\\\"M13 17V5\\\"}],[\\\"$\\\",\\\"path\\\",\\\"17ska0\\\",{\\\"d\\\":\\\"M8 17v-3\\\"}],\\\"$undefined\\\"]}]\\n19:D{\\\"name\\\":\\\"CardTitle\\\",\\\"env\\\":\\\"Server\\\"}\\n19:[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-2xl font-semibold leading-none tracking-tight\\\",\\\"children\\\":\\\"Advanced Analytics\\\"}]\\n17:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col space-y-1.5\"])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\" p-6\\\",\\\"children\\\":[\\\"$18\\\",\\\"$19\\\"]}]\\n1a:D{\\\"name\\\":\\\"CardContent\\\",\\\"env\\\":\\\"Server\\\"}\\n1b:D{\\\"name\\\":\\\"CardDescription\\\",\\\"env\\\":\\\"Server\\\"}\\n1b:[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-sm text-muted-foreground\\\",\\\"children\\\":\\\"Sophisticated scoring engine with domain-based analysis and maturity level assessment.\\\"}]\\n1a:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"p-6 pt-0\\\",\\\"children\\\":\\\"$1b\\\"}]\\n16:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\\\",\\\"children\\\":[\\\"$17\\\",\\\"$1a\\\"]}]\\n1c:D{\\\"name\\\":\\\"Card\\\",\\\"env\\\":\\\"Server\\\"}\\n1d:D{\\\"name\\\":\\\"CardHeader\\\",\\\"env\\\":\\\"Server\\\"}\\n1e:D{\\\"name\\\":\\\"Settings\\\",\\\"env\\\":\\\"Server\\\"}\\n1e:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-settings h-12 w-12 mx-auto text-orange-600 mb-4\\\",\\\"aria-hidden\\\":\\\"true\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1qme2f\\\",{\\\"d\\\":\\\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\\\"}],[\\\"$\\\",\\\"circle\\\",\\\"1v7zrd\\\",{\\\"cx\\\":\\\"12\\\",\\\"cy\\\":\\\"12\\\",\\\"r\\\":\\\"3\\\"}],\\\"$undefined\\\"]}]\\n1f:D{\\\"name\\\":\\\"CardTitle\\\",\\\"env\\\":\\\"Server\\\"}\\n1f:[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-2xl font-semibold leading-none tracking-tight\\\",\\\"children\\\":\\\"Easy Management\\\"}]\\n1d:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col space-y-1.5 p-6\\\",\\\"children\\\":[\\\"$1e\\\",\\\"$1f\\\"]}]\\n20:D{\\\"name\\\":\\\"CardContent\\\",\\\"env\\\":\\\"Server\\\"}\\n21:D{\\\"name\\\":\\\"CardDescription\\\",\\\"env\\\":\\\"Server\\\"}\\n21:[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-sm text-muted-foreground\\\",\\\"children\\\":\\\"Comprehensive admin dashboard for survey management, response tracki\"])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\"ng, and data export.\\\"}]\\n20:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"p-6 pt-0\\\",\\\"children\\\":\\\"$21\\\"}]\\n1c:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\\\",\\\"children\\\":[\\\"$1d\\\",\\\"$20\\\"]}]\\n22:D{\\\"name\\\":\\\"Button\\\",\\\"env\\\":\\\"Server\\\"}\\n22:D{\\\"name\\\":\\\"Slot.Slot\\\",\\\"env\\\":\\\"Server\\\"}\\n22:D{\\\"name\\\":\\\"Slot.SlotClone\\\",\\\"env\\\":\\\"Server\\\"}\\n23:D{\\\"name\\\":\\\"ArrowRight\\\",\\\"env\\\":\\\"Server\\\"}\\n23:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-arrow-right ml-2 h-4 w-4\\\",\\\"aria-hidden\\\":\\\"true\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1ays0h\\\",{\\\"d\\\":\\\"M5 12h14\\\"}],[\\\"$\\\",\\\"path\\\",\\\"xquz4c\\\",{\\\"d\\\":\\\"m12 5 7 7-7 7\\\"}],\\\"$undefined\\\"]}]\\n22:[\\\"$\\\",\\\"$L7\\\",null,{\\\"href\\\":\\\"/survey\\\",\\\"aria-label\\\":\\\"Start Your Survey - Begin assessment process\\\",\\\"children\\\":[\\\"Start Your Survey\\\",\\\"$23\\\"],\\\"className\\\":\\\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8\\\"}]\\n\"])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\"5:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"container mx-auto px-4 py-16\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"text-center mb-16\\\",\\\"children\\\":[[\\\"$\\\",\\\"h2\\\",null,{\\\"className\\\":\\\"text-4xl md:text-6xl font-bold text-gray-900 mb-6\\\",\\\"children\\\":\\\"Surveyor\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-xl text-gray-600 max-w-3xl mx-auto mb-8\\\",\\\"children\\\":\\\"A comprehensive multi-stakeholder survey platform that enables organizations to gather insights from different perspectives and generate actionable results.\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col sm:flex-row gap-4 justify-center\\\",\\\"children\\\":[\\\"$6\\\",\\\"$9\\\"]}]]}],[\\\"$\\\",\\\"section\\\",null,{\\\"aria-label\\\":\\\"Platform Features\\\",\\\"children\\\":[[\\\"$\\\",\\\"h2\\\",null,{\\\"className\\\":\\\"sr-only\\\",\\\"children\\\":\\\"Platform Features\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16\\\",\\\"children\\\":[\\\"$a\\\",\\\"$10\\\",\\\"$16\\\",\\\"$1c\\\"]}]]}],[\\\"$\\\",\\\"section\\\",null,{\\\"className\\\":\\\"text-center mb-16\\\",\\\"aria-label\\\":\\\"How It Works\\\",\\\"children\\\":[[\\\"$\\\",\\\"h2\\\",null,{\\\"className\\\":\\\"text-3xl font-bold text-gray-900 mb-8\\\",\\\"children\\\":\\\"How It Works\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"grid md:grid-cols-3 gap-8\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"space-y-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\\\",\\\"aria-label\\\":\\\"Step 1\\\",\\\"children\\\":\\\"1\\\"}],[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-xl font-semibold\\\",\\\"children\\\":\\\"Select Your Role\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-gray-600\\\",\\\"children\\\":\\\"Choose your stakeholder role and expertise areas to receive personalized questions.\\\"}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"space-y-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\\\",\\\"aria-label\\\":\\\"Step 2\\\",\\\"children\\\":\\\"2\\\"}],[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-xl font-semibold\\\",\\\"children\\\":\\\"Complete Survey\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-gray-600\\\",\\\"children\\\":\\\"Answer questions tailored to your role using our intuitive interface with progress tracking.\\\"}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"space-y-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\\\",\\\"aria-label\\\":\\\"Step 3\\\",\\\"children\\\":\\\"3\\\"}],[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-xl font-semibold\\\",\\\"children\\\":\\\"View Results\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-gray-600\\\",\\\"children\\\":\\\"Get comprehensive results with domain scores, maturity levels, and actionable recommendations.\\\"}]]}]]}]]}],[\\\"$\\\",\\\"section\\\",null,{\\\"className\\\":\\\"text-center bg-white rounded-lg p-12 shadow-lg\\\",\\\"aria-label\\\":\\\"Get Started\\\",\\\"children\\\":[[\\\"$\\\",\\\"h2\\\",null,{\\\"className\\\":\\\"text-2xl font-bold text-gray-900 mb-4\\\",\\\"children\\\":\\\"Ready to Get Started?\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-gray-600 mb-8\\\",\\\"children\\\":\\\"Begin your assessment journey and unlock insights for your organization.\\\"}],\\\"$22\\\"]}]]}]}]\\n\"])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\"24:D{\\\"name\\\":\\\"RootLayout\\\",\\\"env\\\":\\\"Server\\\"}\\n27:D{\\\"name\\\":\\\"NotFound\\\",\\\"env\\\":\\\"Server\\\"}\\n27:[[\\\"$\\\",\\\"title\\\",null,{\\\"children\\\":\\\"404: This page could not be found.\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"fontFamily\\\":\\\"system-ui,\\\\\\\"Segoe UI\\\\\\\",Roboto,Helvetica,Arial,sans-serif,\\\\\\\"Apple Color Emoji\\\\\\\",\\\\\\\"Segoe UI Emoji\\\\\\\"\\\",\\\"height\\\":\\\"100vh\\\",\\\"textAlign\\\":\\\"center\\\",\\\"display\\\":\\\"flex\\\",\\\"flexDirection\\\":\\\"column\\\",\\\"alignItems\\\":\\\"center\\\",\\\"justifyContent\\\":\\\"center\\\"},\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"style\\\",null,{\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\\\"}}],[\\\"$\\\",\\\"h1\\\",null,{\\\"className\\\":\\\"next-error-h1\\\",\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\",\\\"margin\\\":\\\"0 20px 0 0\\\",\\\"padding\\\":\\\"0 23px 0 0\\\",\\\"fontSize\\\":24,\\\"fontWeight\\\":500,\\\"verticalAlign\\\":\\\"top\\\",\\\"lineHeight\\\":\\\"49px\\\"},\\\"children\\\":\\\"404\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\"},\\\"children\\\":[\\\"$\\\",\\\"h2\\\",null,{\\\"style\\\":{\\\"fontSize\\\":14,\\\"fontWeight\\\":400,\\\"lineHeight\\\":\\\"49px\\\",\\\"margin\\\":0},\\\"children\\\":\\\"This page could not be found.\\\"}]}]]}]}]]\\n24:[\\\"$\\\",\\\"html\\\",null,{\\\"lang\\\":\\\"en\\\",\\\"children\\\":[[\\\"$\\\",\\\"head\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"link\\\",null,{\\\"rel\\\":\\\"dns-prefetch\\\",\\\"href\\\":\\\"//fonts.googleapis.com\\\"}],[\\\"$\\\",\\\"link\\\",null,{\\\"rel\\\":\\\"dns-prefetch\\\",\\\"href\\\":\\\"//fonts.gstatic.com\\\"}]]}],[\\\"$\\\",\\\"body\\\",null,{\\\"className\\\":\\\"__className_e8ce0c\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"min-h-screen bg-background\\\",\\\"children\\\":[[\\\"$\\\",\\\"a\\\",null,{\\\"href\\\":\\\"#main-content\\\",\\\"className\\\":\\\"sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50\\\",\\\"children\\\":\\\"Skip to main content\\\"}],[\\\"$\\\",\\\"header\\\",null,{\\\"className\\\":\\\"sr-only\\\",\\\"children\\\":[\\\"$\\\",\\\"h1\\\",null,{\\\"children\\\":\\\"Surveyor - Multi-Stakeholder Survey Platform\\\"}]}],[\\\"$\\\",\\\"main\\\",null,{\\\"id\\\":\\\"main-content\\\",\\\"className\\\":\\\"relative\\\",\\\"role\\\":\\\"main\\\",\\\"children\\\":[\\\"$\\\",\\\"$L25\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"segmentPath\\\":[\\\"children\\\"],\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"\"])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$L26\\\",null,{}],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":\\\"$27\\\",\\\"notFoundStyles\\\":[]}]}]]}]}]]}]\\n28:D{\\\"name\\\":\\\"rQ\\\",\\\"env\\\":\\\"Server\\\"}\\n28:null\\n29:D{\\\"name\\\":\\\"\\\",\\\"env\\\":\\\"Server\\\"}\\n2b:[]\\n0:[\\\"$\\\",\\\"$L3\\\",null,{\\\"buildId\\\":\\\"development\\\",\\\"assetPrefix\\\":\\\"\\\",\\\"urlParts\\\":[\\\"\\\",\\\"\\\"],\\\"initialTree\\\":[\\\"\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{}]},\\\"$undefined\\\",\\\"$undefined\\\",true],\\\"initialSeedData\\\":[\\\"\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{},[[\\\"$L4\\\",\\\"$5\\\",null],null],null]},[[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/css/app/layout.css?v=1752092880837\\\",\\\"precedence\\\":\\\"next_static/css/app/layout.css\\\",\\\"crossOrigin\\\":\\\"$undefined\\\"}]],\\\"$24\\\"],null],null],\\\"couldBeIntercepted\\\":false,\\\"initialHead\\\":[\\\"$28\\\",\\\"$L29\\\"],\\\"globalErrorComponent\\\":\\\"$2a\\\",\\\"missingSlots\\\":\\\"$W2b\\\"}]\\n\"])</script><script nonce=\"MzA2ZjNlNTAtMzk1Mi00N2E5LWJmMDAtOGZjYjQ2MTE3NDhm\">self.__next_f.push([1,\"29:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=1\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"charSet\\\":\\\"utf-8\\\"}],[\\\"$\\\",\\\"title\\\",\\\"2\\\",{\\\"children\\\":\\\"Surveyor - Multi-Stakeholder Survey Platform\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"3\\\",{\\\"name\\\":\\\"description\\\",\\\"content\\\":\\\"Comprehensive survey platform supporting multiple stakeholders with configurable schemas\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"4\\\",{\\\"name\\\":\\\"author\\\",\\\"content\\\":\\\"Claude PM Framework\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"5\\\",{\\\"name\\\":\\\"keywords\\\",\\\"content\\\":\\\"survey,multi-stakeholder,assessment,evaluation\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"6\\\",{\\\"name\\\":\\\"robots\\\",\\\"content\\\":\\\"index, follow\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"7\\\",{\\\"name\\\":\\\"X-UA-Compatible\\\",\\\"content\\\":\\\"IE=edge\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"8\\\",{\\\"name\\\":\\\"theme-color\\\",\\\"content\\\":\\\"#ffffff\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"9\\\",{\\\"name\\\":\\\"msapplication-TileColor\\\",\\\"content\\\":\\\"#ffffff\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"10\\\",{\\\"name\\\":\\\"msapplication-config\\\",\\\"content\\\":\\\"/browserconfig.xml\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"11\\\",{\\\"name\\\":\\\"format-detection\\\",\\\"content\\\":\\\"telephone=no\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"12\\\",{\\\"name\\\":\\\"msapplication-tap-highlight\\\",\\\"content\\\":\\\"no\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"13\\\",{\\\"name\\\":\\\"next-size-adjust\\\"}]]\\n4:null\\n\"])</script></body></html>",
+    "errors": []
+  },
+  "accessibilityTest": {
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": [
+          {
+            "target": [
+              ".gap-1"
+            ],
+            "html": "<span class=\"flex items-center gap-1\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #6b7280, background color: #eff6ff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              "span:nth-child(2)"
+            ],
+            "html": "<span>8 questions</span>",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.44 (foreground color: #6b7280, background color: #eff6ff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "description": "Ensure the order of headings is semantically correct",
+        "nodes": [
+          {
+            "target": [
+              ".text-2xl"
+            ],
+            "html": "<h3 class=\"text-2xl font-semibold leading-none tracking-tight flex items-center gap-2\">",
+            "failureSummary": "Fix any of the following:\n  Heading order invalid"
+          }
+        ]
+      }
+    ],
+    "passes": 37,
+    "incomplete": 1,
+    "inapplicable": 52
+  },
+  "performanceTest": {
+    "categories": {
+      "performance": {
+        "score": 0.85,
+        "title": "Performance"
+      },
+      "accessibility": {
+        "score": 0.92,
+        "title": "Accessibility"
+      },
+      "best-practices": {
+        "score": 0.88,
+        "title": "Best Practices"
+      },
+      "seo": {
+        "score": 0.9,
+        "title": "SEO"
+      }
+    },
+    "audits": {
+      "first-contentful-paint": {
+        "score": 0.8,
+        "displayValue": "1.5s",
+        "title": "First Contentful Paint",
+        "description": "Time to first content"
+      },
+      "largest-contentful-paint": {
+        "score": 0.7,
+        "displayValue": "2.8s",
+        "title": "Largest Contentful Paint",
+        "description": "Time to largest content"
+      },
+      "speed-index": {
+        "score": 0.85,
+        "displayValue": "2.1s",
+        "title": "Speed Index",
+        "description": "Speed of content loading"
+      },
+      "cumulative-layout-shift": {
+        "score": 0.95,
+        "displayValue": "0.05",
+        "title": "Cumulative Layout Shift",
+        "description": "Layout stability"
+      },
+      "total-blocking-time": {
+        "score": 0.75,
+        "displayValue": "180ms",
+        "title": "Total Blocking Time",
+        "description": "Main thread blocking time"
+      },
+      "interactive": {
+        "score": 0.8,
+        "displayValue": "3.2s",
+        "title": "Time to Interactive",
+        "description": "Time to full interactivity"
+      }
+    },
+    "timing": {
+      "total": 5000
+    }
+  },
+  "visualTest": {
+    "baseline": "qa-agent/screenshots/baseline/main-page.png",
+    "current": "qa-agent/screenshots/qa-test-1752092891709.png",
+    "diff": "qa-agent/screenshots/main-page-diff.png",
+    "pixelDifference": 0,
+    "threshold": 0.1,
+    "passed": false
+  },
+  "securityTest": {
+    "headers": {
+      "content-security-policy": true,
+      "x-frame-options": true,
+      "x-content-type-options": true,
+      "referrer-policy": true,
+      "permissions-policy": true
+    },
+    "score": 100,
+    "recommendations": []
+  },
+  "htmlValidation": {
+    "isValid": false,
+    "errors": [
+      {
+        "line": 1,
+        "column": 1,
+        "message": "Missing <body> tag",
+        "type": "error"
+      }
+    ],
+    "warnings": [
+      {
+        "line": 1,
+        "column": 1,
+        "message": "Potential unclosed tags detected",
+        "type": "warning"
+      }
+    ]
+  },
+  "overallScore": 88,
+  "recommendation": "REJECT",
+  "summary": "Frontend QA analysis completed for http://localhost:3002/survey with an overall score of 88% (74.1% pass rate). The application has critical issues that prevent approval. Key issues identified: HTML Validation, Accessibility Compliance, ARIA Labels. Performance score: 85%. 2 accessibility violations detected. "
+}

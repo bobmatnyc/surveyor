@@ -1,0 +1,829 @@
+{
+  "timestamp": "2025-07-09T13:43:42.691Z",
+  "url": "http://localhost:3002",
+  "testResults": [
+    {
+      "phase": "A",
+      "testType": "HTTP Status",
+      "status": "PASS",
+      "message": "HTTP 200 - Success",
+      "details": {
+        "status": 200,
+        "url": "http://localhost:3002"
+      },
+      "timestamp": "2025-07-09T13:43:37.575Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Response Time",
+      "status": "PASS",
+      "message": "Response time: 108ms",
+      "details": {
+        "responseTime": 108
+      },
+      "timestamp": "2025-07-09T13:43:37.575Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Content Type",
+      "status": "PASS",
+      "message": "Valid HTML content type: text/html; charset=utf-8",
+      "details": {
+        "contentType": "text/html; charset=utf-8"
+      },
+      "timestamp": "2025-07-09T13:43:37.575Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Content Length",
+      "status": "WARNING",
+      "message": "Empty or unknown content length",
+      "details": {
+        "contentLength": 0
+      },
+      "timestamp": "2025-07-09T13:43:37.575Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML Validation",
+      "status": "FAIL",
+      "message": "HTML validation failed: 1 errors found",
+      "details": {
+        "isValid": false,
+        "errors": [
+          {
+            "line": 1,
+            "column": 1,
+            "message": "Missing <body> tag",
+            "type": "error"
+          }
+        ],
+        "warnings": [
+          {
+            "line": 1,
+            "column": 1,
+            "message": "Potential unclosed tags detected",
+            "type": "warning"
+          }
+        ]
+      },
+      "timestamp": "2025-07-09T13:43:37.575Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML DOCTYPE",
+      "status": "PASS",
+      "message": "HTML5 DOCTYPE declaration found",
+      "timestamp": "2025-07-09T13:43:37.575Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML Lang Attribute",
+      "status": "PASS",
+      "message": "HTML lang attribute found",
+      "timestamp": "2025-07-09T13:43:37.575Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Meta Charset",
+      "status": "WARNING",
+      "message": "Meta charset declaration missing",
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTML Title",
+      "status": "PASS",
+      "message": "Valid page title found: \"Surveyor - Multi-Stakeholder Survey Platform\"",
+      "details": {
+        "title": "Surveyor - Multi-Stakeholder Survey Platform"
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Semantic HTML",
+      "status": "WARNING",
+      "message": "Limited use of semantic elements: main",
+      "details": {
+        "semanticElements": [
+          "main"
+        ]
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Heading Hierarchy",
+      "status": "WARNING",
+      "message": "Heading hierarchy issues detected",
+      "details": {
+        "headingLevels": [
+          1,
+          3,
+          3,
+          3,
+          3,
+          2,
+          3,
+          3,
+          3,
+          2
+        ],
+        "hasH1": true,
+        "isSequential": false
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Image Alt Attributes",
+      "status": "PASS",
+      "message": "No images found",
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Form Input Labels",
+      "status": "PASS",
+      "message": "No form inputs found",
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Security Headers",
+      "status": "FAIL",
+      "message": "Poor security score: 0%",
+      "details": {
+        "headers": {
+          "content-security-policy": false,
+          "x-frame-options": false,
+          "x-content-type-options": false,
+          "referrer-policy": false,
+          "permissions-policy": false
+        },
+        "score": 0,
+        "recommendations": [
+          "Implement Content Security Policy (CSP) to prevent XSS attacks",
+          "Add X-Frame-Options header to prevent clickjacking attacks",
+          "Add X-Content-Type-Options: nosniff to prevent MIME-type sniffing",
+          "Implement Referrer Policy to control referrer information",
+          "Consider implementing Permissions Policy for better feature control",
+          "Add HTTP Strict Transport Security (HSTS) header for HTTPS enforcement"
+        ]
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Content Security Policy",
+      "status": "FAIL",
+      "message": "Content Security Policy header missing or improperly configured",
+      "details": {
+        "csp": "Not present"
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "X-Frame-Options",
+      "status": "FAIL",
+      "message": "X-Frame-Options header missing or improperly configured",
+      "details": {
+        "xFrameOptions": "Not present"
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "X-Content-Type-Options",
+      "status": "FAIL",
+      "message": "X-Content-Type-Options header missing or not set to nosniff",
+      "details": {
+        "xContentTypeOptions": "Not present"
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Referrer Policy",
+      "status": "WARNING",
+      "message": "Referrer Policy header missing or not optimally configured",
+      "details": {
+        "referrerPolicy": "Not present"
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Permissions Policy",
+      "status": "WARNING",
+      "message": "Permissions Policy header missing",
+      "details": {
+        "permissionsPolicy": "Not present"
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HTTPS",
+      "status": "WARNING",
+      "message": "Unable to verify HTTPS usage",
+      "details": {
+        "protocol": "unknown"
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "HSTS",
+      "status": "WARNING",
+      "message": "HTTP Strict Transport Security header missing",
+      "details": {
+        "hsts": "Not present"
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "A",
+      "testType": "Server Header",
+      "status": "PASS",
+      "message": "Server header properly hidden",
+      "details": {
+        "server": "Hidden"
+      },
+      "timestamp": "2025-07-09T13:43:37.576Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Page Navigation",
+      "status": "PASS",
+      "message": "Successfully navigated to http://localhost:3002",
+      "details": {
+        "url": "http://localhost:3002",
+        "status": 200
+      },
+      "timestamp": "2025-07-09T13:43:39.890Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Page Load",
+      "status": "PASS",
+      "message": "Page loaded successfully",
+      "details": {
+        "url": "http://localhost:3002"
+      },
+      "timestamp": "2025-07-09T13:43:39.893Z"
+    },
+    {
+      "phase": "B",
+      "testType": "HTML Structure",
+      "status": "PASS",
+      "message": "Valid HTML DOCTYPE found",
+      "timestamp": "2025-07-09T13:43:39.903Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Page Title",
+      "status": "PASS",
+      "message": "Page title: \"Surveyor - Multi-Stakeholder Survey Platform\"",
+      "details": {
+        "title": "Surveyor - Multi-Stakeholder Survey Platform"
+      },
+      "timestamp": "2025-07-09T13:43:39.909Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Meta Viewport",
+      "status": "PASS",
+      "message": "Meta viewport tag found",
+      "timestamp": "2025-07-09T13:43:39.911Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Main Content",
+      "status": "PASS",
+      "message": "Main content area found",
+      "timestamp": "2025-07-09T13:43:39.911Z"
+    },
+    {
+      "phase": "B",
+      "testType": "JavaScript Errors",
+      "status": "PASS",
+      "message": "No JavaScript errors detected",
+      "timestamp": "2025-07-09T13:43:41.914Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Interactive Elements",
+      "status": "PASS",
+      "message": "Found 3 interactive elements",
+      "details": {
+        "count": 3
+      },
+      "timestamp": "2025-07-09T13:43:41.951Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Navigation",
+      "status": "WARNING",
+      "message": "No navigation elements found",
+      "timestamp": "2025-07-09T13:43:41.963Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Accessibility Compliance",
+      "status": "WARNING",
+      "message": "1 accessibility violations found: 0 critical, 0 serious, 1 moderate, 0 minor",
+      "details": {
+        "violations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "description": "Ensure the order of headings is semantically correct",
+            "nodes": [
+              {
+                "target": [
+                  ".bg-card.text-card-foreground.shadow-sm:nth-child(1) > .space-y-1\\.5.flex-col.flex > .leading-none.tracking-tight.text-2xl"
+                ],
+                "html": "<h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Dynamic Surveys</h3>",
+                "failureSummary": "Fix any of the following:\n  Heading order invalid"
+              }
+            ]
+          }
+        ],
+        "passes": 18,
+        "incomplete": 0,
+        "inapplicable": 71
+      },
+      "timestamp": "2025-07-09T13:43:42.498Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Keyboard Navigation",
+      "status": "PASS",
+      "message": "Found 3 focusable elements",
+      "details": {
+        "focusableElements": 3
+      },
+      "timestamp": "2025-07-09T13:43:42.499Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Focus Visibility",
+      "status": "PASS",
+      "message": "Focus styles detected",
+      "timestamp": "2025-07-09T13:43:42.502Z"
+    },
+    {
+      "phase": "B",
+      "testType": "ARIA Labels",
+      "status": "FAIL",
+      "message": "Poor ARIA usage: 0% of interactive elements have ARIA attributes",
+      "details": {
+        "totalAriaElements": 0,
+        "totalInteractive": 3,
+        "interactiveWithAria": 0
+      },
+      "timestamp": "2025-07-09T13:43:42.502Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Heading Structure - H1",
+      "status": "PASS",
+      "message": "Proper H1 usage (exactly one H1 found)",
+      "details": {
+        "h1Count": 1
+      },
+      "timestamp": "2025-07-09T13:43:42.503Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Heading Structure - Hierarchy",
+      "status": "FAIL",
+      "message": "Improper heading hierarchy detected",
+      "details": {
+        "headings": [
+          {
+            "level": 1,
+            "text": "Surveyor",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Dynamic Surveys",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Multi-Stakeholder",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Advanced Analytics",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Easy Management",
+            "hasContent": true
+          },
+          {
+            "level": 2,
+            "text": "How It Works",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Select Your Role",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "Complete Survey",
+            "hasContent": true
+          },
+          {
+            "level": 3,
+            "text": "View Results",
+            "hasContent": true
+          },
+          {
+            "level": 2,
+            "text": "Ready to Get Started?",
+            "hasContent": true
+          }
+        ],
+        "h1Count": 1,
+        "hasProperOrder": false,
+        "totalHeadings": 10
+      },
+      "timestamp": "2025-07-09T13:43:42.503Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Color Contrast",
+      "status": "PASS",
+      "message": "Color contrast analysis completed (0 elements checked)",
+      "details": {
+        "testedElements": 0
+      },
+      "timestamp": "2025-07-09T13:43:42.504Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Image Alternatives",
+      "status": "PASS",
+      "message": "No images found",
+      "details": {
+        "totalImages": 0,
+        "imagesWithAlt": 0,
+        "imagesWithEmptyAlt": 0,
+        "imagesWithMeaningfulAlt": 0
+      },
+      "timestamp": "2025-07-09T13:43:42.505Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Form Labels",
+      "status": "PASS",
+      "message": "No form inputs found",
+      "details": {
+        "totalInputs": 0,
+        "inputsWithLabels": 0
+      },
+      "timestamp": "2025-07-09T13:43:42.505Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Performance Score",
+      "status": "WARNING",
+      "message": "Good performance score: 85%",
+      "details": {
+        "score": 0.85
+      },
+      "timestamp": "2025-07-09T13:43:42.506Z"
+    },
+    {
+      "phase": "B",
+      "testType": "First Contentful Paint",
+      "status": "PASS",
+      "message": "Good FCP: 1.5s",
+      "details": {
+        "value": 1.5,
+        "displayValue": "1.5s"
+      },
+      "timestamp": "2025-07-09T13:43:42.506Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Largest Contentful Paint",
+      "status": "WARNING",
+      "message": "Moderate LCP: 2.8s",
+      "details": {
+        "value": 2.8,
+        "displayValue": "2.8s"
+      },
+      "timestamp": "2025-07-09T13:43:42.506Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Cumulative Layout Shift",
+      "status": "PASS",
+      "message": "Good CLS: 0.05",
+      "details": {
+        "value": 0.05,
+        "displayValue": "0.05"
+      },
+      "timestamp": "2025-07-09T13:43:42.506Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Total Blocking Time",
+      "status": "PASS",
+      "message": "Good TBT: 180ms",
+      "details": {
+        "value": 180,
+        "displayValue": "180ms"
+      },
+      "timestamp": "2025-07-09T13:43:42.506Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Lighthouse Accessibility",
+      "status": "WARNING",
+      "message": "Good accessibility score: 92%",
+      "details": {
+        "score": 0.92
+      },
+      "timestamp": "2025-07-09T13:43:42.506Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Best Practices",
+      "status": "WARNING",
+      "message": "Good best practices score: 88%",
+      "details": {
+        "score": 0.88
+      },
+      "timestamp": "2025-07-09T13:43:42.506Z"
+    },
+    {
+      "phase": "B",
+      "testType": "SEO Score",
+      "status": "PASS",
+      "message": "Excellent SEO score: 90%",
+      "details": {
+        "score": 0.9
+      },
+      "timestamp": "2025-07-09T13:43:42.506Z"
+    },
+    {
+      "phase": "B",
+      "testType": "DOM Complexity",
+      "status": "PASS",
+      "message": "Good DOM complexity: 106 elements",
+      "details": {
+        "domElements": 106,
+        "domDepth": 9,
+        "scripts": 18,
+        "stylesheets": 1,
+        "images": 0,
+        "performance": {
+          "domContentLoaded": 312,
+          "loadComplete": 314
+        }
+      },
+      "timestamp": "2025-07-09T13:43:42.507Z"
+    },
+    {
+      "phase": "B",
+      "testType": "Resource Count",
+      "status": "PASS",
+      "message": "Good resource count: 19 resources",
+      "details": {
+        "scripts": 18,
+        "stylesheets": 1,
+        "images": 0,
+        "total": 19
+      },
+      "timestamp": "2025-07-09T13:43:42.507Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Screenshot Format",
+      "status": "PASS",
+      "message": "Valid PNG screenshot (1920x1136)",
+      "details": {
+        "path": "qa-agent/screenshots/qa-test-1752068622507.png",
+        "width": 1920,
+        "height": 1136,
+        "size": 121016
+      },
+      "timestamp": "2025-07-09T13:43:42.614Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Screenshot Dimensions",
+      "status": "PASS",
+      "message": "Good screenshot dimensions: 1920x1136",
+      "details": {
+        "width": 1920,
+        "height": 1136
+      },
+      "timestamp": "2025-07-09T13:43:42.614Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Visual Regression",
+      "status": "PASS",
+      "message": "Visual regression test passed - 0.00% difference",
+      "details": {
+        "baseline": "qa-agent/screenshots/baseline/main-page.png",
+        "current": "qa-agent/screenshots/qa-test-1752068622507.png",
+        "diff": "",
+        "pixelDifference": 0,
+        "threshold": 0.1,
+        "passed": true
+      },
+      "timestamp": "2025-07-09T13:43:42.614Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Visual Content Analysis",
+      "status": "FAIL",
+      "message": "Screenshot appears to be blank or mostly white",
+      "details": {
+        "isBlank": true,
+        "whitePercentage": 97.88824090375586,
+        "blackPercentage": 0.5805732834507042,
+        "coloredPercentage": 1.5311858127934272,
+        "hasGoodContrast": false,
+        "contrastRatio": 2.1117590962441315
+      },
+      "timestamp": "2025-07-09T13:43:42.657Z"
+    },
+    {
+      "phase": "C",
+      "testType": "Visual Contrast",
+      "status": "WARNING",
+      "message": "Low visual contrast detected",
+      "details": {
+        "contrast": 2.1117590962441315
+      },
+      "timestamp": "2025-07-09T13:43:42.657Z"
+    }
+  ],
+  "httpTest": {
+    "url": "http://localhost:3002",
+    "status": 200,
+    "responseTime": 108,
+    "contentType": "text/html; charset=utf-8",
+    "contentLength": 0,
+    "headers": {
+      "cache-control": "no-store, must-revalidate",
+      "connection": "keep-alive",
+      "content-encoding": "gzip",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Wed, 09 Jul 2025 13:43:37 GMT",
+      "keep-alive": "timeout=5",
+      "link": "</_next/static/media/e4af272ccee01ff0-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\"",
+      "transfer-encoding": "chunked",
+      "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding",
+      "x-powered-by": "Next.js"
+    },
+    "body": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/css/app/layout.css?v=1752068617521\" data-precedence=\"next_static/css/app/layout.css\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/webpack.js?v=1752068617521\"/><script src=\"/_next/static/chunks/main-app.js?v=1752068617521\" async=\"\"></script><script src=\"/_next/static/chunks/app-pages-internals.js\" async=\"\"></script><script src=\"/_next/static/chunks/app/page.js\" async=\"\"></script><title>Surveyor - Multi-Stakeholder Survey Platform</title><meta name=\"description\" content=\"Comprehensive survey platform supporting multiple stakeholders with configurable schemas\"/><meta name=\"author\" content=\"Claude PM Framework\"/><meta name=\"keywords\" content=\"survey,multi-stakeholder,assessment,evaluation\"/><meta name=\"next-size-adjust\"/><script src=\"/_next/static/chunks/polyfills.js\" noModule=\"\"></script></head><body class=\"__className_e8ce0c\"><div class=\"min-h-screen bg-background\"><main class=\"relative\"><div class=\"min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100\"><div class=\"container mx-auto px-4 py-16\"><div class=\"text-center mb-16\"><h1 class=\"text-4xl md:text-6xl font-bold text-gray-900 mb-6\">Surveyor</h1><p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-8\">A comprehensive multi-stakeholder survey platform that enables organizations to gather insights from different perspectives and generate actionable results.</p><div class=\"flex flex-col sm:flex-row gap-4 justify-center\"><a class=\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8\" href=\"/survey\">Take Survey<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right ml-2 h-4 w-4\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg></a><a class=\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8\" href=\"/admin\">Admin Dashboard</a></div></div><div class=\"grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16\"><div class=\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\"><div class=\"flex flex-col space-y-1.5 p-6\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-clipboard-list h-12 w-12 mx-auto text-blue-600 mb-4\"><rect width=\"8\" height=\"4\" x=\"8\" y=\"2\" rx=\"1\" ry=\"1\"></rect><path d=\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\"></path><path d=\"M12 11h4\"></path><path d=\"M12 16h4\"></path><path d=\"M8 11h.01\"></path><path d=\"M8 16h.01\"></path></svg><h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Dynamic Surveys</h3></div><div class=\"p-6 pt-0\"><p class=\"text-sm text-muted-foreground\">Create and manage surveys with configurable JSON schemas that adapt to different stakeholder roles.</p></div></div><div class=\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\"><div class=\"flex flex-col space-y-1.5 p-6\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-users h-12 w-12 mx-auto text-green-600 mb-4\"><path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"></path><circle cx=\"9\" cy=\"7\" r=\"4\"></circle><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"></path><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"></path></svg><h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Multi-Stakeholder</h3></div><div class=\"p-6 pt-0\"><p class=\"text-sm text-muted-foreground\">Support multiple stakeholder types with role-based question filtering and weighted responses.</p></div></div><div class=\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\"><div class=\"flex flex-col space-y-1.5 p-6\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-bar-chart3 h-12 w-12 mx-auto text-purple-600 mb-4\"><path d=\"M3 3v18h18\"></path><path d=\"M18 17V9\"></path><path d=\"M13 17V5\"></path><path d=\"M8 17v-3\"></path></svg><h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Advanced Analytics</h3></div><div class=\"p-6 pt-0\"><p class=\"text-sm text-muted-foreground\">Sophisticated scoring engine with domain-based analysis and maturity level assessment.</p></div></div><div class=\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\"><div class=\"flex flex-col space-y-1.5 p-6\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-settings h-12 w-12 mx-auto text-orange-600 mb-4\"><path d=\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\"></path><circle cx=\"12\" cy=\"12\" r=\"3\"></circle></svg><h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Easy Management</h3></div><div class=\"p-6 pt-0\"><p class=\"text-sm text-muted-foreground\">Comprehensive admin dashboard for survey management, response tracking, and data export.</p></div></div></div><div class=\"text-center mb-16\"><h2 class=\"text-3xl font-bold text-gray-900 mb-8\">How It Works</h2><div class=\"grid md:grid-cols-3 gap-8\"><div class=\"space-y-4\"><div class=\"bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\">1</div><h3 class=\"text-xl font-semibold\">Select Your Role</h3><p class=\"text-gray-600\">Choose your stakeholder role and expertise areas to receive personalized questions.</p></div><div class=\"space-y-4\"><div class=\"bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\">2</div><h3 class=\"text-xl font-semibold\">Complete Survey</h3><p class=\"text-gray-600\">Answer questions tailored to your role using our intuitive interface with progress tracking.</p></div><div class=\"space-y-4\"><div class=\"bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\">3</div><h3 class=\"text-xl font-semibold\">View Results</h3><p class=\"text-gray-600\">Get comprehensive results with domain scores, maturity levels, and actionable recommendations.</p></div></div></div><div class=\"text-center bg-white rounded-lg p-12 shadow-lg\"><h2 class=\"text-2xl font-bold text-gray-900 mb-4\">Ready to Get Started?</h2><p class=\"text-gray-600 mb-8\">Begin your assessment journey and unlock insights for your organization.</p><a class=\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8\" href=\"/survey\">Start Your Survey<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right ml-2 h-4 w-4\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg></a></div></div></div></main></div><script src=\"/_next/static/chunks/webpack.js?v=1752068617521\" async=\"\"></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,\"1:HL[\\\"/_next/static/media/e4af272ccee01ff0-s.p.woff2\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/woff2\\\"}]\\n2:HL[\\\"/_next/static/css/app/layout.css?v=1752068617521\\\",\\\"style\\\"]\\n0:D{\\\"name\\\":\\\"r2\\\",\\\"env\\\":\\\"Server\\\"}\\n\"])</script><script>self.__next_f.push([1,\"3:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/components/app-router.js\\\",[\\\"app-pages-internals\\\",\\\"static/chunks/app-pages-internals.js\\\"],\\\"\\\"]\\n7:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/link.js\\\",[\\\"app/page\\\",\\\"static/chunks/app/page.js\\\"],\\\"\\\"]\\n25:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js\\\",[\\\"app-pages-internals\\\",\\\"static/chunks/app-pages-internals.js\\\"],\\\"\\\"]\\n26:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js\\\",[\\\"app-pages-internals\\\",\\\"static/chunks/app-pages-internals.js\\\"],\\\"\\\"]\\n2a:I[\\\"(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js\\\",[\\\"app-pages-internals\\\",\\\"static/chunks/app-pages-internals.js\\\"],\\\"\\\"]\\n4:D{\\\"name\\\":\\\"\\\",\\\"env\\\":\\\"Server\\\"}\\n5:D{\\\"name\\\":\\\"HomePage\\\",\\\"env\\\":\\\"Server\\\"}\\n6:D{\\\"name\\\":\\\"Button\\\",\\\"env\\\":\\\"Server\\\"}\\n6:D{\\\"name\\\":\\\"Slot.Slot\\\",\\\"env\\\":\\\"Server\\\"}\\n6:D{\\\"name\\\":\\\"Slot.SlotClone\\\",\\\"env\\\":\\\"Server\\\"}\\n8:D{\\\"name\\\":\\\"ArrowRight\\\",\\\"env\\\":\\\"Server\\\"}\\n8:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-arrow-right ml-2 h-4 w-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1ays0h\\\",{\\\"d\\\":\\\"M5 12h14\\\"}],[\\\"$\\\",\\\"path\\\",\\\"xquz4c\\\",{\\\"d\\\":\\\"m12 5 7 7-7 7\\\"}],\\\"$undefined\\\"]}]\\n6:[\\\"$\\\",\\\"$L7\\\",null,{\\\"href\\\":\\\"/survey\\\",\\\"children\\\":[\\\"Take Survey\\\",\\\"$8\\\"],\\\"className\\\":\\\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8\\\"}]\\n9:D{\\\"name\\\":\\\"Button\\\",\\\"env\\\":\\\"Server\\\"}\\n9:D{\\\"name\\\":\\\"Slot.Slot\\\",\\\"env\\\":\\\"Server\\\"}\\n9:D{\\\"name\\\":\\\"Slot.SlotClone\\\",\\\"env\\\":\\\"Server\\\"}\\n9:[\\\"$\\\",\\\"$L7\\\",null,{\\\"href\\\":\\\"/admin\\\",\\\"children\\\":\\\"Admin Dashboard\\\",\\\"className\\\":\\\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-\"])</script><script>self.__next_f.push([1,\"background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8\\\"}]\\na:D{\\\"name\\\":\\\"Card\\\",\\\"env\\\":\\\"Server\\\"}\\nb:D{\\\"name\\\":\\\"CardHeader\\\",\\\"env\\\":\\\"Server\\\"}\\nc:D{\\\"name\\\":\\\"ClipboardList\\\",\\\"env\\\":\\\"Server\\\"}\\nc:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-clipboard-list h-12 w-12 mx-auto text-blue-600 mb-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"rect\\\",\\\"tgr4d6\\\",{\\\"width\\\":\\\"8\\\",\\\"height\\\":\\\"4\\\",\\\"x\\\":\\\"8\\\",\\\"y\\\":\\\"2\\\",\\\"rx\\\":\\\"1\\\",\\\"ry\\\":\\\"1\\\"}],[\\\"$\\\",\\\"path\\\",\\\"116196\\\",{\\\"d\\\":\\\"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\\\"}],[\\\"$\\\",\\\"path\\\",\\\"1jrz19\\\",{\\\"d\\\":\\\"M12 11h4\\\"}],[\\\"$\\\",\\\"path\\\",\\\"n85exb\\\",{\\\"d\\\":\\\"M12 16h4\\\"}],[\\\"$\\\",\\\"path\\\",\\\"1dfujw\\\",{\\\"d\\\":\\\"M8 11h.01\\\"}],[\\\"$\\\",\\\"path\\\",\\\"18s6g9\\\",{\\\"d\\\":\\\"M8 16h.01\\\"}],\\\"$undefined\\\"]}]\\nd:D{\\\"name\\\":\\\"CardTitle\\\",\\\"env\\\":\\\"Server\\\"}\\nd:[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-2xl font-semibold leading-none tracking-tight\\\",\\\"children\\\":\\\"Dynamic Surveys\\\"}]\\nb:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col space-y-1.5 p-6\\\",\\\"children\\\":[\\\"$c\\\",\\\"$d\\\"]}]\\ne:D{\\\"name\\\":\\\"CardContent\\\",\\\"env\\\":\\\"Server\\\"}\\nf:D{\\\"name\\\":\\\"CardDescription\\\",\\\"env\\\":\\\"Server\\\"}\\nf:[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-sm text-muted-foreground\\\",\\\"children\\\":\\\"Create and manage surveys with configurable JSON schemas that adapt to different stakeholder roles.\\\"}]\\ne:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"p-6 pt-0\\\",\\\"children\\\":\\\"$f\\\"}]\\na:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\\\",\\\"children\\\":[\\\"$b\\\",\\\"$e\\\"]}]\\n10:D{\\\"name\\\":\\\"Card\\\",\\\"env\\\":\\\"Server\\\"}\\n11:D{\\\"name\\\":\\\"CardHeader\\\",\\\"env\\\":\\\"Server\\\"}\\n12:D{\\\"name\\\":\\\"Users\\\",\\\"env\\\":\\\"Server\\\"}\\n12:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinej\"])</script><script>self.__next_f.push([1,\"oin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-users h-12 w-12 mx-auto text-green-600 mb-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1yyitq\\\",{\\\"d\\\":\\\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\\\"}],[\\\"$\\\",\\\"circle\\\",\\\"nufk8\\\",{\\\"cx\\\":\\\"9\\\",\\\"cy\\\":\\\"7\\\",\\\"r\\\":\\\"4\\\"}],[\\\"$\\\",\\\"path\\\",\\\"kshegd\\\",{\\\"d\\\":\\\"M22 21v-2a4 4 0 0 0-3-3.87\\\"}],[\\\"$\\\",\\\"path\\\",\\\"1da9ce\\\",{\\\"d\\\":\\\"M16 3.13a4 4 0 0 1 0 7.75\\\"}],\\\"$undefined\\\"]}]\\n13:D{\\\"name\\\":\\\"CardTitle\\\",\\\"env\\\":\\\"Server\\\"}\\n13:[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-2xl font-semibold leading-none tracking-tight\\\",\\\"children\\\":\\\"Multi-Stakeholder\\\"}]\\n11:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col space-y-1.5 p-6\\\",\\\"children\\\":[\\\"$12\\\",\\\"$13\\\"]}]\\n14:D{\\\"name\\\":\\\"CardContent\\\",\\\"env\\\":\\\"Server\\\"}\\n15:D{\\\"name\\\":\\\"CardDescription\\\",\\\"env\\\":\\\"Server\\\"}\\n15:[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-sm text-muted-foreground\\\",\\\"children\\\":\\\"Support multiple stakeholder types with role-based question filtering and weighted responses.\\\"}]\\n14:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"p-6 pt-0\\\",\\\"children\\\":\\\"$15\\\"}]\\n10:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\\\",\\\"children\\\":[\\\"$11\\\",\\\"$14\\\"]}]\\n16:D{\\\"name\\\":\\\"Card\\\",\\\"env\\\":\\\"Server\\\"}\\n17:D{\\\"name\\\":\\\"CardHeader\\\",\\\"env\\\":\\\"Server\\\"}\\n18:D{\\\"name\\\":\\\"BarChart3\\\",\\\"env\\\":\\\"Server\\\"}\\n18:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-bar-chart3 h-12 w-12 mx-auto text-purple-600 mb-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1s2lah\\\",{\\\"d\\\":\\\"M3 3v18h18\\\"}],[\\\"$\\\",\\\"path\\\",\\\"2bz60n\\\",{\\\"d\\\":\\\"M18 17V9\\\"}],[\\\"$\\\",\\\"path\\\",\\\"1frdt8\\\",{\\\"d\\\":\\\"M13 17V5\\\"}],[\\\"$\\\",\\\"path\\\",\\\"17ska0\\\",{\\\"d\\\":\\\"M8 17v-3\\\"}],\\\"$undefined\\\"]}]\\n19:D{\\\"name\\\":\\\"CardTitle\\\",\\\"env\\\":\\\"Server\\\"}\\n19:[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-2xl font-semibold leading-none tracking-tight\\\",\\\"children\\\":\\\"Advanced Analytics\\\"}]\\n17:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col space-y-1.5 p-6\\\",\\\"children\\\":[\\\"$18\\\",\\\"$19\\\"]}]\\n1a:D{\\\"name\\\":\\\"CardContent\\\",\\\"env\\\":\\\"Server\\\"}\\n1b:D{\\\"name\\\":\\\"CardDescription\\\",\\\"env\\\":\\\"Server\\\"}\\n1b:[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-sm text-muted-foreground\\\",\\\"children\\\":\\\"Soph\"])</script><script>self.__next_f.push([1,\"isticated scoring engine with domain-based analysis and maturity level assessment.\\\"}]\\n1a:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"p-6 pt-0\\\",\\\"children\\\":\\\"$1b\\\"}]\\n16:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\\\",\\\"children\\\":[\\\"$17\\\",\\\"$1a\\\"]}]\\n1c:D{\\\"name\\\":\\\"Card\\\",\\\"env\\\":\\\"Server\\\"}\\n1d:D{\\\"name\\\":\\\"CardHeader\\\",\\\"env\\\":\\\"Server\\\"}\\n1e:D{\\\"name\\\":\\\"Settings\\\",\\\"env\\\":\\\"Server\\\"}\\n1e:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-settings h-12 w-12 mx-auto text-orange-600 mb-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1qme2f\\\",{\\\"d\\\":\\\"M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z\\\"}],[\\\"$\\\",\\\"circle\\\",\\\"1v7zrd\\\",{\\\"cx\\\":\\\"12\\\",\\\"cy\\\":\\\"12\\\",\\\"r\\\":\\\"3\\\"}],\\\"$undefined\\\"]}]\\n1f:D{\\\"name\\\":\\\"CardTitle\\\",\\\"env\\\":\\\"Server\\\"}\\n1f:[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-2xl font-semibold leading-none tracking-tight\\\",\\\"children\\\":\\\"Easy Management\\\"}]\\n1d:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col space-y-1.5 p-6\\\",\\\"children\\\":[\\\"$1e\\\",\\\"$1f\\\"]}]\\n20:D{\\\"name\\\":\\\"CardContent\\\",\\\"env\\\":\\\"Server\\\"}\\n21:D{\\\"name\\\":\\\"CardDescription\\\",\\\"env\\\":\\\"Server\\\"}\\n21:[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-sm text-muted-foreground\\\",\\\"children\\\":\\\"Comprehensive admin dashboard for survey management, response tracking, and data export.\\\"}]\\n20:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"p-6 pt-0\\\",\\\"children\\\":\\\"$21\\\"}]\\n1c:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"rounded-lg border bg-card text-card-foreground shadow-sm text-center\\\",\\\"children\\\":[\\\"$1d\\\",\\\"$20\\\"]}]\\n22:D\"])</script><script>self.__next_f.push([1,\"{\\\"name\\\":\\\"Button\\\",\\\"env\\\":\\\"Server\\\"}\\n22:D{\\\"name\\\":\\\"Slot.Slot\\\",\\\"env\\\":\\\"Server\\\"}\\n22:D{\\\"name\\\":\\\"Slot.SlotClone\\\",\\\"env\\\":\\\"Server\\\"}\\n23:D{\\\"name\\\":\\\"ArrowRight\\\",\\\"env\\\":\\\"Server\\\"}\\n23:[\\\"$\\\",\\\"svg\\\",null,{\\\"xmlns\\\":\\\"http://www.w3.org/2000/svg\\\",\\\"width\\\":24,\\\"height\\\":24,\\\"viewBox\\\":\\\"0 0 24 24\\\",\\\"fill\\\":\\\"none\\\",\\\"stroke\\\":\\\"currentColor\\\",\\\"strokeWidth\\\":2,\\\"strokeLinecap\\\":\\\"round\\\",\\\"strokeLinejoin\\\":\\\"round\\\",\\\"className\\\":\\\"lucide lucide-arrow-right ml-2 h-4 w-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"path\\\",\\\"1ays0h\\\",{\\\"d\\\":\\\"M5 12h14\\\"}],[\\\"$\\\",\\\"path\\\",\\\"xquz4c\\\",{\\\"d\\\":\\\"m12 5 7 7-7 7\\\"}],\\\"$undefined\\\"]}]\\n22:[\\\"$\\\",\\\"$L7\\\",null,{\\\"href\\\":\\\"/survey\\\",\\\"children\\\":[\\\"Start Your Survey\\\",\\\"$23\\\"],\\\"className\\\":\\\"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8\\\"}]\\n\"])</script><script>self.__next_f.push([1,\"5:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"container mx-auto px-4 py-16\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"text-center mb-16\\\",\\\"children\\\":[[\\\"$\\\",\\\"h1\\\",null,{\\\"className\\\":\\\"text-4xl md:text-6xl font-bold text-gray-900 mb-6\\\",\\\"children\\\":\\\"Surveyor\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-xl text-gray-600 max-w-3xl mx-auto mb-8\\\",\\\"children\\\":\\\"A comprehensive multi-stakeholder survey platform that enables organizations to gather insights from different perspectives and generate actionable results.\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col sm:flex-row gap-4 justify-center\\\",\\\"children\\\":[\\\"$6\\\",\\\"$9\\\"]}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16\\\",\\\"children\\\":[\\\"$a\\\",\\\"$10\\\",\\\"$16\\\",\\\"$1c\\\"]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"text-center mb-16\\\",\\\"children\\\":[[\\\"$\\\",\\\"h2\\\",null,{\\\"className\\\":\\\"text-3xl font-bold text-gray-900 mb-8\\\",\\\"children\\\":\\\"How It Works\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"grid md:grid-cols-3 gap-8\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"space-y-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\\\",\\\"children\\\":\\\"1\\\"}],[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-xl font-semibold\\\",\\\"children\\\":\\\"Select Your Role\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-gray-600\\\",\\\"children\\\":\\\"Choose your stakeholder role and expertise areas to receive personalized questions.\\\"}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"space-y-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"bg-green-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\\\",\\\"children\\\":\\\"2\\\"}],[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-xl font-semibold\\\",\\\"children\\\":\\\"Complete Survey\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-gray-600\\\",\\\"children\\\":\\\"Answer questions tailored to your role using our intuitive interface with progress tracking.\\\"}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"space-y-4\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto text-xl font-bold\\\",\\\"children\\\":\\\"3\\\"}],[\\\"$\\\",\\\"h3\\\",null,{\\\"className\\\":\\\"text-xl font-semibold\\\",\\\"children\\\":\\\"View Results\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-gray-600\\\",\\\"children\\\":\\\"Get comprehensive results with domain scores, maturity levels, and actionable recommendations.\\\"}]]}]]}]]}],[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"text-center bg-white rounded-lg p-12 shadow-lg\\\",\\\"children\\\":[[\\\"$\\\",\\\"h2\\\",null,{\\\"className\\\":\\\"text-2xl font-bold text-gray-900 mb-4\\\",\\\"children\\\":\\\"Ready to Get Started?\\\"}],[\\\"$\\\",\\\"p\\\",null,{\\\"className\\\":\\\"text-gray-600 mb-8\\\",\\\"children\\\":\\\"Begin your assessment journey and unlock insights for your organization.\\\"}],\\\"$22\\\"]}]]}]}]\\n\"])</script><script>self.__next_f.push([1,\"24:D{\\\"name\\\":\\\"RootLayout\\\",\\\"env\\\":\\\"Server\\\"}\\n27:D{\\\"name\\\":\\\"NotFound\\\",\\\"env\\\":\\\"Server\\\"}\\n27:[[\\\"$\\\",\\\"title\\\",null,{\\\"children\\\":\\\"404: This page could not be found.\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"fontFamily\\\":\\\"system-ui,\\\\\\\"Segoe UI\\\\\\\",Roboto,Helvetica,Arial,sans-serif,\\\\\\\"Apple Color Emoji\\\\\\\",\\\\\\\"Segoe UI Emoji\\\\\\\"\\\",\\\"height\\\":\\\"100vh\\\",\\\"textAlign\\\":\\\"center\\\",\\\"display\\\":\\\"flex\\\",\\\"flexDirection\\\":\\\"column\\\",\\\"alignItems\\\":\\\"center\\\",\\\"justifyContent\\\":\\\"center\\\"},\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"children\\\":[[\\\"$\\\",\\\"style\\\",null,{\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\\\"}}],[\\\"$\\\",\\\"h1\\\",null,{\\\"className\\\":\\\"next-error-h1\\\",\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\",\\\"margin\\\":\\\"0 20px 0 0\\\",\\\"padding\\\":\\\"0 23px 0 0\\\",\\\"fontSize\\\":24,\\\"fontWeight\\\":500,\\\"verticalAlign\\\":\\\"top\\\",\\\"lineHeight\\\":\\\"49px\\\"},\\\"children\\\":\\\"404\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"display\\\":\\\"inline-block\\\"},\\\"children\\\":[\\\"$\\\",\\\"h2\\\",null,{\\\"style\\\":{\\\"fontSize\\\":14,\\\"fontWeight\\\":400,\\\"lineHeight\\\":\\\"49px\\\",\\\"margin\\\":0},\\\"children\\\":\\\"This page could not be found.\\\"}]}]]}]}]]\\n24:[\\\"$\\\",\\\"html\\\",null,{\\\"lang\\\":\\\"en\\\",\\\"children\\\":[\\\"$\\\",\\\"body\\\",null,{\\\"className\\\":\\\"__className_e8ce0c\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"min-h-screen bg-background\\\",\\\"children\\\":[\\\"$\\\",\\\"main\\\",null,{\\\"className\\\":\\\"relative\\\",\\\"children\\\":[\\\"$\\\",\\\"$L25\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"segmentPath\\\":[\\\"children\\\"],\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$L26\\\",null,{}],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":\\\"$27\\\",\\\"notFoundStyles\\\":[]}]}]}]}]}]\\n28:D{\\\"name\\\":\\\"rQ\\\",\\\"env\\\":\\\"Server\\\"}\\n28:null\\n29:D{\\\"name\\\":\\\"\\\",\\\"env\\\":\\\"Server\\\"}\\n2b:[]\\n0:[\\\"$\\\",\\\"$L3\\\",null,{\\\"buildId\\\":\\\"development\\\",\\\"assetPrefix\\\":\\\"\\\",\\\"urlParts\\\":[\\\"\\\",\\\"\\\"],\\\"initialTree\\\":[\\\"\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{}]},\\\"$undefined\\\",\\\"$undefined\\\",true],\\\"initialSeedData\\\":[\\\"\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{},[[\\\"$L4\\\",\\\"$5\\\",null],null],null]},[[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_\"])</script><script>self.__next_f.push([1,\"next/static/css/app/layout.css?v=1752068617521\\\",\\\"precedence\\\":\\\"next_static/css/app/layout.css\\\",\\\"crossOrigin\\\":\\\"$undefined\\\"}]],\\\"$24\\\"],null],null],\\\"couldBeIntercepted\\\":false,\\\"initialHead\\\":[\\\"$28\\\",\\\"$L29\\\"],\\\"globalErrorComponent\\\":\\\"$2a\\\",\\\"missingSlots\\\":\\\"$W2b\\\"}]\\n\"])</script><script>self.__next_f.push([1,\"29:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=1\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"charSet\\\":\\\"utf-8\\\"}],[\\\"$\\\",\\\"title\\\",\\\"2\\\",{\\\"children\\\":\\\"Surveyor - Multi-Stakeholder Survey Platform\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"3\\\",{\\\"name\\\":\\\"description\\\",\\\"content\\\":\\\"Comprehensive survey platform supporting multiple stakeholders with configurable schemas\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"4\\\",{\\\"name\\\":\\\"author\\\",\\\"content\\\":\\\"Claude PM Framework\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"5\\\",{\\\"name\\\":\\\"keywords\\\",\\\"content\\\":\\\"survey,multi-stakeholder,assessment,evaluation\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"6\\\",{\\\"name\\\":\\\"next-size-adjust\\\"}]]\\n4:null\\n\"])</script></body></html>",
+    "errors": []
+  },
+  "accessibilityTest": {
+    "violations": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "description": "Ensure the order of headings is semantically correct",
+        "nodes": [
+          {
+            "target": [
+              ".bg-card.text-card-foreground.shadow-sm:nth-child(1) > .space-y-1\\.5.flex-col.flex > .leading-none.tracking-tight.text-2xl"
+            ],
+            "html": "<h3 class=\"text-2xl font-semibold leading-none tracking-tight\">Dynamic Surveys</h3>",
+            "failureSummary": "Fix any of the following:\n  Heading order invalid"
+          }
+        ]
+      }
+    ],
+    "passes": 18,
+    "incomplete": 0,
+    "inapplicable": 71
+  },
+  "performanceTest": {
+    "categories": {
+      "performance": {
+        "score": 0.85,
+        "title": "Performance"
+      },
+      "accessibility": {
+        "score": 0.92,
+        "title": "Accessibility"
+      },
+      "best-practices": {
+        "score": 0.88,
+        "title": "Best Practices"
+      },
+      "seo": {
+        "score": 0.9,
+        "title": "SEO"
+      }
+    },
+    "audits": {
+      "first-contentful-paint": {
+        "score": 0.8,
+        "displayValue": "1.5s",
+        "title": "First Contentful Paint",
+        "description": "Time to first content"
+      },
+      "largest-contentful-paint": {
+        "score": 0.7,
+        "displayValue": "2.8s",
+        "title": "Largest Contentful Paint",
+        "description": "Time to largest content"
+      },
+      "speed-index": {
+        "score": 0.85,
+        "displayValue": "2.1s",
+        "title": "Speed Index",
+        "description": "Speed of content loading"
+      },
+      "cumulative-layout-shift": {
+        "score": 0.95,
+        "displayValue": "0.05",
+        "title": "Cumulative Layout Shift",
+        "description": "Layout stability"
+      },
+      "total-blocking-time": {
+        "score": 0.75,
+        "displayValue": "180ms",
+        "title": "Total Blocking Time",
+        "description": "Main thread blocking time"
+      },
+      "interactive": {
+        "score": 0.8,
+        "displayValue": "3.2s",
+        "title": "Time to Interactive",
+        "description": "Time to full interactivity"
+      }
+    },
+    "timing": {
+      "total": 5000
+    }
+  },
+  "visualTest": {
+    "baseline": "qa-agent/screenshots/baseline/main-page.png",
+    "current": "qa-agent/screenshots/qa-test-1752068622507.png",
+    "diff": "qa-agent/screenshots/main-page-diff.png",
+    "pixelDifference": 0,
+    "threshold": 0.1,
+    "passed": true
+  },
+  "securityTest": {
+    "headers": {
+      "content-security-policy": false,
+      "x-frame-options": false,
+      "x-content-type-options": false,
+      "referrer-policy": false,
+      "permissions-policy": false
+    },
+    "score": 0,
+    "recommendations": [
+      "Implement Content Security Policy (CSP) to prevent XSS attacks",
+      "Add X-Frame-Options header to prevent clickjacking attacks",
+      "Add X-Content-Type-Options: nosniff to prevent MIME-type sniffing",
+      "Implement Referrer Policy to control referrer information",
+      "Consider implementing Permissions Policy for better feature control",
+      "Add HTTP Strict Transport Security (HSTS) header for HTTPS enforcement"
+    ]
+  },
+  "htmlValidation": {
+    "isValid": false,
+    "errors": [
+      {
+        "line": 1,
+        "column": 1,
+        "message": "Missing <body> tag",
+        "type": "error"
+      }
+    ],
+    "warnings": [
+      {
+        "line": 1,
+        "column": 1,
+        "message": "Potential unclosed tags detected",
+        "type": "warning"
+      }
+    ]
+  },
+  "overallScore": 73,
+  "recommendation": "REJECT",
+  "summary": "Frontend QA analysis completed for http://localhost:3002 with an overall score of 73% (58.2% pass rate). The application has critical issues that prevent approval. Key issues identified: HTML Validation, Security Headers, Content Security Policy. Performance score: 85%. 1 accessibility violations detected. "
+}

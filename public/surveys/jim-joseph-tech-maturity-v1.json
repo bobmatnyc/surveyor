@@ -1,0 +1,422 @@
+{
+  "id": "jim-joseph-tech-maturity-v1",
+  "name": "Technology Maturity Assessment",
+  "description": "Comprehensive technology capacity assessment for Jewish nonprofit organizations",
+  "version": "1.0.0",
+  "createdAt": "2025-01-15T00:00:00.000Z",
+  "updatedAt": "2025-01-15T00:00:00.000Z",
+  "isActive": true,
+  "settings": {
+    "allowMultipleResponses": false,
+    "requireAllStakeholders": true,
+    "showProgressBar": true,
+    "allowNavigation": true,
+    "customStyling": {
+      "primaryColor": "#2563eb",
+      "secondaryColor": "#1e40af",
+      "logoUrl": "/logos/jim-joseph-foundation.png"
+    }
+  },
+  "stakeholders": [
+    {
+      "id": "ceo",
+      "name": "CEO/Executive Director",
+      "description": "Senior leadership responsible for organizational strategy",
+      "weight": 0.35,
+      "color": "#dc2626",
+      "requiredExpertise": [
+        "strategy",
+        "governance"
+      ]
+    },
+    {
+      "id": "tech_lead",
+      "name": "Technology Lead",
+      "description": "Person responsible for technology decisions and implementation",
+      "weight": 0.3,
+      "color": "#2563eb",
+      "requiredExpertise": [
+        "infrastructure",
+        "data"
+      ]
+    },
+    {
+      "id": "staff",
+      "name": "Program/Operations Staff",
+      "description": "Staff members who use technology daily",
+      "weight": 0.25,
+      "color": "#059669"
+    },
+    {
+      "id": "board",
+      "name": "Board Member",
+      "description": "Board member with governance oversight",
+      "weight": 0.1,
+      "color": "#7c3aed",
+      "requiredExpertise": [
+        "governance"
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "id": "infrastructure",
+      "name": "Infrastructure",
+      "description": "Technology foundation, security, and system management",
+      "weight": 0.25,
+      "color": "#dc2626",
+      "icon": "server"
+    },
+    {
+      "id": "business_systems",
+      "name": "Business Systems",
+      "description": "Financial, HR, and operational management systems",
+      "weight": 0.25,
+      "color": "#2563eb",
+      "icon": "building-2"
+    },
+    {
+      "id": "data",
+      "name": "Data Management",
+      "description": "Data collection, analysis, and decision-making capabilities",
+      "weight": 0.2,
+      "color": "#059669",
+      "icon": "database"
+    },
+    {
+      "id": "program_tech",
+      "name": "Program Technology",
+      "description": "Technology integration in program delivery and client services",
+      "weight": 0.15,
+      "color": "#7c3aed",
+      "icon": "users"
+    },
+    {
+      "id": "culture",
+      "name": "Technology Culture",
+      "description": "Leadership, strategy, and organizational readiness for technology",
+      "weight": 0.15,
+      "color": "#ea580c",
+      "icon": "heart"
+    }
+  ],
+  "questions": [
+    {
+      "id": "infra_onboarding_ceo",
+      "text": "How confident are you that new employees have the technology tools they need on day 1?",
+      "description": "This assesses the maturity of technology onboarding processes",
+      "type": "likert_5",
+      "domain": "infrastructure",
+      "targetStakeholders": [
+        "ceo"
+      ],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "Not confident - each new hire is handled ad-hoc"
+        },
+        {
+          "value": 2,
+          "label": "Somewhat confident - we have basic equipment but setup takes time"
+        },
+        {
+          "value": 3,
+          "label": "Moderately confident - standard equipment with some delays"
+        },
+        {
+          "value": 4,
+          "label": "Confident - streamlined process with minimal delays"
+        },
+        {
+          "value": 5,
+          "label": "Very confident - automated provisioning, everything ready day 1"
+        }
+      ]
+    },
+    {
+      "id": "infra_onboarding_tech",
+      "text": "Do you have a documented, standardized technology onboarding process?",
+      "type": "likert_5",
+      "domain": "infrastructure",
+      "targetStakeholders": [
+        "tech_lead"
+      ],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "No documented process - everything is handled case-by-case"
+        },
+        {
+          "value": 2,
+          "label": "Basic documentation exists but not consistently followed"
+        },
+        {
+          "value": 3,
+          "label": "Standard process documented and mostly followed"
+        },
+        {
+          "value": 4,
+          "label": "Well-documented process with role-based provisioning"
+        },
+        {
+          "value": 5,
+          "label": "Fully automated onboarding with role-based access management"
+        }
+      ]
+    },
+    {
+      "id": "data_collection_ceo",
+      "text": "How confident are you in your organization's ability to collect and analyze data for decision making?",
+      "type": "likert_5",
+      "domain": "data",
+      "targetStakeholders": [
+        "ceo"
+      ],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "Not confident - data collection is ad-hoc and unreliable"
+        },
+        {
+          "value": 2,
+          "label": "Somewhat confident - basic data collection but limited analysis"
+        },
+        {
+          "value": 3,
+          "label": "Moderately confident - regular data collection with some analysis"
+        },
+        {
+          "value": 4,
+          "label": "Confident - systematic data collection with regular analysis"
+        },
+        {
+          "value": 5,
+          "label": "Very confident - comprehensive data-driven decision making"
+        }
+      ]
+    },
+    {
+      "id": "data_systems_tech",
+      "text": "How would you rate your organization's data integration and management systems?",
+      "type": "likert_5",
+      "domain": "data",
+      "targetStakeholders": [
+        "tech_lead"
+      ],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "No integration - data exists in silos"
+        },
+        {
+          "value": 2,
+          "label": "Basic integration between some systems"
+        },
+        {
+          "value": 3,
+          "label": "Moderate integration with manual processes"
+        },
+        {
+          "value": 4,
+          "label": "Good integration with automated data flows"
+        },
+        {
+          "value": 5,
+          "label": "Excellent integration with real-time data synchronization"
+        }
+      ]
+    },
+    {
+      "id": "business_systems_ceo",
+      "text": "How effectively do your business systems (HR, Finance, CRM) support your operations?",
+      "type": "likert_5",
+      "domain": "business_systems",
+      "targetStakeholders": [
+        "ceo"
+      ],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "Not effective - systems create significant barriers"
+        },
+        {
+          "value": 2,
+          "label": "Somewhat effective - systems work but require workarounds"
+        },
+        {
+          "value": 3,
+          "label": "Moderately effective - systems meet basic needs"
+        },
+        {
+          "value": 4,
+          "label": "Effective - systems enhance productivity"
+        },
+        {
+          "value": 5,
+          "label": "Very effective - systems are strategic enablers"
+        }
+      ]
+    },
+    {
+      "id": "program_tech_staff",
+      "text": "How well does technology support your daily program delivery work?",
+      "type": "likert_5",
+      "domain": "program_tech",
+      "targetStakeholders": [
+        "staff"
+      ],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "Not well - technology hinders my work"
+        },
+        {
+          "value": 2,
+          "label": "Somewhat well - technology has limited usefulness"
+        },
+        {
+          "value": 3,
+          "label": "Moderately well - technology helps with basic tasks"
+        },
+        {
+          "value": 4,
+          "label": "Well - technology enhances my effectiveness"
+        },
+        {
+          "value": 5,
+          "label": "Very well - technology is essential to my success"
+        }
+      ]
+    },
+    {
+      "id": "culture_leadership_ceo",
+      "text": "How would you rate your organization's leadership commitment to technology advancement?",
+      "type": "likert_5",
+      "domain": "culture",
+      "targetStakeholders": [
+        "ceo"
+      ],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "Low commitment - technology is not a priority"
+        },
+        {
+          "value": 2,
+          "label": "Some commitment - technology is addressed when problems arise"
+        },
+        {
+          "value": 3,
+          "label": "Moderate commitment - technology is included in planning"
+        },
+        {
+          "value": 4,
+          "label": "High commitment - technology is a strategic priority"
+        },
+        {
+          "value": 5,
+          "label": "Very high commitment - technology drives organizational strategy"
+        }
+      ]
+    },
+    {
+      "id": "culture_board_oversight",
+      "text": "How engaged is the board in technology governance and oversight?",
+      "type": "likert_5",
+      "domain": "culture",
+      "targetStakeholders": [
+        "board"
+      ],
+      "required": true,
+      "options": [
+        {
+          "value": 1,
+          "label": "Not engaged - board rarely discusses technology"
+        },
+        {
+          "value": 2,
+          "label": "Minimally engaged - board discusses technology when issues arise"
+        },
+        {
+          "value": 3,
+          "label": "Moderately engaged - board receives regular technology updates"
+        },
+        {
+          "value": 4,
+          "label": "Engaged - board actively participates in technology planning"
+        },
+        {
+          "value": 5,
+          "label": "Highly engaged - board provides strategic technology leadership"
+        }
+      ]
+    }
+  ],
+  "scoring": {
+    "method": "weighted_average",
+    "stakeholderWeights": {
+      "ceo": 0.35,
+      "tech_lead": 0.3,
+      "staff": 0.25,
+      "board": 0.1
+    },
+    "domainWeights": {
+      "infrastructure": 0.25,
+      "business_systems": 0.25,
+      "data": 0.2,
+      "program_tech": 0.15,
+      "culture": 0.15
+    },
+    "maturityLevels": [
+      {
+        "id": "building",
+        "name": "Building",
+        "description": "Foundational technology needs, requires significant capacity building",
+        "minScore": 1,
+        "maxScore": 2.3,
+        "color": "#dc2626",
+        "recommendations": [
+          "Focus on establishing basic technology infrastructure",
+          "Develop technology policies and procedures",
+          "Invest in staff technology training",
+          "Consider hiring technology consultant or part-time IT support"
+        ]
+      },
+      {
+        "id": "emerging",
+        "name": "Emerging",
+        "description": "Functional technology with growth opportunities",
+        "minScore": 2.31,
+        "maxScore": 3.6,
+        "color": "#ea580c",
+        "recommendations": [
+          "Integrate systems for better data flow",
+          "Develop technology strategy and roadmap",
+          "Enhance staff technology skills",
+          "Improve security and backup procedures"
+        ]
+      },
+      {
+        "id": "thriving",
+        "name": "Thriving",
+        "description": "Advanced technology capabilities driving mission success",
+        "minScore": 3.61,
+        "maxScore": 5,
+        "color": "#059669",
+        "recommendations": [
+          "Lead technology innovation in the sector",
+          "Share best practices with peer organizations",
+          "Explore emerging technologies like AI",
+          "Mentor other organizations in technology adoption"
+        ]
+      }
+    ]
+  }
+}
