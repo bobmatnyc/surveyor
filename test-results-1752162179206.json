@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-07-10T15:42:59.196Z",
+  "tests": [
+    {
+      "name": "Survey Page Load",
+      "passed": false,
+      "error": ""
+    },
+    {
+      "name": "Test Page Load",
+      "passed": false,
+      "error": ""
+    },
+    {
+      "name": "Static Survey Data",
+      "passed": false,
+      "error": "Cannot find module './lib/static-surveys'\nRequire stack:\n- /Users/masa/Projects/managed/surveyor/test-production-button-fix.js"
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "failed": 3,
+    "total": 3
+  }
+}

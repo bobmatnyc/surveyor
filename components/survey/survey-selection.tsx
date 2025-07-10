@@ -38,8 +38,13 @@ export function SurveySelection() {
   };
 
   const handleStartSurvey = async (event?: React.FormEvent) => {
+    console.log('=== HANDLE START SURVEY CALLED ===');
+    console.log('Event:', event);
+    console.log('Current state:', { selectedSurvey, organizationId, isSubmitting });
+    
     if (event) {
       event.preventDefault();
+      console.log('Event prevented');
     }
     
     setError('');
@@ -63,6 +68,7 @@ export function SurveySelection() {
       }
 
       // Store survey data locally
+      console.log('Storing survey data...');
       storeSurveyData(survey, organizationId.trim());
       
       // Use the demo survey distribution code for now
@@ -72,13 +78,18 @@ export function SurveySelection() {
       console.log('Navigating to survey:', { distributionCode, surveyId: survey.id, organizationId });
       
       // Add a small delay to ensure state is updated
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise(resolve => setTimeout(resolve, 200));
       
+      console.log('Calling router.push...');
       router.push(`/survey/${distributionCode}`);
+      console.log('Router.push called');
+      
     } catch (error) {
       console.error('Error starting survey:', error);
       setError(error instanceof Error ? error.message : 'An unexpected error occurred');
+      alert('Error: ' + (error instanceof Error ? error.message : 'An unexpected error occurred'));
     } finally {
+      console.log('Setting isSubmitting to false');
       setIsSubmitting(false);
     }
   };
@@ -239,7 +250,7 @@ export function SurveySelection() {
               {/* Start Button */}
               <div className="pt-4">
                 <Button
-                  type="submit"
+                  type="button"
                   disabled={!selectedSurvey || !organizationId.trim() || isSubmitting}
                   className="w-full"
                   size="lg"
@@ -249,7 +260,8 @@ export function SurveySelection() {
                       organizationId: organizationId.trim(),
                       isSubmitting
                     });
-                    handleStartSurvey(e);
+                    e.preventDefault();
+                    handleStartSurvey();
                   }}
                 >
                   {isSubmitting ? 'Starting Survey...' : 'Start Survey'}
@@ -259,12 +271,25 @@ export function SurveySelection() {
               
               {/* Debug info (only in development) */}
               {process.env.NODE_ENV === 'development' && (
-                <div className="mt-4 p-3 bg-gray-100 rounded text-xs">
+                <div className="mt-4 p-3 bg-gray-100 rounded text-xs space-y-2">
                   <p><strong>Debug Info:</strong></p>
                   <p>Selected Survey: {selectedSurvey || 'None'}</p>
                   <p>Organization ID: {organizationId || 'Empty'}</p>
                   <p>Available Surveys: {surveys.length}</p>
                   <p>Button Disabled: {(!selectedSurvey || !organizationId.trim() || isSubmitting).toString()}</p>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      console.log('=== DEBUG BUTTON CLICKED ===');
+                      console.log('State:', { selectedSurvey, organizationId, isSubmitting });
+                      console.log('Surveys:', surveys);
+                      alert('Debug button works! Check console for details.');
+                    }}
+                  >
+                    Test Debug Button
+                  </Button>
                 </div>
               )}
             </form>

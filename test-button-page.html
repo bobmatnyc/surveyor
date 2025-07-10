@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .results {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Button Click Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Basic Button Click</h2>
+        <button onclick="testBasicClick()">Click Me</button>
+        <div id="basic-result" class="results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Form Submit Button</h2>
+        <form onsubmit="testFormSubmit(event)">
+            <input type="text" placeholder="Enter text" required>
+            <button type="submit">Submit Form</button>
+        </form>
+        <div id="form-result" class="results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: Button with Event Prevention</h2>
+        <button onclick="testPreventDefault(event)">Click with preventDefault</button>
+        <div id="prevent-result" class="results"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 4: Disabled Button</h2>
+        <button id="disabled-btn" disabled onclick="testDisabled()">Disabled Button</button>
+        <button onclick="toggleDisabled()">Toggle Disabled</button>
+        <div id="disabled-result" class="results"></div>
+    </div>
+
+    <script>
+        function testBasicClick() {
+            document.getElementById('basic-result').innerHTML = 'Basic click worked! ' + new Date().toLocaleTimeString();
+        }
+        
+        function testFormSubmit(event) {
+            event.preventDefault();
+            document.getElementById('form-result').innerHTML = 'Form submit worked! ' + new Date().toLocaleTimeString();
+        }
+        
+        function testPreventDefault(event) {
+            event.preventDefault();
+            document.getElementById('prevent-result').innerHTML = 'preventDefault click worked! ' + new Date().toLocaleTimeString();
+        }
+        
+        function testDisabled() {
+            document.getElementById('disabled-result').innerHTML = 'Disabled button should not work! ' + new Date().toLocaleTimeString();
+        }
+        
+        function toggleDisabled() {
+            const btn = document.getElementById('disabled-btn');
+            btn.disabled = !btn.disabled;
+            document.getElementById('disabled-result').innerHTML = 'Button disabled: ' + btn.disabled + ' - ' + new Date().toLocaleTimeString();
+        }
+    </script>
+</body>
+</html>
