@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -13,19 +13,23 @@ import { useRouter } from 'next/navigation';
 export function SurveySelection() {
   const [surveys, setSurveys] = useState<SurveySchema[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [organizationId, setOrganizationId] = useState('');
   const [selectedSurvey, setSelectedSurvey] = useState<string>('');
   const router = useRouter();
 
   const { setSurvey } = useSurveyStore();
 
-  useEffect(() => {
-    loadSurveys();
-  }, []);
-
-  const loadSurveys = async () => {
+  const loadSurveys = useCallback(async () => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await fetch('/api/surveys');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       setSurveys(data);
       if (data.length > 0) {
@@ -33,10 +37,15 @@ export function SurveySelection() {
       }
     } catch (error) {
       console.error('Failed to load surveys:', error);
+      setError(error instanceof Error ? error.message : 'Failed to load surveys');
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadSurveys();
+  }, [loadSurveys]);
 
   const handleStartSurvey = () => {
     if (!selectedSurvey || !organizationId) return;
@@ -45,7 +54,8 @@ export function SurveySelection() {
     if (!survey) return;
 
     setSurvey(survey);
-    useSurveyStore.getState().organizationId = organizationId;
+    // Set organization ID using the store's internal set method
+    useSurveyStore.setState({ organizationId });
     
     router.push(`/survey/${selectedSurvey}/${organizationId}`);
   };
@@ -56,6 +66,36 @@ export function SurveySelection() {
         <div className="max-w-2xl mx-auto text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading surveys...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="text-red-600 mb-4">
+            <h2 className="text-xl font-semibold">Error Loading Surveys</h2>
+            <p className="mt-2">{error}</p>
+          </div>
+          <Button onClick={() => loadSurveys()} className="mt-4">
+            Try Again
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (surveys.length === 0) {
+    return (
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">No Surveys Available</h2>
+          <p className="text-gray-600 mb-4">No active surveys were found.</p>
+          <Button onClick={() => loadSurveys()} className="mt-4">
+            Refresh
+          </Button>
         </div>
       </div>
     );

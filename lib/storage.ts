@@ -73,15 +73,22 @@ export class SurveyDataManager {
         const files = await fs.readdir(schemasDir);
         const jsonFiles = files.filter(file => file.endsWith('.json') && file !== 'index.json');
 
-        const schemas = await Promise.all(
-          jsonFiles.map(async (file) => {
+        const schemas: SurveySchema[] = [];
+        
+        for (const file of jsonFiles) {
+          try {
             const filePath = path.join(schemasDir, file);
             const data = await fs.readFile(filePath, 'utf8');
-            return JSON.parse(data) as SurveySchema;
-          })
-        );
+            const schema = JSON.parse(data) as SurveySchema;
+            schemas.push(schema);
+          } catch (error) {
+            console.error(`Error parsing survey file ${file}:`, error);
+            // Continue processing other files
+          }
+        }
 
-        return schemas.filter(schema => schema.isActive);
+        const activeSchemas = schemas.filter(schema => schema.isActive);
+        return activeSchemas;
       } catch (error) {
         console.error('Error reading surveys directory:', error);
         return [];
