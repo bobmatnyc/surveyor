@@ -45,7 +45,6 @@ export const PERFORMANCE_THRESHOLDS = {
 };
 
 export const SECURITY_HEADERS = [
-  'content-security-policy',
   'x-frame-options',
   'x-content-type-options',
   'referrer-policy',

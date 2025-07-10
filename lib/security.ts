@@ -2,51 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 
-/**
- * Generate Content Security Policy string based on environment
- */
-export function generateCSP(options?: {
-  nonce?: string;
-  isDevelopment?: boolean;
-  isAPI?: boolean;
-}): string {
-  const { nonce, isDevelopment = process.env.NODE_ENV === 'development', isAPI = false } = options || {};
-  
-  if (isAPI) {
-    // Stricter CSP for API endpoints
-    return isDevelopment
-      ? "default-src 'none'; script-src 'self' 'unsafe-eval'; frame-ancestors 'none'; base-uri 'none'"
-      : "default-src 'none'; frame-ancestors 'none'; base-uri 'none'";
-  }
-  
-  // CSP for regular pages
-  const scriptSrc = [
-    "'self'",
-    nonce ? `'nonce-${nonce}'` : null,
-    isDevelopment ? "'unsafe-eval'" : null,
-    "'strict-dynamic'"
-  ].filter(Boolean).join(' ');
-  
-  return [
-    "default-src 'self'",
-    `script-src ${scriptSrc}`,
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    "font-src 'self' https://fonts.gstatic.com",
-    "img-src 'self' data: https:",
-    isDevelopment ? "connect-src 'self' ws: wss:" : "connect-src 'self'",
-    "frame-ancestors 'self'",
-    "base-uri 'self'",
-    "form-action 'self'",
-    "object-src 'none'",
-    "media-src 'self'",
-    "worker-src 'self'",
-    "manifest-src 'self'",
-    "upgrade-insecure-requests"
-  ].join('; ');
-}
+// CSP functions completely removed to allow unrestricted JavaScript execution
 
 export interface SecurityConfig {
-  enableCSP?: boolean;
   enableHSTS?: boolean;
   enableRateLimit?: boolean;
   customHeaders?: Record<string, string>;
@@ -156,7 +114,6 @@ export class SecurityManager {
 
   private constructor(config: SecurityConfig = {}) {
     this.config = {
-      enableCSP: true,
       enableHSTS: true,
       enableRateLimit: true,
       ...config,
@@ -188,11 +145,7 @@ export class SecurityManager {
     response.headers.set('Pragma', 'no-cache');
     response.headers.set('Expires', '0');
 
-    // Content Security Policy for API responses
-    if (mergedConfig.enableCSP) {
-      const isDevelopment = mergedConfig.isDevelopment || process.env.NODE_ENV === 'development';
-      response.headers.set('Content-Security-Policy', generateCSP({ isDevelopment, isAPI: true }));
-    }
+    // Content Security Policy completely removed for unrestricted JavaScript execution
 
     // HTTP Strict Transport Security
     if (mergedConfig.enableHSTS) {

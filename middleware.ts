@@ -1,20 +1,10 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { generateCSP } from './lib/security';
 
-// Generate a unique nonce for each request
-function generateNonce(): string {
-  return Buffer.from(crypto.randomUUID()).toString('base64');
-}
-
-// Legacy function kept for backwards compatibility
-function generateCSPWithNonce(nonce: string): string {
-  return generateCSP({ nonce });
-}
-
-// Security headers configuration
-function getSecurityHeaders(request: NextRequest, nonce?: string) {
+// Security headers configuration (CSP completely removed)
+function getSecurityHeaders(request: NextRequest) {
   const headers = new Headers();
+  const isDevelopment = process.env.NODE_ENV === 'development';
   
   // Core security headers
   headers.set('X-DNS-Prefetch-Control', 'on');
@@ -29,16 +19,12 @@ function getSecurityHeaders(request: NextRequest, nonce?: string) {
     'camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), autoplay=(), fullscreen=(self)'
   );
   
-  // HSTS for HTTPS enforcement
-  headers.set(
-    'Strict-Transport-Security',
-    'max-age=31536000; includeSubDomains; preload'
-  );
-  
-  // Enhanced CSP with nonce for inline scripts
-  if (nonce) {
-    const isAPI = request.nextUrl.pathname.startsWith('/api/');
-    headers.set('Content-Security-Policy', generateCSP({ nonce, isAPI }));
+  // HSTS for HTTPS enforcement (disabled in development)
+  if (!isDevelopment) {
+    headers.set(
+      'Strict-Transport-Security',
+      'max-age=31536000; includeSubDomains; preload'
+    );
   }
   
   // Additional security headers for API routes
@@ -86,33 +72,28 @@ function cleanupRateLimit() {
 
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
+  const isDevelopment = process.env.NODE_ENV === 'development';
   
   // Clean up rate limit store periodically
   if (Math.random() < 0.01) { // 1% chance per request
     cleanupRateLimit();
   }
   
-  // Get client IP for rate limiting
+  // Get client IP for rate limiting (disabled in development)
   const ip = request.headers.get('x-forwarded-for') || 
              request.headers.get('x-real-ip') || 
              '127.0.0.1';
   
-  // Apply rate limiting
-  if (!rateLimit(ip)) {
+  // Apply rate limiting (disabled in development)
+  if (!isDevelopment && !rateLimit(ip)) {
     return new NextResponse('Too Many Requests', { status: 429 });
   }
   
-  // Generate nonce for CSP
-  const nonce = generateNonce();
-  
-  // Apply security headers
-  const securityHeaders = getSecurityHeaders(request, nonce);
+  // Apply security headers (CSP completely removed)
+  const securityHeaders = getSecurityHeaders(request);
   securityHeaders.forEach((value, key) => {
     response.headers.set(key, value);
   });
-  
-  // Set nonce in response for use in components
-  response.headers.set('X-Nonce', nonce);
   
   // Block common attack patterns
   const userAgent = request.headers.get('user-agent') || '';

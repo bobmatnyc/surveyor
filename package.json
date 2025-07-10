@@ -4,7 +4,7 @@
   "description": "Generalized Multi-Stakeholder Survey Platform",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_ENV=development next dev",
     "build": "next build",
     "start": "next start",
     "lint": "biome check .",
@@ -37,6 +37,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
+    "dotenv": "^17.2.0",
     "framer-motion": "^10.16.0",
     "jsonwebtoken": "^9.0.2",
     "jspdf": "^2.5.0",

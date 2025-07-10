@@ -64,7 +64,6 @@ export interface VisualTestResult {
 
 export interface SecurityTestResult {
   headers: {
-    'content-security-policy': boolean;
     'x-frame-options': boolean;
     'x-content-type-options': boolean;
     'referrer-policy': boolean;

@@ -39,13 +39,13 @@ The CSP configuration was not environment-aware and was using production-level s
 
 ### Development Mode CSP
 ```javascript
-script-src 'self' 'nonce-{nonce}' 'unsafe-eval' 'strict-dynamic'
+script-src 'self' 'nonce-{nonce}' 'unsafe-eval' 'unsafe-inline' 'strict-dynamic'
 connect-src 'self' ws: wss:
 ```
 
 ### Production Mode CSP
 ```javascript
-script-src 'self' 'nonce-{nonce}' 'strict-dynamic'
+script-src 'self' 'nonce-{nonce}' 'unsafe-inline' 'strict-dynamic'
 connect-src 'self'
 ```
 

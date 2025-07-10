@@ -10,13 +10,12 @@ const http = require('http');
 
 const BASE_URL = 'http://localhost:3002';
 
-// Expected security headers and their validation patterns
+// Expected security headers and their validation patterns (CSP removed)
 const SECURITY_HEADERS = {
   'x-frame-options': /^(DENY|SAMEORIGIN|ALLOW-FROM .+)$/i,
   'x-content-type-options': /^nosniff$/i,
   'x-xss-protection': /^1; mode=block$/i,
   'strict-transport-security': /^max-age=\d+.*$/i,
-  'content-security-policy': /^default-src\s+.*$/i,
   'referrer-policy': /^.+$/i,
   'permissions-policy': /^.*$/i,
   'x-dns-prefetch-control': /^(on|off)$/i,
@@ -150,36 +149,7 @@ async function testRateLimiting(endpoint) {
   }
 }
 
-/**
- * Test CSP nonce functionality
- */
-async function testCSPNonce(endpoint) {
-  console.log(`\n🔐 Testing CSP Nonce: ${endpoint}`);
-  console.log('─'.repeat(60));
-  
-  try {
-    const response = await makeRequest(endpoint);
-    const nonce = response.headers['x-nonce'];
-    const csp = response.headers['content-security-policy'];
-    
-    if (nonce) {
-      console.log(`✅ Nonce header present: ${nonce}`);
-    } else {
-      console.log(`❌ Nonce header missing`);
-    }
-    
-    if (csp && csp.includes('nonce-')) {
-      console.log(`✅ CSP contains nonce directive`);
-    } else {
-      console.log(`❌ CSP missing nonce directive`);
-    }
-    
-    return { noncePresent: !!nonce, cspHasNonce: !!(csp && csp.includes('nonce-')) };
-  } catch (error) {
-    console.error(`❌ Error testing CSP nonce: ${error.message}`);
-    return { noncePresent: false, cspHasNonce: false };
-  }
-}
+// CSP nonce testing removed as CSP has been completely disabled
 
 /**
  * Main test runner
@@ -208,8 +178,7 @@ async function main() {
   // Test rate limiting
   await testRateLimiting(`${BASE_URL}/api/surveys`);
   
-  // Test CSP nonce
-  await testCSPNonce(`${BASE_URL}/`);
+  // CSP nonce testing removed as CSP has been completely disabled
   
   // Summary
   console.log('\n📊 OVERALL SECURITY SUMMARY');

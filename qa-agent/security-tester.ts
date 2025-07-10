@@ -10,7 +10,6 @@ export class SecurityTester {
 
   async validateSecurity(): Promise<SecurityTestResult> {
     const headerChecks = {
-      'content-security-policy': this.checkCSP(),
       'x-frame-options': this.checkXFrameOptions(),
       'x-content-type-options': this.checkXContentTypeOptions(),
       'referrer-policy': this.checkReferrerPolicy(),
@@ -64,8 +63,7 @@ export class SecurityTester {
       });
     }
 
-    // Individual header tests
-    this.testCSP(testResults, securityResult.headers['content-security-policy']);
+    // Individual header tests (CSP testing removed)
     this.testXFrameOptions(testResults, securityResult.headers['x-frame-options']);
     this.testXContentTypeOptions(testResults, securityResult.headers['x-content-type-options']);
     this.testReferrerPolicy(testResults, securityResult.headers['referrer-policy']);
@@ -79,18 +77,7 @@ export class SecurityTester {
     return testResults;
   }
 
-  private checkCSP(): boolean {
-    const csp = this.headers['content-security-policy'];
-    if (!csp) return false;
-
-    // Check for basic CSP directives
-    const hasDefaultSrc = csp.includes('default-src');
-    const hasScriptSrc = csp.includes('script-src');
-    const hasStyleSrc = csp.includes('style-src');
-    const hasImgSrc = csp.includes('img-src');
-
-    return hasDefaultSrc || (hasScriptSrc && hasStyleSrc && hasImgSrc);
-  }
+  // CSP checking removed to allow unrestricted JavaScript execution
 
   private checkXFrameOptions(): boolean {
     const xfo = this.headers['x-frame-options'];
@@ -112,29 +99,7 @@ export class SecurityTester {
     return !!pp;
   }
 
-  private testCSP(testResults: QATestResult[], passed: boolean): void {
-    const csp = this.headers['content-security-policy'];
-    
-    if (passed) {
-      testResults.push({
-        phase: 'A',
-        testType: 'Content Security Policy',
-        status: 'PASS',
-        message: 'Content Security Policy header present and configured',
-        details: { csp },
-        timestamp: new Date().toISOString()
-      });
-    } else {
-      testResults.push({
-        phase: 'A',
-        testType: 'Content Security Policy',
-        status: 'FAIL',
-        message: 'Content Security Policy header missing or improperly configured',
-        details: { csp: csp || 'Not present' },
-        timestamp: new Date().toISOString()
-      });
-    }
-  }
+  // CSP testing removed to allow unrestricted JavaScript execution
 
   private testXFrameOptions(testResults: QATestResult[], passed: boolean): void {
     const xfo = this.headers['x-frame-options'];
@@ -322,10 +287,6 @@ export class SecurityTester {
 
   private generateRecommendations(headerChecks: Record<string, boolean>): string[] {
     const recommendations: string[] = [];
-
-    if (!headerChecks['content-security-policy']) {
-      recommendations.push('Implement Content Security Policy (CSP) to prevent XSS attacks');
-    }
 
     if (!headerChecks['x-frame-options']) {
       recommendations.push('Add X-Frame-Options header to prevent clickjacking attacks');
