@@ -26,7 +26,7 @@ export function SurveyComplete({ survey, organizationId, onStartOver }: SurveyCo
 
   const loadResults = async () => {
     try {
-      const response = await fetch(`/api/surveys/${survey.id}/results`);
+      const response = await fetch(`/api/admin/surveys/${survey.id}/results`);
       if (response.ok) {
         const allResults = await response.json();
         const organizationResult = allResults.find((r: SurveyResult) => r.organizationId === organizationId);

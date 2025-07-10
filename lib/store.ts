@@ -151,7 +151,7 @@ export const useAdminStore = create<AdminStore>()(
     loadResponses: async (surveyId) => {
       set({ loading: true });
       try {
-        const response = await fetch(`/api/surveys/${surveyId}/responses`);
+        const response = await fetch(`/api/admin/surveys/${surveyId}/responses`);
         const data = await response.json();
         set({ responses: data, loading: false });
       } catch (error) {
@@ -163,7 +163,7 @@ export const useAdminStore = create<AdminStore>()(
     loadResults: async (surveyId) => {
       set({ loading: true });
       try {
-        const response = await fetch(`/api/surveys/${surveyId}/results`);
+        const response = await fetch(`/api/admin/surveys/${surveyId}/results`);
         const data = await response.json();
         set({ results: data, loading: false });
       } catch (error) {

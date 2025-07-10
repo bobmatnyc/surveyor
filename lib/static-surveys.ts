@@ -1,10 +1,13 @@
-{
+// Static survey data for immediate loading without API dependencies
+import { SurveySchema, QuestionType } from './types';
+
+export const demoSurvey: SurveySchema = {
   "id": "demo-survey-showcase",
   "name": "Platform Demo Survey",
   "description": "Demonstration of all available question types and platform features",
   "version": "1.0.0",
-  "createdAt": "2025-07-10T00:00:00.000Z",
-  "updatedAt": "2025-07-10T00:00:00.000Z",
+  "createdAt": new Date("2025-07-10T00:00:00.000Z"),
+  "updatedAt": new Date("2025-07-10T00:00:00.000Z"),
   "isActive": true,
   "settings": {
     "allowMultipleResponses": true,
@@ -82,7 +85,7 @@
       "id": "likert_5_example",
       "text": "How satisfied are you with the overall service quality?",
       "description": "This demonstrates a 5-point Likert scale for measuring satisfaction levels",
-      "type": "likert_5",
+      "type": QuestionType.LIKERT_5,
       "domain": "quality",
       "targetStakeholders": ["manager", "specialist", "user"],
       "required": true,
@@ -118,7 +121,7 @@
       "id": "likert_3_example",
       "text": "How often do you encounter issues or problems?",
       "description": "This demonstrates a 3-point Likert scale for frequency assessment",
-      "type": "likert_3",
+      "type": QuestionType.LIKERT_3,
       "domain": "quality",
       "targetStakeholders": ["user", "specialist"],
       "required": true,
@@ -144,7 +147,7 @@
       "id": "multiple_choice_example",
       "text": "Which of the following features do you find most valuable? (Select all that apply)",
       "description": "This demonstrates multiple choice selection allowing multiple answers",
-      "type": "multiple_choice",
+      "type": QuestionType.MULTIPLE_CHOICE,
       "domain": "satisfaction",
       "targetStakeholders": ["user", "manager"],
       "required": true,
@@ -185,7 +188,7 @@
       "id": "single_select_example",
       "text": "What is your primary role in your organization?",
       "description": "This demonstrates single selection from multiple options",
-      "type": "single_select",
+      "type": QuestionType.SINGLE_SELECT,
       "domain": "value",
       "targetStakeholders": ["specialist", "user"],
       "required": true,
@@ -221,7 +224,7 @@
       "id": "text_input_example",
       "text": "What is the most significant challenge your organization faces in this area?",
       "description": "This demonstrates free-text input for detailed responses",
-      "type": "text",
+      "type": QuestionType.TEXT,
       "domain": "satisfaction",
       "targetStakeholders": ["manager", "specialist"],
       "required": true,
@@ -235,7 +238,7 @@
       "id": "number_input_example",
       "text": "How many hours per week do you spend on this type of activity?",
       "description": "This demonstrates numeric input with validation",
-      "type": "number",
+      "type": QuestionType.NUMBER,
       "domain": "satisfaction",
       "targetStakeholders": ["user", "specialist", "manager"],
       "required": true,
@@ -247,7 +250,7 @@
       "id": "boolean_example",
       "text": "Do you have access to adequate support and resources?",
       "description": "This demonstrates yes/no boolean input",
-      "type": "boolean",
+      "type": QuestionType.BOOLEAN,
       "domain": "support",
       "targetStakeholders": ["user", "manager"],
       "required": true
@@ -256,7 +259,7 @@
       "id": "confidence_assessment_likert",
       "text": "How confident are you in your organization's current approach?",
       "description": "Confidence-focused Likert scale assessment",
-      "type": "likert_5",
+      "type": QuestionType.LIKERT_5,
       "domain": "support",
       "targetStakeholders": ["manager", "specialist"],
       "required": true,
@@ -292,7 +295,7 @@
       "id": "organizational_challenges",
       "text": "Which challenges does your organization face? (Select all that apply)",
       "description": "Multiple choice for identifying organizational challenges",
-      "type": "multiple_choice",
+      "type": QuestionType.MULTIPLE_CHOICE,
       "domain": "value",
       "targetStakeholders": ["specialist", "manager"],
       "required": false,
@@ -333,7 +336,7 @@
       "id": "future_priorities",
       "text": "What should be your organization's top priority for improvement?",
       "description": "Single select for strategic planning",
-      "type": "single_select",
+      "type": QuestionType.SINGLE_SELECT,
       "domain": "value",
       "targetStakeholders": ["manager"],
       "required": true,
@@ -429,4 +432,17 @@
       }
     ]
   }
+};
+
+// Array of available surveys for easy iteration
+export const availableSurveys: SurveySchema[] = [demoSurvey];
+
+// Simple function to get survey by ID
+export function getSurveyById(id: string): SurveySchema | null {
+  return availableSurveys.find(survey => survey.id === id) || null;
+}
+
+// Get all active surveys
+export function getActiveSurveys(): SurveySchema[] {
+  return availableSurveys.filter(survey => survey.isActive);
 }

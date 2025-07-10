@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface EnhancedSurveyQuestionsProps {
   survey: SurveySchema;
   organizationId: string;
+  distributionCode?: string;
   onComplete: () => void;
   onBack?: () => void;
   useSurveyJS?: boolean;
@@ -58,6 +59,7 @@ const headerVariants = {
 export function EnhancedSurveyQuestions({ 
   survey, 
   organizationId, 
+  distributionCode,
   onComplete, 
   onBack,
   useSurveyJS = true
@@ -95,7 +97,11 @@ export function EnhancedSurveyQuestions({
       };
 
       // Submit response
-      const response = await fetch(`/api/surveys/${survey.id}/responses`, {
+      const submitUrl = distributionCode 
+        ? `/api/distribution/${distributionCode}`
+        : `/api/admin/surveys/${survey.id}/responses`;
+      
+      const response = await fetch(submitUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -107,17 +113,19 @@ export function EnhancedSurveyQuestions({
         throw new Error('Failed to submit survey response');
       }
 
-      // Calculate and save results
-      const resultsResponse = await fetch(`/api/surveys/${survey.id}/results`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ organizationId }),
-      });
-
-      if (!resultsResponse.ok) {
-        console.warn('Failed to calculate results, but response was saved');
+      // Calculate and save results (only for admin surveys)
+      if (!distributionCode) {
+        const resultsResponse = await fetch(`/api/admin/surveys/${survey.id}/results`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ organizationId }),
+        });
+        
+        if (!resultsResponse.ok) {
+          console.warn('Failed to calculate results, but response was saved');
+        }
       }
 
       onComplete();
@@ -144,14 +152,16 @@ export function EnhancedSurveyQuestions({
         progress: Object.keys(responses).length / filteredQuestions.length * 100
       };
 
-      // Auto-save partial response
-      await fetch(`/api/surveys/${survey.id}/responses/partial`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(partialResponse),
-      });
+      // Auto-save partial response (only for admin surveys)
+      if (!distributionCode) {
+        await fetch(`/api/admin/surveys/${survey.id}/responses/partial`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(partialResponse),
+        });
+      }
     } catch (error) {
       console.warn('Failed to save partial response:', error);
     }

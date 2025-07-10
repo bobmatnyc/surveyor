@@ -174,3 +174,13 @@ Desktop.ini
 
 # Linux
 *~
+
+# Private survey data - never commit
+/private-surveys/
+
+# Admin environment variables
+.env.admin
+.env.production
+
+# Survey upload temporary files
+/tmp/survey-uploads/

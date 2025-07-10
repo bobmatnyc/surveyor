@@ -192,12 +192,53 @@ export interface AdminStore {
   refreshData: () => Promise<void>;
 }
 
+// Security and Authentication types
+export interface AuthResponse {
+  success: boolean;
+  message: string;
+  token?: string;
+  expiresIn?: string;
+  lockedOut?: boolean;
+  remainingAttempts?: number;
+  csrfToken?: string;
+}
+
+export interface UploadResponse {
+  success: boolean;
+  message: string;
+  data?: {
+    surveyId: string;
+    distributionCode: string;
+    adminCode: string;
+    distributionUrl: string;
+    adminUrl: string;
+    uploadedAt: string;
+  };
+  error?: string;
+}
+
+export interface SecurityAuditEvent {
+  timestamp: string;
+  event: string;
+  details: any;
+  ip: string;
+  userAgent: string;
+  url: string;
+}
+
+export interface RateLimitInfo {
+  allowed: boolean;
+  remaining: number;
+  resetTime: number;
+}
+
 // API Response types
 export interface APIResponse<T> {
   success: boolean;
   data?: T;
   error?: string;
   message?: string;
+  csrfToken?: string;
 }
 
 export interface SurveyListResponse {

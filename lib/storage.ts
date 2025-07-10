@@ -8,6 +8,8 @@ export class SurveyDataManager {
   private isProduction = process.env.NODE_ENV === 'production';
   private dataDir = path.join(process.cwd(), 'data');
   private publicDir = path.join(process.cwd(), 'public');
+  private privateSurveysDir = path.join(process.cwd(), 'private-surveys');
+  private enablePrivateSurveys = process.env.ENABLE_PRIVATE_SURVEYS === 'true';
   
   static getInstance(): SurveyDataManager {
     if (!SurveyDataManager.instance) {
@@ -53,13 +55,55 @@ export class SurveyDataManager {
 
   async getSchema(schemaId: string): Promise<SurveySchema | null> {
     try {
-      // Use filesystem approach for both development and production
-      // In production (Vercel), the public files are still accessible via filesystem
-      const filePath = path.join(this.publicDir, 'surveys', `${schemaId}.json`);
-      const data = await fs.readFile(filePath, 'utf8');
-      return JSON.parse(data) as SurveySchema;
+      // First try public surveys
+      const publicPath = path.join(this.publicDir, 'surveys', `${schemaId}.json`);
+      try {
+        const data = await fs.readFile(publicPath, 'utf8');
+        return JSON.parse(data) as SurveySchema;
+      } catch {
+        // If not found in public, try private surveys (if enabled)
+        if (this.enablePrivateSurveys) {
+          return await this.getPrivateSchema(schemaId);
+        }
+        throw new Error('Survey not found');
+      }
     } catch (error) {
       console.error('Error fetching schema:', error);
+      return null;
+    }
+  }
+
+  private async getPrivateSchema(schemaId: string): Promise<SurveySchema | null> {
+    try {
+      // Search in all private survey directories
+      const privateDirs = await fs.readdir(this.privateSurveysDir);
+      
+      for (const dir of privateDirs) {
+        const dirPath = path.join(this.privateSurveysDir, dir);
+        const stat = await fs.stat(dirPath);
+        
+        if (stat.isDirectory()) {
+          // Check for survey file directly in directory
+          const surveyPath = path.join(dirPath, `${schemaId}.json`);
+          try {
+            const data = await fs.readFile(surveyPath, 'utf8');
+            return JSON.parse(data) as SurveySchema;
+          } catch {
+            // Check in data subdirectory
+            const dataPath = path.join(dirPath, 'data', `${schemaId}.json`);
+            try {
+              const data = await fs.readFile(dataPath, 'utf8');
+              return JSON.parse(data) as SurveySchema;
+            } catch {
+              continue;
+            }
+          }
+        }
+      }
+      
+      return null;
+    } catch (error) {
+      console.error('Error fetching private schema:', error);
       return null;
     }
   }
@@ -155,29 +199,73 @@ export class SurveyDataManager {
 
         return responses;
       } else {
-        const responseDir = path.join(this.dataDir, 'responses', schemaId, organizationId);
+        // Try public data first
+        let responseDir = path.join(this.dataDir, 'responses', schemaId, organizationId);
+        let responses = await this.loadResponsesFromDirectory(responseDir);
         
-        try {
-          const files = await fs.readdir(responseDir);
-          const jsonFiles = files.filter(file => file.endsWith('.json'));
-
-          const responses = await Promise.all(
-            jsonFiles.map(async (file) => {
-              const filePath = path.join(responseDir, file);
-              const data = await fs.readFile(filePath, 'utf8');
-              return JSON.parse(data) as SurveyResponse;
-            })
-          );
-
-          return responses;
-        } catch (error) {
-          // Directory doesn't exist yet
-          return [];
+        // If no responses found and private surveys enabled, try private locations
+        if (responses.length === 0 && this.enablePrivateSurveys) {
+          const privateResponsesDir = await this.findPrivateDataPath(schemaId, 'responses', organizationId);
+          if (privateResponsesDir) {
+            responses = await this.loadResponsesFromDirectory(privateResponsesDir);
+          }
         }
+        
+        return responses;
       }
     } catch (error) {
       console.error('Error fetching organization responses:', error);
       return [];
+    }
+  }
+
+  private async loadResponsesFromDirectory(responseDir: string): Promise<SurveyResponse[]> {
+    try {
+      const files = await fs.readdir(responseDir);
+      const jsonFiles = files.filter(file => file.endsWith('.json'));
+
+      const responses = await Promise.all(
+        jsonFiles.map(async (file) => {
+          const filePath = path.join(responseDir, file);
+          const data = await fs.readFile(filePath, 'utf8');
+          return JSON.parse(data) as SurveyResponse;
+        })
+      );
+
+      return responses;
+    } catch (error) {
+      // Directory doesn't exist
+      return [];
+    }
+  }
+
+  private async findPrivateDataPath(schemaId: string, type: 'responses' | 'results', organizationId?: string): Promise<string | null> {
+    try {
+      const privateDirs = await fs.readdir(this.privateSurveysDir);
+      
+      for (const dir of privateDirs) {
+        const dataPath = path.join(this.privateSurveysDir, dir, 'data', type, schemaId);
+        if (organizationId) {
+          const orgPath = path.join(dataPath, organizationId);
+          try {
+            await fs.access(orgPath);
+            return orgPath;
+          } catch {
+            continue;
+          }
+        } else {
+          try {
+            await fs.access(dataPath);
+            return dataPath;
+          } catch {
+            continue;
+          }
+        }
+      }
+      
+      return null;
+    } catch (error) {
+      return null;
     }
   }
 
@@ -270,9 +358,27 @@ export class SurveyDataManager {
         const response = await fetch(blobs[0].url);
         return await response.json() as SurveyResult;
       } else {
-        const filePath = path.join(this.dataDir, 'results', schemaId, organizationId, 'result.json');
-        const data = await fs.readFile(filePath, 'utf8');
-        return JSON.parse(data) as SurveyResult;
+        // Try public data first
+        let filePath = path.join(this.dataDir, 'results', schemaId, organizationId, 'result.json');
+        try {
+          const data = await fs.readFile(filePath, 'utf8');
+          return JSON.parse(data) as SurveyResult;
+        } catch {
+          // If not found and private surveys enabled, try private locations
+          if (this.enablePrivateSurveys) {
+            const privateResultsDir = await this.findPrivateDataPath(schemaId, 'results', organizationId);
+            if (privateResultsDir) {
+              const privateFilePath = path.join(privateResultsDir, 'result.json');
+              try {
+                const data = await fs.readFile(privateFilePath, 'utf8');
+                return JSON.parse(data) as SurveyResult;
+              } catch {
+                return null;
+              }
+            }
+          }
+          return null;
+        }
       }
     } catch (error) {
       console.error('Error fetching result:', error);

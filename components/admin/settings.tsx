@@ -79,7 +79,7 @@ export function Settings() {
       enableTwoFactor: false,
       sessionTimeout: 30,
       maxLoginAttempts: 3,
-      adminPassword: 'admin123'
+      adminPassword: ''
     },
     notifications: {
       emailNotifications: true,
@@ -338,23 +338,27 @@ export function Settings() {
 
                 <div>
                   <Label htmlFor="adminPassword">Admin Password</Label>
-                  <div className="relative">
+                  <div className="space-y-2">
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                      <div className="flex items-center space-x-2">
+                        <Shield className="h-4 w-4 text-yellow-600" />
+                        <p className="text-sm text-yellow-700">
+                          <strong>Security Notice:</strong> Admin password is configured via environment variables (ADMIN_PASSWORD). 
+                          This cannot be changed through the web interface for security reasons.
+                        </p>
+                      </div>
+                    </div>
                     <Input
                       id="adminPassword"
-                      type={showPassword ? 'text' : 'password'}
-                      value={settings.security.adminPassword}
-                      onChange={(e) => handleSettingChange('security', 'adminPassword', e.target.value)}
-                      className="pr-10"
+                      type="password"
+                      value="●●●●●●●●●●●●●●●"
+                      className="bg-gray-100"
+                      disabled
+                      placeholder="Configured via environment"
                     />
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      className="absolute right-0 top-0 h-full px-3 hover:bg-transparent"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                    </Button>
+                    <p className="text-xs text-gray-500">
+                      To change the admin password, update the ADMIN_PASSWORD environment variable and restart the application.
+                    </p>
                   </div>
                 </div>
               </CardContent>

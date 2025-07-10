@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { SurveySchema } from '@/lib/types';
-import { useSurveyStore } from '@/lib/store';
+import { SimpleSurveyStore, useSimpleSurveyState } from '@/lib/simple-store';
 import { StakeholderSelection } from './stakeholder-selection';
 import { EnhancedSurveyQuestions } from './enhanced-survey-questions';
 import { SurveyComplete } from './survey-complete';
@@ -11,42 +11,48 @@ import { SurveyEngine } from '@/lib/survey-engine';
 interface SurveyInterfaceProps {
   survey: SurveySchema;
   organizationId: string;
+  distributionCode?: string;
 }
 
-export function SurveyInterface({ survey, organizationId }: SurveyInterfaceProps) {
-  const {
-    stakeholder,
-    expertise,
-    responses,
-    filteredQuestions,
-    currentQuestion,
-    setStakeholder,
-    setExpertise,
-    setSurvey,
-    reset
-  } = useSurveyStore();
-  
+export function SurveyInterface({ survey, organizationId, distributionCode }: SurveyInterfaceProps) {
   const [isComplete, setIsComplete] = useState(false);
+  const [stakeholder, setStakeholder] = useState<string | null>(null);
+  const [expertise, setExpertise] = useState<string[]>([]);
   const [surveyEngine] = useState(() => new SurveyEngine(survey));
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    setSurvey(survey);
-    useSurveyStore.getState().organizationId = organizationId;
-  }, [survey, organizationId, setSurvey]);
-
-  useEffect(() => {
-    // Check if survey is complete
-    if (stakeholder && filteredQuestions.length > 0) {
-      const allQuestionsAnswered = filteredQuestions.every(q => 
-        responses[q.id] !== undefined && responses[q.id] !== null
-      );
-      setIsComplete(allQuestionsAnswered && currentQuestion >= filteredQuestions.length);
+    // Ensure survey data is stored in SimpleSurveyStore
+    SimpleSurveyStore.setSurvey(survey);
+    SimpleSurveyStore.setOrganizationId(organizationId);
+    
+    // Load existing state if available
+    const state = SimpleSurveyStore.getState();
+    if (state) {
+      setStakeholder(state.stakeholder);
+      setExpertise(state.expertise);
     }
-  }, [stakeholder, filteredQuestions, responses, currentQuestion]);
+  }, [survey, organizationId]);
+
+  useEffect(() => {
+    // Check if survey is complete based on SimpleSurveyStore state
+    const state = SimpleSurveyStore.getState();
+    if (stakeholder && state) {
+      const relevantQuestions = survey.questions.filter(q => 
+        q.targetStakeholders.includes(stakeholder)
+      );
+      const allQuestionsAnswered = relevantQuestions.every(q => 
+        state.responses[q.id] !== undefined && state.responses[q.id] !== null
+      );
+      setIsComplete(allQuestionsAnswered && state.currentQuestion >= relevantQuestions.length);
+    }
+  }, [stakeholder, survey, refreshKey]);
 
   const handleStakeholderSelection = (selectedStakeholder: string, selectedExpertise: string[]) => {
     setStakeholder(selectedStakeholder);
     setExpertise(selectedExpertise);
+    SimpleSurveyStore.setStakeholder(selectedStakeholder);
+    SimpleSurveyStore.setExpertise(selectedExpertise);
   };
 
   const handleSurveyComplete = () => {
@@ -54,8 +60,10 @@ export function SurveyInterface({ survey, organizationId }: SurveyInterfaceProps
   };
 
   const handleStartOver = () => {
-    reset();
+    SimpleSurveyStore.reset();
     setIsComplete(false);
+    setStakeholder(null);
+    setExpertise([]);
   };
 
   return (
@@ -81,6 +89,7 @@ export function SurveyInterface({ survey, organizationId }: SurveyInterfaceProps
             <EnhancedSurveyQuestions
               survey={survey}
               organizationId={organizationId}
+              distributionCode={distributionCode}
               onComplete={handleSurveyComplete}
               onBack={handleStartOver}
               useSurveyJS={true}

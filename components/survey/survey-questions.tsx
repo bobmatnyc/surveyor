@@ -149,7 +149,7 @@ export function SurveyQuestions({ survey, organizationId, onComplete }: SurveyQu
       };
 
       // Submit response
-      const response = await fetch(`/api/surveys/${survey.id}/responses`, {
+      const response = await fetch(`/api/admin/surveys/${survey.id}/responses`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ export function SurveyQuestions({ survey, organizationId, onComplete }: SurveyQu
       }
 
       // Calculate and save results
-      const resultsResponse = await fetch(`/api/surveys/${survey.id}/results`, {
+      const resultsResponse = await fetch(`/api/admin/surveys/${survey.id}/results`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
