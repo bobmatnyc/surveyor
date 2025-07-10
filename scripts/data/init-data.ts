@@ -1,7 +1,7 @@
-import { SurveyDataManager } from '../lib/storage';
-import { sampleSurveySchema } from '../lib/sample-survey';
-import { SampleDataGenerator } from '../lib/sample-data-generator';
-import { AnalyticsGenerator } from '../lib/analytics-generator';
+import { SurveyDataManager } from '../../lib/storage';
+import { sampleSurveySchema } from '../../lib/sample-survey';
+import { SampleDataGenerator } from '../../lib/sample-data-generator';
+import { AnalyticsGenerator } from '../../lib/analytics-generator';
 import { promises as fs } from 'fs';
 import path from 'path';
 

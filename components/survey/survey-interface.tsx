@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { SurveySchema } from '@/lib/types';
 import { SimpleSurveyStore, useSimpleSurveyState } from '@/lib/simple-store';
 import { StakeholderSelection } from './stakeholder-selection';
 import { EnhancedSurveyQuestions } from './enhanced-survey-questions';
 import { SurveyComplete } from './survey-complete';
 import { SurveyEngine } from '@/lib/survey-engine';
+import { DebugUtils } from '@/lib/debug-utils';
 
 interface SurveyInterfaceProps {
   survey: SurveySchema;
@@ -15,6 +17,7 @@ interface SurveyInterfaceProps {
 }
 
 export function SurveyInterface({ survey, organizationId, distributionCode }: SurveyInterfaceProps) {
+  const router = useRouter();
   const [isComplete, setIsComplete] = useState(false);
   const [stakeholder, setStakeholder] = useState<string | null>(null);
   const [expertise, setExpertise] = useState<string[]>([]);
@@ -22,6 +25,23 @@ export function SurveyInterface({ survey, organizationId, distributionCode }: Su
   const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
+    // Validate survey data first
+    const validation = DebugUtils.validateSurveyData(survey);
+    if (!validation.isValid) {
+      console.error('[SurveyInterface] Invalid survey data:', validation.errors);
+      DebugUtils.logDebugInfo('Invalid Survey Data', { survey, validation });
+    }
+
+    console.log('[SurveyInterface] Component mounted/updated', {
+      surveyId: survey.id,
+      stakeholderCount: survey.stakeholders.length,
+      organizationId,
+      stakeholders: survey.stakeholders.map(s => ({ id: s.id, name: s.name }))
+    });
+
+    // Debug localStorage state
+    SimpleSurveyStore.debugStorage();
+
     // Ensure survey data is stored in SimpleSurveyStore
     SimpleSurveyStore.setSurvey(survey);
     SimpleSurveyStore.setOrganizationId(organizationId);
@@ -29,8 +49,17 @@ export function SurveyInterface({ survey, organizationId, distributionCode }: Su
     // Load existing state if available
     const state = SimpleSurveyStore.getState();
     if (state) {
+      console.log('[SurveyInterface] Loading existing state:', {
+        hasStakeholder: !!state.stakeholder,
+        stakeholder: state.stakeholder,
+        hasExpertise: state.expertise.length > 0,
+        expertise: state.expertise,
+        surveyId: state.currentSurvey?.id
+      });
       setStakeholder(state.stakeholder);
       setExpertise(state.expertise);
+    } else {
+      console.log('[SurveyInterface] No existing state found');
     }
   }, [survey, organizationId]);
 
@@ -66,6 +95,12 @@ export function SurveyInterface({ survey, organizationId, distributionCode }: Su
     setExpertise([]);
   };
 
+  const handleBackToSurveySelection = () => {
+    // Clear current survey state and navigate back to survey selection
+    SimpleSurveyStore.reset();
+    router.push('/survey');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       <div className="relative min-h-screen">
@@ -84,6 +119,7 @@ export function SurveyInterface({ survey, organizationId, distributionCode }: Su
             <StakeholderSelection
               survey={survey}
               onSelect={handleStakeholderSelection}
+              onBack={handleBackToSurveySelection}
             />
           ) : (
             <EnhancedSurveyQuestions

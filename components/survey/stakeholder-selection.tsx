@@ -1,24 +1,40 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { SurveySchema } from '@/lib/types';
-import { ArrowRight, User, CheckCircle, Award, Clock } from 'lucide-react';
+import { ArrowRight, ArrowLeft, User, CheckCircle, Award, Clock } from 'lucide-react';
 
 interface StakeholderSelectionProps {
   survey: SurveySchema;
   onSelect: (stakeholder: string, expertise: string[]) => void;
+  onBack?: () => void;
 }
 
-export function StakeholderSelection({ survey, onSelect }: StakeholderSelectionProps) {
+export function StakeholderSelection({ survey, onSelect, onBack }: StakeholderSelectionProps) {
   const [selectedStakeholder, setSelectedStakeholder] = useState<string>('');
   const [selectedExpertise, setSelectedExpertise] = useState<string[]>([]);
 
+  // Debug component mount
+  useEffect(() => {
+    console.log('[StakeholderSelection] Component mounted', {
+      surveyId: survey.id,
+      stakeholderCount: survey.stakeholders.length,
+      stakeholders: survey.stakeholders.map(s => ({ id: s.id, name: s.name }))
+    });
+
+    // Validate survey data
+    if (!survey.stakeholders || survey.stakeholders.length === 0) {
+      console.error('[StakeholderSelection] No stakeholders found in survey data!', survey);
+    }
+  }, [survey]);
+
   const handleStakeholderSelect = (stakeholderId: string) => {
+    console.log('[StakeholderSelection] Stakeholder selected:', stakeholderId);
     setSelectedStakeholder(stakeholderId);
     setSelectedExpertise([]); // Reset expertise when changing stakeholder
   };
@@ -33,16 +49,74 @@ export function StakeholderSelection({ survey, onSelect }: StakeholderSelectionP
 
   const handleContinue = () => {
     if (selectedStakeholder) {
+      console.log('[StakeholderSelection] Continuing with:', {
+        stakeholder: selectedStakeholder,
+        expertise: selectedExpertise
+      });
       onSelect(selectedStakeholder, selectedExpertise);
+    } else {
+      console.warn('[StakeholderSelection] Cannot continue - no stakeholder selected');
     }
   };
 
   const selectedStakeholderData = survey.stakeholders.find(s => s.id === selectedStakeholder);
   const expertiseOptions = ['strategy', 'governance', 'infrastructure', 'data', 'operations'];
 
+  // Error boundary for missing stakeholders
+  if (!survey.stakeholders || survey.stakeholders.length === 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex items-center justify-center">
+        <div className="max-w-md mx-auto p-8 bg-white rounded-lg shadow-xl">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Survey Data Issue</h2>
+            <p className="text-gray-600 mb-6">
+              No stakeholder roles are available for this survey. This may be due to a browser cache issue.
+            </p>
+            <div className="space-y-4">
+              <Button 
+                onClick={() => {
+                  console.log('[StakeholderSelection] Clearing browser cache');
+                  // Clear localStorage and reload
+                  localStorage.clear();
+                  window.location.reload();
+                }}
+                className="w-full bg-red-600 hover:bg-red-700"
+              >
+                Clear Cache & Reload
+              </Button>
+              {onBack && (
+                <Button 
+                  onClick={onBack}
+                  variant="outline"
+                  className="w-full"
+                >
+                  Back to Survey Selection
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       <div className="relative min-h-screen">
+        {/* Back Button */}
+        {onBack && (
+          <div className="absolute top-6 left-6 z-10">
+            <Button
+              variant="outline"
+              onClick={onBack}
+              className="bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white shadow-md"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Survey Selection
+            </Button>
+          </div>
+        )}
+
         {/* Hero Section */}
         <div className="text-center pt-16 pb-12">
           <div className="max-w-4xl mx-auto px-6">
@@ -182,6 +256,41 @@ export function StakeholderSelection({ survey, onSelect }: StakeholderSelectionP
                 Continue to Survey
                 <ArrowRight className="ml-3 h-5 w-5" />
               </Button>
+            </div>
+          )}
+
+          {/* Debug Information Panel - Only show in development */}
+          {process.env.NODE_ENV === 'development' && (
+            <div className="mt-12 bg-gray-100 p-6 rounded-lg">
+              <h3 className="font-bold text-gray-900 mb-4">Debug Information</h3>
+              <div className="space-y-2 text-sm">
+                <div>Survey ID: {survey.id}</div>
+                <div>Stakeholder Count: {survey.stakeholders.length}</div>
+                <div>Selected Stakeholder: {selectedStakeholder || 'None'}</div>
+                <div>Selected Expertise: {selectedExpertise.join(', ') || 'None'}</div>
+              </div>
+              <div className="mt-4 space-x-2">
+                <Button
+                  onClick={() => {
+                    console.log('[Debug] Current survey data:', survey);
+                    console.log('[Debug] Stakeholders:', survey.stakeholders);
+                  }}
+                  variant="outline"
+                  size="sm"
+                >
+                  Log Survey Data
+                </Button>
+                <Button
+                  onClick={() => {
+                    localStorage.clear();
+                    console.log('[Debug] Cleared localStorage');
+                  }}
+                  variant="outline"
+                  size="sm"
+                >
+                  Clear Cache
+                </Button>
+              </div>
             </div>
           )}
 
