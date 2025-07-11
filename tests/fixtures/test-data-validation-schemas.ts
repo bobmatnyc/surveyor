@@ -188,47 +188,47 @@ export const EdgeCaseTestPackageSchema = z.object({
 
 // Validation utility functions
 export class TestDataValidator {
-  static validateSurvey(survey: any): z.SafeParseResult<any> {
+  static validateSurvey(survey: any): z.SafeParseReturnType<any, any> {
     return SurveySchema.safeParse(survey);
   }
 
-  static validateTestSurveyPackage(package: any): z.SafeParseResult<any> {
-    return TestSurveyPackageSchema.safeParse(package);
+  static validateTestSurveyPackage(pkg: any): z.SafeParseReturnType<any, any> {
+    return TestSurveyPackageSchema.safeParse(pkg);
   }
 
-  static validateErrorTestPackage(package: any): z.SafeParseResult<any> {
-    return ErrorTestPackageSchema.safeParse(package);
+  static validateErrorTestPackage(pkg: any): z.SafeParseReturnType<any, any> {
+    return ErrorTestPackageSchema.safeParse(pkg);
   }
 
-  static validatePerformanceTestPackage(package: any): z.SafeParseResult<any> {
-    return PerformanceTestPackageSchema.safeParse(package);
+  static validatePerformanceTestPackage(pkg: any): z.SafeParseReturnType<any, any> {
+    return PerformanceTestPackageSchema.safeParse(pkg);
   }
 
-  static validateEdgeCaseTestPackage(package: any): z.SafeParseResult<any> {
-    return EdgeCaseTestPackageSchema.safeParse(package);
+  static validateEdgeCaseTestPackage(pkg: any): z.SafeParseReturnType<any, any> {
+    return EdgeCaseTestPackageSchema.safeParse(pkg);
   }
 
-  static validateTestScenario(scenario: any): z.SafeParseResult<any> {
+  static validateTestScenario(scenario: any): z.SafeParseReturnType<any, any> {
     return TestScenarioSchema.safeParse(scenario);
   }
 
-  static validateErrorScenario(scenario: any): z.SafeParseResult<any> {
+  static validateErrorScenario(scenario: any): z.SafeParseReturnType<any, any> {
     return ErrorScenarioSchema.safeParse(scenario);
   }
 
-  static validatePerformanceScenario(scenario: any): z.SafeParseResult<any> {
+  static validatePerformanceScenario(scenario: any): z.SafeParseReturnType<any, any> {
     return PerformanceScenarioSchema.safeParse(scenario);
   }
 
-  static validateStakeholder(stakeholder: any): z.SafeParseResult<any> {
+  static validateStakeholder(stakeholder: any): z.SafeParseReturnType<any, any> {
     return StakeholderSchema.safeParse(stakeholder);
   }
 
-  static validateQuestion(question: any): z.SafeParseResult<any> {
+  static validateQuestion(question: any): z.SafeParseReturnType<any, any> {
     return QuestionSchema.safeParse(question);
   }
 
-  static validateSurveySettings(settings: any): z.SafeParseResult<any> {
+  static validateSurveySettings(settings: any): z.SafeParseReturnType<any, any> {
     return SurveySettingsSchema.safeParse(settings);
   }
 
@@ -284,7 +284,7 @@ export class TestDataValidator {
     };
 
     const questionType = dependentQuestion.type;
-    if (!validConditions[questionType]?.includes(condition)) {
+    if (!validConditions[questionType as keyof typeof validConditions]?.includes(condition)) {
       errors.push(`Invalid condition '${condition}' for question type '${questionType}'`);
     }
 

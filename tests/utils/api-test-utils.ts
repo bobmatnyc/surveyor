@@ -10,7 +10,7 @@ export const createMockServer = () => {
     // Survey metadata endpoint
     http.get('/api/surveys/:surveyId', ({ params }) => {
       const { surveyId } = params;
-      const metadata = mockResponses.surveyMetadata[surveyId as string];
+      const metadata = mockResponses.surveyMetadata[surveyId as keyof typeof mockResponses.surveyMetadata];
       
       if (!metadata) {
         return HttpResponse.json(mockResponses.errorResponses['survey-not-found'], { status: 404 });
@@ -22,7 +22,7 @@ export const createMockServer = () => {
     // Stakeholder list endpoint
     http.get('/api/surveys/:surveyId/stakeholders', ({ params }) => {
       const { surveyId } = params;
-      const stakeholders = mockResponses.stakeholderLists[surveyId as string];
+      const stakeholders = mockResponses.stakeholderLists[surveyId as keyof typeof mockResponses.stakeholderLists];
       
       if (!stakeholders) {
         return HttpResponse.json(mockResponses.errorResponses['survey-not-found'], { status: 404 });
@@ -35,7 +35,7 @@ export const createMockServer = () => {
     http.get('/api/surveys/:surveyId/step/:stepId', ({ params }) => {
       const { surveyId, stepId } = params;
       const stepKey = `${surveyId}-${stepId}`;
-      const stepData = mockResponses.surveySteps[stepKey];
+      const stepData = (mockResponses.surveySteps as Record<string, any>)[stepKey];
       
       if (!stepData) {
         return HttpResponse.json({
@@ -105,13 +105,13 @@ export const createApiTestSuite = (baseUrl: string = '/api') => {
     // Helper methods
     expectSuccessResponse: <T>(response: ApiResponse<T>): T => {
       expect(response).toBeDefined();
-      expect('error' in response && response.error).toBe(false);
+      expect('error' in (response as object) && (response as any).error).toBe(false);
       return response as T;
     },
 
     expectErrorResponse: (response: ApiResponse<any>): ApiErrorResponse => {
       expect(response).toBeDefined();
-      expect('error' in response && response.error).toBe(true);
+      expect('error' in (response as object) && (response as any).error).toBe(true);
       return response as ApiErrorResponse;
     },
 

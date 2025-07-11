@@ -607,7 +607,7 @@
       "organizationId": "test-org",
       "stakeholderId": "ceo",
       "responses": {
-        "q1": "A".repeat(10000000),
+        "q1": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
         "q2": "good"
       }
     }

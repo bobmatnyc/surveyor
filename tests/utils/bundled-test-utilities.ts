@@ -1,7 +1,7 @@
 // Bundled Test Utilities for Survey JSON Packages
 import { TestDataLoader } from './test-data-loader';
 import { TestDataValidator } from '../fixtures/test-data-validation-schemas';
-import { ApiTestUtils } from './enhanced-api-test-utils';
+import ApiTestUtils from './enhanced-api-test-utils';
 
 export interface TestSuiteConfiguration {
   name: string;
@@ -95,7 +95,7 @@ export class BundledTestUtilities {
         testName: 'Test Suite Setup',
         status: 'failed',
         duration: Date.now() - startTime,
-        error: error.message
+        error: error instanceof Error ? error.message : String(error)
       });
     }
     
@@ -146,7 +146,7 @@ export class BundledTestUtilities {
         testName: 'Edge Case Test Suite Setup',
         status: 'failed',
         duration: Date.now() - startTime,
-        error: error.message
+        error: error instanceof Error ? error.message : String(error)
       });
     }
     
@@ -197,7 +197,7 @@ export class BundledTestUtilities {
         testName: 'Error Scenario Test Suite Setup',
         status: 'failed',
         duration: Date.now() - startTime,
-        error: error.message
+        error: error instanceof Error ? error.message : String(error)
       });
     }
     
@@ -240,7 +240,7 @@ export class BundledTestUtilities {
         testName: 'Performance Test Suite Setup',
         status: 'failed',
         duration: Date.now() - startTime,
-        error: error.message
+        error: error instanceof Error ? error.message : String(error)
       });
     }
     
@@ -322,14 +322,10 @@ export class BundledTestUtilities {
       const startTime = Date.now();
       
       try {
-        const response = await ApiTestUtils.makeRequest({
-          method: 'GET',
-          url: `${config.baseUrl}/survey/${surveyId}`,
-          params: { organizationId: 'test-org' },
-          timeout: config.timeout
-        });
+        const response = await fetch(`${config.baseUrl}/survey/${surveyId}?organizationId=test-org`);
+        const data = await response.json();
         
-        const isValid = response.status === 200 && response.data.id === surveyId;
+        const isValid = response.status === 200 && data.id === surveyId;
         
         results.push({
           testName: `Survey Metadata - ${surveyId}`,
@@ -343,7 +339,7 @@ export class BundledTestUtilities {
           testName: `Survey Metadata - ${surveyId}`,
           status: 'failed',
           duration: Date.now() - startTime,
-          error: error.message
+          error: error instanceof Error ? error.message : String(error)
         });
       }
     }
@@ -361,16 +357,12 @@ export class BundledTestUtilities {
       const startTime = Date.now();
       
       try {
-        const response = await ApiTestUtils.makeRequest({
-          method: 'GET',
-          url: `${config.baseUrl}/survey/${surveyId}/stakeholders`,
-          params: { organizationId: 'test-org' },
-          timeout: config.timeout
-        });
+        const response = await fetch(`${config.baseUrl}/survey/${surveyId}/stakeholders?organizationId=test-org`);
+        const data = await response.json();
         
         const isValid = response.status === 200 && 
-                       Array.isArray(response.data.stakeholders) &&
-                       response.data.stakeholders.length === survey.stakeholders.length;
+                       Array.isArray(data.stakeholders) &&
+                       data.stakeholders.length === survey.stakeholders.length;
         
         results.push({
           testName: `Stakeholder List - ${surveyId}`,
@@ -384,7 +376,7 @@ export class BundledTestUtilities {
           testName: `Stakeholder List - ${surveyId}`,
           status: 'failed',
           duration: Date.now() - startTime,
-          error: error.message
+          error: error instanceof Error ? error.message : String(error)
         });
       }
     }
@@ -403,19 +395,12 @@ export class BundledTestUtilities {
         const startTime = Date.now();
         
         try {
-          const response = await ApiTestUtils.makeRequest({
-            method: 'GET',
-            url: `${config.baseUrl}/survey/${surveyId}/step/1`,
-            params: { 
-              organizationId: 'test-org',
-              stakeholderId: stakeholder.id
-            },
-            timeout: config.timeout
-          });
+          const response = await fetch(`${config.baseUrl}/survey/${surveyId}/step/1?organizationId=test-org&stakeholderId=${stakeholder.id}`);
+          const data = await response.json();
           
           const isValid = response.status === 200 && 
-                         response.data.stepId &&
-                         Array.isArray(response.data.questions);
+                         data.stepId &&
+                         Array.isArray(data.questions);
           
           results.push({
             testName: `Survey Step - ${surveyId} - ${stakeholder.id}`,
@@ -429,7 +414,7 @@ export class BundledTestUtilities {
             testName: `Survey Step - ${surveyId} - ${stakeholder.id}`,
             status: 'failed',
             duration: Date.now() - startTime,
-            error: error.message
+            error: error instanceof Error ? error.message : String(error)
           });
         }
       }
@@ -450,18 +435,20 @@ export class BundledTestUtilities {
       try {
         const mockResponses = this.generateMockResponses(survey.questions);
         
-        const response = await ApiTestUtils.makeRequest({
+        const response = await fetch(`${config.baseUrl}/survey/${surveyId}/complete`, {
           method: 'POST',
-          url: `${config.baseUrl}/survey/${surveyId}/complete`,
-          data: {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
             organizationId: 'test-org',
             stakeholderId: survey.stakeholders[0].id,
             finalResponses: mockResponses
-          },
-          timeout: config.timeout
+          })
         });
+        const data = await response.json();
         
-        const isValid = response.status === 200 && response.data.success;
+        const isValid = response.status === 200 && data.success;
         
         results.push({
           testName: `Survey Completion - ${surveyId}`,
@@ -475,7 +462,7 @@ export class BundledTestUtilities {
           testName: `Survey Completion - ${surveyId}`,
           status: 'failed',
           duration: Date.now() - startTime,
-          error: error.message
+          error: error instanceof Error ? error.message : String(error)
         });
       }
     }

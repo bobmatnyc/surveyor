@@ -459,6 +459,7 @@ global.MutationObserver = vi.fn().mockImplementation(() => ({
 }));
 
 // Mock environment variables
+// @ts-ignore
 process.env.NODE_ENV = 'test';
 process.env.NEXTAUTH_URL = 'http://localhost:3000';
 process.env.NEXTAUTH_SECRET = 'test-secret';

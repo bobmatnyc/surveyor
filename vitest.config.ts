@@ -86,11 +86,11 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, '.'),
-      '@/components': resolve(__dirname, './components'),
-      '@/lib': resolve(__dirname, './lib'),
+      '@/components': resolve(__dirname, './src/components'),
+      '@/lib': resolve(__dirname, './src/lib'),
       '@/styles': resolve(__dirname, './styles'),
       '@/public': resolve(__dirname, './public'),
-      '@/app': resolve(__dirname, './app'),
+      '@/app': resolve(__dirname, './src/app'),
       '@/tests': resolve(__dirname, './tests')
     },
   },

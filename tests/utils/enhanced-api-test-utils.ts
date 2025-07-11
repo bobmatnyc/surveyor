@@ -147,13 +147,13 @@ export class EnhancedApiTestSuite {
   // Response validation methods
   validateSuccessResponse<T>(response: ApiResponse<T>): T {
     expect(response).toBeDefined();
-    expect('error' in response && response.error).toBe(false);
+    expect('error' in (response as object) && (response as any).error).toBe(false);
     return response as T;
   }
 
   validateErrorResponse(response: ApiResponse<any>): ApiErrorResponse {
     expect(response).toBeDefined();
-    expect('error' in response && response.error).toBe(true);
+    expect('error' in (response as object) && (response as any).error).toBe(true);
     const errorResponse = response as ApiErrorResponse;
     expect(errorResponse.message).toBeDefined();
     expect(errorResponse.code).toBeDefined();
@@ -274,7 +274,7 @@ export class EnhancedApiTestSuite {
   }
 
   // Test data generators
-  generateTestData(type: 'minimal' | 'comprehensive' | 'edge-cases' | 'performance' | 'security') {
+  generateTestData(type: 'minimal' | 'comprehensive' | 'edge-cases' | 'performance' | 'security'): any {
     switch (type) {
       case 'minimal':
         return {

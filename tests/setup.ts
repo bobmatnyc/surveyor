@@ -6,6 +6,7 @@ import * as matchers from '@testing-library/jest-dom/matchers';
 import './mocks';
 
 // Make vi available globally
+// @ts-ignore
 global.vi = vi;
 
 // Extend Vitest's expect with Testing Library matchers

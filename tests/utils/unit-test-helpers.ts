@@ -1,5 +1,6 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { ReactElement, ReactNode } from 'react';
+import React from 'react';
 import { vi } from 'vitest';
 
 // Types for test utilities
@@ -127,12 +128,13 @@ export const createMockSurvey = (overrides?: Partial<any>) => ({
 
 // Component testing utilities
 export const createMockComponent = (name: string, props?: any) => {
-  const MockComponent = vi.fn().mockImplementation(({ children, ...rest }) => (
-    <div data-testid={`mock-${name.toLowerCase()}`} {...rest}>
-      {children}
-    </div>
-  ));
-  MockComponent.displayName = `Mock${name}`;
+  const MockComponent = vi.fn().mockImplementation(({ children, ...rest }) => {
+    return React.createElement('div', { 
+      'data-testid': `mock-${name.toLowerCase()}`, 
+      ...rest 
+    }, children);
+  });
+  (MockComponent as any).displayName = `Mock${name}`;
   return MockComponent;
 };
 

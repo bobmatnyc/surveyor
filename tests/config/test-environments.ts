@@ -98,7 +98,7 @@ export const unitTestConfig = defineConfig({
       },
     },
     // Reporter configuration
-    reporter: ['verbose', 'json', 'html'],
+    reporters: ['verbose', 'json', 'html'],
     outputFile: {
       json: './coverage/unit/results.json',
       html: './coverage/unit/results.html',
@@ -168,7 +168,7 @@ export const integrationTestConfig = defineConfig({
         minThreads: 1,
       },
     },
-    reporter: ['verbose', 'json'],
+    reporters: ['verbose', 'json'],
     outputFile: {
       json: './coverage/integration/results.json',
     },
@@ -210,7 +210,7 @@ export const performanceTestConfig = defineConfig({
         minThreads: 1,
       },
     },
-    reporter: ['verbose', 'json'],
+    reporters: ['verbose', 'json'],
     outputFile: {
       json: './coverage/performance/results.json',
     },
@@ -253,14 +253,8 @@ export const watchConfig = defineConfig({
         minThreads: 1,
       },
     },
-    reporter: ['verbose'],
+    reporters: ['verbose'],
     watch: true,
-    watchExclude: [
-      'node_modules/**',
-      'dist/**',
-      '.next/**',
-      'coverage/**',
-    ],
   },
 });
 
@@ -328,7 +322,7 @@ export const ciConfig = defineConfig({
         minThreads: 1,
       },
     },
-    reporter: ['verbose', 'json', 'junit'],
+    reporters: ['verbose', 'json', 'junit'],
     outputFile: {
       json: './coverage/ci/results.json',
       junit: './coverage/ci/junit.xml',
@@ -372,8 +366,7 @@ export const debugConfig = defineConfig({
         minThreads: 1,
       },
     },
-    reporter: ['verbose'],
-    logLevel: 'info',
+    reporters: ['verbose'],
   },
 });
 

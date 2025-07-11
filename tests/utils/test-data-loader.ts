@@ -41,7 +41,7 @@ export class TestDataLoader {
       const data = await this.loadJsonFile(filePath);
       return await this.processTestData(data, finalOptions);
     } catch (error) {
-      throw new Error(`Failed to load comprehensive test packages: ${error.message}`);
+      throw new Error(`Failed to load comprehensive test packages: ${error instanceof Error ? error instanceof Error ? error.message : String(error) : String(error)}`);
     }
   }
 
@@ -58,7 +58,7 @@ export class TestDataLoader {
       const data = await this.loadJsonFile(filePath);
       return await this.processTestData(data, finalOptions);
     } catch (error) {
-      throw new Error(`Failed to load edge case test packages: ${error.message}`);
+      throw new Error(`Failed to load edge case test packages: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -87,7 +87,7 @@ export class TestDataLoader {
       
       return data;
     } catch (error) {
-      throw new Error(`Failed to load error scenario test packages: ${error.message}`);
+      throw new Error(`Failed to load error scenario test packages: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -116,7 +116,7 @@ export class TestDataLoader {
       
       return data;
     } catch (error) {
-      throw new Error(`Failed to load performance test packages: ${error.message}`);
+      throw new Error(`Failed to load performance test packages: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -374,7 +374,7 @@ export class TestDataLoader {
     try {
       return await this.loadJsonFile(filePath);
     } catch (error) {
-      throw new Error(`Failed to load legacy test packages: ${error.message}`);
+      throw new Error(`Failed to load legacy test packages: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -386,7 +386,7 @@ export class TestDataLoader {
       const content = await fs.readFile(filePath, 'utf-8');
       return JSON.parse(content);
     } catch (error) {
-      throw new Error(`Failed to load JSON file '${filePath}': ${error.message}`);
+      throw new Error(`Failed to load JSON file '${filePath}': ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
