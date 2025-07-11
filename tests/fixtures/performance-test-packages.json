@@ -1,0 +1,388 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-07-11T00:00:00.000Z",
+    "description": "Performance testing data packages for load and stress testing",
+    "author": "QA Agent",
+    "performanceCategories": [
+      "load-testing",
+      "stress-testing",
+      "volume-testing",
+      "concurrent-users",
+      "memory-usage",
+      "database-performance"
+    ]
+  },
+  "performanceTestSurveys": {
+    "lightweightSurvey": {
+      "id": "perf-lightweight",
+      "name": "Lightweight Performance Test Survey",
+      "description": "Minimal survey for baseline performance testing",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 2,
+      "category": "performance-lightweight",
+      "complexity": "simple",
+      "settings": {
+        "allowMultipleResponses": true,
+        "requireAllStakeholders": false,
+        "showProgressBar": false,
+        "allowNavigation": false
+      },
+      "stakeholders": [
+        {
+          "id": "perf-user",
+          "name": "Performance Test User",
+          "description": "User for performance testing",
+          "weight": 1.0,
+          "color": "#22C55E",
+          "expertise": ["performance"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "perf-q1",
+          "text": "Quick question 1",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["perf-user"],
+          "validation": {
+            "maxLength": 50
+          }
+        },
+        {
+          "id": "perf-q2",
+          "text": "Quick rating",
+          "type": "likert",
+          "required": true,
+          "targetStakeholders": ["perf-user"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["1", "2", "3", "4", "5"]
+          }
+        }
+      ]
+    },
+    "mediumSurvey": {
+      "id": "perf-medium",
+      "name": "Medium Performance Test Survey",
+      "description": "Medium-sized survey for standard performance testing",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 8,
+      "category": "performance-medium",
+      "complexity": "medium",
+      "settings": {
+        "allowMultipleResponses": true,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true
+      },
+      "stakeholders": [
+        {
+          "id": "perf-user1",
+          "name": "Performance User 1",
+          "description": "First performance test user",
+          "weight": 0.6,
+          "color": "#3B82F6",
+          "expertise": ["performance"]
+        },
+        {
+          "id": "perf-user2",
+          "name": "Performance User 2",
+          "description": "Second performance test user",
+          "weight": 0.4,
+          "color": "#EF4444",
+          "expertise": ["performance"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "perf-text1",
+          "text": "Text question 1",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["perf-user1", "perf-user2"],
+          "validation": {
+            "maxLength": 100
+          }
+        },
+        {
+          "id": "perf-choice1",
+          "text": "Multiple choice question 1",
+          "type": "multipleChoice",
+          "required": true,
+          "targetStakeholders": ["perf-user1", "perf-user2"],
+          "options": [
+            "Option A",
+            "Option B",
+            "Option C",
+            "Option D",
+            "Option E"
+          ]
+        },
+        {
+          "id": "perf-likert1",
+          "text": "Likert question 1",
+          "type": "likert",
+          "required": true,
+          "targetStakeholders": ["perf-user1"],
+          "scale": {
+            "min": 1,
+            "max": 7,
+            "labels": ["1", "2", "3", "4", "5", "6", "7"]
+          }
+        },
+        {
+          "id": "perf-bool1",
+          "text": "Boolean question 1",
+          "type": "boolean",
+          "required": true,
+          "targetStakeholders": ["perf-user2"]
+        },
+        {
+          "id": "perf-number1",
+          "text": "Number question 1",
+          "type": "number",
+          "required": false,
+          "targetStakeholders": ["perf-user1", "perf-user2"],
+          "validation": {
+            "min": 0,
+            "max": 1000
+          }
+        }
+      ]
+    },
+    "heavySurvey": {
+      "id": "perf-heavy",
+      "name": "Heavy Performance Test Survey",
+      "description": "Large survey for stress testing",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 30,
+      "category": "performance-heavy",
+      "complexity": "complex",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": true,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "timeLimit": 3600
+      },
+      "stakeholders": [
+        {
+          "id": "perf-stakeholder1",
+          "name": "Performance Stakeholder 1",
+          "description": "Heavy performance test stakeholder 1",
+          "weight": 0.3,
+          "color": "#7C3AED",
+          "expertise": ["performance", "stress-testing"]
+        },
+        {
+          "id": "perf-stakeholder2",
+          "name": "Performance Stakeholder 2",
+          "description": "Heavy performance test stakeholder 2",
+          "weight": 0.3,
+          "color": "#DC2626",
+          "expertise": ["performance", "load-testing"]
+        },
+        {
+          "id": "perf-stakeholder3",
+          "name": "Performance Stakeholder 3",
+          "description": "Heavy performance test stakeholder 3",
+          "weight": 0.2,
+          "color": "#059669",
+          "expertise": ["performance", "volume-testing"]
+        },
+        {
+          "id": "perf-stakeholder4",
+          "name": "Performance Stakeholder 4",
+          "description": "Heavy performance test stakeholder 4",
+          "weight": 0.2,
+          "color": "#F59E0B",
+          "expertise": ["performance", "concurrent-testing"]
+        }
+      ],
+      "questions": []
+    }
+  },
+  "performanceTestData": {
+    "loadTestScenarios": {
+      "lightLoad": {
+        "description": "Light load testing - 10 concurrent users",
+        "concurrentUsers": 10,
+        "duration": "5m",
+        "rampUpTime": "1m",
+        "surveyId": "perf-lightweight",
+        "expectedMetrics": {
+          "avgResponseTime": "<500ms",
+          "maxResponseTime": "<2s",
+          "errorRate": "<1%",
+          "throughput": ">100 req/min"
+        }
+      },
+      "mediumLoad": {
+        "description": "Medium load testing - 50 concurrent users",
+        "concurrentUsers": 50,
+        "duration": "10m",
+        "rampUpTime": "2m",
+        "surveyId": "perf-medium",
+        "expectedMetrics": {
+          "avgResponseTime": "<1s",
+          "maxResponseTime": "<5s",
+          "errorRate": "<2%",
+          "throughput": ">200 req/min"
+        }
+      },
+      "heavyLoad": {
+        "description": "Heavy load testing - 100 concurrent users",
+        "concurrentUsers": 100,
+        "duration": "15m",
+        "rampUpTime": "3m",
+        "surveyId": "perf-heavy",
+        "expectedMetrics": {
+          "avgResponseTime": "<2s",
+          "maxResponseTime": "<10s",
+          "errorRate": "<5%",
+          "throughput": ">300 req/min"
+        }
+      }
+    },
+    "stressTestScenarios": {
+      "peakLoad": {
+        "description": "Peak load stress testing - 200 concurrent users",
+        "concurrentUsers": 200,
+        "duration": "20m",
+        "rampUpTime": "5m",
+        "surveyId": "perf-heavy",
+        "expectedMetrics": {
+          "avgResponseTime": "<5s",
+          "maxResponseTime": "<30s",
+          "errorRate": "<10%",
+          "throughput": ">100 req/min"
+        }
+      },
+      "breakingPoint": {
+        "description": "Breaking point stress testing - 500 concurrent users",
+        "concurrentUsers": 500,
+        "duration": "30m",
+        "rampUpTime": "10m",
+        "surveyId": "perf-heavy",
+        "expectedMetrics": {
+          "avgResponseTime": "<10s",
+          "maxResponseTime": "<60s",
+          "errorRate": "<20%",
+          "throughput": ">50 req/min"
+        }
+      }
+    },
+    "volumeTestScenarios": {
+      "smallVolume": {
+        "description": "Small volume testing - 1000 survey responses",
+        "totalResponses": 1000,
+        "concurrentUsers": 20,
+        "duration": "1h",
+        "surveyId": "perf-lightweight"
+      },
+      "mediumVolume": {
+        "description": "Medium volume testing - 10000 survey responses",
+        "totalResponses": 10000,
+        "concurrentUsers": 50,
+        "duration": "4h",
+        "surveyId": "perf-medium"
+      },
+      "largeVolume": {
+        "description": "Large volume testing - 100000 survey responses",
+        "totalResponses": 100000,
+        "concurrentUsers": 100,
+        "duration": "24h",
+        "surveyId": "perf-heavy"
+      }
+    },
+    "memoryTestScenarios": {
+      "memoryIntensive": {
+        "description": "Memory intensive testing with large responses",
+        "surveyId": "perf-heavy",
+        "responses": {
+          "large-text-field": "x".repeat(1000),
+          "multiple-selections": Array.from({length: 50}, (_, i) => `option-${i}`),
+          "complex-data": {
+            "nested": {
+              "deep": {
+                "structure": Array.from({length: 100}, (_, i) => ({
+                  "id": i,
+                  "value": `value-${i}`,
+                  "data": "x".repeat(100)
+                }))
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "performanceTestUsers": {
+    "userPool": []
+  },
+  "performanceMetrics": {
+    "responseTimeTargets": {
+      "p50": "<1s",
+      "p90": "<3s",
+      "p95": "<5s",
+      "p99": "<10s"
+    },
+    "throughputTargets": {
+      "minThroughput": "100 req/min",
+      "avgThroughput": "500 req/min",
+      "maxThroughput": "1000 req/min"
+    },
+    "errorRateTargets": {
+      "maxErrorRate": "5%",
+      "acceptableErrorRate": "1%"
+    },
+    "resourceUsageTargets": {
+      "maxCpuUsage": "80%",
+      "maxMemoryUsage": "70%",
+      "maxDiskUsage": "60%"
+    }
+  },
+  "testDataGenerators": {
+    "userGenerator": {
+      "description": "Generates test users for performance testing",
+      "count": 1000,
+      "pattern": "perf-user-{index}",
+      "stakeholderDistribution": {
+        "perf-user": 0.4,
+        "perf-user1": 0.3,
+        "perf-user2": 0.3
+      }
+    },
+    "organizationGenerator": {
+      "description": "Generates test organizations for performance testing",
+      "count": 100,
+      "pattern": "perf-org-{index}",
+      "sizesDistribution": {
+        "small": 0.6,
+        "medium": 0.3,
+        "large": 0.1
+      }
+    },
+    "responseGenerator": {
+      "description": "Generates realistic survey responses",
+      "templates": {
+        "text": ["Sample response", "Another response", "Test answer"],
+        "likert": [1, 2, 3, 4, 5],
+        "multipleChoice": "random-from-options",
+        "boolean": [true, false],
+        "number": "random-within-range"
+      }
+    }
+  }
+}

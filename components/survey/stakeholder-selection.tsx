@@ -7,7 +7,14 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { SurveySchema } from '@/lib/types';
-import { ArrowRight, ArrowLeft, User, CheckCircle, Award, Clock } from 'lucide-react';
+import { 
+  validateStakeholderSelection, 
+  getStakeholderRecommendations, 
+  getExpertiseOptions,
+  formatExpertise,
+  stakeholderSelectionManager
+} from '@/lib/stakeholder-utils';
+import { ArrowRight, ArrowLeft, User, CheckCircle, Award, Clock, AlertCircle, RefreshCw } from 'lucide-react';
 
 interface StakeholderSelectionProps {
   survey: SurveySchema;
@@ -18,8 +25,11 @@ interface StakeholderSelectionProps {
 export function StakeholderSelection({ survey, onSelect, onBack }: StakeholderSelectionProps) {
   const [selectedStakeholder, setSelectedStakeholder] = useState<string>('');
   const [selectedExpertise, setSelectedExpertise] = useState<string[]>([]);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [recommendations, setRecommendations] = useState<{ stakeholderId: string; confidence: number; reason: string }[]>([]);
 
-  // Debug component mount
+  // Debug component mount and load saved state
   useEffect(() => {
     console.log('[StakeholderSelection] Component mounted', {
       surveyId: survey.id,
@@ -30,37 +40,94 @@ export function StakeholderSelection({ survey, onSelect, onBack }: StakeholderSe
     // Validate survey data
     if (!survey.stakeholders || survey.stakeholders.length === 0) {
       console.error('[StakeholderSelection] No stakeholders found in survey data!', survey);
+      return;
     }
-  }, [survey]);
+
+    // Load saved state from localStorage
+    const savedState = stakeholderSelectionManager.getState();
+    if (savedState.selectedStakeholderId && stakeholderSelectionManager.isStakeholderValid(survey.stakeholders)) {
+      setSelectedStakeholder(savedState.selectedStakeholderId);
+      setSelectedExpertise(savedState.selectedExpertise);
+      console.log('[StakeholderSelection] Restored saved state:', savedState);
+    }
+
+    // Generate recommendations
+    const recs = getStakeholderRecommendations(selectedExpertise, survey.stakeholders);
+    setRecommendations(recs);
+  }, [survey, selectedExpertise]);
 
   const handleStakeholderSelect = (stakeholderId: string) => {
     console.log('[StakeholderSelection] Stakeholder selected:', stakeholderId);
     setSelectedStakeholder(stakeholderId);
     setSelectedExpertise([]); // Reset expertise when changing stakeholder
+    
+    // Save to persistent state
+    stakeholderSelectionManager.setStakeholder(stakeholderId);
+    
+    // Clear validation errors
+    setValidationErrors([]);
+    
+    // Generate new recommendations
+    const recs = getStakeholderRecommendations([], survey.stakeholders);
+    setRecommendations(recs);
   };
 
   const handleExpertiseToggle = (expertise: string) => {
-    setSelectedExpertise(prev => 
-      prev.includes(expertise) 
-        ? prev.filter(e => e !== expertise)
-        : [...prev, expertise]
-    );
+    const newExpertise = selectedExpertise.includes(expertise) 
+      ? selectedExpertise.filter(e => e !== expertise)
+      : [...selectedExpertise, expertise];
+    
+    setSelectedExpertise(newExpertise);
+    
+    // Save to persistent state
+    stakeholderSelectionManager.setExpertise(newExpertise);
+    
+    // Update recommendations
+    const recs = getStakeholderRecommendations(newExpertise, survey.stakeholders);
+    setRecommendations(recs);
   };
 
-  const handleContinue = () => {
-    if (selectedStakeholder) {
+  const handleContinue = async () => {
+    setIsLoading(true);
+    
+    try {
+      // Validate selection
+      const validation = validateStakeholderSelection(selectedStakeholder, selectedExpertise, survey.stakeholders);
+      
+      if (!validation.isValid) {
+        setValidationErrors(validation.errors);
+        console.warn('[StakeholderSelection] Validation failed:', validation.errors);
+        return;
+      }
+      
+      // Clear any previous errors
+      setValidationErrors([]);
+      
       console.log('[StakeholderSelection] Continuing with:', {
         stakeholder: selectedStakeholder,
-        expertise: selectedExpertise
+        expertise: selectedExpertise,
+        validation
       });
+      
       onSelect(selectedStakeholder, selectedExpertise);
-    } else {
-      console.warn('[StakeholderSelection] Cannot continue - no stakeholder selected');
+    } catch (error) {
+      console.error('[StakeholderSelection] Error during continue:', error);
+      setValidationErrors(['An error occurred while processing your selection. Please try again.']);
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  const handleReset = () => {
+    setSelectedStakeholder('');
+    setSelectedExpertise([]);
+    setValidationErrors([]);
+    stakeholderSelectionManager.reset();
+    console.log('[StakeholderSelection] Reset stakeholder selection');
+  };
+
   const selectedStakeholderData = survey.stakeholders.find(s => s.id === selectedStakeholder);
-  const expertiseOptions = ['strategy', 'governance', 'infrastructure', 'data', 'operations'];
+  const expertiseOptions = getExpertiseOptions();
 
   // Error boundary for missing stakeholders
   if (!survey.stakeholders || survey.stakeholders.length === 0) {
@@ -82,6 +149,7 @@ export function StakeholderSelection({ survey, onSelect, onBack }: StakeholderSe
                 }}
                 className="w-full bg-red-600 hover:bg-red-700"
               >
+                <RefreshCw className="mr-2 h-4 w-4" />
                 Clear Cache & Reload
               </Button>
               {onBack && (
@@ -245,16 +313,42 @@ export function StakeholderSelection({ survey, onSelect, onBack }: StakeholderSe
             </Card>
           </div>
 
+          {/* Validation Errors */}
+          {validationErrors.length > 0 && (
+            <div className="mt-8">
+              <Alert className="border-red-200 bg-red-50">
+                <AlertCircle className="h-4 w-4 text-red-600" />
+                <AlertDescription className="text-red-700">
+                  <ul className="space-y-1">
+                    {validationErrors.map((error, index) => (
+                      <li key={index}>• {error}</li>
+                    ))}
+                  </ul>
+                </AlertDescription>
+              </Alert>
+            </div>
+          )}
+
           {/* Continue Button */}
           {selectedStakeholder && (
             <div className="mt-12 text-center">
               <Button
                 onClick={handleContinue}
                 size="lg"
-                className="px-12 py-4 text-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105"
+                disabled={isLoading}
+                className="px-12 py-4 text-lg bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Continue to Survey
-                <ArrowRight className="ml-3 h-5 w-5" />
+                {isLoading ? (
+                  <>
+                    <RefreshCw className="mr-3 h-5 w-5 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  <>
+                    Continue to Survey
+                    <ArrowRight className="ml-3 h-5 w-5" />
+                  </>
+                )}
               </Button>
             </div>
           )}
@@ -289,6 +383,13 @@ export function StakeholderSelection({ survey, onSelect, onBack }: StakeholderSe
                   size="sm"
                 >
                   Clear Cache
+                </Button>
+                <Button
+                  onClick={handleReset}
+                  variant="outline"
+                  size="sm"
+                >
+                  Reset Selection
                 </Button>
               </div>
             </div>

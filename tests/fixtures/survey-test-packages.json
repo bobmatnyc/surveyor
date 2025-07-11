@@ -1,0 +1,273 @@
+{
+  "testSurveys": {
+    "minimal": {
+      "id": "test-minimal",
+      "name": "Minimal Test Survey",
+      "description": "Simple two-question survey for basic testing",
+      "stakeholders": [
+        {
+          "id": "ceo",
+          "name": "CEO",
+          "description": "Chief Executive Officer",
+          "color": "#3B82F6",
+          "expertise": ["strategy", "leadership"]
+        },
+        {
+          "id": "tech-lead",
+          "name": "Tech Lead",
+          "description": "Technical Leadership",
+          "color": "#10B981",
+          "expertise": ["infrastructure", "development"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "text",
+          "text": "What is your primary challenge?",
+          "required": true,
+          "targetStakeholders": ["ceo", "tech-lead"]
+        },
+        {
+          "id": "q2",
+          "type": "multipleChoice",
+          "text": "How would you rate your current systems?",
+          "required": true,
+          "options": ["Excellent", "Good", "Average", "Poor"],
+          "targetStakeholders": ["ceo", "tech-lead"]
+        }
+      ]
+    },
+    "comprehensive": {
+      "id": "test-comprehensive",
+      "name": "Comprehensive Test Survey",
+      "description": "Multi-stakeholder survey with all question types",
+      "stakeholders": [
+        {
+          "id": "board",
+          "name": "Board Member",
+          "description": "Board of Directors",
+          "color": "#8B5CF6",
+          "expertise": ["governance", "strategy"]
+        },
+        {
+          "id": "ceo",
+          "name": "CEO",
+          "description": "Chief Executive Officer",
+          "color": "#3B82F6",
+          "expertise": ["strategy", "operations"]
+        },
+        {
+          "id": "tech-lead",
+          "name": "Tech Lead",
+          "description": "Technical Leadership",
+          "color": "#10B981",
+          "expertise": ["infrastructure", "development"]
+        },
+        {
+          "id": "staff",
+          "name": "Staff Member",
+          "description": "General Staff",
+          "color": "#F59E0B",
+          "expertise": ["operations", "daily-tasks"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "text",
+          "text": "Describe your organization's mission",
+          "required": true,
+          "targetStakeholders": ["board", "ceo"]
+        },
+        {
+          "id": "q2",
+          "type": "multipleChoice",
+          "text": "What is your primary technology platform?",
+          "required": true,
+          "options": ["Cloud-based", "On-premise", "Hybrid", "Legacy systems"],
+          "targetStakeholders": ["tech-lead", "ceo"]
+        },
+        {
+          "id": "q3",
+          "type": "likert",
+          "text": "How satisfied are you with current technology?",
+          "required": true,
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"]
+          },
+          "targetStakeholders": ["tech-lead", "staff", "ceo"]
+        },
+        {
+          "id": "q4",
+          "type": "boolean",
+          "text": "Do you have a documented technology strategy?",
+          "required": true,
+          "targetStakeholders": ["board", "ceo", "tech-lead"]
+        },
+        {
+          "id": "q5",
+          "type": "number",
+          "text": "What percentage of your budget is allocated to technology?",
+          "required": false,
+          "targetStakeholders": ["board", "ceo"]
+        }
+      ]
+    },
+    "edgeCases": {
+      "id": "test-edge-cases",
+      "name": "Edge Cases Test Survey",
+      "description": "Survey designed to test edge cases and error conditions",
+      "stakeholders": [
+        {
+          "id": "single-stakeholder",
+          "name": "Single Stakeholder",
+          "description": "Only stakeholder in survey",
+          "color": "#EF4444",
+          "expertise": ["testing"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "type": "text",
+          "text": "Question with very long text that should test text overflow and wrapping behavior in the UI components to ensure proper rendering",
+          "required": true,
+          "targetStakeholders": ["single-stakeholder"]
+        },
+        {
+          "id": "q2",
+          "type": "multipleChoice",
+          "text": "Multiple choice with many options",
+          "required": false,
+          "options": [
+            "Option 1", "Option 2", "Option 3", "Option 4", "Option 5",
+            "Option 6", "Option 7", "Option 8", "Option 9", "Option 10"
+          ],
+          "targetStakeholders": ["single-stakeholder"]
+        },
+        {
+          "id": "q3",
+          "type": "text",
+          "text": "Optional question to test partial completion",
+          "required": false,
+          "targetStakeholders": ["single-stakeholder"]
+        }
+      ]
+    },
+    "multiStep": {
+      "id": "test-multi-step",
+      "name": "Multi-Step Test Survey",
+      "description": "Survey with multiple steps for navigation testing",
+      "stakeholders": [
+        {
+          "id": "user",
+          "name": "Test User",
+          "description": "Test user for multi-step survey",
+          "color": "#6366F1",
+          "expertise": ["testing"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "step1-q1",
+          "type": "text",
+          "text": "Step 1: What is your name?",
+          "required": true,
+          "targetStakeholders": ["user"],
+          "step": 1
+        },
+        {
+          "id": "step1-q2",
+          "type": "multipleChoice",
+          "text": "Step 1: What is your role?",
+          "required": true,
+          "options": ["Manager", "Developer", "Designer", "Other"],
+          "targetStakeholders": ["user"],
+          "step": 1
+        },
+        {
+          "id": "step2-q1",
+          "type": "likert",
+          "text": "Step 2: How would you rate your experience?",
+          "required": true,
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Poor", "Fair", "Good", "Very Good", "Excellent"]
+          },
+          "targetStakeholders": ["user"],
+          "step": 2
+        },
+        {
+          "id": "step3-q1",
+          "type": "text",
+          "text": "Step 3: Any additional comments?",
+          "required": false,
+          "targetStakeholders": ["user"],
+          "step": 3
+        }
+      ]
+    }
+  },
+  "testScenarios": {
+    "happyPath": {
+      "description": "Complete survey with all questions answered",
+      "surveyId": "test-comprehensive",
+      "stakeholderId": "ceo",
+      "organizationId": "test-org",
+      "responses": {
+        "q1": "Leading digital transformation",
+        "q2": "Cloud-based",
+        "q3": 4,
+        "q4": true,
+        "q5": 25
+      }
+    },
+    "partialCompletion": {
+      "description": "Survey with only required questions answered",
+      "surveyId": "test-comprehensive",
+      "stakeholderId": "tech-lead",
+      "organizationId": "test-org",
+      "responses": {
+        "q2": "Hybrid",
+        "q3": 3,
+        "q4": false
+      }
+    },
+    "stakeholderSpecific": {
+      "description": "Staff member completing staff-specific questions",
+      "surveyId": "test-comprehensive",
+      "stakeholderId": "staff",
+      "organizationId": "test-org",
+      "responses": {
+        "q3": 2
+      }
+    },
+    "errorCases": {
+      "invalidSurveyId": {
+        "description": "Request with non-existent survey ID",
+        "surveyId": "invalid-survey-id",
+        "stakeholderId": "ceo",
+        "organizationId": "test-org"
+      },
+      "invalidStakeholder": {
+        "description": "Request with invalid stakeholder ID",
+        "surveyId": "test-comprehensive",
+        "stakeholderId": "invalid-stakeholder",
+        "organizationId": "test-org"
+      },
+      "missingRequired": {
+        "description": "Submit with missing required fields",
+        "surveyId": "test-minimal",
+        "stakeholderId": "ceo",
+        "organizationId": "test-org",
+        "responses": {
+          "q2": "Good"
+        }
+      }
+    }
+  }
+}

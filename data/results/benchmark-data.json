@@ -1,34 +1,34 @@
 {
   "surveyId": "jim-joseph-tech-maturity-v1",
-  "generatedAt": "2025-07-09T05:33:07.195Z",
+  "generatedAt": "2025-07-11T03:20:16.271Z",
   "totalOrganizations": 8,
   "overallMetrics": {
-    "averageScore": 3.5275641025641025,
-    "medianScore": 3.6974358974358976,
-    "standardDeviation": 1.1550534993913826,
+    "averageScore": 3.410897435897436,
+    "medianScore": 3.43974358974359,
+    "standardDeviation": 1.2441306978343898,
     "completionRate": 95.2,
     "averageResponseTime": 18.5
   },
   "maturityDistribution": {
-    "building": 3,
-    "emerging": 1,
-    "thriving": 4
+    "building": 2,
+    "emerging": 3,
+    "thriving": 3
   },
   "domainAverages": {
-    "infrastructure": 3.538461538461539,
+    "infrastructure": 3.413461538461539,
     "business_systems": 3.375,
-    "data": 3.5480769230769234,
-    "program_tech": 3.5,
-    "culture": 3.7638888888888893
+    "data": 3.4230769230769234,
+    "program_tech": 3.25,
+    "culture": 3.6111111111111116
   },
   "sectorAnalysis": {
     "Community Services": {
-      "averageScore": 1.75,
+      "averageScore": 1.608974358974359,
       "count": 1,
       "topDomains": [
         "business_systems",
-        "data",
-        "program_tech"
+        "program_tech",
+        "culture"
       ],
       "commonChallenges": [
         "Limited funding",
@@ -51,7 +51,7 @@
       ]
     },
     "Campus Life": {
-      "averageScore": 3.6076923076923078,
+      "averageScore": 3.43974358974359,
       "count": 1,
       "topDomains": [
         "infrastructure",
@@ -65,12 +65,12 @@
       ]
     },
     "Religious Institution": {
-      "averageScore": 2.541666666666667,
+      "averageScore": 2.3621794871794872,
       "count": 2,
       "topDomains": [
         "culture",
         "business_systems",
-        "program_tech"
+        "infrastructure"
       ],
       "commonChallenges": [
         "Member management",
@@ -93,11 +93,11 @@
       ]
     },
     "Arts & Culture": {
-      "averageScore": 3.6974358974358976,
+      "averageScore": 3.4320512820512823,
       "count": 1,
       "topDomains": [
         "data",
-        "program_tech",
+        "culture",
         "infrastructure"
       ],
       "commonChallenges": [
@@ -123,7 +123,7 @@
   },
   "organizationSizeAnalysis": {
     "small": {
-      "averageScore": 1.8121794871794872,
+      "averageScore": 1.5621794871794872,
       "count": 2,
       "itBudgetAverage": 3.5,
       "hasITStaffPercentage": 0
@@ -135,7 +135,7 @@
       "hasITStaffPercentage": 100
     },
     "medium": {
-      "averageScore": 3.6490384615384617,
+      "averageScore": 3.5407051282051283,
       "count": 4,
       "itBudgetAverage": 10.25,
       "hasITStaffPercentage": 75
@@ -145,10 +145,10 @@
     "ceo": {
       "averageEngagement": 1,
       "responsePatterns": {
-        "infra_onboarding_ceo": 3.25,
-        "data_collection_ceo": 3.375,
+        "infra_onboarding_ceo": 3.125,
+        "data_collection_ceo": 3.25,
         "business_systems_ceo": 3.375,
-        "culture_leadership_ceo": 3.875
+        "culture_leadership_ceo": 3.75
       },
       "commonChallenges": [
         "Strategic technology planning",
@@ -159,8 +159,8 @@
     "tech_lead": {
       "averageEngagement": 1,
       "responsePatterns": {
-        "infra_onboarding_tech": 3.875,
-        "data_systems_tech": 3.75
+        "infra_onboarding_tech": 3.75,
+        "data_systems_tech": 3.625
       },
       "commonChallenges": [
         "Infrastructure maintenance",
@@ -171,7 +171,7 @@
     "staff": {
       "averageEngagement": 1,
       "responsePatterns": {
-        "program_tech_staff": 3.5
+        "program_tech_staff": 3.25
       },
       "commonChallenges": [
         "Daily tool usage",
@@ -182,7 +182,7 @@
     "board": {
       "averageEngagement": 1,
       "responsePatterns": {
-        "culture_board_oversight": 3.375
+        "culture_board_oversight": 3.125
       },
       "commonChallenges": [
         "Governance oversight",

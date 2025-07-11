@@ -1,7 +1,7 @@
 import { QAAgentConfig } from './types';
 
 export const DEFAULT_QA_CONFIG: QAAgentConfig = {
-  baseUrl: 'http://localhost:3002',
+  baseUrl: 'http://localhost:3000',
   testTimeout: 30000,
   screenshotPath: './qa-agent/screenshots',
   visualThreshold: 0.1,
@@ -20,7 +20,7 @@ export const TEST_ROUTES = [
   '/auth',
   '/survey',
   '/admin',
-  '/survey/jim-joseph-tech-maturity-v1/org_beth_shalom_community'
+  '/survey/demo-showcase-2025'
 ];
 
 export const ACCESSIBILITY_RULES = {

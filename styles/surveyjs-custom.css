@@ -1,0 +1,308 @@
+/* Custom SurveyJS styling to match the clean first page design */
+
+/* Root container styling */
+.sd-root-modern {
+  background: transparent !important;
+  font-family: Inter, system-ui, -apple-system, sans-serif !important;
+}
+
+/* Survey container */
+.sd-container-modern {
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Page styling */
+.sd-page__content {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Panel styling */
+.sd-panel {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  border: none !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  padding: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+/* Question styling */
+.sd-question {
+  background: transparent !important;
+  padding: 20px 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.sd-question:not(:last-child) {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+/* Question title styling */
+.sd-question__title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  margin-bottom: 16px !important;
+  line-height: 1.4 !important;
+}
+
+/* Question description */
+.sd-question__description {
+  font-size: 14px !important;
+  color: #64748b !important;
+  margin-bottom: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* Input styling */
+.sd-input {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.sd-input:focus {
+  border-color: #2563eb !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+  outline: none !important;
+}
+
+/* Textarea styling */
+.sd-input[type="textarea"] {
+  min-height: 120px !important;
+  resize: vertical !important;
+}
+
+/* Radio button styling */
+.sd-selectbase__item {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  margin-bottom: 12px !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.sd-selectbase__item:hover {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.05) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.sd-selectbase__item--checked {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.1) !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2) !important;
+}
+
+/* Checkbox styling */
+.sd-boolean {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.sd-boolean:hover {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.05) !important;
+}
+
+.sd-boolean--checked {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.1) !important;
+}
+
+/* Rating styling */
+.sd-rating {
+  display: flex !important;
+  gap: 8px !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 12px !important;
+  border: 2px solid #e2e8f0 !important;
+}
+
+.sd-rating__item {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  border: 2px solid #e2e8f0 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.sd-rating__item:hover {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.1) !important;
+  transform: scale(1.05) !important;
+}
+
+.sd-rating__item--selected {
+  border-color: #2563eb !important;
+  background: #2563eb !important;
+  color: white !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Navigation buttons */
+.sd-navigation {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  margin-top: 32px !important;
+  padding: 24px 0 !important;
+}
+
+.sd-navigation__btn {
+  padding: 12px 32px !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  border: 2px solid transparent !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.sd-navigation__btn--prev {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+.sd-navigation__btn--prev:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  border-color: #cbd5e1 !important;
+  transform: translateY(-1px) !important;
+}
+
+.sd-navigation__btn--next, .sd-navigation__btn--complete {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  color: white !important;
+}
+
+.sd-navigation__btn--next:hover, .sd-navigation__btn--complete:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%) !important;
+  transform: translateY(-1px) scale(1.02) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Progress bar */
+.sd-progress {
+  background: rgba(226, 232, 240, 0.8) !important;
+  border-radius: 8px !important;
+  height: 8px !important;
+  margin-bottom: 32px !important;
+  overflow: hidden !important;
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.sd-progress__bar {
+  background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%) !important;
+  height: 100% !important;
+  transition: width 0.3s ease !important;
+  border-radius: 8px !important;
+}
+
+/* Error styling */
+.sd-question__errs {
+  color: #dc2626 !important;
+  background: rgba(252, 165, 165, 0.1) !important;
+  border: 1px solid rgba(220, 38, 38, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  margin-top: 8px !important;
+  font-size: 14px !important;
+}
+
+/* Dropdown styling */
+.sd-dropdown {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.sd-dropdown:focus {
+  border-color: #2563eb !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+  outline: none !important;
+}
+
+/* Matrix styling */
+.sd-table {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-radius: 12px !important;
+  border: 2px solid #e2e8f0 !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.sd-table__cell {
+  padding: 16px !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-right: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+.sd-table__cell:last-child {
+  border-right: none !important;
+}
+
+.sd-table tr:last-child .sd-table__cell {
+  border-bottom: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sd-rating {
+    flex-wrap: wrap !important;
+  }
+  
+  .sd-rating__item {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 14px !important;
+  }
+  
+  .sd-navigation__btn {
+    padding: 10px 24px !important;
+    font-size: 14px !important;
+  }
+  
+  .sd-question__title {
+    font-size: 16px !important;
+  }
+  
+  .sd-panel {
+    padding: 16px !important;
+  }
+}

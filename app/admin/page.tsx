@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { DashboardLayout } from '@/components/admin/dashboard-layout';
-import { DashboardOverview } from '@/components/admin/dashboard-overview';
+import { SimpleDashboardOverview } from '@/components/admin/simple-dashboard-overview';
 import { BarChart3, Users, ClipboardList, Download } from 'lucide-react';
 
 export default function AdminPage() {
@@ -134,10 +134,10 @@ export default function AdminPage() {
 
   return (
     <DashboardLayout 
-      title="Dashboard" 
-      subtitle="Welcome to your survey management dashboard"
+      title="Survey Management Dashboard" 
+      subtitle="Simple and focused survey administration"
     >
-      <DashboardOverview />
+      <SimpleDashboardOverview />
     </DashboardLayout>
   );
 }

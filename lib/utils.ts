@@ -255,3 +255,10 @@ export function removeStorageItem(key: string): void {
     console.error('Error removing from localStorage:', error);
   }
 }
+
+export function isValidId(id: string): boolean {
+  if (!id || typeof id !== 'string') return false;
+  // Allow alphanumeric characters, hyphens, and underscores
+  const validIdRegex = /^[a-zA-Z0-9_-]+$/;
+  return validIdRegex.test(id) && id.length >= 1 && id.length <= 100;
+}

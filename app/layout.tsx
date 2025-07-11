@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import { WithSurveyErrorBoundary } from '@/components/survey/survey-error-boundary';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -47,7 +48,9 @@ export default function RootLayout({
             <h1>Surveyor - Multi-Stakeholder Survey Platform</h1>
           </header>
           <main id="main-content" className="relative" role="main">
-            {children}
+            <WithSurveyErrorBoundary showDetails={process.env.NODE_ENV === 'development'}>
+              {children}
+            </WithSurveyErrorBoundary>
           </main>
         </div>
         <Analytics />

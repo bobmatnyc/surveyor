@@ -1,0 +1,535 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-07-11T00:00:00.000Z",
+    "description": "Edge case and boundary condition test packages",
+    "author": "QA Agent",
+    "testCategories": [
+      "boundary-conditions",
+      "single-stakeholder",
+      "large-datasets",
+      "unicode-support",
+      "conditional-logic",
+      "validation-limits"
+    ]
+  },
+  "testSurveys": {
+    "singleStakeholder": {
+      "id": "test-single-stakeholder",
+      "name": "Single Stakeholder Survey",
+      "description": "Survey with only one stakeholder for boundary testing",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 10,
+      "category": "edge-case",
+      "complexity": "simple",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": true,
+        "showProgressBar": true,
+        "allowNavigation": true
+      },
+      "stakeholders": [
+        {
+          "id": "single-user",
+          "name": "Single User",
+          "description": "The only user in this survey",
+          "weight": 1.0,
+          "color": "#EF4444",
+          "expertise": ["all"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "single-question",
+          "text": "This is the only question in this survey",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["single-user"],
+          "validation": {
+            "minLength": 1,
+            "maxLength": 10
+          }
+        }
+      ]
+    },
+    "unicodeSupport": {
+      "id": "test-unicode-support",
+      "name": "Unicode Support Test Survey",
+      "description": "Testing internationalization and special characters",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 5,
+      "category": "internationalization",
+      "complexity": "simple",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true
+      },
+      "stakeholders": [
+        {
+          "id": "international-user",
+          "name": "用户",
+          "description": "国际用户测试",
+          "weight": 1.0,
+          "color": "#3B82F6",
+          "expertise": ["testing"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "unicode-text",
+          "text": "请输入您的姓名 (Please enter your name)",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["international-user"],
+          "validation": {
+            "minLength": 1,
+            "maxLength": 50
+          }
+        },
+        {
+          "id": "emoji-question",
+          "text": "How do you feel? 😊 😐 😞",
+          "type": "multipleChoice",
+          "required": true,
+          "targetStakeholders": ["international-user"],
+          "options": [
+            "😊 Happy",
+            "😐 Neutral",
+            "😞 Sad",
+            "🤔 Confused",
+            "🎉 Excited"
+          ]
+        },
+        {
+          "id": "special-characters",
+          "text": "Test special characters: @#$%^&*()_+-=[]{}|;':\",./<>?",
+          "type": "text",
+          "required": false,
+          "targetStakeholders": ["international-user"],
+          "validation": {
+            "maxLength": 100
+          }
+        }
+      ]
+    },
+    "maxLengthSurvey": {
+      "id": "test-max-length-survey",
+      "name": "Maximum Length Survey",
+      "description": "Testing maximum field lengths and large data handling",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 30,
+      "category": "boundary-testing",
+      "complexity": "complex",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true
+      },
+      "stakeholders": [
+        {
+          "id": "test-user",
+          "name": "Test User with Very Long Name That Tests Maximum Length Handling in the System",
+          "description": "This is a very long description that tests the maximum length handling of stakeholder descriptions in the system. It includes multiple sentences and should test text overflow, wrapping, and truncation behaviors in various UI components.",
+          "weight": 1.0,
+          "color": "#8B5CF6",
+          "expertise": ["testing", "boundary-conditions", "edge-cases", "validation", "ui-testing"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "very-long-question",
+          "text": "This is a very long question that tests the maximum length handling of question text in the system. It includes multiple sentences and should test text overflow, wrapping, and truncation behaviors in various UI components. The question continues with more text to ensure we test the absolute maximum length that the system can handle gracefully without breaking the user interface or causing performance issues.",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["test-user"],
+          "validation": {
+            "minLength": 10,
+            "maxLength": 2000
+          }
+        },
+        {
+          "id": "many-options-question",
+          "text": "Question with maximum number of options",
+          "type": "multipleChoice",
+          "required": true,
+          "targetStakeholders": ["test-user"],
+          "options": [
+            "Option 1", "Option 2", "Option 3", "Option 4", "Option 5",
+            "Option 6", "Option 7", "Option 8", "Option 9", "Option 10",
+            "Option 11", "Option 12", "Option 13", "Option 14", "Option 15",
+            "Option 16", "Option 17", "Option 18", "Option 19", "Option 20",
+            "Option 21", "Option 22", "Option 23", "Option 24", "Option 25"
+          ]
+        },
+        {
+          "id": "extreme-likert-scale",
+          "text": "Extreme Likert scale with many points",
+          "type": "likert",
+          "required": false,
+          "targetStakeholders": ["test-user"],
+          "scale": {
+            "min": 1,
+            "max": 10,
+            "labels": [
+              "1 - Extremely Poor",
+              "2 - Very Poor",
+              "3 - Poor",
+              "4 - Below Average",
+              "5 - Average",
+              "6 - Above Average",
+              "7 - Good",
+              "8 - Very Good",
+              "9 - Excellent",
+              "10 - Outstanding"
+            ]
+          }
+        }
+      ]
+    },
+    "conditionalLogic": {
+      "id": "test-conditional-logic",
+      "name": "Conditional Logic Test Survey",
+      "description": "Testing complex conditional question logic",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 15,
+      "category": "conditional-logic",
+      "complexity": "complex",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true
+      },
+      "stakeholders": [
+        {
+          "id": "conditional-user",
+          "name": "Conditional Logic User",
+          "description": "User for testing conditional logic",
+          "weight": 1.0,
+          "color": "#6366F1",
+          "expertise": ["testing"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "trigger-question",
+          "text": "Are you satisfied with our service?",
+          "type": "boolean",
+          "required": true,
+          "targetStakeholders": ["conditional-user"]
+        },
+        {
+          "id": "satisfied-followup",
+          "text": "What did you like most about our service?",
+          "type": "text",
+          "required": false,
+          "targetStakeholders": ["conditional-user"],
+          "conditional": {
+            "dependsOn": "trigger-question",
+            "condition": "equals",
+            "value": true
+          },
+          "validation": {
+            "maxLength": 500
+          }
+        },
+        {
+          "id": "unsatisfied-followup",
+          "text": "What could we improve?",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["conditional-user"],
+          "conditional": {
+            "dependsOn": "trigger-question",
+            "condition": "equals",
+            "value": false
+          },
+          "validation": {
+            "minLength": 10,
+            "maxLength": 500
+          }
+        },
+        {
+          "id": "rating-question",
+          "text": "How would you rate us on a scale of 1-10?",
+          "type": "number",
+          "required": true,
+          "targetStakeholders": ["conditional-user"],
+          "validation": {
+            "min": 1,
+            "max": 10
+          }
+        },
+        {
+          "id": "high-rating-followup",
+          "text": "Would you recommend us to others?",
+          "type": "boolean",
+          "required": true,
+          "targetStakeholders": ["conditional-user"],
+          "conditional": {
+            "dependsOn": "rating-question",
+            "condition": "greater_than",
+            "value": 7
+          }
+        },
+        {
+          "id": "low-rating-followup",
+          "text": "What's the main reason for your low rating?",
+          "type": "multipleChoice",
+          "required": true,
+          "targetStakeholders": ["conditional-user"],
+          "conditional": {
+            "dependsOn": "rating-question",
+            "condition": "less_than",
+            "value": 5
+          },
+          "options": [
+            "Poor quality",
+            "Slow response time",
+            "Unhelpful staff",
+            "High prices",
+            "Technical issues",
+            "Other"
+          ]
+        }
+      ]
+    },
+    "validationLimits": {
+      "id": "test-validation-limits",
+      "name": "Validation Limits Test Survey",
+      "description": "Testing all validation edge cases and limits",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 20,
+      "category": "validation-testing",
+      "complexity": "medium",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true
+      },
+      "stakeholders": [
+        {
+          "id": "validation-user",
+          "name": "Validation User",
+          "description": "User for testing validation limits",
+          "weight": 1.0,
+          "color": "#EF4444",
+          "expertise": ["validation"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "min-length-text",
+          "text": "Enter at least 5 characters",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["validation-user"],
+          "validation": {
+            "minLength": 5,
+            "maxLength": 50
+          }
+        },
+        {
+          "id": "max-length-text",
+          "text": "Enter no more than 10 characters",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["validation-user"],
+          "validation": {
+            "maxLength": 10
+          }
+        },
+        {
+          "id": "pattern-validation",
+          "text": "Enter a valid email address",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["validation-user"],
+          "validation": {
+            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+          }
+        },
+        {
+          "id": "number-min-max",
+          "text": "Enter a number between 1 and 100",
+          "type": "number",
+          "required": true,
+          "targetStakeholders": ["validation-user"],
+          "validation": {
+            "min": 1,
+            "max": 100
+          }
+        },
+        {
+          "id": "zero-validation",
+          "text": "Enter zero or a positive number",
+          "type": "number",
+          "required": true,
+          "targetStakeholders": ["validation-user"],
+          "validation": {
+            "min": 0
+          }
+        },
+        {
+          "id": "negative-allowed",
+          "text": "Enter any number (negative allowed)",
+          "type": "number",
+          "required": false,
+          "targetStakeholders": ["validation-user"],
+          "validation": {
+            "min": -1000,
+            "max": 1000
+          }
+        }
+      ]
+    }
+  },
+  "testScenarios": {
+    "edgeCaseScenarios": {
+      "emptySurvey": {
+        "description": "Survey with no questions",
+        "surveyId": "test-empty-survey",
+        "stakeholderId": "user",
+        "organizationId": "test-org",
+        "responses": {}
+      },
+      "singleQuestion": {
+        "description": "Survey with only one question",
+        "surveyId": "test-single-stakeholder",
+        "stakeholderId": "single-user",
+        "organizationId": "test-org",
+        "responses": {
+          "single-question": "Test"
+        }
+      },
+      "unicodeResponses": {
+        "description": "Responses with unicode characters",
+        "surveyId": "test-unicode-support",
+        "stakeholderId": "international-user",
+        "organizationId": "test-org",
+        "responses": {
+          "unicode-text": "张三 (Zhang San)",
+          "emoji-question": "😊 Happy",
+          "special-characters": "@#$%^&*()_+-=[]{}|;':\",./<>?"
+        }
+      },
+      "maxLengthResponses": {
+        "description": "Maximum length responses",
+        "surveyId": "test-max-length-survey",
+        "stakeholderId": "test-user",
+        "organizationId": "test-org",
+        "responses": {
+          "very-long-question": "This is a very long response that tests the maximum length handling of response text in the system. It includes multiple sentences and should test text storage, retrieval, and display behaviors in various components. The response continues with more text to ensure we test the absolute maximum length that the system can handle gracefully without breaking the database or causing performance issues during save and load operations.",
+          "many-options-question": "Option 25"
+        }
+      },
+      "conditionalLogicTest": {
+        "description": "Testing conditional logic paths",
+        "surveyId": "test-conditional-logic",
+        "stakeholderId": "conditional-user",
+        "organizationId": "test-org",
+        "responses": {
+          "trigger-question": false,
+          "unsatisfied-followup": "Service was too slow and unhelpful",
+          "rating-question": 3,
+          "low-rating-followup": "Slow response time"
+        }
+      },
+      "validationBoundaries": {
+        "description": "Testing validation boundaries",
+        "surveyId": "test-validation-limits",
+        "stakeholderId": "validation-user",
+        "organizationId": "test-org",
+        "responses": {
+          "min-length-text": "12345",
+          "max-length-text": "1234567890",
+          "pattern-validation": "test@example.com",
+          "number-min-max": 50,
+          "zero-validation": 0,
+          "negative-allowed": -100
+        }
+      }
+    },
+    "boundaryConditions": {
+      "minimumValues": {
+        "description": "Testing minimum allowed values",
+        "testCases": [
+          {
+            "field": "minLength",
+            "value": 1,
+            "expected": "valid"
+          },
+          {
+            "field": "minNumber",
+            "value": 0,
+            "expected": "valid"
+          },
+          {
+            "field": "minRating",
+            "value": 1,
+            "expected": "valid"
+          }
+        ]
+      },
+      "maximumValues": {
+        "description": "Testing maximum allowed values",
+        "testCases": [
+          {
+            "field": "maxLength",
+            "value": 2000,
+            "expected": "valid"
+          },
+          {
+            "field": "maxNumber",
+            "value": 999999,
+            "expected": "valid"
+          },
+          {
+            "field": "maxRating",
+            "value": 10,
+            "expected": "valid"
+          }
+        ]
+      },
+      "exceedingLimits": {
+        "description": "Testing values that exceed limits",
+        "testCases": [
+          {
+            "field": "exceedMaxLength",
+            "value": "x".repeat(2001),
+            "expected": "validation_error"
+          },
+          {
+            "field": "exceedMaxNumber",
+            "value": 1000000,
+            "expected": "validation_error"
+          },
+          {
+            "field": "belowMinNumber",
+            "value": -1,
+            "expected": "validation_error"
+          }
+        ]
+      }
+    }
+  }
+}

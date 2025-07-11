@@ -1,0 +1,549 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2025-07-11T00:00:00.000Z",
+    "description": "Comprehensive test survey packages for API testing framework",
+    "author": "QA Agent",
+    "compatibleWith": {
+      "surveyorVersion": "1.0.0",
+      "apiVersion": "1.0.0"
+    },
+    "categories": [
+      "stakeholder-surveys",
+      "technical-assessments",
+      "feedback-forms",
+      "multi-step-surveys",
+      "conditional-logic",
+      "performance-testing",
+      "edge-cases",
+      "error-scenarios"
+    ]
+  },
+  "testSurveys": {
+    "simple": {
+      "id": "test-simple-survey",
+      "name": "Simple Survey",
+      "description": "Basic survey for fundamental testing",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 5,
+      "category": "basic",
+      "complexity": "simple",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "customStyling": {
+          "primaryColor": "#3B82F6",
+          "secondaryColor": "#1E40AF"
+        }
+      },
+      "stakeholders": [
+        {
+          "id": "user",
+          "name": "User",
+          "description": "Basic user role",
+          "weight": 1.0,
+          "color": "#3B82F6",
+          "expertise": ["general"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "text": "What is your name?",
+          "type": "text",
+          "required": true,
+          "targetStakeholders": ["user"],
+          "validation": {
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        {
+          "id": "q2",
+          "text": "How satisfied are you with our service?",
+          "type": "likert",
+          "required": true,
+          "targetStakeholders": ["user"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"]
+          }
+        }
+      ]
+    },
+    "stakeholderSurvey": {
+      "id": "test-stakeholder-survey",
+      "name": "Multi-Stakeholder Assessment",
+      "description": "Complex survey targeting multiple stakeholder types",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 15,
+      "category": "stakeholder",
+      "complexity": "medium",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": true,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "timeLimit": 1800,
+        "customStyling": {
+          "primaryColor": "#10B981",
+          "secondaryColor": "#059669",
+          "backgroundColor": "#F0FDF4"
+        }
+      },
+      "stakeholders": [
+        {
+          "id": "ceo",
+          "name": "CEO",
+          "description": "Chief Executive Officer",
+          "weight": 0.4,
+          "color": "#DC2626",
+          "expertise": ["strategy", "leadership", "governance"],
+          "requiredExpertise": ["strategy"]
+        },
+        {
+          "id": "tech-lead",
+          "name": "Technology Lead",
+          "description": "Technical decision maker",
+          "weight": 0.3,
+          "color": "#2563EB",
+          "expertise": ["infrastructure", "development", "security"],
+          "requiredExpertise": ["infrastructure"]
+        },
+        {
+          "id": "staff",
+          "name": "Staff Member",
+          "description": "Day-to-day operations",
+          "weight": 0.2,
+          "color": "#059669",
+          "expertise": ["operations", "customer-service"]
+        },
+        {
+          "id": "board",
+          "name": "Board Member",
+          "description": "Governance oversight",
+          "weight": 0.1,
+          "color": "#7C3AED",
+          "expertise": ["governance", "finance"],
+          "requiredExpertise": ["governance"]
+        }
+      ],
+      "domains": [
+        {
+          "id": "strategy",
+          "name": "Strategic Planning",
+          "description": "Long-term planning and vision",
+          "weight": 0.3,
+          "color": "#DC2626"
+        },
+        {
+          "id": "operations",
+          "name": "Operations",
+          "description": "Daily operational effectiveness",
+          "weight": 0.25,
+          "color": "#2563EB"
+        },
+        {
+          "id": "technology",
+          "name": "Technology",
+          "description": "Technical infrastructure and capabilities",
+          "weight": 0.25,
+          "color": "#059669"
+        },
+        {
+          "id": "governance",
+          "name": "Governance",
+          "description": "Oversight and compliance",
+          "weight": 0.2,
+          "color": "#7C3AED"
+        }
+      ],
+      "questions": [
+        {
+          "id": "strategy_vision",
+          "text": "How clear is your organization's strategic vision?",
+          "type": "likert",
+          "domain": "strategy",
+          "required": true,
+          "targetStakeholders": ["ceo", "board"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Very Unclear", "Unclear", "Somewhat Clear", "Clear", "Very Clear"]
+          }
+        },
+        {
+          "id": "operations_efficiency",
+          "text": "How would you rate operational efficiency?",
+          "type": "likert",
+          "domain": "operations",
+          "required": true,
+          "targetStakeholders": ["ceo", "staff"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Very Poor", "Poor", "Average", "Good", "Excellent"]
+          }
+        },
+        {
+          "id": "tech_infrastructure",
+          "text": "How adequate is your technology infrastructure?",
+          "type": "likert",
+          "domain": "technology",
+          "required": true,
+          "targetStakeholders": ["tech-lead", "ceo"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Very Inadequate", "Inadequate", "Adequate", "Good", "Excellent"]
+          }
+        },
+        {
+          "id": "governance_oversight",
+          "text": "How effective is board oversight?",
+          "type": "likert",
+          "domain": "governance",
+          "required": true,
+          "targetStakeholders": ["board", "ceo"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Very Ineffective", "Ineffective", "Somewhat Effective", "Effective", "Very Effective"]
+          }
+        },
+        {
+          "id": "staff_satisfaction",
+          "text": "How satisfied are staff with current tools and processes?",
+          "type": "likert",
+          "domain": "operations",
+          "required": true,
+          "targetStakeholders": ["staff"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"]
+          }
+        },
+        {
+          "id": "tech_budget",
+          "text": "What percentage of budget is allocated to technology?",
+          "type": "number",
+          "domain": "technology",
+          "required": false,
+          "targetStakeholders": ["ceo", "board"],
+          "validation": {
+            "min": 0,
+            "max": 100
+          }
+        }
+      ]
+    },
+    "technicalAssessment": {
+      "id": "test-technical-assessment",
+      "name": "Technical Maturity Assessment",
+      "description": "Comprehensive technical capability evaluation",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 25,
+      "category": "technical",
+      "complexity": "complex",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": true,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "timeLimit": 3600,
+        "customStyling": {
+          "primaryColor": "#7C3AED",
+          "secondaryColor": "#5B21B6",
+          "backgroundColor": "#FAF5FF"
+        }
+      },
+      "stakeholders": [
+        {
+          "id": "cto",
+          "name": "Chief Technology Officer",
+          "description": "Technology strategy and leadership",
+          "weight": 0.4,
+          "color": "#7C3AED",
+          "expertise": ["strategy", "architecture", "leadership"],
+          "requiredExpertise": ["strategy", "architecture"]
+        },
+        {
+          "id": "dev-lead",
+          "name": "Development Lead",
+          "description": "Software development and engineering",
+          "weight": 0.3,
+          "color": "#2563EB",
+          "expertise": ["development", "testing", "deployment"],
+          "requiredExpertise": ["development"]
+        },
+        {
+          "id": "ops-lead",
+          "name": "Operations Lead",
+          "description": "Infrastructure and operations",
+          "weight": 0.2,
+          "color": "#059669",
+          "expertise": ["infrastructure", "monitoring", "security"],
+          "requiredExpertise": ["infrastructure"]
+        },
+        {
+          "id": "qa-lead",
+          "name": "QA Lead",
+          "description": "Quality assurance and testing",
+          "weight": 0.1,
+          "color": "#DC2626",
+          "expertise": ["testing", "quality", "automation"],
+          "requiredExpertise": ["testing"]
+        }
+      ],
+      "domains": [
+        {
+          "id": "architecture",
+          "name": "System Architecture",
+          "description": "Overall system design and scalability",
+          "weight": 0.25,
+          "color": "#7C3AED"
+        },
+        {
+          "id": "development",
+          "name": "Development Practices",
+          "description": "Code quality and development processes",
+          "weight": 0.25,
+          "color": "#2563EB"
+        },
+        {
+          "id": "infrastructure",
+          "name": "Infrastructure",
+          "description": "Server, network, and deployment infrastructure",
+          "weight": 0.25,
+          "color": "#059669"
+        },
+        {
+          "id": "quality",
+          "name": "Quality Assurance",
+          "description": "Testing, monitoring, and quality processes",
+          "weight": 0.25,
+          "color": "#DC2626"
+        }
+      ],
+      "questions": [
+        {
+          "id": "arch_scalability",
+          "text": "How scalable is your current system architecture?",
+          "type": "likert",
+          "domain": "architecture",
+          "required": true,
+          "targetStakeholders": ["cto", "dev-lead"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Not Scalable", "Limited Scalability", "Moderately Scalable", "Highly Scalable", "Extremely Scalable"]
+          }
+        },
+        {
+          "id": "dev_practices",
+          "text": "How mature are your development practices?",
+          "type": "likert",
+          "domain": "development",
+          "required": true,
+          "targetStakeholders": ["dev-lead", "cto"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Ad-hoc", "Basic", "Structured", "Advanced", "World-class"]
+          }
+        },
+        {
+          "id": "infra_automation",
+          "text": "What level of infrastructure automation do you have?",
+          "type": "likert",
+          "domain": "infrastructure",
+          "required": true,
+          "targetStakeholders": ["ops-lead", "cto"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Manual", "Partially Automated", "Mostly Automated", "Fully Automated", "Self-healing"]
+          }
+        },
+        {
+          "id": "qa_coverage",
+          "text": "What is your test coverage percentage?",
+          "type": "number",
+          "domain": "quality",
+          "required": true,
+          "targetStakeholders": ["qa-lead", "dev-lead"],
+          "validation": {
+            "min": 0,
+            "max": 100
+          }
+        },
+        {
+          "id": "deployment_frequency",
+          "text": "How often do you deploy to production?",
+          "type": "multipleChoice",
+          "domain": "development",
+          "required": true,
+          "targetStakeholders": ["dev-lead", "ops-lead"],
+          "options": [
+            "Less than once per month",
+            "Monthly",
+            "Weekly",
+            "Daily",
+            "Multiple times per day"
+          ]
+        },
+        {
+          "id": "monitoring_maturity",
+          "text": "How comprehensive is your monitoring and alerting?",
+          "type": "likert",
+          "domain": "infrastructure",
+          "required": true,
+          "targetStakeholders": ["ops-lead", "cto"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["No Monitoring", "Basic Monitoring", "Standard Monitoring", "Advanced Monitoring", "Comprehensive Observability"]
+          }
+        },
+        {
+          "id": "security_practices",
+          "text": "How would you rate your security practices?",
+          "type": "likert",
+          "domain": "infrastructure",
+          "required": true,
+          "targetStakeholders": ["ops-lead", "cto"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Minimal", "Basic", "Standard", "Advanced", "Industry-leading"]
+          }
+        },
+        {
+          "id": "tech_debt",
+          "text": "How would you describe your current technical debt level?",
+          "type": "likert",
+          "domain": "development",
+          "required": true,
+          "targetStakeholders": ["dev-lead", "cto"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Overwhelming", "High", "Moderate", "Low", "Minimal"]
+          }
+        }
+      ]
+    },
+    "feedbackForm": {
+      "id": "test-feedback-form",
+      "name": "Customer Feedback Form",
+      "description": "Simple feedback collection form",
+      "version": "1.0.0",
+      "createdAt": "2025-07-11T00:00:00.000Z",
+      "updatedAt": "2025-07-11T00:00:00.000Z",
+      "isActive": true,
+      "estimatedTimeMinutes": 8,
+      "category": "feedback",
+      "complexity": "simple",
+      "settings": {
+        "allowMultipleResponses": true,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "customStyling": {
+          "primaryColor": "#F59E0B",
+          "secondaryColor": "#D97706",
+          "backgroundColor": "#FFFBEB"
+        }
+      },
+      "stakeholders": [
+        {
+          "id": "customer",
+          "name": "Customer",
+          "description": "Service recipient",
+          "weight": 1.0,
+          "color": "#F59E0B",
+          "expertise": ["user-experience"]
+        }
+      ],
+      "questions": [
+        {
+          "id": "overall_satisfaction",
+          "text": "How satisfied are you with our service overall?",
+          "type": "likert",
+          "required": true,
+          "targetStakeholders": ["customer"],
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Very Dissatisfied", "Dissatisfied", "Neutral", "Satisfied", "Very Satisfied"]
+          }
+        },
+        {
+          "id": "recommend_likelihood",
+          "text": "How likely are you to recommend us to others?",
+          "type": "likert",
+          "required": true,
+          "targetStakeholders": ["customer"],
+          "scale": {
+            "min": 0,
+            "max": 10,
+            "labels": ["Not at all likely", "Extremely likely"]
+          }
+        },
+        {
+          "id": "service_quality",
+          "text": "How would you rate the quality of our service?",
+          "type": "multipleChoice",
+          "required": true,
+          "targetStakeholders": ["customer"],
+          "options": [
+            "Excellent",
+            "Very Good",
+            "Good",
+            "Fair",
+            "Poor"
+          ]
+        },
+        {
+          "id": "improvement_areas",
+          "text": "What areas should we focus on for improvement?",
+          "type": "multipleChoice",
+          "required": false,
+          "targetStakeholders": ["customer"],
+          "options": [
+            "Customer Service",
+            "Product Quality",
+            "Pricing",
+            "Delivery Speed",
+            "Communication",
+            "Website/App Experience",
+            "Other"
+          ]
+        },
+        {
+          "id": "additional_comments",
+          "text": "Any additional comments or suggestions?",
+          "type": "text",
+          "required": false,
+          "targetStakeholders": ["customer"],
+          "validation": {
+            "maxLength": 500
+          }
+        }
+      ]
+    }
+  }
+}

@@ -16,7 +16,8 @@ import {
   Database,
   ChevronLeft,
   ChevronRight,
-  LogOut
+  LogOut,
+  Download
 } from 'lucide-react';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -34,49 +35,30 @@ const navigation = [
     current: true,
   },
   {
-    name: 'Surveys',
-    href: '/admin/surveys',
+    name: 'Survey Builder',
+    href: '/admin/surveys/create',
     icon: ClipboardList,
     current: false,
-    badge: '3',
   },
   {
-    name: 'Responses',
-    href: '/admin/responses',
+    name: 'Survey Management',
+    href: '/admin/surveys',
     icon: FileText,
     current: false,
-    badge: '24',
   },
   {
-    name: 'Analytics',
-    href: '/admin/analytics',
-    icon: TrendingUp,
-    current: false,
-  },
-  {
-    name: 'Users',
-    href: '/admin/users',
-    icon: Users,
-    current: false,
-  },
-  {
-    name: 'Results',
+    name: 'Results & Downloads',
     href: '/admin/results',
-    icon: BarChart3,
+    icon: Download,
     current: false,
   },
 ];
 
 const bottomNavigation = [
   {
-    name: 'Settings',
+    name: 'System Settings',
     href: '/admin/settings',
     icon: Settings,
-  },
-  {
-    name: 'Data Export',
-    href: '/admin/export',
-    icon: Database,
   },
 ];
 

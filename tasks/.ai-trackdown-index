@@ -1,0 +1,205 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-11T01:21:23.801Z",
+  "projectPath": "/Users/masa/Projects/managed/surveyor",
+  "projects": {},
+  "epics": {
+    "EP-0001": {
+      "id": "EP-0001",
+      "title": "Project Setup and Initial Development",
+      "filePath": "/Users/masa/Projects/managed/surveyor/surveyor/tasks/epics/EP-0001-project-setup-and-initial-development.md",
+      "status": "active",
+      "priority": "high",
+      "lastModified": "2025-07-10T02:32:55.992Z",
+      "fileSize": 1225,
+      "assignee": "masa",
+      "tags": [
+        "setup",
+        "foundation"
+      ],
+      "issueIds": [
+        "ISS-0001"
+      ],
+      "milestone": "v1.0.0"
+    },
+    "EP-0002": {
+      "id": "EP-0002",
+      "title": "Survey Platform Enhancement",
+      "filePath": "/Users/masa/Projects/managed/surveyor/surveyor/tasks/epics/EP-0002-survey-platform-enhancement.md",
+      "status": "planning",
+      "priority": "medium",
+      "lastModified": "2025-07-10T17:51:26.319Z",
+      "fileSize": 1463,
+      "assignee": "masa",
+      "issueIds": [
+        "ISS-0002",
+        "ISS-0003"
+      ],
+      "completion_percentage": 0
+    },
+    "EP-0003": {
+      "id": "EP-0003",
+      "title": "REST API Survey Architecture",
+      "filePath": "/Users/masa/Projects/managed/surveyor/tasks/epics/EP-0003-rest-api-survey-architecture.md",
+      "status": "planning",
+      "priority": "medium",
+      "lastModified": "2025-07-11T01:21:23.796Z",
+      "fileSize": 1694,
+      "assignee": "masa",
+      "issueIds": [
+        "ISS-0004",
+        "ISS-0005",
+        "ISS-0006"
+      ],
+      "completion_percentage": 0
+    }
+  },
+  "issues": {
+    "ISS-0001": {
+      "id": "ISS-0001",
+      "title": "Development Environment Setup",
+      "filePath": "/Users/masa/Projects/managed/surveyor/surveyor/tasks/issues/ISS-0001-development-environment-setup.md",
+      "status": "active",
+      "priority": "high",
+      "lastModified": "2025-07-10T02:32:55.992Z",
+      "fileSize": 1252,
+      "assignee": "masa",
+      "tags": [
+        "setup",
+        "environment"
+      ],
+      "epicId": "EP-0001",
+      "taskIds": [
+        "TSK-0001",
+        "TSK-0002"
+      ],
+      "prIds": []
+    },
+    "ISS-0002": {
+      "id": "ISS-0002",
+      "title": "Survey Sharing and Access Control",
+      "filePath": "/Users/masa/Projects/managed/surveyor/surveyor/tasks/issues/ISS-0002-survey-sharing-and-access-control.md",
+      "status": "planning",
+      "priority": "medium",
+      "lastModified": "2025-07-10T02:33:11.973Z",
+      "fileSize": 927,
+      "assignee": "masa",
+      "epicId": "EP-0002",
+      "taskIds": [],
+      "prIds": [],
+      "blocked_by": [],
+      "blocks": []
+    },
+    "ISS-0003": {
+      "id": "ISS-0003",
+      "title": "Surveyor Platform Production Deployment and Optimization",
+      "filePath": "/Users/masa/Projects/managed/surveyor/surveyor/tasks/issues/ISS-0003-surveyor-platform-production-deployment-and-optimization.md",
+      "status": "planning",
+      "priority": "medium",
+      "lastModified": "2025-07-10T17:51:26.316Z",
+      "fileSize": 965,
+      "assignee": "masa",
+      "epicId": "EP-0002",
+      "taskIds": [],
+      "prIds": [],
+      "blocked_by": [],
+      "blocks": []
+    },
+    "ISS-0004": {
+      "id": "ISS-0004",
+      "title": "Dynamic REST API Endpoints Implementation",
+      "filePath": "/Users/masa/Projects/managed/surveyor/tasks/issues/ISS-0004-dynamic-rest-api-endpoints-implementation.md",
+      "status": "planning",
+      "priority": "high",
+      "lastModified": "2025-07-11T01:21:11.233Z",
+      "fileSize": 857,
+      "assignee": "masa",
+      "epicId": "EP-0003",
+      "taskIds": [],
+      "prIds": [],
+      "blocked_by": [],
+      "blocks": []
+    },
+    "ISS-0005": {
+      "id": "ISS-0005",
+      "title": "Frontend URL Structure and Routing",
+      "filePath": "/Users/masa/Projects/managed/surveyor/tasks/issues/ISS-0005-frontend-url-structure-and-routing.md",
+      "status": "planning",
+      "priority": "high",
+      "lastModified": "2025-07-11T01:21:18.011Z",
+      "fileSize": 851,
+      "assignee": "masa",
+      "epicId": "EP-0003",
+      "taskIds": [],
+      "prIds": [],
+      "blocked_by": [],
+      "blocks": []
+    },
+    "ISS-0006": {
+      "id": "ISS-0006",
+      "title": "Comprehensive Testing Framework",
+      "filePath": "/Users/masa/Projects/managed/surveyor/tasks/issues/ISS-0006-comprehensive-testing-framework.md",
+      "status": "planning",
+      "priority": "high",
+      "lastModified": "2025-07-11T01:21:23.793Z",
+      "fileSize": 829,
+      "assignee": "masa",
+      "epicId": "EP-0003",
+      "taskIds": [],
+      "prIds": [],
+      "blocked_by": [],
+      "blocks": []
+    }
+  },
+  "tasks": {
+    "TSK-0001": {
+      "id": "TSK-0001",
+      "title": "Install and configure development tools",
+      "filePath": "/Users/masa/Projects/managed/surveyor/surveyor/tasks/tasks/TSK-0001-install-and-configure-development-tools.md",
+      "status": "planning",
+      "priority": "high",
+      "lastModified": "2025-07-10T02:32:55.992Z",
+      "fileSize": 1396,
+      "assignee": "masa",
+      "tags": [
+        "tools",
+        "setup"
+      ],
+      "issueId": "ISS-0001",
+      "epicId": "EP-0001",
+      "time_estimate": "4 hours"
+    },
+    "TSK-0002": {
+      "id": "TSK-0002",
+      "title": "Create development setup documentation",
+      "filePath": "/Users/masa/Projects/managed/surveyor/surveyor/tasks/tasks/TSK-0002-create-development-setup-documentation.md",
+      "status": "planning",
+      "priority": "medium",
+      "lastModified": "2025-07-10T02:32:55.993Z",
+      "fileSize": 1485,
+      "assignee": "masa",
+      "tags": [
+        "documentation",
+        "setup"
+      ],
+      "issueId": "ISS-0001",
+      "epicId": "EP-0001",
+      "time_estimate": "2 hours"
+    }
+  },
+  "prs": {},
+  "stats": {
+    "totalProjects": 0,
+    "totalEpics": 3,
+    "totalIssues": 6,
+    "totalTasks": 2,
+    "totalPRs": 0,
+    "lastFullScan": "2025-07-10T02:33:07.710Z",
+    "indexSize": 6121,
+    "performanceMetrics": {
+      "lastLoadTime": 1,
+      "lastUpdateTime": 0,
+      "lastRebuildTime": 8
+    }
+  }
+}

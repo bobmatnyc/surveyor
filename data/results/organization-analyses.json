@@ -4,9 +4,9 @@
     "organizationName": "Beth Shalom Community Center",
     "sector": "Community Services",
     "size": "small",
-    "overallScore": 1.75,
+    "overallScore": 1.608974358974359,
     "maturityLevel": "building",
-    "percentileRank": 0,
+    "percentileRank": 12.5,
     "domainBreakdown": {
       "infrastructure": {
         "score": 1,
@@ -21,22 +21,22 @@
         "sizeComparison": 0
       },
       "data": {
-        "score": 2,
+        "score": 1.4615384615384617,
         "percentile": 25,
         "sectorComparison": 0,
-        "sizeComparison": 0.26923076923076916
+        "sizeComparison": 0.23076923076923084
       },
       "program_tech": {
         "score": 2,
         "percentile": 25,
         "sectorComparison": 0,
-        "sizeComparison": 0
+        "sizeComparison": 0.5
       },
       "culture": {
-        "score": 2,
+        "score": 1.777777777777778,
         "percentile": 12.5,
         "sectorComparison": 0,
-        "sizeComparison": -0.38888888888888884
+        "sizeComparison": -0.11111111111111094
       }
     },
     "strengths": [],
@@ -54,8 +54,8 @@
     "peerComparison": {
       "similar": [],
       "betterPerforming": [
-        "org_chabad_center",
         "org_temple_emanuel",
+        "org_jewish_museum",
         "org_hillel_university"
       ],
       "potentialMentors": [
@@ -158,15 +158,15 @@
     "organizationName": "Hillel at State University",
     "sector": "Campus Life",
     "size": "medium",
-    "overallScore": 3.6076923076923078,
-    "maturityLevel": "building",
-    "percentileRank": 37.5,
+    "overallScore": 3.43974358974359,
+    "maturityLevel": "emerging",
+    "percentileRank": 50,
     "domainBreakdown": {
       "infrastructure": {
-        "score": 4.461538461538462,
-        "percentile": 75,
+        "score": 3.9230769230769234,
+        "percentile": 62.5,
         "sectorComparison": 0,
-        "sizeComparison": 0.5
+        "sizeComparison": 0.21153846153846168
       },
       "business_systems": {
         "score": 2.9999999999999996,
@@ -182,50 +182,51 @@
       },
       "program_tech": {
         "score": 3,
-        "percentile": 50,
+        "percentile": 62.5,
         "sectorComparison": 0,
-        "sizeComparison": -0.5
+        "sizeComparison": -0.25
       },
       "culture": {
-        "score": 4,
+        "score": 3.777777777777778,
         "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.16666666666666607
+        "sizeComparison": 0
       }
     },
     "strengths": [],
     "weaknesses": [],
     "priorityRecommendations": [
-      "Establish basic IT infrastructure and policies",
-      "Create technology budget and planning process",
-      "Provide staff technology training"
+      "Integrate systems for better data flow",
+      "Develop comprehensive technology strategy",
+      "Enhance cybersecurity measures"
     ],
     "peerComparison": {
       "similar": [],
       "betterPerforming": [
-        "org_jewish_museum",
         "org_jewish_day_school",
-        "org_jewish_federation_metro"
+        "org_jewish_federation_metro",
+        "org_jewish_family_services"
       ],
       "potentialMentors": [
         "org_jewish_federation_metro",
-        "org_jewish_family_services"
+        "org_jewish_family_services",
+        "org_jewish_day_school"
       ]
     },
     "actionPlan": {
       "shortTerm": [
-        "Conduct comprehensive technology audit",
-        "Establish basic cybersecurity measures"
+        "Integrate existing systems",
+        "Enhance data backup procedures"
       ],
       "mediumTerm": [
-        "Implement core business systems",
-        "Provide staff technology training"
+        "Upgrade core infrastructure",
+        "Implement data analytics tools"
       ],
       "longTerm": [
-        "Develop technology strategic plan"
+        "Develop innovation initiatives"
       ],
-      "budgetEstimate": 100000,
-      "timeEstimate": "18-24 months"
+      "budgetEstimate": 75000,
+      "timeEstimate": "12-18 months"
     }
   },
   {
@@ -241,7 +242,7 @@
         "score": 3,
         "percentile": 37.5,
         "sectorComparison": 0.7692307692307692,
-        "sizeComparison": -0.9615384615384617
+        "sizeComparison": -0.7115384615384617
       },
       "business_systems": {
         "score": 2.9999999999999996,
@@ -252,20 +253,20 @@
       "data": {
         "score": 3.461538461538462,
         "percentile": 50,
-        "sectorComparison": 1.0000000000000004,
+        "sectorComparison": 1.2307692307692313,
         "sizeComparison": -0.2692307692307687
       },
       "program_tech": {
         "score": 3,
-        "percentile": 50,
-        "sectorComparison": 0.5,
-        "sizeComparison": -0.5
+        "percentile": 62.5,
+        "sectorComparison": 1,
+        "sizeComparison": -0.25
       },
       "culture": {
         "score": 3.777777777777778,
-        "percentile": 62.5,
-        "sectorComparison": 0.5000000000000004,
-        "sizeComparison": -0.0555555555555558
+        "percentile": 75,
+        "sectorComparison": 0.8888888888888888,
+        "sizeComparison": 0
       }
     },
     "strengths": [],
@@ -280,8 +281,8 @@
     "peerComparison": {
       "similar": [],
       "betterPerforming": [
-        "org_hillel_university",
         "org_jewish_museum",
+        "org_hillel_university",
         "org_jewish_day_school"
       ],
       "potentialMentors": [
@@ -384,9 +385,9 @@
     "organizationName": "Chabad Center of Silicon Valley",
     "sector": "Religious Institution",
     "size": "small",
-    "overallScore": 1.8743589743589744,
+    "overallScore": 1.5153846153846153,
     "maturityLevel": "building",
-    "percentileRank": 12.5,
+    "percentileRank": 0,
     "domainBreakdown": {
       "infrastructure": {
         "score": 1.4615384615384617,
@@ -401,27 +402,28 @@
         "sizeComparison": 0
       },
       "data": {
-        "score": 1.4615384615384617,
+        "score": 1,
         "percentile": 12.5,
-        "sectorComparison": -1,
-        "sizeComparison": -0.26923076923076916
+        "sectorComparison": -1.2307692307692308,
+        "sizeComparison": -0.23076923076923084
       },
       "program_tech": {
-        "score": 2,
-        "percentile": 25,
-        "sectorComparison": -0.5,
-        "sizeComparison": 0
+        "score": 1,
+        "percentile": 12.5,
+        "sectorComparison": -1,
+        "sizeComparison": -0.5
       },
       "culture": {
-        "score": 2.7777777777777777,
+        "score": 2,
         "percentile": 25,
-        "sectorComparison": -0.5,
-        "sizeComparison": 0.38888888888888884
+        "sectorComparison": -0.8888888888888893,
+        "sizeComparison": 0.11111111111111116
       }
     },
     "strengths": [],
     "weaknesses": [
-      "data"
+      "data",
+      "program_tech"
     ],
     "priorityRecommendations": [
       "Establish basic IT infrastructure and policies",
@@ -433,8 +435,8 @@
     "peerComparison": {
       "similar": [],
       "betterPerforming": [
+        "org_beth_shalom_community",
         "org_temple_emanuel",
-        "org_hillel_university",
         "org_jewish_museum"
       ],
       "potentialMentors": [
@@ -464,15 +466,15 @@
     "organizationName": "Jewish Museum of Heritage",
     "sector": "Arts & Culture",
     "size": "medium",
-    "overallScore": 3.6974358974358976,
-    "maturityLevel": "thriving",
-    "percentileRank": 50,
+    "overallScore": 3.4320512820512823,
+    "maturityLevel": "emerging",
+    "percentileRank": 37.5,
     "domainBreakdown": {
       "infrastructure": {
-        "score": 3.9230769230769234,
+        "score": 3.461538461538462,
         "percentile": 50,
         "sectorComparison": 0,
-        "sizeComparison": -0.038461538461538325
+        "sizeComparison": -0.24999999999999956
       },
       "business_systems": {
         "score": 2.9999999999999996,
@@ -487,50 +489,52 @@
         "sizeComparison": 0.26923076923076916
       },
       "program_tech": {
-        "score": 4,
-        "percentile": 75,
+        "score": 3,
+        "percentile": 62.5,
         "sectorComparison": 0,
-        "sizeComparison": 0.5
+        "sizeComparison": -0.25
       },
       "culture": {
         "score": 3.777777777777778,
-        "percentile": 62.5,
+        "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": -0.0555555555555558
+        "sizeComparison": 0
       }
     },
     "strengths": [],
     "weaknesses": [],
     "priorityRecommendations": [
-      "Explore emerging technologies and innovations",
-      "Share best practices with peer organizations",
-      "Develop technology mentorship capabilities"
+      "Integrate systems for better data flow",
+      "Develop comprehensive technology strategy",
+      "Enhance cybersecurity measures"
     ],
     "peerComparison": {
       "similar": [],
       "betterPerforming": [
+        "org_hillel_university",
         "org_jewish_day_school",
-        "org_jewish_federation_metro",
-        "org_jewish_family_services"
+        "org_jewish_federation_metro"
       ],
       "potentialMentors": [
         "org_jewish_federation_metro",
-        "org_jewish_family_services"
+        "org_jewish_family_services",
+        "org_jewish_day_school"
       ]
     },
     "actionPlan": {
       "shortTerm": [
-        "Explore emerging technologies",
-        "Establish mentorship programs"
+        "Integrate existing systems",
+        "Enhance data backup procedures"
       ],
       "mediumTerm": [
-        "Lead sector technology initiatives"
+        "Upgrade core infrastructure",
+        "Implement data analytics tools"
       ],
       "longTerm": [
-        "Develop technology innovation lab"
+        "Develop innovation initiatives"
       ],
-      "budgetEstimate": 50000,
-      "timeEstimate": "6-12 months"
+      "budgetEstimate": 75000,
+      "timeEstimate": "12-18 months"
     }
   },
   {
@@ -546,7 +550,7 @@
         "score": 4.461538461538462,
         "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.5
+        "sizeComparison": 0.75
       },
       "business_systems": {
         "score": 4,
@@ -564,13 +568,13 @@
         "score": 4,
         "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": 0.5
+        "sizeComparison": 0.75
       },
       "culture": {
         "score": 3.777777777777778,
-        "percentile": 62.5,
+        "percentile": 75,
         "sectorComparison": 0,
-        "sizeComparison": -0.0555555555555558
+        "sizeComparison": 0
       }
     },
     "strengths": [],

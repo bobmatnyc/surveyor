@@ -1,0 +1,472 @@
+{
+  "surveyMetadata": {
+    "test-minimal": {
+      "id": "test-minimal",
+      "name": "Minimal Test Survey",
+      "description": "Simple two-question survey for basic testing",
+      "totalSteps": 1,
+      "estimatedTimeMinutes": 5,
+      "status": "active",
+      "version": "1.0.0",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "settings": {
+        "allowMultipleResponses": true,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "timeLimit": 30
+      }
+    },
+    "test-comprehensive": {
+      "id": "test-comprehensive",
+      "name": "Comprehensive Test Survey",
+      "description": "Multi-stakeholder survey with all question types",
+      "totalSteps": 3,
+      "estimatedTimeMinutes": 15,
+      "status": "active",
+      "version": "1.0.0",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": true,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "timeLimit": 60
+      }
+    },
+    "test-multi-step": {
+      "id": "test-multi-step",
+      "name": "Multi-Step Test Survey",
+      "description": "Survey with multiple steps for navigation testing",
+      "totalSteps": 3,
+      "estimatedTimeMinutes": 10,
+      "status": "active",
+      "version": "1.0.0",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "settings": {
+        "allowMultipleResponses": true,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "timeLimit": 45
+      }
+    }
+  },
+  "stakeholderLists": {
+    "test-minimal": {
+      "stakeholders": [
+        {
+          "id": "ceo",
+          "name": "CEO",
+          "description": "Chief Executive Officer",
+          "color": "#3B82F6",
+          "expertise": ["strategy", "leadership"]
+        },
+        {
+          "id": "tech-lead",
+          "name": "Tech Lead",
+          "description": "Technical Leadership",
+          "color": "#10B981",
+          "expertise": ["infrastructure", "development"]
+        }
+      ]
+    },
+    "test-comprehensive": {
+      "stakeholders": [
+        {
+          "id": "board",
+          "name": "Board Member",
+          "description": "Board of Directors",
+          "color": "#8B5CF6",
+          "expertise": ["governance", "strategy"]
+        },
+        {
+          "id": "ceo",
+          "name": "CEO",
+          "description": "Chief Executive Officer",
+          "color": "#3B82F6",
+          "expertise": ["strategy", "operations"]
+        },
+        {
+          "id": "tech-lead",
+          "name": "Tech Lead",
+          "description": "Technical Leadership",
+          "color": "#10B981",
+          "expertise": ["infrastructure", "development"]
+        },
+        {
+          "id": "staff",
+          "name": "Staff Member",
+          "description": "General Staff",
+          "color": "#F59E0B",
+          "expertise": ["operations", "daily-tasks"]
+        }
+      ]
+    }
+  },
+  "surveySteps": {
+    "test-minimal-step-1": {
+      "stepId": "step-1",
+      "stepNumber": 1,
+      "totalSteps": 1,
+      "questions": [
+        {
+          "id": "q1",
+          "type": "text",
+          "text": "What is your primary challenge?",
+          "required": true
+        },
+        {
+          "id": "q2",
+          "type": "multipleChoice",
+          "text": "How would you rate your current systems?",
+          "required": true,
+          "options": ["Excellent", "Good", "Average", "Poor"]
+        }
+      ],
+      "navigation": {
+        "canGoBack": false,
+        "canGoForward": true,
+        "nextStepId": null,
+        "prevStepId": null
+      }
+    },
+    "test-multi-step-step-1": {
+      "stepId": "step-1",
+      "stepNumber": 1,
+      "totalSteps": 3,
+      "questions": [
+        {
+          "id": "step1-q1",
+          "type": "text",
+          "text": "Step 1: What is your name?",
+          "required": true
+        },
+        {
+          "id": "step1-q2",
+          "type": "multipleChoice",
+          "text": "Step 1: What is your role?",
+          "required": true,
+          "options": ["Manager", "Developer", "Designer", "Other"]
+        }
+      ],
+      "navigation": {
+        "canGoBack": false,
+        "canGoForward": true,
+        "nextStepId": "step-2",
+        "prevStepId": null
+      }
+    },
+    "test-multi-step-step-2": {
+      "stepId": "step-2",
+      "stepNumber": 2,
+      "totalSteps": 3,
+      "questions": [
+        {
+          "id": "step2-q1",
+          "type": "likert",
+          "text": "Step 2: How would you rate your experience?",
+          "required": true,
+          "scale": {
+            "min": 1,
+            "max": 5,
+            "labels": ["Poor", "Fair", "Good", "Very Good", "Excellent"]
+          }
+        }
+      ],
+      "navigation": {
+        "canGoBack": true,
+        "canGoForward": true,
+        "nextStepId": "step-3",
+        "prevStepId": "step-1"
+      }
+    },
+    "test-multi-step-step-3": {
+      "stepId": "step-3",
+      "stepNumber": 3,
+      "totalSteps": 3,
+      "questions": [
+        {
+          "id": "step3-q1",
+          "type": "text",
+          "text": "Step 3: Any additional comments?",
+          "required": false
+        }
+      ],
+      "navigation": {
+        "canGoBack": true,
+        "canGoForward": false,
+        "nextStepId": null,
+        "prevStepId": "step-2"
+      }
+    }
+  },
+  "submitResponses": {
+    "success": {
+      "success": true,
+      "nextStepId": "step-2",
+      "isComplete": false,
+      "message": "Step completed successfully"
+    },
+    "complete": {
+      "success": true,
+      "nextStepId": null,
+      "isComplete": true,
+      "message": "Survey completed successfully"
+    },
+    "validation-error": {
+      "success": false,
+      "nextStepId": null,
+      "isComplete": false,
+      "message": "Validation failed",
+      "errors": {
+        "q1": "This field is required",
+        "q2": "Please select an option"
+      }
+    }
+  },
+  "errorResponses": {
+    "survey-not-found": {
+      "error": true,
+      "message": "Survey not found",
+      "code": "SURVEY_NOT_FOUND",
+      "details": {
+        "surveyId": "invalid-survey-id"
+      }
+    },
+    "stakeholder-not-found": {
+      "error": true,
+      "message": "Stakeholder not found",
+      "code": "STAKEHOLDER_NOT_FOUND",
+      "details": {
+        "stakeholderId": "invalid-stakeholder"
+      }
+    },
+    "validation-error": {
+      "error": true,
+      "message": "Validation failed",
+      "code": "VALIDATION_ERROR",
+      "details": {
+        "errors": {
+          "q1": "This field is required"
+        }
+      }
+    },
+    "server-error": {
+      "error": true,
+      "message": "Internal server error",
+      "code": "INTERNAL_ERROR"
+    }
+  },
+  "stakeholderDetails": {
+    "test-minimal-ceo": {
+      "id": "ceo",
+      "name": "CEO",
+      "description": "Chief Executive Officer",
+      "color": "#3B82F6",
+      "expertise": ["strategy", "leadership"],
+      "weight": 0.4,
+      "availableQuestions": ["q1", "q2"],
+      "totalQuestions": 2,
+      "estimatedTimeMinutes": 5
+    },
+    "test-minimal-tech-lead": {
+      "id": "tech-lead",
+      "name": "Tech Lead",
+      "description": "Technical Leadership",
+      "color": "#10B981",
+      "expertise": ["infrastructure", "development"],
+      "weight": 0.6,
+      "availableQuestions": ["q1", "q2"],
+      "totalQuestions": 2,
+      "estimatedTimeMinutes": 5
+    }
+  },
+  "navigationResponses": {
+    "test-multi-step": {
+      "availableSteps": [
+        {
+          "stepId": "step-1",
+          "stepNumber": 1,
+          "title": "Personal Information",
+          "isAccessible": true,
+          "isCompleted": true,
+          "questionCount": 2
+        },
+        {
+          "stepId": "step-2",
+          "stepNumber": 2,
+          "title": "Experience Rating",
+          "isAccessible": true,
+          "isCompleted": false,
+          "questionCount": 1
+        },
+        {
+          "stepId": "step-3",
+          "stepNumber": 3,
+          "title": "Additional Comments",
+          "isAccessible": false,
+          "isCompleted": false,
+          "questionCount": 1
+        }
+      ],
+      "currentStepId": "step-2",
+      "canNavigateBack": true,
+      "canNavigateForward": true,
+      "nextStepId": "step-3",
+      "prevStepId": "step-1"
+    }
+  },
+  "progressResponses": {
+    "test-minimal": {
+      "currentStepId": "step-1",
+      "currentStepNumber": 1,
+      "totalSteps": 1,
+      "completedSteps": 0,
+      "percentageComplete": 0,
+      "stakeholderId": "ceo",
+      "organizationId": "test-org",
+      "lastActivityAt": "2024-01-15T10:30:00.000Z",
+      "estimatedTimeRemaining": 5,
+      "completedQuestions": [],
+      "totalQuestions": 2
+    }
+  },
+  "distributionResponses": {
+    "test-dist-code": {
+      "surveyId": "test-minimal",
+      "organizationId": "test-org",
+      "distributionCode": "test-dist-code",
+      "isActive": true,
+      "expiresAt": "2024-12-31T23:59:59.000Z",
+      "allowedStakeholders": ["ceo", "tech-lead"],
+      "metadata": {
+        "surveyName": "Minimal Test Survey",
+        "description": "Simple two-question survey for basic testing",
+        "estimatedTime": 5
+      }
+    }
+  },
+  "adminSurveyList": {
+    "surveys": [
+      {
+        "id": "test-minimal",
+        "name": "Minimal Test Survey",
+        "description": "Simple two-question survey for basic testing",
+        "status": "active",
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "updatedAt": "2024-01-01T00:00:00.000Z",
+        "responseCount": 5,
+        "completionRate": 0.8
+      },
+      {
+        "id": "test-comprehensive",
+        "name": "Comprehensive Test Survey",
+        "description": "Multi-stakeholder survey with all question types",
+        "status": "active",
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "updatedAt": "2024-01-01T00:00:00.000Z",
+        "responseCount": 12,
+        "completionRate": 0.6
+      }
+    ],
+    "total": 2,
+    "page": 1,
+    "limit": 10,
+    "totalPages": 1
+  },
+  "adminResponsesList": {
+    "responses": [
+      {
+        "id": "resp-1",
+        "surveyId": "test-minimal",
+        "organizationId": "test-org-1",
+        "stakeholderId": "ceo",
+        "responses": {
+          "q1": "Growing our market share",
+          "q2": "Good"
+        },
+        "startTime": "2024-01-15T10:00:00.000Z",
+        "completionTime": "2024-01-15T10:05:00.000Z",
+        "progress": 1.0,
+        "isComplete": true
+      },
+      {
+        "id": "resp-2",
+        "surveyId": "test-minimal",
+        "organizationId": "test-org-2",
+        "stakeholderId": "tech-lead",
+        "responses": {
+          "q1": "Improving our infrastructure",
+          "q2": "Average"
+        },
+        "startTime": "2024-01-15T11:00:00.000Z",
+        "completionTime": null,
+        "progress": 0.5,
+        "isComplete": false
+      }
+    ],
+    "total": 2,
+    "organizationCounts": {
+      "test-org-1": 1,
+      "test-org-2": 1
+    },
+    "stakeholderCounts": {
+      "ceo": 1,
+      "tech-lead": 1
+    },
+    "completionRate": 0.5
+  },
+  "adminResultsList": {
+    "results": [
+      {
+        "surveyId": "test-minimal",
+        "organizationId": "test-org-1",
+        "overallScore": 3.5,
+        "domainScores": {
+          "strategy": 4.0,
+          "operations": 3.0
+        },
+        "stakeholderContributions": {
+          "ceo": {
+            "strategy": 4.0,
+            "operations": 3.5
+          },
+          "tech-lead": {
+            "strategy": 3.5,
+            "operations": 2.5
+          }
+        },
+        "maturityLevel": {
+          "id": "developing",
+          "name": "Developing",
+          "description": "Organization is developing capabilities",
+          "minScore": 3.0,
+          "maxScore": 4.0,
+          "color": "#F59E0B"
+        },
+        "recommendations": [
+          "Focus on operational improvements",
+          "Strengthen strategic planning processes"
+        ],
+        "completionDate": "2024-01-15T10:05:00.000Z",
+        "responseCount": 2
+      }
+    ],
+    "aggregatedMetrics": {
+      "averageScore": 3.5,
+      "completionRate": 0.75,
+      "participationByStakeholder": {
+        "ceo": 0.8,
+        "tech-lead": 0.7
+      },
+      "domainAverages": {
+        "strategy": 3.75,
+        "operations": 2.75
+      }
+    }
+  }
+}

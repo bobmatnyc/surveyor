@@ -173,8 +173,15 @@ export class SurveyJSConverter {
       return stakeholderMatch && expertiseMatch;
     });
 
-    // Group questions by domain for better organization
-    const questionsByDomain = filteredQuestions.reduce((acc, question) => {
+    // Sort questions by their original order to ensure stable ordering
+    const sortedQuestions = [...filteredQuestions].sort((a, b) => {
+      const aIndex = schema.questions.findIndex(q => q.id === a.id);
+      const bIndex = schema.questions.findIndex(q => q.id === b.id);
+      return aIndex - bIndex;
+    });
+
+    // Group questions by domain for better organization, preserving order
+    const questionsByDomain = sortedQuestions.reduce((acc, question) => {
       if (!acc[question.domain]) {
         acc[question.domain] = [];
       }
@@ -182,16 +189,20 @@ export class SurveyJSConverter {
       return acc;
     }, {} as Record<string, Question[]>);
 
-    // Create pages for each domain
-    const pages: SurveyJSPage[] = Object.entries(questionsByDomain).map(([domainId, questions]) => {
-      const domain = schema.domains.find(d => d.id === domainId);
-      return {
-        name: domainId,
-        title: domain?.name || domainId,
-        description: domain?.description,
-        elements: questions.map(q => this.convertQuestion(q, schema))
-      };
-    });
+    // Create pages for each domain, maintaining domain order from schema
+    const orderedDomains = schema.domains.map(d => d.id);
+    const pages: SurveyJSPage[] = orderedDomains
+      .filter(domainId => questionsByDomain[domainId])
+      .map(domainId => {
+        const domain = schema.domains.find(d => d.id === domainId);
+        const questions = questionsByDomain[domainId];
+        return {
+          name: domainId,
+          title: domain?.name || domainId,
+          description: domain?.description,
+          elements: questions.map(q => this.convertQuestion(q, schema))
+        };
+      });
 
     return {
       title: schema.name,
@@ -228,7 +239,11 @@ export class SurveyJSConverter {
       description: question.description,
       isRequired: question.required,
       titleLocation: 'top',
-      descriptionLocation: 'underTitle'
+      descriptionLocation: 'underTitle',
+      startWithNewLine: true,
+      indent: 0,
+      // Add a stable key to prevent re-rendering issues
+      valueName: question.id
     };
 
     // Add conditional logic if present
@@ -258,7 +273,8 @@ export class SurveyJSConverter {
           ],
           choicesOrder: 'none',
           colCount: 1,
-          showClearButton: false
+          showClearButton: false,
+          renderAs: 'prettycheckbox'
         } as SurveyJSElement;
 
       case QuestionType.LIKERT_3:
@@ -275,7 +291,8 @@ export class SurveyJSConverter {
           ],
           choicesOrder: 'none',
           colCount: 1,
-          showClearButton: false
+          showClearButton: false,
+          renderAs: 'prettycheckbox'
         } as SurveyJSElement;
 
       case QuestionType.MULTIPLE_CHOICE:
@@ -290,7 +307,8 @@ export class SurveyJSConverter {
           colCount: 1,
           showSelectAllItem: false,
           showNoneItem: false,
-          separateSpecialChoices: true
+          separateSpecialChoices: true,
+          renderAs: 'prettycheckbox'
         } as SurveyJSElement;
 
       case QuestionType.SINGLE_SELECT:
@@ -303,7 +321,8 @@ export class SurveyJSConverter {
           })) || [],
           choicesOrder: 'none',
           colCount: 1,
-          showClearButton: false
+          showClearButton: false,
+          renderAs: 'prettycheckbox'
         } as SurveyJSElement;
 
       case QuestionType.TEXT:
@@ -369,13 +388,8 @@ export class SurveyJSConverter {
   private static convertValidation(validation: any): any[] {
     const validators = [];
 
-    if (validation.required) {
-      validators.push({
-        type: 'expression',
-        expression: '{item} notempty',
-        text: 'This field is required'
-      });
-    }
+    // Don't add required validator here since isRequired is already set in baseElement
+    // SurveyJS handles required validation automatically with isRequired: true
 
     if (validation.minLength) {
       validators.push({

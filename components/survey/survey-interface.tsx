@@ -126,6 +126,8 @@ export function SurveyInterface({ survey, organizationId, distributionCode }: Su
               survey={survey}
               organizationId={organizationId}
               distributionCode={distributionCode}
+              stakeholder={stakeholder}
+              expertise={expertise}
               onComplete={handleSurveyComplete}
               onBack={handleStartOver}
               useSurveyJS={true}

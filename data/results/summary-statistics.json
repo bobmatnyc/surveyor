@@ -3,9 +3,9 @@
   "totalResponses": 32,
   "totalResults": 8,
   "maturityDistribution": {
-    "building": 3,
-    "emerging": 1,
-    "thriving": 4
+    "building": 2,
+    "emerging": 3,
+    "thriving": 3
   },
   "sectorBreakdown": {
     "Community Services": 1,
@@ -21,14 +21,14 @@
     "large": 2,
     "medium": 4
   },
-  "averageScoreOverall": 3.5275641025641025,
+  "averageScoreOverall": 3.410897435897436,
   "domainAverages": {
-    "infrastructure": 3.538461538461539,
+    "infrastructure": 3.413461538461539,
     "business_systems": 3.375,
-    "data": 3.5480769230769234,
-    "program_tech": 3.5,
-    "culture": 3.7638888888888893
+    "data": 3.4230769230769234,
+    "program_tech": 3.25,
+    "culture": 3.6111111111111116
   },
   "completionRate": 95.2,
-  "generatedAt": "2025-07-09T05:33:07.197Z"
+  "generatedAt": "2025-07-11T03:20:16.272Z"
 }

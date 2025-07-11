@@ -1,0 +1,667 @@
+{
+  "surveySchemas": {
+    "test-minimal": {
+      "id": "test-minimal",
+      "name": "Minimal Test Survey",
+      "description": "Simple two-question survey for basic testing",
+      "version": "1.0.0",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "isActive": true,
+      "settings": {
+        "allowMultipleResponses": true,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "timeLimit": 30
+      },
+      "stakeholders": [
+        {
+          "id": "ceo",
+          "name": "CEO",
+          "description": "Chief Executive Officer",
+          "weight": 0.4,
+          "color": "#3B82F6",
+          "requiredExpertise": ["strategy", "leadership"]
+        },
+        {
+          "id": "tech-lead",
+          "name": "Tech Lead",
+          "description": "Technical Leadership",
+          "weight": 0.6,
+          "color": "#10B981",
+          "requiredExpertise": ["infrastructure", "development"]
+        }
+      ],
+      "domains": [
+        {
+          "id": "general",
+          "name": "General Assessment",
+          "description": "General organizational assessment",
+          "weight": 1.0,
+          "color": "#8B5CF6",
+          "icon": "assessment"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "text": "What is your primary challenge?",
+          "type": "text",
+          "domain": "general",
+          "targetStakeholders": ["ceo", "tech-lead"],
+          "required": true,
+          "validation": {
+            "minLength": 10,
+            "maxLength": 500
+          }
+        },
+        {
+          "id": "q2",
+          "text": "How would you rate your current systems?",
+          "type": "single_select",
+          "domain": "general",
+          "targetStakeholders": ["ceo", "tech-lead"],
+          "required": true,
+          "options": [
+            {"value": "excellent", "label": "Excellent"},
+            {"value": "good", "label": "Good"},
+            {"value": "average", "label": "Average"},
+            {"value": "poor", "label": "Poor"}
+          ]
+        }
+      ],
+      "scoring": {
+        "method": "weighted_average",
+        "stakeholderWeights": {
+          "ceo": 0.4,
+          "tech-lead": 0.6
+        },
+        "domainWeights": {
+          "general": 1.0
+        },
+        "maturityLevels": [
+          {
+            "id": "basic",
+            "name": "Basic",
+            "description": "Basic level of capability",
+            "minScore": 1,
+            "maxScore": 5,
+            "color": "#dc2626",
+            "recommendations": ["Focus on foundational improvements"]
+          }
+        ]
+      }
+    },
+    "test-comprehensive": {
+      "id": "test-comprehensive",
+      "name": "Comprehensive Test Survey",
+      "description": "Multi-stakeholder survey with all question types",
+      "version": "1.0.0",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "isActive": true,
+      "settings": {
+        "allowMultipleResponses": false,
+        "requireAllStakeholders": true,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "timeLimit": 60
+      },
+      "stakeholders": [
+        {
+          "id": "board",
+          "name": "Board Member",
+          "description": "Board of Directors",
+          "weight": 0.3,
+          "color": "#8B5CF6",
+          "requiredExpertise": ["governance", "strategy"]
+        },
+        {
+          "id": "ceo",
+          "name": "CEO",
+          "description": "Chief Executive Officer",
+          "weight": 0.3,
+          "color": "#3B82F6",
+          "requiredExpertise": ["strategy", "operations"]
+        },
+        {
+          "id": "tech-lead",
+          "name": "Tech Lead",
+          "description": "Technical Leadership",
+          "weight": 0.2,
+          "color": "#10B981",
+          "requiredExpertise": ["infrastructure", "development"]
+        },
+        {
+          "id": "staff",
+          "name": "Staff Member",
+          "description": "General Staff",
+          "weight": 0.2,
+          "color": "#F59E0B",
+          "requiredExpertise": ["operations", "daily-tasks"]
+        }
+      ],
+      "domains": [
+        {
+          "id": "strategy",
+          "name": "Strategic Planning",
+          "description": "Strategic planning and vision",
+          "weight": 0.4,
+          "color": "#8B5CF6",
+          "icon": "strategy"
+        },
+        {
+          "id": "technology",
+          "name": "Technology",
+          "description": "Technology infrastructure and capabilities",
+          "weight": 0.3,
+          "color": "#10B981",
+          "icon": "technology"
+        },
+        {
+          "id": "operations",
+          "name": "Operations",
+          "description": "Day-to-day operations and processes",
+          "weight": 0.3,
+          "color": "#F59E0B",
+          "icon": "operations"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Describe your organization's mission and vision",
+          "type": "text",
+          "domain": "strategy",
+          "targetStakeholders": ["board", "ceo"],
+          "required": true,
+          "validation": {
+            "minLength": 20,
+            "maxLength": 1000
+          }
+        },
+        {
+          "id": "q2",
+          "text": "What is your primary technology platform?",
+          "type": "single_select",
+          "domain": "technology",
+          "targetStakeholders": ["tech-lead", "ceo"],
+          "required": true,
+          "options": [
+            {"value": "cloud", "label": "Cloud-based"},
+            {"value": "onprem", "label": "On-premise"},
+            {"value": "hybrid", "label": "Hybrid"},
+            {"value": "legacy", "label": "Legacy systems"}
+          ]
+        },
+        {
+          "id": "q3",
+          "text": "How satisfied are you with current technology?",
+          "type": "likert_5",
+          "domain": "technology",
+          "targetStakeholders": ["tech-lead", "staff", "ceo"],
+          "required": true,
+          "options": [
+            {"value": 1, "label": "Very Dissatisfied"},
+            {"value": 2, "label": "Dissatisfied"},
+            {"value": 3, "label": "Neutral"},
+            {"value": 4, "label": "Satisfied"},
+            {"value": 5, "label": "Very Satisfied"}
+          ]
+        },
+        {
+          "id": "q4",
+          "text": "Do you have a documented technology strategy?",
+          "type": "boolean",
+          "domain": "strategy",
+          "targetStakeholders": ["board", "ceo", "tech-lead"],
+          "required": true
+        },
+        {
+          "id": "q5",
+          "text": "What percentage of your budget is allocated to technology?",
+          "type": "number",
+          "domain": "strategy",
+          "targetStakeholders": ["board", "ceo"],
+          "required": false,
+          "validation": {
+            "min": 0,
+            "max": 100
+          }
+        },
+        {
+          "id": "q6",
+          "text": "Rate your operational efficiency",
+          "type": "likert_5",
+          "domain": "operations",
+          "targetStakeholders": ["staff", "ceo"],
+          "required": true,
+          "options": [
+            {"value": 1, "label": "Very Poor"},
+            {"value": 2, "label": "Poor"},
+            {"value": 3, "label": "Average"},
+            {"value": 4, "label": "Good"},
+            {"value": 5, "label": "Excellent"}
+          ]
+        }
+      ],
+      "scoring": {
+        "method": "weighted_average",
+        "stakeholderWeights": {
+          "board": 0.3,
+          "ceo": 0.3,
+          "tech-lead": 0.2,
+          "staff": 0.2
+        },
+        "domainWeights": {
+          "strategy": 0.4,
+          "technology": 0.3,
+          "operations": 0.3
+        },
+        "maturityLevels": [
+          {
+            "id": "emerging",
+            "name": "Emerging",
+            "description": "Early stage of development",
+            "minScore": 1,
+            "maxScore": 2,
+            "color": "#dc2626",
+            "recommendations": ["Focus on basic capabilities", "Establish foundational processes"]
+          },
+          {
+            "id": "developing",
+            "name": "Developing",
+            "description": "Developing capabilities",
+            "minScore": 2.1,
+            "maxScore": 3.5,
+            "color": "#f59e0b",
+            "recommendations": ["Strengthen existing processes", "Invest in skill development"]
+          },
+          {
+            "id": "advanced",
+            "name": "Advanced",
+            "description": "Advanced capabilities",
+            "minScore": 3.6,
+            "maxScore": 4.5,
+            "color": "#10b981",
+            "recommendations": ["Optimize existing systems", "Focus on innovation"]
+          },
+          {
+            "id": "leading",
+            "name": "Leading",
+            "description": "Industry-leading capabilities",
+            "minScore": 4.6,
+            "maxScore": 5,
+            "color": "#3b82f6",
+            "recommendations": ["Maintain excellence", "Share best practices"]
+          }
+        ]
+      }
+    },
+    "test-edge-cases": {
+      "id": "test-edge-cases",
+      "name": "Edge Cases Test Survey",
+      "description": "Survey designed to test edge cases and error conditions",
+      "version": "1.0.0",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "isActive": true,
+      "settings": {
+        "allowMultipleResponses": true,
+        "requireAllStakeholders": false,
+        "showProgressBar": true,
+        "allowNavigation": true,
+        "timeLimit": 120
+      },
+      "stakeholders": [
+        {
+          "id": "single-stakeholder",
+          "name": "Single Stakeholder",
+          "description": "Only stakeholder in survey",
+          "weight": 1.0,
+          "color": "#EF4444",
+          "requiredExpertise": ["testing"]
+        }
+      ],
+      "domains": [
+        {
+          "id": "edge-testing",
+          "name": "Edge Case Testing",
+          "description": "Testing edge cases and boundary conditions",
+          "weight": 1.0,
+          "color": "#EF4444",
+          "icon": "testing"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "text": "Question with very long text that should test text overflow and wrapping behavior in the UI components to ensure proper rendering across different screen sizes and devices",
+          "type": "text",
+          "domain": "edge-testing",
+          "targetStakeholders": ["single-stakeholder"],
+          "required": true,
+          "validation": {
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        {
+          "id": "q2",
+          "text": "Multiple choice with many options to test UI handling",
+          "type": "single_select",
+          "domain": "edge-testing",
+          "targetStakeholders": ["single-stakeholder"],
+          "required": false,
+          "options": [
+            {"value": "option1", "label": "Option 1 with normal length"},
+            {"value": "option2", "label": "Option 2 with significantly longer text to test wrapping"},
+            {"value": "option3", "label": "Option 3"},
+            {"value": "option4", "label": "Option 4 with unicode characters: 🎉 💯 ✨ 🚀"},
+            {"value": "option5", "label": "Option 5 with special characters: @#$%^&*()"},
+            {"value": "option6", "label": "Option 6"},
+            {"value": "option7", "label": "Option 7"},
+            {"value": "option8", "label": "Option 8"},
+            {"value": "option9", "label": "Option 9"},
+            {"value": "option10", "label": "Option 10"}
+          ]
+        },
+        {
+          "id": "q3",
+          "text": "Optional question to test partial completion scenarios",
+          "type": "text",
+          "domain": "edge-testing",
+          "targetStakeholders": ["single-stakeholder"],
+          "required": false,
+          "validation": {
+            "minLength": 0,
+            "maxLength": 100
+          }
+        },
+        {
+          "id": "q4",
+          "text": "Number input with strict validation",
+          "type": "number",
+          "domain": "edge-testing",
+          "targetStakeholders": ["single-stakeholder"],
+          "required": true,
+          "validation": {
+            "min": -1000,
+            "max": 1000
+          }
+        },
+        {
+          "id": "q5",
+          "text": "Boolean question for testing true/false handling",
+          "type": "boolean",
+          "domain": "edge-testing",
+          "targetStakeholders": ["single-stakeholder"],
+          "required": true
+        }
+      ],
+      "scoring": {
+        "method": "simple_average",
+        "stakeholderWeights": {
+          "single-stakeholder": 1.0
+        },
+        "domainWeights": {
+          "edge-testing": 1.0
+        },
+        "maturityLevels": [
+          {
+            "id": "test-level",
+            "name": "Test Level",
+            "description": "Test maturity level",
+            "minScore": 1,
+            "maxScore": 5,
+            "color": "#EF4444",
+            "recommendations": ["This is a test recommendation"]
+          }
+        ]
+      }
+    }
+  },
+  "responseTemplates": {
+    "minimal": {
+      "surveyId": "test-minimal",
+      "organizationId": "test-org",
+      "stakeholderId": "ceo",
+      "responses": {
+        "q1": "Growing our market share and expanding internationally",
+        "q2": "good"
+      },
+      "metadata": {
+        "userAgent": "API-Test-Suite/1.0",
+        "timestamp": "2024-01-15T10:00:00.000Z",
+        "sessionId": "test-session-123"
+      }
+    },
+    "comprehensive": {
+      "surveyId": "test-comprehensive",
+      "organizationId": "test-org-comprehensive",
+      "stakeholderId": "ceo",
+      "responses": {
+        "q1": "Our mission is to revolutionize how organizations manage their digital transformation through innovative technology solutions",
+        "q2": "cloud",
+        "q3": 4,
+        "q4": true,
+        "q5": 25,
+        "q6": 4
+      },
+      "metadata": {
+        "userAgent": "API-Test-Suite/1.0",
+        "timestamp": "2024-01-15T10:00:00.000Z",
+        "sessionId": "test-session-456"
+      }
+    },
+    "edge-cases": {
+      "surveyId": "test-edge-cases",
+      "organizationId": "test-org-edge",
+      "stakeholderId": "single-stakeholder",
+      "responses": {
+        "q1": "This is a very long response that tests the system's ability to handle extended text inputs with various characters including unicode 🌟 and special symbols !@#$%^&*() as well as line breaks and multiple sentences to ensure proper storage and retrieval of complex text data.",
+        "q2": "option4",
+        "q3": "",
+        "q4": 999,
+        "q5": true
+      },
+      "metadata": {
+        "userAgent": "API-Test-Suite/1.0",
+        "timestamp": "2024-01-15T10:00:00.000Z",
+        "sessionId": "test-session-789"
+      }
+    }
+  },
+  "errorScenarios": {
+    "invalidSurveyId": {
+      "request": {
+        "surveyId": "non-existent-survey",
+        "organizationId": "test-org",
+        "stakeholderId": "ceo"
+      },
+      "expectedError": {
+        "error": true,
+        "message": "Survey not found",
+        "code": "SURVEY_NOT_FOUND",
+        "details": {
+          "surveyId": "non-existent-survey"
+        }
+      }
+    },
+    "invalidStakeholder": {
+      "request": {
+        "surveyId": "test-minimal",
+        "organizationId": "test-org",
+        "stakeholderId": "invalid-stakeholder"
+      },
+      "expectedError": {
+        "error": true,
+        "message": "Stakeholder not found",
+        "code": "STAKEHOLDER_NOT_FOUND",
+        "details": {
+          "stakeholderId": "invalid-stakeholder"
+        }
+      }
+    },
+    "missingRequiredField": {
+      "request": {
+        "surveyId": "test-minimal",
+        "organizationId": "test-org",
+        "stakeholderId": "ceo",
+        "responses": {
+          "q2": "good"
+        }
+      },
+      "expectedError": {
+        "success": false,
+        "message": "Validation errors found",
+        "errors": {
+          "q1": "This field is required"
+        }
+      }
+    },
+    "invalidJson": {
+      "request": "invalid json data",
+      "expectedError": {
+        "error": true,
+        "message": "Invalid JSON data",
+        "code": "INVALID_JSON"
+      }
+    },
+    "missingContentType": {
+      "request": {
+        "surveyId": "test-minimal",
+        "organizationId": "test-org",
+        "stakeholderId": "ceo"
+      },
+      "headers": {},
+      "expectedError": {
+        "error": true,
+        "message": "Invalid content type",
+        "code": "INVALID_CONTENT_TYPE"
+      }
+    },
+    "inactivesurvey": {
+      "surveyId": "test-inactive",
+      "expectedError": {
+        "error": true,
+        "message": "Survey is not active",
+        "code": "SURVEY_INACTIVE"
+      }
+    }
+  },
+  "performanceTestData": {
+    "loadTestSurveys": [
+      {
+        "id": "load-test-1",
+        "name": "Load Test Survey 1",
+        "stakeholderCount": 10,
+        "questionCount": 50,
+        "estimatedTimeMinutes": 25
+      },
+      {
+        "id": "load-test-2",
+        "name": "Load Test Survey 2",
+        "stakeholderCount": 5,
+        "questionCount": 100,
+        "estimatedTimeMinutes": 50
+      }
+    ],
+    "stressTestScenarios": [
+      {
+        "name": "High Concurrency",
+        "concurrentUsers": 100,
+        "requestsPerUser": 10,
+        "durationSeconds": 60
+      },
+      {
+        "name": "Long Duration",
+        "concurrentUsers": 20,
+        "requestsPerUser": 100,
+        "durationSeconds": 300
+      }
+    ]
+  },
+  "securityTestData": {
+    "sqlInjection": {
+      "surveyId": "'; DROP TABLE surveys; --",
+      "organizationId": "test-org",
+      "stakeholderId": "ceo",
+      "responses": {
+        "q1": "'; SELECT * FROM users; --",
+        "q2": "good"
+      }
+    },
+    "xssAttempts": {
+      "surveyId": "<script>alert('xss')</script>",
+      "organizationId": "test-org",
+      "stakeholderId": "<img src=x onerror=alert('xss')>",
+      "responses": {
+        "q1": "<script>document.cookie='hacked'</script>",
+        "q2": "javascript:alert('xss')"
+      }
+    },
+    "oversizedPayload": {
+      "surveyId": "test-minimal",
+      "organizationId": "test-org",
+      "stakeholderId": "ceo",
+      "responses": {
+        "q1": "A".repeat(10000000),
+        "q2": "good"
+      }
+    }
+  },
+  "authenticationTestData": {
+    "validTokens": [
+      {
+        "token": "valid-test-token-123",
+        "userId": "test-user-1",
+        "roles": ["admin", "user"],
+        "expiresAt": "2024-12-31T23:59:59.000Z"
+      }
+    ],
+    "invalidTokens": [
+      {
+        "token": "expired-token-456",
+        "error": "TOKEN_EXPIRED"
+      },
+      {
+        "token": "invalid-token-789",
+        "error": "INVALID_TOKEN"
+      },
+      {
+        "token": "",
+        "error": "MISSING_TOKEN"
+      }
+    ]
+  },
+  "rateLimit": {
+    "limits": {
+      "getEndpoints": {
+        "requestsPerMinute": 100,
+        "requestsPerHour": 1000
+      },
+      "postEndpoints": {
+        "requestsPerMinute": 50,
+        "requestsPerHour": 500
+      }
+    },
+    "testScenarios": [
+      {
+        "name": "Rate limit GET endpoints",
+        "method": "GET",
+        "endpoint": "/api/survey/test-minimal",
+        "requestCount": 101,
+        "timeWindowSeconds": 60
+      },
+      {
+        "name": "Rate limit POST endpoints",
+        "method": "POST",
+        "endpoint": "/api/survey/test-minimal/step/q1",
+        "requestCount": 51,
+        "timeWindowSeconds": 60
+      }
+    ]
+  }
+}

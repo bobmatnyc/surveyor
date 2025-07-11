@@ -7,8 +7,9 @@ import { SurveySchema, SurveyResponse } from '@/lib/types';
 import { SurveyJSConverter } from '@/lib/surveyjs-converter';
 import { useSurveyStore } from '@/lib/store';
 
-// Import SurveyJS themes
-// import 'survey-core/defaultV2.min.css';
+// Import SurveyJS themes and custom styling
+import 'survey-core/survey-core.min.css';
+import '@/styles/surveyjs-custom.css';
 
 interface SurveyJSWrapperProps {
   survey: SurveySchema;
@@ -44,7 +45,7 @@ export function SurveyJSWrapper({
     model.applyTheme({
       colorPalette: 'light',
       isPanelless: false,
-      themeName: 'defaultV2',
+      themeName: 'default',
       cssVariables: {
         '--sjs-general-backcolor': 'transparent',
         '--sjs-general-backcolor-dark': 'transparent',
@@ -100,8 +101,17 @@ export function SurveyJSWrapper({
 
     // Set up event handlers
     model.onValueChanged.add((sender, options) => {
+      // Mark question as visited when it gets a value
+      visitedQuestions.add(options.name);
+      
       // Save response to our store
       saveResponse(options.name, options.value);
+      
+      // Clear any validation errors for this question when value changes
+      const question = sender.getQuestionByName(options.name);
+      if (question && options.value !== undefined && options.value !== null && options.value !== '') {
+        question.clearErrors();
+      }
       
       // Call partial save callback if provided
       if (onPartialSave) {
@@ -131,10 +141,29 @@ export function SurveyJSWrapper({
       // We'll integrate this with our existing progress tracking
     });
 
+    // Track visited questions to prevent premature validation errors
+    const visitedQuestions = new Set();
+    
+    // Configure focus tracking to know when questions are visited
+    model.onFocusInQuestion.add((sender, options) => {
+      visitedQuestions.add(options.question.name);
+    });
+
     // Configure validation
     model.onValidateQuestion.add((sender, options) => {
-      // Custom validation logic can be added here
-      // For now, we'll rely on SurveyJS's built-in validation
+      const question = options.question;
+      const hasValue = question.value !== undefined && question.value !== null && question.value !== '';
+      const hasBeenVisited = visitedQuestions.has(question.name);
+      
+      // If question is required but has no value and hasn't been visited, skip validation
+      if (question.isRequired && !hasValue && !hasBeenVisited) {
+        // Prevent validation error from showing
+        options.error = null;
+        return false;
+      }
+      
+      // Let SurveyJS handle built-in validation for visited fields or fields with values
+      return true;
     });
 
     // Configure navigation
@@ -143,12 +172,19 @@ export function SurveyJSWrapper({
     model.showQuestionNumbers = 'on';
     model.questionTitleLocation = 'top';
     model.questionErrorLocation = 'bottom';
-    model.checkErrorsMode = 'onNextPage';
-    model.textUpdateMode = 'onBlur';
+    model.checkErrorsMode = 'onComplete'; // Only check errors on completion to prevent premature validation
+    model.textUpdateMode = 'onBlur'; // Update values on blur to avoid constant validation
     model.clearInvisibleValues = 'onComplete';
-    model.focusFirstQuestionAutomatic = true;
+    model.focusFirstQuestionAutomatic = false; // Disable auto-focus to prevent jumping
     model.goNextPageAutomatic = false;
     model.showBrandInfo = false;
+    model.validateVisitedEmptyFields = false; // Don't validate empty fields until completion
+    
+    // Additional stability settings
+    model.questionsOnPageMode = 'singlePage'; // Show all questions on one page to prevent jumping
+    model.pagePrevText = 'Previous';
+    model.pageNextText = 'Next';
+    model.firstPageIsStarted = false;
 
     // Set custom texts
     model.completeText = 'Complete Survey';
@@ -177,235 +213,18 @@ export function SurveyJSWrapper({
       console.error('Error creating SurveyJS model:', error);
       setSurveyModel(null);
     }
-  }, [survey, stakeholder, expertise, responses, saveResponse, onComplete, onPartialSave]);
+  }, [survey.id, stakeholder, expertise.join(','), saveResponse, onComplete, onPartialSave]);
 
-  // Custom CSS for better integration with shadcn/ui
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-      .sd-root-modern {
-        --background: 0 0% 100%;
-        --foreground: 222.2 84% 4.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 222.2 84% 4.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 222.2 84% 4.9%;
-        --primary: 221.2 83.2% 53.3%;
-        --primary-foreground: 210 40% 98%;
-        --secondary: 210 40% 96%;
-        --secondary-foreground: 222.2 84% 4.9%;
-        --muted: 210 40% 96%;
-        --muted-foreground: 215.4 16.3% 46.9%;
-        --accent: 210 40% 96%;
-        --accent-foreground: 222.2 84% 4.9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 210 40% 98%;
-        --border: 214.3 31.8% 91.4%;
-        --input: 214.3 31.8% 91.4%;
-        --ring: 221.2 83.2% 53.3%;
-        --radius: 0.5rem;
-        font-family: Inter, system-ui, -apple-system, sans-serif;
-      }
-
-      .sd-root-modern .sd-page {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-      }
-
-      .sd-root-modern .sd-page__title {
-        font-size: 1.5rem !important;
-        font-weight: 600 !important;
-        color: hsl(var(--foreground)) !important;
-        margin-bottom: 0.5rem !important;
-      }
-
-      .sd-root-modern .sd-page__description {
-        font-size: 0.875rem !important;
-        color: hsl(var(--muted-foreground)) !important;
-        margin-bottom: 2rem !important;
-      }
-
-      .sd-root-modern .sd-question {
-        background: hsl(var(--card)) !important;
-        border: 1px solid hsl(var(--border)) !important;
-        border-radius: var(--radius) !important;
-        padding: 1.5rem !important;
-        margin-bottom: 1.5rem !important;
-        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
-      }
-
-      .sd-root-modern .sd-question__title {
-        font-size: 1rem !important;
-        font-weight: 500 !important;
-        color: hsl(var(--foreground)) !important;
-        margin-bottom: 0.5rem !important;
-      }
-
-      .sd-root-modern .sd-question__description {
-        font-size: 0.875rem !important;
-        color: hsl(var(--muted-foreground)) !important;
-        margin-bottom: 1rem !important;
-      }
-
-      .sd-root-modern .sd-input {
-        background: hsl(var(--background)) !important;
-        border: 1px solid hsl(var(--border)) !important;
-        border-radius: var(--radius) !important;
-        padding: 0.5rem 0.75rem !important;
-        font-size: 0.875rem !important;
-        color: hsl(var(--foreground)) !important;
-        transition: border-color 0.2s ease !important;
-      }
-
-      .sd-root-modern .sd-input:focus {
-        outline: none !important;
-        border-color: hsl(var(--ring)) !important;
-        box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2) !important;
-      }
-
-      .sd-root-modern .sd-navigation {
-        background: hsl(var(--card)) !important;
-        border: 1px solid hsl(var(--border)) !important;
-        border-radius: var(--radius) !important;
-        padding: 1rem !important;
-        margin-top: 2rem !important;
-      }
-
-      .sd-root-modern .sd-btn {
-        background: hsl(var(--primary)) !important;
-        color: hsl(var(--primary-foreground)) !important;
-        border: none !important;
-        border-radius: var(--radius) !important;
-        padding: 0.5rem 1rem !important;
-        font-size: 0.875rem !important;
-        font-weight: 500 !important;
-        cursor: pointer !important;
-        transition: background-color 0.2s ease !important;
-      }
-
-      .sd-root-modern .sd-btn:hover {
-        background: hsl(var(--primary) / 0.9) !important;
-      }
-
-      .sd-root-modern .sd-btn--navigation-prev {
-        background: hsl(var(--secondary)) !important;
-        color: hsl(var(--secondary-foreground)) !important;
-        margin-right: 0.5rem !important;
-      }
-
-      .sd-root-modern .sd-btn--navigation-prev:hover {
-        background: hsl(var(--secondary) / 0.8) !important;
-      }
-
-      .sd-root-modern .sd-progress {
-        background: hsl(var(--secondary)) !important;
-        border-radius: var(--radius) !important;
-        height: 0.5rem !important;
-        margin-bottom: 2rem !important;
-      }
-
-      .sd-root-modern .sd-progress__bar {
-        background: hsl(var(--primary)) !important;
-        border-radius: var(--radius) !important;
-        transition: width 0.3s ease !important;
-      }
-
-      .sd-root-modern .sd-matrix {
-        border: 1px solid hsl(var(--border)) !important;
-        border-radius: var(--radius) !important;
-        overflow: hidden !important;
-      }
-
-      .sd-root-modern .sd-matrix__cell {
-        background: hsl(var(--background)) !important;
-        border: 1px solid hsl(var(--border)) !important;
-        padding: 0.75rem !important;
-        text-align: center !important;
-      }
-
-      .sd-root-modern .sd-matrix__cell--header {
-        background: hsl(var(--muted)) !important;
-        font-weight: 500 !important;
-        color: hsl(var(--foreground)) !important;
-      }
-
-      .sd-root-modern .sd-radio {
-        accent-color: hsl(var(--primary)) !important;
-      }
-
-      .sd-root-modern .sd-checkbox {
-        accent-color: hsl(var(--primary)) !important;
-      }
-
-      .sd-root-modern .sd-radiogroup {
-        gap: 0.5rem !important;
-      }
-
-      .sd-root-modern .sd-radiogroup-item {
-        background: hsl(var(--card)) !important;
-        border: 1px solid hsl(var(--border)) !important;
-        border-radius: var(--radius) !important;
-        padding: 0.75rem 1rem !important;
-        margin: 0.25rem !important;
-        transition: all 0.2s ease !important;
-        cursor: pointer !important;
-        font-size: 0.875rem !important;
-      }
-
-      .sd-root-modern .sd-radiogroup-item:hover {
-        background: hsl(var(--accent)) !important;
-        border-color: hsl(var(--primary)) !important;
-      }
-
-      .sd-root-modern .sd-radiogroup-item.sd-item--selected {
-        background: hsl(var(--primary)) !important;
-        color: hsl(var(--primary-foreground)) !important;
-        border-color: hsl(var(--primary)) !important;
-      }
-
-      .sd-root-modern .sd-radiogroup-item label {
-        cursor: pointer !important;
-        font-weight: 500 !important;
-        color: inherit !important;
-      }
-
-      .sd-root-modern .sd-completedpage {
-        background: hsl(var(--card)) !important;
-        border: 1px solid hsl(var(--border)) !important;
-        border-radius: var(--radius) !important;
-        padding: 2rem !important;
-        text-align: center !important;
-        margin-top: 2rem !important;
-      }
-
-      .sd-root-modern .sd-question--error {
-        border-color: hsl(var(--destructive)) !important;
-      }
-
-      .sd-root-modern .sd-question__erros {
-        color: hsl(var(--destructive)) !important;
-        font-size: 0.875rem !important;
-        margin-top: 0.5rem !important;
-      }
-    `;
-    document.head.appendChild(style);
-    
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
 
   if (!surveyModel) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-center justify-center p-16">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading survey...</p>
-          <p className="text-sm text-gray-500 mt-2">
-            If this persists, there may be an issue with the SurveyJS integration. 
-            Check the browser console for errors.
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-6"></div>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">Loading Survey</h3>
+          <p className="text-gray-600 mb-4">Please wait while we prepare your survey...</p>
+          <p className="text-sm text-gray-500">
+            If this persists, there may be an issue with the SurveyJS integration.
           </p>
         </div>
       </div>
@@ -420,6 +239,7 @@ export function SurveyJSWrapper({
       <Survey 
         ref={surveyRef}
         model={surveyModel}
+        key={`survey-${survey.id}-${stakeholder}`}
       />
     </div>
   );
